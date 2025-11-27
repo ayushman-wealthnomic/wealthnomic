@@ -1,0 +1,2949 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wealthnomics | Systematic Quantitative Trading & Investment Strategies</title>
+    <meta name="description"
+        content="Wealthnomics is a premier quantitative investment firm specializing in systematic trading strategies, machine learning, and disciplined risk management to generate superior alpha.">
+    <meta name="keywords"
+        content="quantitative trading, systematic investing, algo trading, hedge fund, risk management, wealthnomics, alpha generation, machine learning finance">
+    <meta name="author" content="Wealthnomics Capital Advisors">
+    <link rel="canonical" href="https://wealthnomics.com/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://wealthnomics.com/">
+    <meta property="og:title" content="Wealthnomics | Systematic Quantitative Trading">
+    <meta property="og:description"
+        content="Premier quantitative investment firm specializing in systematic trading strategies and machine learning.">
+    <meta property="og:image" content="https://wealthnomics.com/assets/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://wealthnomics.com/">
+    <meta property="twitter:title" content="Wealthnomics | Systematic Quantitative Trading">
+    <meta property="twitter:description"
+        content="Premier quantitative investment firm specializing in systematic trading strategies and machine learning.">
+    <meta property="twitter:image" content="https://wealthnomics.com/assets/og-image.jpg">
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Wealthnomics",
+      "url": "https://wealthnomics.com",
+      "logo": "https://wealthnomics.com/assets/logo.png",
+      "sameAs": [
+        "https://www.linkedin.com/company/wealthnomic",
+        "https://x.com/wealthnomic"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+91-8887365246",
+        "contactType": "customer service",
+        "email": "ayushman@wealthnomics.com"
+      }
+    }
+    </script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --black: #0a0a0a;
+            --white: #ffffff;
+            --gray-100: #f5f5f5;
+            --gray-200: #e5e5e5;
+            --gray-300: #d4d4d4;
+            --gray-400: #a3a3a3;
+            --gray-500: #737373;
+            --gray-600: #525252;
+            --gray-700: #404040;
+            --gray-800: #262626;
+            --gray-900: #171717;
+            --accent: #00ff88;
+            --accent-dim: #00cc6a;
+            --red: #ff3b3b;
+            --yellow: #ffd000;
+            --blue: #0066ff;
+            --border: 2px solid var(--black);
+            --border-light: 1px solid var(--gray-300);
+            --shadow: 4px 4px 0px var(--black);
+            --shadow-lg: 8px 8px 0px var(--black);
+            --shadow-accent: 4px 4px 0px var(--accent);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--white);
+            color: var(--black);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .mono {
+            font-family: 'Space Mono', monospace;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: var(--white);
+            border-bottom: var(--border);
+            padding: 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: stretch;
+            height: 70px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 0 24px;
+            border-right: var(--border);
+            text-decoration: none;
+            background: var(--black);
+            color: var(--white);
+            transition: all 0.2s ease;
+        }
+
+        .logo:hover {
+            background: var(--accent);
+            color: var(--black);
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--black);
+        }
+
+        .logo-text {
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            height: 100%;
+        }
+
+        .nav-links li {
+            border-right: var(--border);
+        }
+
+        .nav-links a {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            padding: 0 20px;
+            color: var(--black);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            background: var(--accent);
+        }
+
+        .nav-cta {
+            display: flex;
+            align-items: center;
+            padding: 0 24px;
+            background: var(--black);
+            color: var(--white);
+            border: none;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .nav-cta:hover {
+            background: var(--accent);
+            color: var(--black);
+        }
+
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            gap: 6px;
+            padding: 0 24px;
+            cursor: pointer;
+            border-left: var(--border);
+        }
+
+        .mobile-toggle span {
+            width: 24px;
+            height: 2px;
+            background: var(--black);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            margin-top: 70px;
+            border-bottom: var(--border);
+        }
+
+        .hero-main {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .hero-left {
+            padding: 80px 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-right: var(--border);
+        }
+
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--accent);
+            padding: 8px 16px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 24px;
+            width: fit-content;
+        }
+
+        .hero-tag .pulse {
+            width: 8px;
+            height: 8px;
+            background: var(--black);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.3;
+            }
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 700;
+            line-height: 1;
+            letter-spacing: -3px;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 .outline {
+            -webkit-text-stroke: 2px var(--black);
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--gray-600);
+            margin-bottom: 40px;
+            max-width: 500px;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 48px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 28px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+            border: var(--border);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary {
+            background: var(--black);
+            color: var(--white);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-primary:hover {
+            transform: translate(4px, 4px);
+            box-shadow: none;
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--black);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent);
+            transform: translate(4px, 4px);
+            box-shadow: none;
+        }
+
+        .hero-trust {
+            display: flex;
+            gap: 32px;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            color: var(--gray-600);
+        }
+
+        .trust-item i {
+            color: var(--accent-dim);
+        }
+
+        /* Hero Stats */
+        .hero-right {
+            background: var(--gray-100);
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .stats-card {
+            background: var(--white);
+            border: var(--border);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .stats-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 24px;
+            border-bottom: var(--border);
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .stats-header h3 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .live-badge {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--accent);
+            color: var(--black);
+            padding: 4px 12px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .live-badge .dot {
+            width: 6px;
+            height: 6px;
+            background: var(--black);
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+
+        .main-stat {
+            padding: 40px;
+            text-align: center;
+            border-bottom: var(--border);
+        }
+
+        .main-stat-value {
+            font-size: 6rem;
+            font-weight: 700;
+            line-height: 1;
+            letter-spacing: -4px;
+        }
+
+        .main-stat-value .percent {
+            font-size: 3rem;
+            vertical-align: top;
+        }
+
+        .main-stat-label {
+            font-size: 0.9rem;
+            color: var(--gray-500);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 8px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .stat-item {
+            padding: 24px;
+            text-align: center;
+            border-right: var(--border);
+            border-bottom: var(--border);
+        }
+
+        .stat-item:nth-child(2n) {
+            border-right: none;
+        }
+
+        .stat-item:nth-child(n+3) {
+            border-bottom: none;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .stat-value.accent {
+            color: var(--accent-dim);
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--gray-500);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Hero Bottom Bar */
+        .hero-bar {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            border-top: var(--border);
+        }
+
+        .hero-bar-item {
+            padding: 24px 32px;
+            border-right: var(--border);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .hero-bar-item:last-child {
+            border-right: none;
+        }
+
+        .bar-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .bar-text {
+            font-size: 0.85rem;
+        }
+
+        .bar-text strong {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .bar-text span {
+            color: var(--gray-500);
+            font-size: 0.8rem;
+        }
+
+        /* Section Styles */
+        section {
+            border-bottom: var(--border);
+        }
+
+        .section-header {
+            padding: 80px 24px 60px;
+            text-align: center;
+            border-bottom: var(--border);
+        }
+
+        .section-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--black);
+            color: var(--white);
+            padding: 8px 16px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 24px;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            letter-spacing: -2px;
+            margin-bottom: 16px;
+        }
+
+        .section-title .outline {
+            -webkit-text-stroke: 2px var(--black);
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--gray-600);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* About Section */
+        .about-section {
+            background: var(--white);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .about-left {
+            padding: 80px 60px;
+            border-right: var(--border);
+        }
+
+        .about-left h3 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 24px;
+            line-height: 1.1;
+        }
+
+        .about-left p {
+            color: var(--gray-600);
+            margin-bottom: 16px;
+            font-size: 1.05rem;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .about-feature {
+            display: flex;
+            gap: 16px;
+        }
+
+        .about-feature-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .about-feature h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .about-feature p {
+            font-size: 0.85rem;
+            color: var(--gray-500);
+            margin: 0;
+        }
+
+        .about-right {
+            background: var(--gray-100);
+            padding: 60px;
+        }
+
+        .philosophy-card {
+            background: var(--white);
+            border: var(--border);
+            padding: 24px;
+            margin-bottom: 16px;
+            transition: all 0.2s ease;
+        }
+
+        .philosophy-card:hover {
+            box-shadow: var(--shadow);
+            transform: translate(-4px, -4px);
+        }
+
+        .philosophy-card h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .philosophy-card h4 i {
+            color: var(--accent-dim);
+        }
+
+        .philosophy-card p {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+            margin: 0;
+        }
+
+        /* Strategy Section */
+        .strategy-section {
+            background: var(--white);
+        }
+
+        .strategy-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .strategy-card {
+            padding: 48px 32px;
+            border-right: var(--border);
+            border-bottom: var(--border);
+            transition: all 0.2s ease;
+        }
+
+        .strategy-card:nth-child(3n) {
+            border-right: none;
+        }
+
+        .strategy-card:nth-child(n+4) {
+            border-bottom: none;
+        }
+
+        .strategy-card:hover {
+            background: var(--gray-100);
+        }
+
+        .strategy-icon {
+            width: 64px;
+            height: 64px;
+            background: var(--black);
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 24px;
+        }
+
+        .strategy-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .strategy-card>p {
+            color: var(--gray-600);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .strategy-features {
+            list-style: none;
+        }
+
+        .strategy-features li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 0;
+            font-size: 0.85rem;
+            color: var(--gray-600);
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .strategy-features li:last-child {
+            border-bottom: none;
+        }
+
+        .strategy-features li i {
+            color: var(--accent-dim);
+            font-size: 0.75rem;
+        }
+
+        /* Performance Section */
+        .performance-section {
+            background: var(--gray-100);
+        }
+
+        .performance-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            border-bottom: var(--border);
+        }
+
+        .perf-stat {
+            padding: 48px 32px;
+            text-align: center;
+            border-right: var(--border);
+            background: var(--white);
+        }
+
+        .perf-stat:last-child {
+            border-right: none;
+        }
+
+        .perf-stat-value {
+            font-size: 3.5rem;
+            font-weight: 700;
+            letter-spacing: -2px;
+            margin-bottom: 8px;
+        }
+
+        .perf-stat-value.highlight {
+            color: var(--accent-dim);
+        }
+
+        .perf-stat-label {
+            font-size: 0.8rem;
+            color: var(--gray-500);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .perf-stat-detail {
+            font-size: 0.8rem;
+            color: var(--gray-400);
+        }
+
+        /* Performance Table */
+        .performance-table-wrapper {
+            padding: 60px;
+        }
+
+        .table-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .table-header h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .table-badge {
+            background: var(--black);
+            color: var(--accent);
+            padding: 8px 16px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .performance-table {
+            width: 100%;
+            background: var(--white);
+            border: var(--border);
+            border-collapse: collapse;
+        }
+
+        .performance-table th,
+        .performance-table td {
+            padding: 16px 20px;
+            text-align: left;
+            border-bottom: var(--border);
+            border-right: var(--border);
+        }
+
+        .performance-table th:last-child,
+        .performance-table td:last-child {
+            border-right: none;
+        }
+
+        .performance-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .performance-table th {
+            background: var(--black);
+            color: var(--white);
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .performance-table td {
+            font-size: 0.9rem;
+        }
+
+        .performance-table tr:hover td {
+            background: var(--gray-100);
+        }
+
+        .positive {
+            color: var(--accent-dim);
+            font-weight: 600;
+        }
+
+        .period-tag {
+            background: var(--gray-200);
+            padding: 4px 10px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        /* Thesis Section */
+        .thesis-section {
+            background: var(--white);
+        }
+
+        .thesis-intro {
+            padding: 60px;
+            border-bottom: var(--border);
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .thesis-intro h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+
+        .thesis-intro p {
+            font-size: 1.1rem;
+            color: var(--gray-300);
+            max-width: 900px;
+            margin-bottom: 12px;
+        }
+
+        .thesis-pillars {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .thesis-pillar {
+            padding: 48px;
+            border-right: var(--border);
+            border-bottom: var(--border);
+            position: relative;
+        }
+
+        .thesis-pillar:nth-child(2n) {
+            border-right: none;
+        }
+
+        .thesis-pillar:nth-child(n+3) {
+            border-bottom: none;
+        }
+
+        .pillar-number {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--gray-200);
+            line-height: 1;
+        }
+
+        .thesis-pillar h4 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            padding-left: 16px;
+            border-left: 4px solid var(--accent);
+        }
+
+        .thesis-pillar>p {
+            color: var(--gray-600);
+            margin-bottom: 24px;
+            font-size: 0.95rem;
+        }
+
+        .pillar-details {
+            background: var(--gray-100);
+            padding: 20px;
+        }
+
+        .pillar-details h5 {
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            color: var(--gray-500);
+        }
+
+        .pillar-details ul {
+            list-style: none;
+        }
+
+        .pillar-details li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 8px 0;
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+
+        .pillar-details li i {
+            color: var(--accent-dim);
+            margin-top: 4px;
+        }
+
+        /* Technical Deep Dive */
+        .technical-dive {
+            border-top: var(--border);
+        }
+
+        .technical-header {
+            padding: 32px 48px;
+            background: var(--gray-100);
+            border-bottom: var(--border);
+        }
+
+        .technical-header h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .technical-header p {
+            color: var(--gray-500);
+            font-size: 0.95rem;
+        }
+
+        .technical-content {
+            padding: 48px;
+        }
+
+        .technical-section {
+            margin-bottom: 48px;
+        }
+
+        .technical-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .technical-section h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding-bottom: 12px;
+            border-bottom: var(--border);
+        }
+
+        .technical-section h4 i {
+            color: var(--accent-dim);
+        }
+
+        .technical-text {
+            color: var(--gray-600);
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .code-block {
+            background: var(--black);
+            color: var(--white);
+            padding: 24px;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8rem;
+            overflow-x: auto;
+            margin: 20px 0;
+            border: var(--border);
+            line-height: 1.8;
+        }
+
+        .code-comment {
+            color: var(--gray-500);
+        }
+
+        .code-keyword {
+            color: var(--accent);
+        }
+
+        .code-number {
+            color: var(--yellow);
+        }
+
+        .technical-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .technical-item {
+            background: var(--gray-100);
+            padding: 24px;
+            border: var(--border);
+        }
+
+        .technical-item h5 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .technical-item p {
+            color: var(--gray-600);
+            font-size: 0.85rem;
+            margin: 0;
+        }
+
+        /* Risk Section */
+        .risk-section {
+            background: var(--gray-100);
+        }
+
+        .risk-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .risk-card {
+            padding: 48px;
+            background: var(--white);
+            border-right: var(--border);
+            border-bottom: var(--border);
+        }
+
+        .risk-card:nth-child(2n) {
+            border-right: none;
+        }
+
+        .risk-card:nth-child(n+3) {
+            border-bottom: none;
+        }
+
+        .risk-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .risk-card h3 i {
+            width: 40px;
+            height: 40px;
+            background: var(--black);
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .risk-list {
+            list-style: none;
+        }
+
+        .risk-list li {
+            display: flex;
+            gap: 16px;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .risk-list li:last-child {
+            border-bottom: none;
+        }
+
+        .risk-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .risk-content h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .risk-content p {
+            font-size: 0.85rem;
+            color: var(--gray-600);
+            margin: 0;
+        }
+
+        /* Team Section */
+        .team-section {
+            background: var(--white);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .team-card {
+            padding: 48px 32px;
+            text-align: center;
+            border-right: var(--border);
+            transition: all 0.2s ease;
+        }
+
+        .team-card:last-child {
+            border-right: none;
+        }
+
+        .team-card:hover {
+            background: var(--gray-100);
+        }
+
+        .team-avatar {
+            width: 100px;
+            height: 100px;
+            background: var(--black);
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 0 auto 20px;
+        }
+
+        .team-card h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .team-role {
+            color: var(--accent-dim);
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+
+        .team-card>p {
+            font-size: 0.85rem;
+            color: var(--gray-600);
+        }
+
+        /* Terms Section */
+        .terms-section {
+            background: var(--gray-100);
+        }
+
+        .terms-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+        }
+
+        .terms-card {
+            padding: 32px 24px;
+            background: var(--white);
+            border-right: var(--border);
+            text-align: center;
+        }
+
+        .terms-card:last-child {
+            border-right: none;
+        }
+
+        .terms-card h4 {
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--gray-500);
+            margin-bottom: 12px;
+        }
+
+        .terms-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .terms-detail {
+            font-size: 0.75rem;
+            color: var(--gray-500);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: var(--white);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .contact-info {
+            padding: 80px 60px;
+            border-right: var(--border);
+        }
+
+        .contact-info h3 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 16px;
+        }
+
+        .contact-info>p {
+            color: var(--gray-600);
+            font-size: 1.05rem;
+            margin-bottom: 40px;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .contact-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-text h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .contact-text p {
+            color: var(--gray-600);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .contact-form-wrapper {
+            padding: 60px;
+            background: var(--gray-100);
+        }
+
+        .contact-form h4 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 32px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            background: var(--white);
+            border: var(--border);
+            padding: 14px 16px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            box-shadow: var(--shadow);
+            transform: translate(-2px, -2px);
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .form-submit {
+            width: 100%;
+            background: var(--black);
+            color: var(--white);
+            border: var(--border);
+            padding: 16px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            transition: all 0.2s ease;
+        }
+
+        .form-submit:hover {
+            background: var(--accent);
+            color: var(--black);
+            transform: translate(4px, 4px);
+            box-shadow: none;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--black);
+            color: var(--white);
+            border-top: var(--border);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            padding: 60px;
+            gap: 40px;
+            border-bottom: 1px solid var(--gray-800);
+        }
+
+        .footer-brand p {
+            color: var(--gray-400);
+            font-size: 0.9rem;
+            margin: 20px 0;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 8px;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            background: var(--gray-800);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .footer-social a:hover {
+            background: var(--accent);
+            color: var(--black);
+        }
+
+        .footer-column h4 {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: var(--gray-400);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 60px;
+        }
+
+        .footer-copyright {
+            color: var(--gray-500);
+            font-size: 0.8rem;
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-legal a {
+            color: var(--gray-500);
+            text-decoration: none;
+            font-size: 0.8rem;
+            transition: color 0.2s ease;
+        }
+
+        .footer-legal a:hover {
+            color: var(--accent);
+        }
+
+        /* Disclaimer */
+        .disclaimer {
+            background: var(--gray-900);
+            padding: 20px 60px;
+            border-top: 1px solid var(--gray-800);
+        }
+
+        .disclaimer p {
+            color: var(--gray-500);
+            font-size: 0.75rem;
+            line-height: 1.6;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 70px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--white);
+            z-index: 999;
+            display: none;
+            flex-direction: column;
+            border-top: var(--border);
+        }
+
+        .mobile-menu.active {
+            display: flex;
+        }
+
+        .mobile-menu a {
+            padding: 20px 24px;
+            border-bottom: var(--border);
+            color: var(--black);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+
+        .mobile-menu a:hover {
+            background: var(--accent);
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .hero-main {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-left {
+                border-right: none;
+                border-bottom: var(--border);
+            }
+
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .hero-bar {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-bar-item:nth-child(2) {
+                border-right: none;
+            }
+
+            .hero-bar-item:nth-child(1),
+            .hero-bar-item:nth-child(2) {
+                border-bottom: var(--border);
+            }
+
+            .strategy-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .strategy-card:nth-child(2n) {
+                border-right: none;
+            }
+
+            .strategy-card:nth-child(3) {
+                border-right: var(--border);
+            }
+
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .team-card:nth-child(2n) {
+                border-right: none;
+            }
+
+            .team-card {
+                border-bottom: var(--border);
+            }
+
+            .terms-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .terms-card:nth-child(3n) {
+                border-right: none;
+            }
+
+            .terms-card:nth-child(1),
+            .terms-card:nth-child(2),
+            .terms-card:nth-child(3) {
+                border-bottom: var(--border);
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .nav-links {
+                display: none;
+            }
+
+            .nav-cta {
+                display: none;
+            }
+
+            .mobile-toggle {
+                display: flex;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-left {
+                border-right: none;
+                border-bottom: var(--border);
+            }
+
+            .thesis-pillars {
+                grid-template-columns: 1fr;
+            }
+
+            .thesis-pillar {
+                border-right: none;
+            }
+
+            .thesis-pillar:nth-child(n) {
+                border-bottom: var(--border);
+            }
+
+            .thesis-pillar:last-child {
+                border-bottom: none;
+            }
+
+            .risk-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .risk-card {
+                border-right: none;
+            }
+
+            .risk-card:nth-child(n) {
+                border-bottom: var(--border);
+            }
+
+            .risk-card:last-child {
+                border-bottom: none;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                border-right: none;
+                border-bottom: var(--border);
+            }
+
+            .technical-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-left {
+                padding: 60px 24px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+                letter-spacing: -1px;
+            }
+
+            .hero-right {
+                padding: 40px 24px;
+            }
+
+            .main-stat-value {
+                font-size: 4rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-bar {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-bar-item {
+                border-right: none;
+                border-bottom: var(--border);
+            }
+
+            .hero-bar-item:last-child {
+                border-bottom: none;
+            }
+
+            .performance-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .perf-stat:nth-child(2n) {
+                border-right: none;
+            }
+
+            .perf-stat:nth-child(1),
+            .perf-stat:nth-child(2) {
+                border-bottom: var(--border);
+            }
+
+            .perf-stat-value {
+                font-size: 2.5rem;
+            }
+
+            .strategy-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .strategy-card {
+                border-right: none;
+            }
+
+            .strategy-card:nth-child(n) {
+                border-bottom: var(--border);
+            }
+
+            .strategy-card:last-child {
+                border-bottom: none;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .team-card {
+                border-right: none;
+            }
+
+            .terms-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .terms-card {
+                border-bottom: var(--border);
+            }
+
+            .terms-card:nth-child(2n) {
+                border-right: none;
+            }
+
+            .technical-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                padding: 40px 24px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 16px;
+                padding: 24px;
+                text-align: center;
+            }
+
+            .disclaimer {
+                padding: 20px 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container container">
+            <a href="#" class="logo">
+                <div class="logo-icon">W</div>
+                <span class="logo-text">WEALTHNOMICS</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#strategy">Strategy</a></li>
+                <li><a href="#performance">Performance</a></li>
+                <li><a href="#thesis">Thesis</a></li>
+                <li><a href="#risk">Risk</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="nav-cta">Investor Login</button>
+            <div class="mobile-toggle" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#about" onclick="toggleMobileMenu()">About</a>
+        <a href="#strategy" onclick="toggleMobileMenu()">Strategy</a>
+        <a href="#performance" onclick="toggleMobileMenu()">Performance</a>
+        <a href="#thesis" onclick="toggleMobileMenu()">Thesis</a>
+        <a href="#risk" onclick="toggleMobileMenu()">Risk</a>
+        <a href="#team" onclick="toggleMobileMenu()">Team</a>
+        <a href="blog.html" onclick="toggleMobileMenu()">Blog</a>
+        <a href="#contact" onclick="toggleMobileMenu()">Contact</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-main">
+            <div class="hero-left">
+                <div class="hero-tag">
+                    <span class="pulse"></span>
+                    Systematic Alpha Generation • SEBI Registered
+                </div>
+                <h1>INTELLIGENT<br>CAPITAL.<br><span class="outline">SYSTEMATIC</span><br>RETURNS.</h1>
+                <p class="hero-subtitle">
+                    Wealthnomics deploys AlphaGod™, our proprietary systematic trading infrastructure,
+                    to capture alpha across US and Indian equity and derivatives markets through
+                    machine learning-driven, volatility-adaptive strategies.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">
+                        <i class="fas fa-file-alt"></i>
+                        Request Materials
+                    </a>
+                    <a href="#thesis" class="btn btn-secondary">
+                        <i class="fas fa-microscope"></i>
+                        View Thesis
+                    </a>
+                </div>
+                <div class="hero-trust">
+                    <div class="trust-item">
+                        <i class="fas fa-check-circle"></i>
+                        Audited Track Record
+                    </div>
+                    <div class="trust-item">
+                        <i class="fas fa-check-circle"></i>
+                        Institutional Infrastructure
+                    </div>
+                    <div class="trust-item">
+                        <i class="fas fa-check-circle"></i>
+                        Independent Custody
+                    </div>
+                </div>
+            </div>
+            <div class="hero-right">
+                <div class="stats-card">
+                    <div class="stats-header">
+                        <h3>Fund Performance Snapshot</h3>
+                        <div class="live-badge">
+                            <span class="dot"></span>
+                            Live
+                        </div>
+                    </div>
+                    <div class="main-stat">
+                        <div class="main-stat-value">48<span class="percent">%</span></div>
+                        <div class="main-stat-label">Net CAGR (2019-2025)</div>
+                    </div>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-value">4.1</div>
+                            <div class="stat-label">Sharpe Ratio</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value accent">15.7</div>
+                            <div class="stat-label">Sortino Ratio</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">0.023</div>
+                            <div class="stat-label">Beta to Nifty</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value accent">22.8</div>
+                            <div class="stat-label">Calmar Ratio</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-bar">
+            <div class="hero-bar-item">
+                <div class="bar-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="bar-text">
+                    <strong>-0.37% Max Drawdown</strong>
+                    <span>Capital Preservation First</span>
+                </div>
+            </div>
+            <div class="hero-bar-item">
+                <div class="bar-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="bar-text">
+                    <strong>AlphaGod™ Active</strong>
+                    <span>Systematic Execution</span>
+                </div>
+            </div>
+            <div class="hero-bar-item">
+                <div class="bar-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="bar-text">
+                    <strong>18.8% Annual Alpha</strong>
+                    <span>vs Nifty 50 Benchmark</span>
+                </div>
+            </div>
+            <div class="hero-bar-item">
+                <div class="bar-icon">
+                    <i class="fas fa-exchange-alt"></i>
+                </div>
+                <div class="bar-text">
+                    <strong>4,792 Trades Executed</strong>
+                    <span>56.6% Win Rate</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="section-header">
+            <div class="section-tag">
+                <i class="fas fa-building"></i>
+                About Wealthnomics
+            </div>
+            <h2 class="section-title">QUANTITATIVE <span class="outline">EXCELLENCE</span></h2>
+            <p class="section-subtitle">
+                Research-driven alternative asset management with institutional-grade
+                systematic strategies across liquid US and Indian markets.
+            </p>
+        </div>
+        <div class="about-grid">
+            <div class="about-left">
+                <h3>Systematic Alpha.<br>Institutional Rigor.</h3>
+                <p>
+                    Wealthnomics is a research-driven alternative asset manager specializing in systematic,
+                    rules-based investment strategies across liquid US and Indian markets. Founded by practitioners
+                    with deep expertise in quantitative finance, machine learning, and risk management.
+                </p>
+                <p>
+                    Our mandate is to deliver consistent, uncorrelated returns through our proprietary
+                    AlphaGod™ system—a multi-factor, volatility-adaptive trading infrastructure that
+                    has been rigorously validated across multiple market regimes.
+                </p>
+                <div class="about-features">
+                    <div class="about-feature">
+                        <div class="about-feature-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div>
+                            <h4>Research-First</h4>
+                            <p>500+ validation trials per strategy</p>
+                        </div>
+                    </div>
+                    <div class="about-feature">
+                        <div class="about-feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div>
+                            <h4>Capital Preservation</h4>
+                            <p>Max DD under 1% all periods</p>
+                        </div>
+                    </div>
+                    <div class="about-feature">
+                        <div class="about-feature-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <div>
+                            <h4>Systematic Execution</h4>
+                            <p>Zero discretionary intervention</p>
+                        </div>
+                    </div>
+                    <div class="about-feature">
+                        <div class="about-feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div>
+                            <h4>Adaptive Intelligence</h4>
+                            <p>ML-driven regime detection</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="about-right">
+                <div class="philosophy-card">
+                    <h4><i class="fas fa-balance-scale"></i> Risk-Adjusted Focus</h4>
+                    <p>We optimize for Sharpe ratio, not absolute returns. Superior risk-adjusted performance compounds
+                        more efficiently over time.</p>
+                </div>
+                <div class="philosophy-card">
+                    <h4><i class="fas fa-sync-alt"></i> Anti-Fragile Design</h4>
+                    <p>Our systems are designed to perform better during volatility, not despite it. Market stress is an
+                        opportunity, not a threat.</p>
+                </div>
+                <div class="philosophy-card">
+                    <h4><i class="fas fa-microscope"></i> Scientific Rigor</h4>
+                    <p>Every hypothesis is tested on out-of-sample data. We reject strategies that show any signs of
+                        overfitting.</p>
+                </div>
+                <div class="philosophy-card">
+                    <h4><i class="fas fa-lock"></i> Operational Excellence</h4>
+                    <p>Institutional-grade infrastructure with independent custody, third-party audit, and segregated
+                        accounts.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Strategy Section -->
+    <section class="strategy-section" id="strategy">
+        <div class="section-header">
+            <div class="section-tag">
+                <i class="fas fa-chess"></i>
+                Investment Strategy
+            </div>
+            <h2 class="section-title">THE ALPHAGOD™ <span class="outline">ARCHITECTURE</span></h2>
+            <p class="section-subtitle">
+                Multi-layered systematic platform combining volatility-adaptive execution,
+                machine learning regime detection, and rigorous risk management.
+            </p>
+        </div>
+        <div class="strategy-grid">
+            <div class="strategy-card">
+                <div class="strategy-icon">
+                    <i class="fas fa-wave-square"></i>
+                </div>
+                <h3>Volatility-Adaptive Execution</h3>
+                <p>Dynamic position sizing and exit management calibrated to real-time market volatility.</p>
+                <ul class="strategy-features">
+                    <li><i class="fas fa-check"></i> Proprietary volatility normalization</li>
+                    <li><i class="fas fa-check"></i> Asset-class specific parameters</li>
+                    <li><i class="fas fa-check"></i> Adaptive profit-taking mechanism</li>
+                    <li><i class="fas fa-check"></i> Trailing protection system</li>
+                </ul>
+            </div>
+            <div class="strategy-card">
+                <div class="strategy-icon">
+                    <i class="fas fa-layer-group"></i>
+                </div>
+                <h3>Multi-Factor Signal Engine</h3>
+                <p>Composite scoring combining orthogonal factors with ML-optimized weights.</p>
+                <ul class="strategy-features">
+                    <li><i class="fas fa-check"></i> 5-factor composite scoring</li>
+                    <li><i class="fas fa-check"></i> Regime-adaptive weighting</li>
+                    <li><i class="fas fa-check"></i> Entry threshold optimization</li>
+                    <li><i class="fas fa-check"></i> Signal quality validation</li>
+                </ul>
+            </div>
+            <div class="strategy-card">
+                <div class="strategy-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <h3>Machine Learning Layer</h3>
+                <p>Gradient boosting models evaluate factor importance and adapt to market regimes.</p>
+                <ul class="strategy-features">
+                    <li><i class="fas fa-check"></i> Real-time regime classification</li>
+                    <li><i class="fas fa-check"></i> Dynamic factor weighting</li>
+                    <li><i class="fas fa-check"></i> Anomaly detection system</li>
+                    <li><i class="fas fa-check"></i> Continuous model retraining</li>
+                </ul>
+            </div>
+            <div class="strategy-card">
+                <div class="strategy-icon">
+                    <i class="fas fa-cubes"></i>
+                </div>
+                <h3>Capital Allocation Framework</h3>
+                <p>Tranche-based position management with dynamic rebalancing.</p>
+                <ul class="strategy-features">
+                    <li><i class="fas fa-check"></i> 32 discrete capital tranches</li>
+                    <li><i class="fas fa-check"></i> Zero capital shortage design</li>
+                    <li><i class="fas fa-check"></i> Automatic reallocation</li>
+                    <li><i class="fas fa-check"></i> Leverage optimization (3x max)</li>
+                </ul>
+            </div>
+            <div class="strategy-card">
+                <div class="strategy-icon">
+                    <i class="fas fa-globe-asia"></i>
+                </div>
+                <h3>Universe & Instruments</h3>
+                <p>Focused exposure to liquid Indian equities, derivatives, and commodities.</p>
+                <ul class="strategy-features">
+                    <li><i class="fas fa-check"></i> Nifty 50 & select large-caps</li>
+                    <li><i class="fas fa-check"></i> Index futures & options</li>
+                    <li><i class="fas fa-check"></i> Gold & commodity ETFs</li>
+                    <li><i class="fas fa-check"></i> Minimum liquidity thresholds</li>
+                </ul>
+            </div>
+            <div class="strategy-card">
+                <div class="strategy-icon">
+                    <i class="fas fa-tachometer-alt"></i>
+                </div>
+                <h3>Execution Infrastructure</h3>
+                <p>Institutional-grade execution with smart order routing and real-time controls.</p>
+                <ul class="strategy-features">
+                    <li><i class="fas fa-check"></i> Co-located execution servers</li>
+                    <li><i class="fas fa-check"></i> Sub-second order latency</li>
+                    <li><i class="fas fa-check"></i> Real-time P&L monitoring</li>
+                    <li><i class="fas fa-check"></i> Automated circuit breakers</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Performance Section -->
+    <section class="performance-section" id="performance">
+        <div class="section-header">
+            <div class="section-tag">
+                <i class="fas fa-chart-bar"></i>
+                Track Record
+            </div>
+            <h2 class="section-title">VALIDATED <span class="outline">PERFORMANCE</span></h2>
+            <p class="section-subtitle">
+                Audited results across multiple market regimes. All returns net of fees.
+            </p>
+        </div>
+        <div class="performance-stats">
+            <div class="perf-stat">
+                <div class="perf-stat-value">48%</div>
+                <div class="perf-stat-label">Net CAGR</div>
+                <div class="perf-stat-detail">Full period 2019-2025</div>
+            </div>
+            <div class="perf-stat">
+                <div class="perf-stat-value highlight">4.1</div>
+                <div class="perf-stat-label">Sharpe Ratio</div>
+                <div class="perf-stat-detail">Risk-adjusted excellence</div>
+            </div>
+            <div class="perf-stat">
+                <div class="perf-stat-value">-0.37%</div>
+                <div class="perf-stat-label">Max Drawdown</div>
+                <div class="perf-stat-detail">Capital preservation</div>
+            </div>
+            <div class="perf-stat">
+                <div class="perf-stat-value highlight">18.8%</div>
+                <div class="perf-stat-label">Annual Alpha</div>
+                <div class="perf-stat-detail">vs Nifty 50</div>
+            </div>
+        </div>
+        <div class="performance-table-wrapper">
+            <div class="table-header">
+                <h3>Performance by Market Regime</h3>
+                <div class="table-badge">Stress-Tested</div>
+            </div>
+            <table class="performance-table">
+                <thead>
+                    <tr>
+                        <th>Period</th>
+                        <th>Market Condition</th>
+                        <th>CAGR</th>
+                        <th>Sharpe</th>
+                        <th>Max DD</th>
+                        <th>Win Rate</th>
+                        <th>Trades</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Full Period</strong></td>
+                        <td><span class="period-tag">All Regimes</span></td>
+                        <td class="positive">48.0%</td>
+                        <td>4.1</td>
+                        <td>-0.37%</td>
+                        <td>56.6%</td>
+                        <td>4,792</td>
+                    </tr>
+                    <tr>
+                        <td>Jan-Jun 2020</td>
+                        <td><span class="period-tag">COVID Crash</span></td>
+                        <td class="positive">61.7%</td>
+                        <td>3.9</td>
+                        <td>-0.37%</td>
+                        <td>54.6%</td>
+                        <td>337</td>
+                    </tr>
+                    <tr>
+                        <td>Jul 2020 - Dec 2021</td>
+                        <td><span class="period-tag">Post-COVID Bull</span></td>
+                        <td class="positive">89.0%</td>
+                        <td>4.7</td>
+                        <td>-0.19%</td>
+                        <td>62.6%</td>
+                        <td>984</td>
+                    </tr>
+                    <tr>
+                        <td>2022</td>
+                        <td><span class="period-tag">Bear Market</span></td>
+                        <td class="positive">58.5%</td>
+                        <td>4.2</td>
+                        <td>-0.16%</td>
+                        <td>54.5%</td>
+                        <td>708</td>
+                    </tr>
+                    <tr>
+                        <td>2023</td>
+                        <td><span class="period-tag">Recovery</span></td>
+                        <td class="positive">37.6%</td>
+                        <td>4.5</td>
+                        <td>-0.24%</td>
+                        <td>57.4%</td>
+                        <td>704</td>
+                    </tr>
+                    <tr>
+                        <td>2024</td>
+                        <td><span class="period-tag">Consolidation</span></td>
+                        <td class="positive">38.2%</td>
+                        <td>4.9</td>
+                        <td>-0.15%</td>
+                        <td>58.8%</td>
+                        <td>711</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Thesis Section -->
+    <section class="thesis-section" id="thesis">
+        <div class="section-header">
+            <div class="section-tag">
+                <i class="fas fa-flask"></i>
+                Technical Thesis
+            </div>
+            <h2 class="section-title">THE ALPHAGOD™ <span class="outline">RESEARCH FRAMEWORK</span></h2>
+            <p class="section-subtitle">
+                Comprehensive examination of our systematic approach and the structural inefficiencies we exploit.
+            </p>
+        </div>
+
+        <div class="thesis-intro">
+            <h3>Investment Thesis Overview</h3>
+            <p>
+                The US and Indian equity market presents a unique opportunity for systematic alpha generation due to
+                structural inefficiencies arising from retail investor dominance, information asymmetries,
+                and behavioral biases that create predictable patterns in price action.
+            </p>
+            <p>
+                AlphaGod™ is engineered to systematically exploit these inefficiencies through a multi-layered
+                approach combining volatility-adaptive execution, machine learning-driven factor weighting,
+                and rigorous risk management—validated across 6+ years of live market data including multiple
+                stress scenarios.
+            </p>
+        </div>
+
+        <div class="thesis-pillars">
+            <div class="thesis-pillar">
+                <span class="pillar-number">01</span>
+                <h4>Market Inefficiency Hypothesis</h4>
+                <p>
+                    The US and Indian market exhibits persistent inefficiencies that can be systematically captured
+                    by strategies optimized for local market microstructure.
+                </p>
+                <div class="pillar-details">
+                    <h5>Key Observations</h5>
+                    <ul>
+                        <li><i class="fas fa-angle-right"></i> Retail participation exceeds 45% of daily volume,
+                            creating predictable behavioral patterns</li>
+                        <li><i class="fas fa-angle-right"></i> Mean-reversion dominates in large-cap equities due to
+                            institutional rebalancing</li>
+                        <li><i class="fas fa-angle-right"></i> Momentum effects persist in mid-cap and derivative
+                            instruments</li>
+                        <li><i class="fas fa-angle-right"></i> Volatility clustering creates exploitable regime
+                            transitions</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="thesis-pillar">
+                <span class="pillar-number">02</span>
+                <h4>Volatility-Adaptive Edge</h4>
+                <p>
+                    Traditional fixed-parameter strategies underperform because they cannot adapt to
+                    the dynamic nature of market volatility.
+                </p>
+                <div class="pillar-details">
+                    <h5>Implementation</h5>
+                    <ul>
+                        <li><i class="fas fa-angle-right"></i> All position sizing normalized to rolling volatility
+                            measures</li>
+                        <li><i class="fas fa-angle-right"></i> Exit thresholds calibrated as multiples of current
+                            volatility</li>
+                        <li><i class="fas fa-angle-right"></i> Asset-class specific multipliers (equities vs.
+                            commodities)</li>
+                        <li><i class="fas fa-angle-right"></i> Dynamic recalibration without curve-fitting</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="thesis-pillar">
+                <span class="pillar-number">03</span>
+                <h4>Multi-Factor Signal Architecture</h4>
+                <p>
+                    Single-factor strategies are vulnerable to regime changes. Our composite scoring
+                    system combines orthogonal factors with ML-optimized weights.
+                </p>
+                <div class="pillar-details">
+                    <h5>Factor Composition</h5>
+                    <ul>
+                        <li><i class="fas fa-angle-right"></i> Momentum indicators (30% base weight) - Short-term price
+                            momentum</li>
+                        <li><i class="fas fa-angle-right"></i> Trend strength metrics (20% base weight) - Directional
+                            conviction</li>
+                        <li><i class="fas fa-angle-right"></i> Volume dynamics (20% base weight) - Participation
+                            confirmation</li>
+                        <li><i class="fas fa-angle-right"></i> Mean-reversion signals (15% base weight) - Price position
+                            analysis</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="thesis-pillar">
+                <span class="pillar-number">04</span>
+                <h4>Anti-Fragile Risk Framework</h4>
+                <p>
+                    The system benefits from volatility rather than suffering from it. Higher volatility
+                    increases trade frequency and profit potential.
+                </p>
+                <div class="pillar-details">
+                    <h5>Risk Controls</h5>
+                    <ul>
+                        <li><i class="fas fa-angle-right"></i> Maximum single-position risk capped at
+                            volatility-adjusted thresholds</li>
+                        <li><i class="fas fa-angle-right"></i> Portfolio-level volatility targeting (2-3% daily)</li>
+                        <li><i class="fas fa-angle-right"></i> Automatic position reduction during extreme drawdowns
+                        </li>
+                        <li><i class="fas fa-angle-right"></i> Zero overnight exposure option in high-risk regimes</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="technical-dive">
+            <div class="technical-header">
+                <h3>Technical Architecture Deep Dive</h3>
+                <p>Detailed examination of the AlphaGod™ system components and methodology</p>
+            </div>
+            <div class="technical-content">
+                <div class="technical-section">
+                    <h4><i class="fas fa-cog"></i> Signal Generation Pipeline</h4>
+                    <p class="technical-text">
+                        The AlphaGod™ signal engine processes market data through a multi-stage pipeline
+                        that transforms raw price and volume information into actionable trading signals.
+                    </p>
+                    <div class="code-block">
+                        <span class="code-comment"># Conceptual Signal Pipeline Architecture</span>
+
+                        <span class="code-keyword">Stage 1:</span> Data Ingestion & Normalization
+                        → Real-time price, volume, volatility feeds
+                        → Outlier detection and cleaning
+                        → Volatility normalization layer
+
+                        <span class="code-keyword">Stage 2:</span> Factor Calculation
+                        → Momentum score (proprietary formula)
+                        → Trend strength index
+                        → Volume confirmation ratio
+                        → Mean-reversion indicator
+
+                        <span class="code-keyword">Stage 3:</span> Composite Scoring
+                        → ML-weighted factor aggregation
+                        → Regime-adjusted multipliers
+                        → Entry threshold validation (min score: <span class="code-number">40/100</span>)
+
+                        <span class="code-keyword">Stage 4:</span> Position Sizing
+                        → Volatility-adjusted position size
+                        → Capital availability check
+                        → Concentration limit validation
+
+                        <span class="code-keyword">Stage 5:</span> Execution
+                        → Smart order routing
+                        → Slippage monitoring
+                        → Real-time P&L tracking
+                    </div>
+                </div>
+
+                <div class="technical-section">
+                    <h4><i class="fas fa-brain"></i> Machine Learning Integration</h4>
+                    <p class="technical-text">
+                        Our ML layer employs gradient boosting models to continuously evaluate factor importance
+                        and adapt strategy weights based on detected market regimes.
+                    </p>
+                    <div class="technical-grid">
+                        <div class="technical-item">
+                            <h5>Regime Detection</h5>
+                            <p>Hidden Markov Models classify market into trending, mean-reverting, or volatile regimes
+                                in real-time.</p>
+                        </div>
+                        <div class="technical-item">
+                            <h5>Factor Importance</h5>
+                            <p>Gradient boosting evaluates which factors are predictive in current regime, adjusting
+                                weights dynamically.</p>
+                        </div>
+                        <div class="technical-item">
+                            <h5>Anomaly Detection</h5>
+                            <p>Isolation forests identify unusual market conditions that may require reduced position
+                                sizes.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="technical-section">
+                    <h4><i class="fas fa-shield-alt"></i> Risk Management Framework</h4>
+                    <p class="technical-text">
+                        Capital preservation is embedded at every level. The volatility-adaptive exit mechanism
+                        ensures losses are cut quickly while winners run.
+                    </p>
+                    <div class="code-block">
+                        <span class="code-comment"># Risk Control Parameters</span>
+
+                        <span class="code-keyword">Position Level:</span>
+                        profit_target = <span class="code-number">2.45</span> × current_volatility_measure
+                        trailing_stop = <span class="code-number">0.5</span> × current_volatility_measure
+                        max_hold_period = <span class="code-number">22</span> trading days
+
+                        <span class="code-keyword">Portfolio Level:</span>
+                        max_active_positions = <span class="code-number">23</span>
+                        capital_tranches = <span class="code-number">32</span>
+                        max_leverage = <span class="code-number">3.0</span>x
+                        target_daily_vol = <span class="code-number">2-3%</span>
+
+                        <span class="code-keyword">Drawdown Controls:</span>
+                        position_reduction_trigger = <span class="code-number">-0.5%</span> daily
+                        full_deleverage_trigger = <span class="code-number">-1.0%</span> daily
+                    </div>
+                </div>
+
+                <div class="technical-section">
+                    <h4><i class="fas fa-vial"></i> Validation Methodology</h4>
+                    <p class="technical-text">
+                        All strategies undergo rigorous out-of-sample validation with 500+ parameter trials
+                        on data the model has never seen.
+                    </p>
+                    <div class="technical-grid">
+                        <div class="technical-item">
+                            <h5>Walk-Forward Testing</h5>
+                            <p>5-year training window, 2-year out-of-sample validation. Parameters must work on unseen
+                                data.</p>
+                        </div>
+                        <div class="technical-item">
+                            <h5>Monte Carlo Simulation</h5>
+                            <p>10,000 randomized trade sequences to validate robustness and estimate confidence
+                                intervals.</p>
+                        </div>
+                        <div class="technical-item">
+                            <h5>Stress Testing</h5>
+                            <p>Performance validated across COVID crash, 2022 bear market, and other high-volatility
+                                periods.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Risk Section -->
+    <section class="risk-section" id="risk">
+        <div class="section-header">
+            <div class="section-tag">
+                <i class="fas fa-exclamation-triangle"></i>
+                Risk & Governance
+            </div>
+            <h2 class="section-title">RISK <span class="outline">MANAGEMENT</span></h2>
+            <p class="section-subtitle">
+                Comprehensive risk framework with independent oversight and institutional governance.
+            </p>
+        </div>
+        <div class="risk-grid">
+            <div class="risk-card">
+                <h3><i class="fas fa-layer-group"></i> Portfolio Risk Controls</h3>
+                <ul class="risk-list">
+                    <li>
+                        <div class="risk-icon"><i class="fas fa-tachometer-alt"></i></div>
+                        <div class="risk-content">
+                            <h4>Volatility Targeting</h4>
+                            <p>Portfolio volatility maintained within 2-3% daily range through dynamic position sizing.
+                            </p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="risk-icon"><i class="fas fa-chart-pie"></i></div>
+                        <div class="risk-content">
+                            <h4>Concentration Limits</h4>
+                            <p>Maximum 23 concurrent positions with strict single-name and sector exposure caps.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="risk-icon"><i class="fas fa-water"></i></div>
+                        <div class="risk-content">
+                            <h4>Liquidity Requirements</h4>
+                            <p>All instruments meet minimum volume thresholds. Full liquidation possible within 24
+                                hours.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="risk-icon"><i class="fas fa-bolt"></i></div>
+                        <div class="risk-content">
+                            <h4>Drawdown Circuit Breakers</h4>
+                            <p>Automatic position reduction at -0.5% daily, full deleverage at -1.0%.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="risk-card">
+                <h3><i class="fas fa-building"></i> Operational Controls</h3>
+                <ul class="risk-list">
+                    <li>
+                        <div class="risk-icon"><i class="fas fa-users"></i></div>
+                        <div class="risk-content">
+                            <h4>Segregation of Duties</h4>
+                            <p>Portfolio management, risk oversight, and operations operate independently.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="risk-icon"><i class="fas fa-lock"></i></div>
+                        <div class="risk-content">
+                            <h4>Independent Custody</h4>
+                            <p>All assets held with registered custodian. Fund never takes possession of investor
+                                assets.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="risk-icon"><i class="fas fa-file-contract"></i></div>
+                        <div class="risk-content">
+                            <h4>Third-Party Audit</h4>
+                            <p>Annual audit by Big 4 firm. Monthly NAV verification by independent administrator.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="risk-icon"><i class="fas fa-shield-virus"></i></div>
+                        <div class="risk-content">
+                            <h4>Cybersecurity</h4>
+                            <p>SOC 2 Type II compliant infrastructure. Multi-factor authentication throughout.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="risk-card">
+                <h3><i class="fas fa-exclamation-circle"></i> Key Risk Factors</h3>
+                <ul class="risk-list">
+                    <li>
+                        <div class="risk-icon"><i class="fas fa-chart-line"></i></div>
+                        <div class="risk-content">
+                            <h4>Market Risk</h4>
+                            <p>Systematic strategies can experience losses during regime changes or unprecedented
+                                conditions.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="risk-icon"><i class="fas fa-balance-scale-right"></i></div>
+                        <div class="risk-content">
+                            <h4>Leverage Risk</h4>
+                            <p>Use of up to 3x leverage amplifies both gains and losses.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="risk-icon"><i class="fas fa-code"></i></div>
+                        <div class="risk-content">
+                            <h4>Model Risk</h4>
+                            <p>Quantitative models may fail to capture unprecedented market dynamics.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="risk-icon"><i class="fas fa-server"></i></div>
+                        <div class="risk-content">
+                            <h4>Technology Risk</h4>
+                            <p>System failures or connectivity issues could result in losses.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="risk-card">
+                <h3><i class="fas fa-clipboard-check"></i> Governance Framework</h3>
+                <ul class="risk-list">
+                    <li>
+                        <div class="risk-icon"><i class="fas fa-user-tie"></i></div>
+                        <div class="risk-content">
+                            <h4>Investment Committee</h4>
+                            <p>All strategy changes require IC approval. Committee meets weekly.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="risk-icon"><i class="fas fa-eye"></i></div>
+                        <div class="risk-content">
+                            <h4>Independent Risk Officer</h4>
+                            <p>CRO reports directly to board with authority to halt trading.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="risk-icon"><i class="fas fa-file-alt"></i></div>
+                        <div class="risk-content">
+                            <h4>Investor Reporting</h4>
+                            <p>Monthly performance reports, quarterly risk reviews, annual audited statements.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="risk-icon"><i class="fas fa-gavel"></i></div>
+                        <div class="risk-content">
+                            <h4>Regulatory Compliance</h4>
+                            <p>Full compliance with SEBI regulations. Regular compliance audits.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section" id="team">
+        <div class="section-header">
+            <div class="section-tag">
+                <i class="fas fa-users"></i>
+                Leadership
+            </div>
+            <h2 class="section-title">OUR <span class="outline">TEAM</span></h2>
+            <p class="section-subtitle">
+                Multidisciplinary expertise in quantitative research, portfolio management, and technology.
+            </p>
+        </div>
+        <div class="team-grid">
+            <div class="team-card">
+                <div class="team-avatar">AG</div>
+                <h4>Ayushman Gupta, PhD</h4>
+                <div class="team-role">Founder & Managing Partner</div>
+                <p>Architect of AlphaGod™. Doctorate in quantitative finance with research in statistical modeling and
+                    applied computational methods.</p>
+            </div>
+            <div class="team-card">
+                <div class="team-avatar">QR</div>
+                <h4>Head of Research</h4>
+                <div class="team-role">Quantitative Strategies</div>
+                <p>Leads model development, data engineering, and signal research. Focus on robust statistical methods.
+                </p>
+            </div>
+            <div class="team-card">
+                <div class="team-avatar">CR</div>
+                <h4>Chief Risk Officer</h4>
+                <div class="team-role">Independent Oversight</div>
+                <p>Oversees firm-wide market, liquidity, and operational risk. Independent reporting line to board.</p>
+            </div>
+            <div class="team-card">
+                <div class="team-avatar">CO</div>
+                <h4>COO / CFO</h4>
+                <div class="team-role">Operations & Finance</div>
+                <p>Manages administration, finance, trade operations, and valuation frameworks.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Terms Section -->
+    <section class="terms-section">
+        <div class="section-header">
+            <div class="section-tag">
+                <i class="fas fa-file-contract"></i>
+                Fund Terms
+            </div>
+            <h2 class="section-title">INVESTMENT <span class="outline">STRUCTURE</span></h2>
+            <p class="section-subtitle">
+                Indicative terms for qualified investors.
+            </p>
+        </div>
+        <div class="terms-grid">
+            <div class="terms-card">
+                <h4>Minimum Investment</h4>
+                <div class="terms-value">₹1 Cr</div>
+                <div class="terms-detail">Qualified investors</div>
+            </div>
+            <div class="terms-card">
+                <h4>Management Fee</h4>
+                <div class="terms-value">2%</div>
+                <div class="terms-detail">Annual on NAV</div>
+            </div>
+            <div class="terms-card">
+                <h4>Performance Fee</h4>
+                <div class="terms-value">20%</div>
+                <div class="terms-detail">Above 8% hurdle</div>
+            </div>
+            <div class="terms-card">
+                <h4>Lock-up</h4>
+                <div class="terms-value">12 Mo</div>
+                <div class="terms-detail">Quarterly after</div>
+            </div>
+            <div class="terms-card">
+                <h4>Structure</h4>
+                <div class="terms-value">Cat II</div>
+                <div class="terms-detail">SEBI AIF</div>
+            </div>
+            <div class="terms-card">
+                <h4>Custodian</h4>
+                <div class="terms-value">HDFC</div>
+                <div class="terms-detail">Independent</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="section-header">
+            <div class="section-tag">
+                <i class="fas fa-envelope"></i>
+                Get in Touch
+            </div>
+            <h2 class="section-title">START THE <span class="outline">CONVERSATION</span></h2>
+            <p class="section-subtitle">
+                We welcome inquiries from institutional investors, family offices, and qualified individuals.
+            </p>
+        </div>
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h3>Request Fund Materials</h3>
+                <p>
+                    Strategy deck, due diligence questionnaire, and offering documents
+                    available to qualified investors upon completion of onboarding procedures.
+                </p>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Email</h4>
+                            <p>ayushman@wealthnomics.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Phone</h4>
+                            <p>+91 8887365246</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Office</h4>
+                            <p>Wyoming, USA</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form-wrapper">
+                <form class="contact-form" id="investorForm">
+                    <h4>Investor Inquiry</h4>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Full Name *</label>
+                            <input type="text" name="name" placeholder="Your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Organization</label>
+                            <input type="text" name="organization" placeholder="Company / Family Office">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Email *</label>
+                            <input type="email" name="email" placeholder="your@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone</label>
+                            <input type="tel" name="phone" placeholder="+91 XXXXX XXXXX">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Investor Type *</label>
+                        <select name="type" required>
+                            <option value="">Select type...</option>
+                            <option value="institutional">Institutional Investor</option>
+                            <option value="family-office">Family Office</option>
+                            <option value="hnw">High Net Worth Individual</option>
+                            <option value="consultant">Consultant / Advisor</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Message</label>
+                        <textarea name="message" placeholder="Tell us about your investment objectives..."></textarea>
+                    </div>
+                    <button type="submit" class="form-submit">
+                        <i class="fas fa-paper-plane"></i> Submit Inquiry
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="logo" style="display: inline-flex; background: transparent; border: none; padding: 0;">
+                    <div class="logo-icon">W</div>
+                    <span class="logo-text" style="color: var(--white);">WEALTHNOMICS</span>
+                </div>
+                <p>
+                    Systematic alpha generation through quantitative research,
+                    machine learning, and disciplined risk management.
+                </p>
+                <div class="footer-social">
+                    <a href="https://www.linkedin.com/company/wealthnomic" target="_blank" rel="noopener noreferrer"><i
+                            class="fab fa-linkedin-in"></i></a>
+                    <a href="https://x.com/wealthnomic" target="_blank" rel="noopener noreferrer"><i
+                            class="fab fa-twitter"></i></a>
+                    <a href="mailto:ayushman@wealthnomics.com"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h4>Company</h4>
+                <ul class="footer-links">
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#team">Leadership</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Press</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Investment</h4>
+                <ul class="footer-links">
+                    <li><a href="#strategy">Strategy</a></li>
+                    <li><a href="#performance">Performance</a></li>
+                    <li><a href="#thesis">Thesis</a></li>
+                    <li><a href="#risk">Risk</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Resources</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Investor Portal</a></li>
+                    <li><a href="#">Fund Documents</a></li>
+                    <li><a href="#">Research</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-copyright">
+                © 2025 Wealthnomics Capital Advisors LLP. All rights reserved. SEBI Registered AIF.
+            </div>
+            <div class="footer-legal">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Use</a>
+                <a href="#">Disclosures</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('investorForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const btn = this.querySelector('.form-submit');
+            const originalText = btn.innerHTML;
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData.entries());
+
+            // Basic validation
+            if (!data.name || !data.email || !data.type) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+
+            // Loading state
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            btn.disabled = true;
+
+            // Send to Formspree
+            fetch("https://formspree.io/f/movzlzko", {
+                method: "POST",
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    // Success state
+                    btn.innerHTML = '<i class="fas fa-check"></i> Sent Successfully';
+                    btn.style.background = 'var(--accent)';
+                    btn.style.color = 'var(--black)';
+
+                    // Reset form
+                    this.reset();
+
+                    // Show success message
+                    const successMsg = document.createElement('div');
+                    successMsg.style.padding = '16px';
+                    successMsg.style.marginTop = '16px';
+                    successMsg.style.background = '#d1fae5';
+                    successMsg.style.color = '#065f46';
+                    successMsg.style.borderRadius = '4px';
+                    successMsg.innerHTML = '<i class="fas fa-check-circle"></i> Thank you for your inquiry. Our team will contact you shortly.';
+
+                    // Insert after button
+                    btn.parentNode.insertBefore(successMsg, btn.nextSibling);
+
+                    // Remove success message after 5 seconds
+                    setTimeout(() => {
+                        successMsg.remove();
+                        btn.innerHTML = originalText;
+                        btn.disabled = false;
+                        btn.style.background = '';
+                        btn.style.color = '';
+                    }, 5000);
+                } else {
+                    response.json().then(data => {
+                        if (Object.hasOwn(data, 'errors')) {
+                            alert(data["errors"].map(error => error["message"]).join(", "));
+                        } else {
+                            alert("Oops! There was a problem submitting your form");
+                        }
+                    });
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                }
+            }).catch(error => {
+                alert("Oops! There was a problem submitting your form");
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            });
+        });
+    </script>
+</body>
+
+</html>
