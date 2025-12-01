@@ -33,9 +33,24 @@
     {
       "@context": "https://schema.org",
       "@type": "Organization",
-      "name": "Wealthnomics",
+      "name": "Wealthnomics LLC",
+      "legalName": "Wealthnomics LLC",
+      "identifier": "2025-001750749",
       "url": "https://wealthnomics.com",
       "logo": "https://wealthnomics.com/assets/logo.png",
+      "foundingDate": "2025-08-22",
+      "foundingLocation": {
+        "@type": "Place",
+        "name": "Wyoming"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "30 N Gould St, Ste R",
+        "addressLocality": "Sheridan",
+        "addressRegion": "WY",
+        "postalCode": "82801",
+        "addressCountry": "US"
+      },
       "sameAs": [
         "https://www.linkedin.com/company/wealthnomic",
         "https://x.com/wealthnomic"
@@ -870,6 +885,14 @@
             font-weight: 500;
         }
 
+        /* Diversification Section */
+        .diversification-section {
+            background: var(--black);
+            color: var(--white);
+            padding: 80px 60px;
+            border-bottom: var(--border);
+        }
+
         /* Thesis Section */
         .thesis-section {
             background: var(--white);
@@ -1302,6 +1325,31 @@
             justify-content: center;
         }
 
+        .chart-wrapper-full {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .pie-chart-svg {
+            width: 100%;
+            height: auto;
+        }
+
+        .pie-chart-svg .segment {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .pie-chart-svg .segment:hover {
+            opacity: 0.8;
+            transform: scale(1.05);
+        }
+
+        .pie-chart-svg text {
+            user-select: none;
+        }
+
         .contact-text h4 {
             font-size: 0.95rem;
             font-weight: 600;
@@ -1393,11 +1441,157 @@
             box-shadow: none;
         }
 
-        /* Footer */
-        .footer {
+        /* Solution Section */
+        .solution-section {
             background: var(--black);
             color: var(--white);
-            border-top: var(--border);
+            padding: 80px 60px;
+            border-bottom: var(--border);
+        }
+
+        .solution-header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .solution-title-block {
+            max-width: 600px;
+        }
+
+        .solution-title {
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+        }
+
+        .solution-subtitle {
+            font-size: 1.1rem;
+            color: var(--gray-400);
+            font-weight: 400;
+        }
+
+        .solution-metrics {
+            display: flex;
+            gap: 60px;
+        }
+
+        .solution-metric {
+            text-align: center;
+        }
+
+        .solution-metric-value {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .solution-metric-label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .solution-intro {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: var(--gray-300);
+            margin-bottom: 60px;
+            max-width: 1200px;
+            border-left: 4px solid var(--accent);
+            padding-left: 24px;
+        }
+
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .solution-card {
+            display: flex;
+            gap: 20px;
+        }
+
+        .solution-icon {
+            flex-shrink: 0;
+            width: 50px;
+            height: 50px;
+            /* background: var(--gray-800); */
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--white);
+        }
+
+        .solution-content h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--white);
+        }
+
+        .solution-content p {
+            font-size: 0.95rem;
+            color: var(--gray-400);
+            line-height: 1.6;
+        }
+
+        @media (max-width: 1024px) {
+            .solution-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .chart-container {
+                flex-direction: column;
+            }
+
+            .chart-labels {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .solution-header-row {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .solution-title {
+                font-size: 3rem;
+            }
+
+            .solution-metrics {
+                width: 100%;
+                justify-content: space-between;
+                gap: 20px;
+            }
+
+            .solution-metric-value {
+                font-size: 2.5rem;
+            }
+
+            .solution-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .diversification-title {
+                font-size: 2rem;
+            }
+
+            .chart-wrapper-full {
+                max-width: 700px;
+            }
         }
 
         .footer-grid {
@@ -1800,6 +1994,7 @@
             </a>
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
+                <li><a href="#solution">Solution</a></li>
                 <li><a href="#strategy">Strategy</a></li>
                 <li><a href="#performance">Performance</a></li>
                 <li><a href="#thesis">Thesis</a></li>
@@ -1808,7 +2003,7 @@
                 <li><a href="blog.html">Blog</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <button class="nav-cta">Investor Login</button>
+            <a href="investor-login.html" class="nav-cta">Investor Login</a>
             <div class="mobile-toggle" onclick="toggleMobileMenu()">
                 <span></span>
                 <span></span>
@@ -1820,6 +2015,7 @@
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
         <a href="#about" onclick="toggleMobileMenu()">About</a>
+        <a href="#solution" onclick="toggleMobileMenu()">Solution</a>
         <a href="#strategy" onclick="toggleMobileMenu()">Strategy</a>
         <a href="#performance" onclick="toggleMobileMenu()">Performance</a>
         <a href="#thesis" onclick="toggleMobileMenu()">Thesis</a>
@@ -1878,7 +2074,7 @@
                         </div>
                     </div>
                     <div class="main-stat">
-                        <div class="main-stat-value">48<span class="percent">%</span></div>
+                        <div class="main-stat-value">41<span class="percent">%</span></div>
                         <div class="main-stat-label">Net CAGR (2019-2025)</div>
                     </div>
                     <div class="stats-grid">
@@ -2032,6 +2228,216 @@
         </div>
     </section>
 
+    <!-- Solution Section -->
+    <section class="solution-section" id="solution">
+        <div class="solution-header-row">
+            <div class="solution-title-block">
+                <h2 class="solution-title">OUR SOLUTION</h2>
+                <p class="solution-subtitle">Powered by a Sharpe Ratio of 3.93 and near-zero market correlation</p>
+            </div>
+            <div class="solution-metrics">
+                <div class="solution-metric">
+                    <div class="solution-metric-value">41%</div>
+                    <div class="solution-metric-label">CAGR</div>
+                </div>
+                <div class="solution-metric">
+                    <div class="solution-metric-value">8%</div>
+                    <div class="solution-metric-label">MAX DRAWDOWN</div>
+                </div>
+            </div>
+        </div>
+
+        <p class="solution-intro">
+            Wealthnomics offers India's first anti-fragile quantitative hedge fund powered by several strategies like
+            <span style="color: var(--accent); font-weight: 700;">AlphaGod™</span>, <span
+                style="color: var(--accent); font-weight: 700;">A1</span>, <span
+                style="color: var(--accent); font-weight: 700;">AUS1</span>, <span
+                style="color: var(--accent); font-weight: 700;">N1</span>, our proprietary state of the art that
+            leverages
+            ML, adaptive algorithms, and validated intelligence for exceptional returns across ALL market conditions
+        </p>
+
+        <div class="solution-grid">
+            <div class="solution-card">
+                <div class="solution-icon">
+                    <i class="fas fa-arrows-alt"></i>
+                </div>
+                <div class="solution-content">
+                    <h4>Diversified Multi-Market Strategy</h4>
+                    <p>
+                        Five independent portfolios targeting distinct opportunities: Indian Top 100, US Top 50,
+                        Growth/Small Cap, Hedging/Opportunities, and Global Emerging Markets ETFs. Each 20% allocation
+                        ensures risk distribution across geographies and asset classes
+                    </p>
+                </div>
+            </div>
+
+            <div class="solution-card">
+                <div class="solution-icon">
+                    <i class="fas fa-project-diagram"></i>
+                </div>
+                <div class="solution-content">
+                    <h4>Dynamic Capital Allocation</h4>
+                    <p>
+                        AI-powered Capital Allocation Optimizer continuously rebalances across portfolios based on
+                        performance, risk metrics, and market opportunities. Ensures capital flows to highest
+                        risk-adjusted return strategies while maintaining diversification discipline.
+                    </p>
+                </div>
+            </div>
+
+            <div class="solution-card">
+                <div class="solution-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <div class="solution-content">
+                    <h4>AI-Driven Decision Making</h4>
+                    <p>
+                        Centralized AI system processes market data, alternative data, economic indicators, and
+                        sentiment analysis to power all investment decisions. Each portfolio benefits from machine
+                        learning models tailored to its specific market characteristics.
+                    </p>
+                </div>
+            </div>
+
+            <div class="solution-card">
+                <div class="solution-icon">
+                    <i class="fas fa-chess-board"></i>
+                </div>
+                <div class="solution-content">
+                    <h4>Systematic Strategy Development</h4>
+                    <p>
+                        Proprietary Strategy Builder modules create and optimize trading algorithms for each portfolio
+                        segment. Strategies are continuously refined based on market conditions and performance
+                        feedback.
+                    </p>
+                </div>
+            </div>
+
+            <div class="solution-card">
+                <div class="solution-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="solution-content">
+                    <h4>Rigorous Testing & Risk Management</h4>
+                    <p>
+                        Multi-layered risk framework including backtesting, Monte Carlo simulations, stress testing, and
+                        real-time monitoring. Portfolio-specific risk controls (VaR, volatility limits, currency
+                        hedging) plus Master Risk Management for cross-portfolio oversight.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Diversification Section -->
+    <section class="diversification-section">
+        <div class="section-header">
+            <div class="section-tag">
+                <i class="fas fa-chart-pie"></i>
+                Asset Allocation
+            </div>
+            <h2 class="section-title">STRATEGIC ASSET <span class="outline">DIVERSIFICATION</span></h2>
+            <p class="section-subtitle">
+                An equal-weight, multi-asset framework designed to capture global growth while rigorously
+                mitigating downside risk
+            </p>
+        </div>
+
+        <div class="chart-container">
+            <div class="chart-wrapper-full">
+                <svg viewBox="0 0 500 500" class="pie-chart-svg">
+                    <!-- Shadow/Glow Effect -->
+                    <defs>
+                        <filter id="glow">
+                            <feGaussianBlur stdDeviation="4" result="coloredBlur" />
+                            <feMerge>
+                                <feMergeNode in="coloredBlur" />
+                                <feMergeNode in="SourceGraphic" />
+                            </feMerge>
+                        </filter>
+                    </defs>
+
+                    <!-- Donut Chart Segments -->
+                    <g transform="translate(250, 250)">
+                        <!-- Indian Markets - Blue (Top) -->
+                        <path d="M 0,-120 A 120,120 0 0,1 116.4,-37.1 L 58.2,-18.5 A 60,60 0 0,0 0,-60 Z" fill="#4d79ff"
+                            filter="url(#glow)" class="segment" />
+
+                        <!-- US Markets - Light Blue (Right) -->
+                        <path d="M 116.4,-37.1 A 120,120 0 0,1 71.6,97.4 L 35.8,48.7 A 60,60 0 0,0 58.2,-18.5 Z"
+                            fill="#66ccff" filter="url(#glow)" class="segment" />
+
+                        <!-- Growth - Green (Bottom Right) -->
+                        <path d="M 71.6,97.4 A 120,120 0 0,1 -71.6,97.4 L -35.8,48.7 A 60,60 0 0,0 35.8,48.7 Z"
+                            fill="#85e085" filter="url(#glow)" class="segment" />
+
+                        <!-- Hedging - Orange (Bottom Left) -->
+                        <path d="M -71.6,97.4 A 120,120 0 0,1 -116.4,-37.1 L -58.2,-18.5 A 60,60 0 0,0 -35.8,48.7 Z"
+                            fill="#ffad33" filter="url(#glow)" class="segment" />
+
+                        <!-- ETF/Metals - Red (Left) -->
+                        <path d="M -116.4,-37.1 A 120,120 0 0,1 0,-120 L 0,-60 A 60,60 0 0,0 -58.2,-18.5 Z"
+                            fill="#ff4d4d" filter="url(#glow)" class="segment" />
+
+                        <!-- Center Circle -->
+                        <circle cx="0" cy="0" r="60" fill="var(--black)" />
+
+                        <!-- Center Text -->
+                        <text x="0" y="-5" text-anchor="middle" fill="var(--white)" font-size="20"
+                            font-weight="700">100%</text>
+                        <text x="0" y="15" text-anchor="middle" fill="var(--gray-400)" font-size="12">Diversified</text>
+
+                        <!-- Labels with Lines -->
+                        <!-- Indian Markets -->
+                        <line x1="0" y1="-120" x2="0" y2="-170" stroke="var(--white)" stroke-width="2" />
+                        <text x="0" y="-180" text-anchor="middle" fill="var(--white)" font-size="16"
+                            font-weight="700">20%</text>
+                        <text x="0" y="-163" text-anchor="middle" fill="var(--white)" font-size="13">Indian
+                            Markets</text>
+                        <text x="0" y="-148" text-anchor="middle" fill="var(--gray-400)" font-size="11">NIFTY Top
+                            100</text>
+
+                        <!-- US Markets -->
+                        <line x1="105" y1="-60" x2="150" y2="-85" stroke="var(--white)" stroke-width="2" />
+                        <text x="155" y="-85" text-anchor="start" fill="var(--white)" font-size="16"
+                            font-weight="700">20%</text>
+                        <text x="155" y="-68" text-anchor="start" fill="var(--white)" font-size="13">US
+                            Markets</text>
+                        <text x="155" y="-53" text-anchor="start" fill="var(--gray-400)" font-size="11">US Top 50</text>
+
+                        <!-- Growth + Small Caps -->
+                        <line x1="95" y1="65" x2="145" y2="95" stroke="var(--white)" stroke-width="2" />
+                        <text x="150" y="100" text-anchor="start" fill="var(--white)" font-size="16"
+                            font-weight="700">20%</text>
+                        <text x="150" y="117" text-anchor="start" fill="var(--white)" font-size="13">Growth + Small
+                            Caps</text>
+                        <text x="150" y="132" text-anchor="start" fill="var(--gray-400)" font-size="11">High Growth
+                            Potential</text>
+
+                        <!-- Hedging + Debt -->
+                        <line x1="-95" y1="65" x2="-145" y2="95" stroke="var(--white)" stroke-width="2" />
+                        <text x="-150" y="100" text-anchor="end" fill="var(--white)" font-size="16"
+                            font-weight="700">20%</text>
+                        <text x="-150" y="117" text-anchor="end" fill="var(--white)" font-size="13">Hedging + Debt +
+                            Opportunities</text>
+                        <text x="-150" y="132" text-anchor="end" fill="var(--gray-400)" font-size="11">Risk
+                            Mitigation</text>
+
+                        <!-- ETF + Metals -->
+                        <line x1="-105" y1="-60" x2="-150" y2="-85" stroke="var(--white)" stroke-width="2" />
+                        <text x="-155" y="-85" text-anchor="end" fill="var(--white)" font-size="16"
+                            font-weight="700">20%</text>
+                        <text x="-155" y="-68" text-anchor="end" fill="var(--white)" font-size="13">ETF + Metals +
+                            Global Emerging</text>
+                        <text x="-155" y="-53" text-anchor="end" fill="var(--gray-400)" font-size="11">Diversified
+                            Markets</text>
+                    </g>
+                </svg>
+            </div>
+        </div>
+    </section>
+
     <!-- Strategy Section -->
     <section class="strategy-section" id="strategy">
         <div class="section-header">
@@ -2141,7 +2547,7 @@
         </div>
         <div class="performance-stats">
             <div class="perf-stat">
-                <div class="perf-stat-value">48%</div>
+                <div class="perf-stat-value">41%</div>
                 <div class="perf-stat-label">Net CAGR</div>
                 <div class="perf-stat-detail">Full period 2019-2025</div>
             </div>
@@ -2182,7 +2588,7 @@
                     <tr>
                         <td><strong>Full Period</strong></td>
                         <td><span class="period-tag">All Regimes</span></td>
-                        <td class="positive">48.0%</td>
+                        <td class="positive">41.0%</td>
                         <td>4.1</td>
                         <td>-0.37%</td>
                         <td>56.6%</td>
@@ -2353,126 +2759,7 @@
             </div>
         </div>
 
-        <div class="technical-dive">
-            <div class="technical-header">
-                <h3>Technical Architecture Deep Dive</h3>
-                <p>Detailed examination of the AlphaGod™ system components and methodology</p>
-            </div>
-            <div class="technical-content">
-                <div class="technical-section">
-                    <h4><i class="fas fa-cog"></i> Signal Generation Pipeline</h4>
-                    <p class="technical-text">
-                        The AlphaGod™ signal engine processes market data through a multi-stage pipeline
-                        that transforms raw price and volume information into actionable trading signals.
-                    </p>
-                    <div class="code-block">
-                        <span class="code-comment"># Conceptual Signal Pipeline Architecture</span>
 
-                        <span class="code-keyword">Stage 1:</span> Data Ingestion & Normalization
-                        → Real-time price, volume, volatility feeds
-                        → Outlier detection and cleaning
-                        → Volatility normalization layer
-
-                        <span class="code-keyword">Stage 2:</span> Factor Calculation
-                        → Momentum score (proprietary formula)
-                        → Trend strength index
-                        → Volume confirmation ratio
-                        → Mean-reversion indicator
-
-                        <span class="code-keyword">Stage 3:</span> Composite Scoring
-                        → ML-weighted factor aggregation
-                        → Regime-adjusted multipliers
-                        → Entry threshold validation (min score: <span class="code-number">40/100</span>)
-
-                        <span class="code-keyword">Stage 4:</span> Position Sizing
-                        → Volatility-adjusted position size
-                        → Capital availability check
-                        → Concentration limit validation
-
-                        <span class="code-keyword">Stage 5:</span> Execution
-                        → Smart order routing
-                        → Slippage monitoring
-                        → Real-time P&L tracking
-                    </div>
-                </div>
-
-                <div class="technical-section">
-                    <h4><i class="fas fa-brain"></i> Machine Learning Integration</h4>
-                    <p class="technical-text">
-                        Our ML layer employs gradient boosting models to continuously evaluate factor importance
-                        and adapt strategy weights based on detected market regimes.
-                    </p>
-                    <div class="technical-grid">
-                        <div class="technical-item">
-                            <h5>Regime Detection</h5>
-                            <p>Hidden Markov Models classify market into trending, mean-reverting, or volatile regimes
-                                in real-time.</p>
-                        </div>
-                        <div class="technical-item">
-                            <h5>Factor Importance</h5>
-                            <p>Gradient boosting evaluates which factors are predictive in current regime, adjusting
-                                weights dynamically.</p>
-                        </div>
-                        <div class="technical-item">
-                            <h5>Anomaly Detection</h5>
-                            <p>Isolation forests identify unusual market conditions that may require reduced position
-                                sizes.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="technical-section">
-                    <h4><i class="fas fa-shield-alt"></i> Risk Management Framework</h4>
-                    <p class="technical-text">
-                        Capital preservation is embedded at every level. The volatility-adaptive exit mechanism
-                        ensures losses are cut quickly while winners run.
-                    </p>
-                    <div class="code-block">
-                        <span class="code-comment"># Risk Control Parameters</span>
-
-                        <span class="code-keyword">Position Level:</span>
-                        profit_target = <span class="code-number">2.45</span> × current_volatility_measure
-                        trailing_stop = <span class="code-number">0.5</span> × current_volatility_measure
-                        max_hold_period = <span class="code-number">22</span> trading days
-
-                        <span class="code-keyword">Portfolio Level:</span>
-                        max_active_positions = <span class="code-number">23</span>
-                        capital_tranches = <span class="code-number">32</span>
-                        max_leverage = <span class="code-number">3.0</span>x
-                        target_daily_vol = <span class="code-number">2-3%</span>
-
-                        <span class="code-keyword">Drawdown Controls:</span>
-                        position_reduction_trigger = <span class="code-number">-0.5%</span> daily
-                        full_deleverage_trigger = <span class="code-number">-1.0%</span> daily
-                    </div>
-                </div>
-
-                <div class="technical-section">
-                    <h4><i class="fas fa-vial"></i> Validation Methodology</h4>
-                    <p class="technical-text">
-                        All strategies undergo rigorous out-of-sample validation with 500+ parameter trials
-                        on data the model has never seen.
-                    </p>
-                    <div class="technical-grid">
-                        <div class="technical-item">
-                            <h5>Walk-Forward Testing</h5>
-                            <p>5-year training window, 2-year out-of-sample validation. Parameters must work on unseen
-                                data.</p>
-                        </div>
-                        <div class="technical-item">
-                            <h5>Monte Carlo Simulation</h5>
-                            <p>10,000 randomized trade sequences to validate robustness and estimate confidence
-                                intervals.</p>
-                        </div>
-                        <div class="technical-item">
-                            <h5>Stress Testing</h5>
-                            <p>Performance validated across COVID crash, 2022 bear market, and other high-volatility
-                                periods.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </section>
 
     <!-- Risk Section -->
@@ -2648,23 +2935,25 @@
                     applied computational methods.</p>
             </div>
             <div class="team-card">
-                <div class="team-avatar">QR</div>
+                <div class="team-avatar" style="background: var(--gray-700);">HR</div>
                 <h4>Head of Research</h4>
-                <div class="team-role">Quantitative Strategies</div>
-                <p>Leads model development, data engineering, and signal research. Focus on robust statistical methods.
+                <div class="team-role" style="color: var(--yellow);">Hiring</div>
+                <p>Leading model development, data engineering, and signal research with focus on robust statistical
+                    methods.
                 </p>
             </div>
             <div class="team-card">
-                <div class="team-avatar">CR</div>
+                <div class="team-avatar" style="background: var(--gray-700);">CR</div>
                 <h4>Chief Risk Officer</h4>
-                <div class="team-role">Independent Oversight</div>
-                <p>Oversees firm-wide market, liquidity, and operational risk. Independent reporting line to board.</p>
+                <div class="team-role" style="color: var(--yellow);">Hiring</div>
+                <p>Oversight of firm-wide market, liquidity, and operational risk with independent reporting line to
+                    board.</p>
             </div>
             <div class="team-card">
-                <div class="team-avatar">CO</div>
+                <div class="team-avatar" style="background: var(--gray-700);">CO</div>
                 <h4>COO / CFO</h4>
-                <div class="team-role">Operations & Finance</div>
-                <p>Manages administration, finance, trade operations, and valuation frameworks.</p>
+                <div class="team-role" style="color: var(--yellow);">Hiring</div>
+                <p>Managing administration, finance, trade operations, and valuation frameworks.</p>
             </div>
         </div>
     </section>
@@ -2684,18 +2973,18 @@
         <div class="terms-grid">
             <div class="terms-card">
                 <h4>Minimum Investment</h4>
-                <div class="terms-value">₹1 Cr</div>
+                <div class="terms-value">₹150k USD</div>
                 <div class="terms-detail">Qualified investors</div>
             </div>
             <div class="terms-card">
                 <h4>Management Fee</h4>
-                <div class="terms-value">2%</div>
+                <div class="terms-value">1%</div>
                 <div class="terms-detail">Annual on NAV</div>
             </div>
             <div class="terms-card">
                 <h4>Performance Fee</h4>
                 <div class="terms-value">20%</div>
-                <div class="terms-detail">Above 8% hurdle</div>
+                <div class="terms-detail">Above 11% hurdle</div>
             </div>
             <div class="terms-card">
                 <h4>Lock-up</h4>
@@ -2822,6 +3111,9 @@
                     Systematic alpha generation through quantitative research,
                     machine learning, and disciplined risk management.
                 </p>
+                <p style="margin-top: 12px; font-size: 0.9rem; color: var(--gray-400);">
+                    30 N Gould St, Ste R, Sheridan, Wyoming 82801, USA
+                </p>
                 <div class="footer-social">
                     <a href="https://www.linkedin.com/company/wealthnomic" target="_blank" rel="noopener noreferrer"><i
                             class="fab fa-linkedin-in"></i></a>
@@ -2860,7 +3152,7 @@
         </div>
         <div class="footer-bottom">
             <div class="footer-copyright">
-                © 2025 Wealthnomics Capital Advisors LLP. All rights reserved. SEBI Registered AIF.
+                © 2025 Wealthnomics LLC. Filing ID: 2025-001750749. All rights reserved.
             </div>
             <div class="footer-legal">
                 <a href="#">Privacy Policy</a>

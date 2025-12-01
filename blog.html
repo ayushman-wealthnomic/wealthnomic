@@ -38,10 +38,36 @@
       "url": "https://wealthnomics.com/blog.html",
       "publisher": {
         "@type": "Organization",
-        "name": "Wealthnomics",
+        "name": "Wealthnomics LLC",
+        "legalName": "Wealthnomics LLC",
+        "identifier": "2025-001750749",
+        "url": "https://wealthnomics.com",
         "logo": {
           "@type": "ImageObject",
           "url": "https://wealthnomics.com/assets/logo.png"
+        },
+        "foundingDate": "2025-08-22",
+        "foundingLocation": {
+            "@type": "Place",
+            "name": "Wyoming"
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "30 N Gould St, Ste R",
+          "addressLocality": "Sheridan",
+          "addressRegion": "WY",
+          "postalCode": "82801",
+          "addressCountry": "US"
+        },
+        "sameAs": [
+            "https://www.linkedin.com/company/wealthnomic",
+            "https://x.com/wealthnomic"
+        ],
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+91-8887365246",
+            "contactType": "customer service",
+            "email": "ayushman@wealthnomics.com"
         }
       }
     }
@@ -598,7 +624,7 @@
                 <li><a href="blog.html" class="active">Blog</a></li>
                 <li><a href="index.html#contact">Contact</a></li>
             </ul>
-            <button class="nav-cta">Investor Login</button>
+            <a href="investor-login.html" class="nav-cta">Investor Login</a>
         </div>
     </nav>
 
@@ -667,6 +693,37 @@
     <div class="blog-grid-section container">
         <h2 class="section-title">All Posts</h2>
         <div class="blog-grid">
+            <!-- Blog Card New -->
+            <div class="blog-card">
+                <div class="blog-card-image">
+                    <i class="fas fa-balance-scale"></i>
+                </div>
+                <div class="blog-card-content">
+                    <div class="blog-card-meta">
+                        <span class="meta-tag">
+                            <i class="fas fa-calendar"></i>
+                            Nov 28, 2025
+                        </span>
+                        <span class="meta-tag">
+                            <i class="fas fa-clock"></i>
+                            10 min
+                        </span>
+                    </div>
+                    <h3><a href="blog-post-position-sizing.html">The Art of Position Sizing: Beyond Kelly</a></h3>
+                    <p class="blog-card-excerpt">
+                        Master position sizing with Kelly Criterion, Volatility Targeting, and Fixed Fractional methods.
+                        Learn how to optimize trade size for survival and growth.
+                    </p>
+                    <div class="blog-card-footer">
+                        <span class="blog-card-author">By Wealthnomics Team</span>
+                        <a href="blog-post-position-sizing.html" class="blog-card-link">
+                            Read More
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
             <!-- Blog Card 1 -->
             <div class="blog-card">
                 <div class="blog-card-image">
@@ -699,8 +756,8 @@
                 </div>
             </div>
 
-            <!-- Placeholder cards for future posts -->
-            <div class="blog-card" style="opacity: 0.5;">
+            <!-- Blog Card ML -->
+            <div class="blog-card">
                 <div class="blog-card-image">
                     <i class="fas fa-brain"></i>
                 </div>
@@ -708,16 +765,25 @@
                     <div class="blog-card-meta">
                         <span class="meta-tag">
                             <i class="fas fa-calendar"></i>
-                            Coming Soon
+                            Dec 01, 2025
+                        </span>
+                        <span class="meta-tag">
+                            <i class="fas fa-clock"></i>
+                            10 min
                         </span>
                     </div>
-                    <h3><a href="#">Machine Learning in Systematic Trading</a></h3>
+                    <h3><a href="blog-post-machine-learning-trading.html">Machine Learning in Systematic Trading</a>
+                    </h3>
                     <p class="blog-card-excerpt">
-                        How we leverage ML models for feature engineering and signal generation without falling into the
-                        overfitting trap.
+                        Discover how ML is redefining alpha discovery, risk management, and execution in 2025. From RL
+                        agents to hybrid models.
                     </p>
                     <div class="blog-card-footer">
                         <span class="blog-card-author">By Wealthnomics Team</span>
+                        <a href="blog-post-machine-learning-trading.html" class="blog-card-link">
+                            Read More
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -771,6 +837,9 @@
                 <p style="color: var(--gray-400); font-size: 0.9rem; margin: 20px 0;">
                     Systematic alpha generation through quantitative research,
                     machine learning, and disciplined risk management.
+                </p>
+                <p style="color: var(--gray-400); font-size: 0.9rem; margin: 20px 0;">
+                    30 N Gould St, Ste R, Sheridan, Wyoming 82801, USA
                 </p>
                 <div style="display: flex; gap: 8px;">
                     <a href="https://www.linkedin.com/company/wealthnomic" target="_blank" rel="noopener noreferrer"
@@ -848,7 +917,7 @@
         <div
             style="display: flex; justify-content: space-between; align-items: center; padding: 24px 60px; max-width: 1400px; margin: 0 auto;">
             <div style="color: var(--gray-500); font-size: 0.8rem;">
-                © 2025 Wealthnomics Capital Advisors LLP. All rights reserved. SEBI Registered AIF.
+                © 2025 Wealthnomics LLC. Filing ID: 2025-001750749. All rights reserved.
             </div>
             <div style="display: flex; gap: 24px;">
                 <a href="#"
