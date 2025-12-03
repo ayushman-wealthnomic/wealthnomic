@@ -560,6 +560,135 @@
                 margin: 0 auto;
             }
         }
+
+        /* Discussion Section */
+        .discussion-section {
+            padding: 60px 24px;
+            border-top: var(--border);
+            background: var(--white);
+        }
+
+        .comment-form-container {
+            max-width: 800px;
+            margin: 0 auto 48px;
+            background: var(--gray-100);
+            padding: 32px;
+            border: var(--border);
+            box-shadow: var(--shadow);
+        }
+
+        .comment-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 16px;
+            background: var(--white);
+            border: var(--border);
+            font-family: 'Space Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--black);
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            box-shadow: var(--shadow-accent);
+            transform: translate(-2px, -2px);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            align-self: flex-end;
+            padding: 12px 24px;
+            background: var(--black);
+            color: var(--white);
+            border: none;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .submit-btn:hover {
+            background: var(--accent);
+            color: var(--black);
+            box-shadow: var(--shadow);
+            transform: translate(-2px, -2px);
+        }
+
+        .comments-list {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .comment-card {
+            background: var(--white);
+            border: var(--border);
+            padding: 24px;
+            transition: all 0.2s ease;
+        }
+
+        .comment-card:hover {
+            box-shadow: var(--shadow);
+            transform: translate(-2px, -2px);
+        }
+
+        .comment-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .comment-avatar {
+            width: 40px;
+            height: 40px;
+            background: var(--black);
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .comment-meta {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .comment-author {
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        .comment-date {
+            font-size: 0.8rem;
+            color: var(--gray-500);
+        }
+
+        .comment-text {
+            font-size: 1rem;
+            color: var(--gray-700);
+            line-height: 1.6;
+        }
     </style>
 </head>
 
@@ -1002,6 +1131,55 @@ fig.show()</code></div>
         </div>
     </div>
 
+    <!-- Discussion Section -->
+    <div class="discussion-section container">
+        <h2 class="section-title"
+            style="font-size: 1.5rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 40px; padding-bottom: 16px; border-bottom: var(--border);">
+            Discussion<span class="accent-text" style="color: var(--accent);">.</span></h2>
+
+        <div class="comment-form-container">
+            <form id="commentForm" class="comment-form">
+                <div class="form-group">
+                    <input type="text" id="commentName" placeholder="NAME" required>
+                </div>
+                <div class="form-group">
+                    <textarea id="commentText" placeholder="YOUR THOUGHTS..." required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">
+                    Post Comment
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </form>
+        </div>
+
+        <div class="comments-list" id="commentsList">
+            <!-- Dummy Comment 1 -->
+            <div class="comment-card">
+                <div class="comment-header">
+                    <div class="comment-avatar">JW</div>
+                    <div class="comment-meta">
+                        <span class="comment-author">James Wilson</span>
+                        <span class="comment-date">Dec 03, 2025</span>
+                    </div>
+                </div>
+                <p class="comment-text">Great insights! The comparison between traditional MPT and AI-driven approaches
+                    really clarified things for me.</p>
+            </div>
+            <!-- Dummy Comment 2 -->
+            <div class="comment-card">
+                <div class="comment-header">
+                    <div class="comment-avatar">PP</div>
+                    <div class="comment-meta">
+                        <span class="comment-author">Priya Patel</span>
+                        <span class="comment-date">Dec 02, 2025</span>
+                    </div>
+                </div>
+                <p class="comment-text">I'm curious about the implementation of RL in live markets. Are there any
+                    open-source libraries you recommend besides the ones mentioned?</p>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer style="background: var(--black); color: var(--white); border-top: var(--border);">
         <div
@@ -1112,6 +1290,35 @@ fig.show()</code></div>
         </div>
     </footer>
 
+    <script>
+        document.getElementById('commentForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const name = document.getElementById('commentName').value;
+            const text = document.getElementById('commentText').value;
+            const date = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+
+            const initials = name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
+
+            const commentHTML = `
+                <div class="comment-card" style="animation: fadeIn 0.5s ease;">
+                    <div class="comment-header">
+                        <div class="comment-avatar">${initials}</div>
+                        <div class="comment-meta">
+                            <span class="comment-author">${name}</span>
+                            <span class="comment-date">${date}</span>
+                        </div>
+                    </div>
+                    <p class="comment-text">${text}</p>
+                </div>
+            `;
+
+            const commentsList = document.getElementById('commentsList');
+            commentsList.insertAdjacentHTML('afterbegin', commentHTML);
+
+            this.reset();
+        });
+    </script>
 </body>
 
 </html>
