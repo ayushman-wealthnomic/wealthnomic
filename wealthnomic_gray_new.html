@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Wealthnomic — Systematic Hedge Fund</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Wealthnomic is a systematic hedge fund focused on liquid global markets, risk-managed returns and institutional-grade governance." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #f5f5f0;
+      --bg-alt: #e8e8df;
+      --fg: #111111;
+      --accent: #00ff7b;
+      --muted: #6d6d6d;
+      --border: #111111;
+      --danger: #ff3366;
+      --radius: 0;
+      /* Brutalist: mostly sharp corners */
+      --shadow: 4px 4px 0 #111111;
+      --transition-fast: 0.15s ease-out;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      text-rendering: geometricPrecision;
+    }
+
+    body {
+      border: 6px solid var(--border);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Layout */
+
+    .shell {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 16px 16px 40px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 3px solid var(--border);
+      padding: 8px 0 12px;
+      gap: 16px;
+    }
+
+    .logo-lockup {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+    }
+
+    .logo-mark {
+      width: 32px;
+      height: 32px;
+      border: 3px solid var(--border);
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 18px;
+      box-shadow: 2px 2px 0 #111111;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .logo-text span:first-child {
+      font-weight: 700;
+      font-size: 20px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .logo-text span:last-child {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--fg);
+      padding: 6px 10px;
+      border: 2px solid transparent;
+      position: relative;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 6px;
+      right: 6px;
+      bottom: 4px;
+      height: 2px;
+      background: transparent;
+      transition: background var(--transition-fast);
+    }
+
+    nav a:hover::after {
+      background: var(--accent);
+    }
+
+    .nav-cta {
+      border: 2px solid var(--border);
+      padding-inline: 14px;
+      background: var(--bg-alt);
+      box-shadow: 3px 3px 0 #111111;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+    }
+
+    .nav-cta:hover {
+      transform: translate(-1px, -1px);
+      box-shadow: 5px 5px 0 #111111;
+      background: var(--accent);
+    }
+
+    .nav-toggle {
+      display: none;
+      width: 32px;
+      height: 32px;
+      border: 2px solid var(--border);
+      background: var(--bg-alt);
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    /* Hero */
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(260px, 1.1fr);
+      gap: 24px;
+      padding: 26px 0 24px;
+      border-bottom: 3px solid var(--border);
+    }
+
+    .hero-main {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .hero-kicker {
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero-kicker span.dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent);
+      border: 2px solid var(--border);
+    }
+
+    .hero-title {
+      font-size: clamp(32px, 4vw, 46px);
+      line-height: 1.05;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      border-left: 6px solid var(--border);
+      padding-left: 16px;
+    }
+
+    .hero-subtitle {
+      max-width: 580px;
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--fg);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 18px;
+      border: 3px solid var(--border);
+      background: var(--accent);
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      text-decoration: none;
+      color: var(--fg);
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+    }
+
+    .btn:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0 #111111;
+      background: #baffd9;
+    }
+
+    .btn-secondary {
+      background: var(--bg-alt);
+      box-shadow: 3px 3px 0 #111111;
+    }
+
+    .btn-secondary:hover {
+      background: #ffffff;
+      box-shadow: 5px 5px 0 #111111;
+    }
+
+    .hero-disclaimer {
+      font-size: 11px;
+      max-width: 520px;
+      color: var(--muted);
+    }
+
+    /* Hero side card */
+
+    .hero-card {
+      border: 3px solid var(--border);
+      background: var(--bg-alt);
+      padding: 14px 14px 16px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .hero-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 4px;
+      margin-bottom: 4px;
+    }
+
+    .hero-tag {
+      padding: 2px 6px;
+      border: 2px solid var(--border);
+      background: var(--bg);
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      font-size: 11px;
+    }
+
+    .metric {
+      border: 2px solid var(--border);
+      padding: 8px;
+      background: var(--bg);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      min-height: 64px;
+    }
+
+    .metric-label {
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .metric-value {
+      font-size: 18px;
+      font-weight: 600;
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+    }
+
+    .metric-note {
+      font-size: 10px;
+      color: var(--muted);
+    }
+
+    .metric-positive {
+      color: #007a3b;
+    }
+
+    .metric-neutral {
+      color: #111111;
+    }
+
+    /* Sections */
+
+    main {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      padding-top: 18px;
+    }
+
+    section {
+      border: 3px solid var(--border);
+      background: var(--bg-alt);
+      padding: 18px 14px 20px;
+      box-shadow: var(--shadow);
+    }
+
+    section+section {
+      margin-top: 4px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 6px;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: 13px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .section-tag {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .section-body {
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .columns-2 {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 18px;
+    }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    .pill {
+      border: 2px solid var(--border);
+      padding: 4px 8px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      background: var(--bg);
+    }
+
+    /* Strategy grid */
+
+    .strategy-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .strategy-card {
+      border: 2px solid var(--border);
+      background: var(--bg);
+      padding: 10px 10px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .strategy-label {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .strategy-name {
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .strategy-copy {
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    /* Team */
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 12px;
+      margin-top: 6px;
+    }
+
+    .team-card {
+      border: 2px solid var(--border);
+      background: var(--bg);
+      padding: 10px;
+      display: grid;
+      grid-template-columns: 40px minmax(0, 1fr);
+      gap: 8px;
+      align-items: flex-start;
+    }
+
+    .avatar {
+      width: 40px;
+      height: 40px;
+      border: 3px solid var(--border);
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 16px;
+    }
+
+    .team-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      font-size: 12px;
+    }
+
+    .team-name {
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .team-role {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+    }
+
+    .team-bio {
+      margin-top: 4px;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    /* Contact */
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(240px, 0.9fr);
+      gap: 18px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .form-grid-wide {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      margin-bottom: 4px;
+      display: block;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: 8px 8px 7px;
+      border: 2px solid var(--border);
+      background: var(--bg);
+      font-family: inherit;
+      font-size: 13px;
+      outline: none;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color: var(--accent);
+      box-shadow: 3px 3px 0 #111111;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    .contact-meta {
+      border: 2px solid var(--border);
+      padding: 10px;
+      background: var(--bg);
+      font-size: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .contact-meta-row {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .contact-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+    }
+
+    .disclaimer {
+      border: 2px dashed var(--border);
+      padding: 8px;
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+
+    /* Footer */
+
+    footer {
+      margin-top: auto;
+      border-top: 3px solid var(--border);
+      padding: 8px 16px 10px;
+      font-size: 11px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-between;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .reg-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .badge {
+      border: 2px solid var(--border);
+      padding: 2px 6px;
+      background: var(--bg-alt);
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      text-decoration: none;
+      color: var(--fg);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1px;
+    }
+
+    /* Responsive */
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      header {
+        align-items: center;
+      }
+
+      nav {
+        position: fixed;
+        inset-inline: 12px;
+        top: 60px;
+        background: var(--bg);
+        border: 3px solid var(--border);
+        padding: 10px;
+        flex-direction: column;
+        align-items: flex-start;
+        transform: translateY(-130%);
+        opacity: 0;
+        pointer-events: none;
+        gap: 6px;
+        box-shadow: 4px 4px 0 #111111;
+        z-index: 10;
+      }
+
+      nav.open {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .nav-cta {
+        align-self: stretch;
+        text-align: center;
+        justify-content: center;
+      }
+
+      .nav-toggle {
+        display: inline-flex;
+      }
+
+      .shell {
+        padding-inline: 12px;
+      }
+
+      body {
+        border-width: 4px;
+      }
+
+      section {
+        padding-inline: 10px;
+      }
+
+      .columns-2 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-title {
+        border-left-width: 4px;
+        padding-left: 10px;
+      }
+
+      .btn,
+      .btn-secondary {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .metrics {
+        grid-template-columns: 1fr;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="shell">
+    <header>
+      <div class="logo-lockup">
+        <div class="logo-mark">W</div>
+        <div class="logo-text">
+          <span>Wealthnomic</span>
+          <span>Systematic Hedge Fund</span>
+        </div>
+      </div>
+      <nav id="nav">
+        <a href="#about">About</a>
+        <a href="#strategy">Strategy</a>
+        <a href="#risk">Risk</a>
+        <a href="#team">Team</a>
+        <a href="blog.html">Insights</a>
+        <a href="careers.html">Careers</a>
+        <a href="investor-login.html" class="nav-cta">Investor Login</a>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">≡</button>
+    </header>
+
+    <section class="hero">
+      <div class="hero-main">
+        <div class="hero-kicker">
+          <span class="dot"></span>
+          <span>Institutional Alternative Investment Platform</span>
+        </div>
+        <h1 class="hero-title">
+          Rules-Based Investing<br />for Uncertain Markets.
+        </h1>
+        <p class="hero-subtitle">
+          Wealthnomic is a research-driven hedge fund focused on liquid global markets.
+          We deploy systematic, risk-managed strategies targeting differentiated, uncorrelated
+          return streams for institutional and qualified investors.
+        </p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn">Request Fund Materials</a>
+          <a href="#about" class="btn btn-secondary">View Firm Overview</a>
+        </div>
+        <p class="hero-disclaimer">
+          All information on this page is generic, illustrative and does not constitute
+          an offer to sell or a solicitation of an offer to buy any securities or investment products.
+          Any actual investment would be made only pursuant to final, definitive legal documentation.
+        </p>
+      </div>
+
+      <aside class="hero-card" aria-label="Illustrative fund snapshot">
+        <div class="hero-card-header">
+          <span>Illustrative Fund Snapshot</span>
+          <span class="hero-tag">Wealthnomic Master Fund</span>
+        </div>
+        <div class="metrics">
+          <div class="metric">
+            <div class="metric-label">Target Volatility</div>
+            <div class="metric-value metric-neutral">
+              8–12% <span>annualized</span>
+            </div>
+            <div class="metric-note">Indicative risk budget; actual realized volatility may differ.</div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Target Return</div>
+            <div class="metric-value metric-positive">
+              6–10% <span>net p.a.</span>
+            </div>
+            <div class="metric-note">Return targets are not forecasts or guarantees of future performance.</div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Vehicle</div>
+            <div class="metric-value metric-neutral">
+              LP / Offshore
+            </div>
+            <div class="metric-note">Structure and domicile adaptable to investor requirements.</div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Investor Profile</div>
+            <div class="metric-value metric-neutral">
+              Institutional &amp; Qualified
+            </div>
+            <div class="metric-note">Not intended for retail or unsophisticated investors.</div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <main>
+      <!-- ABOUT -->
+      <section id="about">
+        <div class="section-header">
+          <div class="section-title">Firm Overview</div>
+          <div class="section-tag">About Wealthnomic</div>
+        </div>
+        <div class="section-body columns-2">
+          <div>
+            <p>
+              Wealthnomic is a specialist asset manager focused exclusively on systematic,
+              rules-based investment strategies across liquid global markets. Our mandate is
+              to provide investors with transparent, repeatable processes that seek to harness
+              risk premia, market inefficiencies and structural dislocations over a full cycle.
+            </p>
+            <p>
+              The firm is built on three core pillars: disciplined research, robust risk
+              management and institutional-grade operations. We combine quantitative models
+              with pragmatic portfolio construction, prioritizing capital preservation while
+              targeting attractive risk-adjusted returns.
+            </p>
+          </div>
+          <div>
+            <p>
+              Wealthnomic strategies are designed to complement traditional equity and
+              fixed-income portfolios by emphasizing:
+            </p>
+            <ul style="margin: 0 0 4px 18px; padding: 0; font-size: 13px; line-height: 1.6;">
+              <li>Diversified exposures across asset classes, regions and time horizons.</li>
+              <li>Systematic decision-making to reduce behavioral and discretionary biases.</li>
+              <li>Continuous model evaluation, stress testing and scenario analysis.</li>
+              <li>Operational infrastructure aligned with institutional best practices.</li>
+            </ul>
+            <div class="pill-list" aria-label="Key focus areas">
+              <div class="pill">Global Macro</div>
+              <div class="pill">Alternative Risk Premia</div>
+              <div class="pill">Systematic Equities</div>
+              <div class="pill">Multi-Asset</div>
+              <div class="pill">Risk Management First</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- STRATEGY -->
+      <section id="strategy">
+        <div class="section-header">
+          <div class="section-title">Investment Approach</div>
+          <div class="section-tag">Strategy Architecture</div>
+        </div>
+        <div class="section-body">
+          <p>
+            The Wealthnomic platform is organized into modular strategy sleeves, allowing
+            allocators to access diversified exposures or to construct bespoke mandates.
+            The following components are illustrative only and describe generic strategy
+            types typically employed by systematic managers.
+          </p>
+
+          <div class="strategy-grid">
+            <article class="strategy-card">
+              <div class="strategy-label">Sleeve I</div>
+              <div class="strategy-name">Systematic Macro</div>
+              <p class="strategy-copy">
+                Quantitative models trading major futures and FX markets, seeking to
+                capture medium-term trends and macro risk premia. Positions are sized
+                with volatility and liquidity constraints designed to avoid undue
+                concentration.
+              </p>
+            </article>
+            <article class="strategy-card">
+              <div class="strategy-label">Sleeve II</div>
+              <div class="strategy-name">Equity Market-Neutral</div>
+              <p class="strategy-copy">
+                Long/short portfolios built from diversified factor and stock-selection
+                signals. The objective is to neutralize broad market beta while targeting
+                idiosyncratic alpha and style premia such as value, quality and momentum.
+              </p>
+            </article>
+            <article class="strategy-card">
+              <div class="strategy-label">Sleeve III</div>
+              <div class="strategy-name">Alternative Carry &amp; Income</div>
+              <p class="strategy-copy">
+                Systematic carry strategies across rates, FX and volatility markets,
+                combined with prudent hedging and strict drawdown controls. Emphasis is
+                placed on liquidity, diversification and scenario testing.
+              </p>
+            </article>
+            <article class="strategy-card">
+              <div class="strategy-label">Platform</div>
+              <div class="strategy-name">Research &amp; Governance</div>
+              <p class="strategy-copy">
+                An ongoing research process governs model development, data quality and
+                implementation. Investment guidelines, risk thresholds and operational
+                protocols are overseen by independent governance functions.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- RISK -->
+      <section id="risk">
+        <div class="section-header">
+          <div class="section-title">Risk &amp; Governance</div>
+          <div class="section-tag">Capital Preservation First</div>
+        </div>
+        <div class="section-body columns-2">
+          <div>
+            <p>
+              Risk management is embedded in every stage of the Wealthnomic investment
+              process. Portfolios are constructed using explicit risk budgets, scenario
+              analysis and ongoing monitoring of exposures, liquidity and concentration.
+            </p>
+            <p>
+              Key portfolio-level risk tools typically include:
+            </p>
+            <ul style="margin: 0 0 4px 18px; padding: 0; font-size: 13px; line-height: 1.6;">
+              <li>Volatility and drawdown constraints at fund and sleeve level.</li>
+              <li>Position and exposure limits by asset class, instrument and region.</li>
+              <li>Liquidity and financing metrics based on conservative assumptions.</li>
+              <li>Historical, hypothetical and forward-looking scenario analysis.</li>
+            </ul>
+          </div>
+          <div>
+            <p>
+              Governance and operational controls are designed to align interests and
+              support institutional due diligence:
+            </p>
+            <ul style="margin: 0 0 4px 18px; padding: 0; font-size: 13px; line-height: 1.6;">
+              <li>Segregation of duties between portfolio management, risk and operations.</li>
+              <li>Independent service providers for administration, audit and custody.</li>
+              <li>Documented policies covering valuation, trade approvals and escalation.</li>
+              <li>Regular reporting to investors on performance, exposures and risk metrics.</li>
+            </ul>
+            <p style="font-size: 11px; color: var(--danger); margin-top: 6px;">
+              Investing in hedge funds involves risk, including the possible loss of the
+              entire amount invested. Past performance is not indicative of future results.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- TEAM -->
+      <section id="team">
+        <div class="section-header">
+          <div class="section-title">Leadership &amp; Research</div>
+          <div class="section-tag">Firm Leadership</div>
+        </div>
+        <div class="section-body">
+          <p>
+            The Wealthnomic platform is operated by a multidisciplinary team spanning portfolio management,
+            quantitative research, risk oversight and investment operations. Profiles shown below are illustrative
+            except where noted.
+          </p>
+
+          <div class="team-grid">
+
+            <!-- Founder card -->
+            <article class="team-card">
+              <div class="avatar">A</div>
+              <div>
+                <div class="team-meta">
+                  <div class="team-name">Ayushman Gupta, PhD</div>
+                  <div class="team-role">Founder &amp; Managing Partner</div>
+                </div>
+                <p class="team-bio">
+                  Founder of Wealthnomic. Holds a doctorate with research spanning quantitative finance, statistical
+                  modeling and applied computational methods. Oversees overall investment philosophy, firm strategy and
+                  the systematic portfolio research framework.
+                </p>
+              </div>
+            </article>
+
+            <article class="team-card">
+              <div class="avatar">Q</div>
+              <div>
+                <div class="team-meta">
+                  <div class="team-name">Head of Research</div>
+                  <div class="team-role">Quantitative Strategies</div>
+                </div>
+                <p class="team-bio">
+                  Leads model development, data engineering and signal research. Focuses on robust statistical methods,
+                  empirical validation and long-horizon alpha factor construction.
+                </p>
+              </div>
+            </article>
+
+            <article class="team-card">
+              <div class="avatar">R</div>
+              <div>
+                <div class="team-meta">
+                  <div class="team-name">Chief Risk Officer</div>
+                  <div class="team-role">Independent Oversight</div>
+                </div>
+                <p class="team-bio">
+                  Oversees firm-wide market, liquidity and operational risk. Maintains an independent reporting line and
+                  ensures adherence to risk budgets and governance standards.
+                </p>
+              </div>
+            </article>
+
+            <article class="team-card">
+              <div class="avatar">O</div>
+              <div>
+                <div class="team-meta">
+                  <div class="team-name">COO / CFO</div>
+                  <div class="team-role">Operations &amp; Finance</div>
+                </div>
+                <p class="team-bio">
+                  Manages administration, finance, trade operations and valuation frameworks. Ensures high-integrity
+                  operational processes consistent with institutional requirements.
+                </p>
+              </div>
+            </article>
+
+          </div>
+        </div>
+      </section>
+
+
+      <!-- CONTACT -->
+      <section id="contact">
+        <div class="section-header">
+          <div class="section-title">Engage with Wealthnomic</div>
+          <div class="section-tag">Generic Contact Form</div>
+        </div>
+        <div class="section-body contact-layout">
+          <form>
+            <div class="form-grid">
+              <div>
+                <label for="name">Name</label>
+                <input id="name" name="name" type="text" placeholder="Full name (required)" />
+              </div>
+              <div>
+                <label for="org">Organization</label>
+                <input id="org" name="org" type="text" placeholder="Institution / Family Office / Other" />
+              </div>
+              <div>
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" placeholder="contact@example.com" />
+              </div>
+              <div>
+                <label for="investorType">Investor Type</label>
+                <select id="investorType" name="investorType">
+                  <option value="">Select...</option>
+                  <option>Institutional</option>
+                  <option>Family Office</option>
+                  <option>High-Net-Worth / Qualified</option>
+                  <option>Consultant / Advisor</option>
+                  <option>Service Provider</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="form-grid-wide">
+                <label for="message">Message</label>
+                <textarea id="message" name="message"
+                  placeholder="Please share the nature of your inquiry. Do not include sensitive or confidential information in this form."></textarea>
+              </div>
+              <div class="form-grid-wide">
+                <button class="btn" type="submit">Submit Generic Inquiry</button>
+              </div>
+            </div>
+          </form>
+          <aside class="contact-meta">
+            <div class="contact-meta-row">
+              <span class="contact-label">Illustrative Contact Details</span>
+              <span>Email: info@wealthnomic.example</span>
+              <span>Phone: +0 000 000 0000</span>
+              <span>Location: Financial district, global financial centre (generic)</span>
+            </div>
+            <div class="contact-meta-row">
+              <span class="contact-label">Investor Materials</span>
+              <span>
+                Strategy deck, due diligence questionnaire, terms and offering documents
+                are typically made available to qualified and permitted investors upon
+                completion of standard onboarding procedures.
+              </span>
+            </div>
+            <div class="disclaimer">
+              This page, including the contact form, is provided for generic, illustrative
+              purposes only. It does not create any advisory, client, investor or other
+              relationship. Nothing herein should be construed as investment, legal, tax
+              or other advice, nor as a recommendation with respect to any security or
+              investment strategy.
+            </div>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="reg-badges">
+        <span class="badge">For Illustrative Use Only</span>
+        <span class="badge">Not an Actual Offering</span>
+        <span class="badge">Hedge Fund Concept Template</span>
+      </div>
+      <div class="footer-links">
+        <span>&copy; Wealthnomic. All names and details generic.</span>
+        <a href="#top">Back to top</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Mobile nav toggle (simple, no dependencies)
+    const navToggle = document.getElementById("navToggle");
+    const nav = document.getElementById("nav");
+
+    if (navToggle && nav) {
+      navToggle.addEventListener("click", () => {
+        nav.classList.toggle("open");
+      });
+
+      nav.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          nav.classList.remove("open");
+        });
+      });
+    }
+
+    // Optional: basic smooth scroll for same-page links
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener("click", function (e) {
+        const href = this.getAttribute("href");
+        if (!href || href === "#") return;
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          window.scrollTo({
+            top: target.offsetTop - 70,
+            behavior: "smooth",
+          });
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>

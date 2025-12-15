@@ -4,40 +4,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wealthnomics | Systematic Quantitative Trading & Investment Strategies</title>
+    <title>Wealthnomic | Systematic Quantitative Trading & Investment Strategies</title>
     <meta name="description"
-        content="Wealthnomics is a premier quantitative investment firm specializing in systematic trading strategies, machine learning, and disciplined risk management to generate superior alpha.">
+        content="Wealthnomic is a premier quantitative investment firm specializing in systematic trading strategies, machine learning, and disciplined risk management to generate superior alpha.">
     <meta name="keywords"
-        content="quantitative trading, systematic investing, algo trading, hedge fund, risk management, wealthnomics, alpha generation, machine learning finance">
-    <meta name="author" content="Wealthnomics Capital Advisors">
-    <link rel="canonical" href="https://wealthnomics.com/">
+        content="quantitative trading, systematic investing, algo trading, hedge fund, risk management, wealthnomic, alpha generation, machine learning finance">
+    <meta name="author" content="Wealthnomic Capital Advisors">
+    <link rel="canonical" href="https://wealthnomic.com/">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://wealthnomics.com/">
-    <meta property="og:title" content="Wealthnomics | Systematic Quantitative Trading">
+    <meta property="og:url" content="https://wealthnomic.com/">
+    <meta property="og:title" content="Wealthnomic | Systematic Quantitative Trading">
     <meta property="og:description"
         content="Premier quantitative investment firm specializing in systematic trading strategies and machine learning.">
-    <meta property="og:image" content="https://wealthnomics.com/assets/og-image.jpg">
+    <meta property="og:image" content="https://wealthnomic.com/assets/og-image.jpg">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://wealthnomics.com/">
-    <meta property="twitter:title" content="Wealthnomics | Systematic Quantitative Trading">
+    <meta property="twitter:url" content="https://wealthnomic.com/">
+    <meta property="twitter:title" content="Wealthnomic | Systematic Quantitative Trading">
     <meta property="twitter:description"
         content="Premier quantitative investment firm specializing in systematic trading strategies and machine learning.">
-    <meta property="twitter:image" content="https://wealthnomics.com/assets/og-image.jpg">
+    <meta property="twitter:image" content="https://wealthnomic.com/assets/og-image.jpg">
 
     <!-- Schema.org Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Organization",
-      "name": "Wealthnomics LLC",
-      "legalName": "Wealthnomics LLC",
+      "name": "Wealthnomic LLC",
+      "legalName": "Wealthnomic LLC",
       "identifier": "2025-001750749",
-      "url": "https://wealthnomics.com",
-      "logo": "https://wealthnomics.com/assets/logo.png",
+      "url": "https://wealthnomic.com",
+      "logo": "https://wealthnomic.com/assets/logo.png",
       "foundingDate": "2025-08-22",
       "foundingLocation": {
         "@type": "Place",
@@ -59,7 +59,7 @@
         "@type": "ContactPoint",
         "telephone": "+91-8887365246",
         "contactType": "customer service",
-        "email": "ayushman@wealthnomics.com"
+        "email": "investors@wealthnomic.com"
       }
     }
     </script>
@@ -69,23 +69,23 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --black: #0a0a0a;
-            --white: #ffffff;
-            --gray-100: #f5f5f5;
-            --gray-200: #e5e5e5;
-            --gray-300: #d4d4d4;
-            --gray-400: #a3a3a3;
-            --gray-500: #737373;
-            --gray-600: #525252;
-            --gray-700: #404040;
-            --gray-800: #262626;
-            --gray-900: #171717;
-            --accent: #00ff88;
-            --accent-dim: #00cc6a;
+            --black: #111111;
+            --white: #f5f5f0;
+            --gray-100: #e8e8df;
+            --gray-200: #d4d4d4;
+            --gray-300: #c0c0c0;
+            --gray-400: #999999;
+            --gray-500: #6d6d6d;
+            --gray-600: #4a4a4a;
+            --gray-700: #333333;
+            --gray-800: #1a1a1a;
+            --gray-900: #111111;
+            --accent: #00ff7b;
+            --accent-dim: #00cc66;
             --red: #ff3b3b;
             --yellow: #ffd000;
             --blue: #0066ff;
-            --border: 2px solid var(--black);
+            --border: 3px solid var(--black);
             --border-light: 1px solid var(--gray-300);
             --shadow: 4px 4px 0px var(--black);
             --shadow-lg: 8px 8px 0px var(--black);
@@ -108,6 +108,9 @@
             color: var(--black);
             line-height: 1.6;
             overflow-x: hidden;
+            border: 6px solid var(--black);
+            /* Added brutalist border */
+            min-height: 100vh;
         }
 
         /* Utility Classes */
@@ -123,14 +126,12 @@
 
         /* Navigation */
         .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            background: var(--white);
+            position: relative;
+            /* Changed from fixed to relative/static */
+            background: var(--gray-100);
             border-bottom: var(--border);
             padding: 0;
+            z-index: 100;
         }
 
         .nav-container {
@@ -147,8 +148,10 @@
             padding: 0 24px;
             border-right: var(--border);
             text-decoration: none;
-            background: var(--black);
-            color: var(--white);
+            background: transparent;
+            /* Changed from black */
+            color: var(--black);
+            /* Changed from white */
             transition: all 0.2s ease;
         }
 
@@ -197,9 +200,21 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
             transition: all 0.2s ease;
+            position: relative;
         }
 
-        .nav-links a:hover {
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            left: 10px;
+            right: 10px;
+            bottom: 22px;
+            height: 2px;
+            background: transparent;
+            transition: background 0.15s ease-out;
+        }
+
+        .nav-links a:hover::after {
             background: var(--accent);
         }
 
@@ -207,21 +222,25 @@
             display: flex;
             align-items: center;
             padding: 0 24px;
-            background: var(--black);
-            color: var(--white);
-            border: none;
+            background: var(--gray-100);
+            color: var(--black);
+            border: 2px solid var(--black);
             font-family: 'Space Grotesk', sans-serif;
             font-size: 0.85rem;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.15s ease-out;
+            box-shadow: 3px 3px 0 var(--black);
+            text-decoration: none;
         }
 
         .nav-cta:hover {
             background: var(--accent);
             color: var(--black);
+            transform: translate(-1px, -1px);
+            box-shadow: 5px 5px 0 var(--black);
         }
 
         .mobile-toggle {
@@ -251,8 +270,7 @@
 
         .hero-main {
             flex: 1;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: block;
         }
 
         .hero-left {
@@ -260,7 +278,11 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            border-right: var(--border);
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            align-items: center;
         }
 
         .hero-tag {
@@ -312,7 +334,7 @@
 
         .hero-subtitle {
             font-size: 1.15rem;
-            color: var(--gray-600);
+            color: var(--gray-700);
             margin-bottom: 40px;
             max-width: 500px;
             line-height: 1.7;
@@ -341,20 +363,26 @@
         }
 
         .btn-primary {
-            background: var(--black);
-            color: var(--white);
+            background: var(--accent);
+            color: var(--black);
             box-shadow: var(--shadow);
+            border: 3px solid var(--black);
+            font-weight: 700;
         }
 
         .btn-primary:hover {
-            transform: translate(4px, 4px);
-            box-shadow: none;
+            background: #baffd9;
+            /* Light green hover from gray theme */
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0 var(--black);
         }
 
         .btn-secondary {
-            background: var(--white);
+            background: var(--gray-100);
             color: var(--black);
             box-shadow: var(--shadow);
+            border: 3px solid var(--black);
+            font-weight: 700;
         }
 
         .btn-secondary:hover {
@@ -373,7 +401,7 @@
             align-items: center;
             gap: 8px;
             font-size: 0.85rem;
-            color: var(--gray-600);
+            color: var(--gray-700);
         }
 
         .trust-item i {
@@ -391,6 +419,7 @@
 
         .stats-card {
             background: var(--white);
+            /* Updated to gray theme */
             border: var(--border);
             box-shadow: var(--shadow-lg);
         }
@@ -401,8 +430,8 @@
             align-items: center;
             padding: 20px 24px;
             border-bottom: var(--border);
-            background: var(--black);
-            color: var(--white);
+            background: var(--gray-100);
+            color: var(--black);
         }
 
         .stats-header h3 {
@@ -452,7 +481,7 @@
 
         .main-stat-label {
             font-size: 0.9rem;
-            color: var(--gray-500);
+            color: var(--gray-700);
             text-transform: uppercase;
             letter-spacing: 2px;
             margin-top: 8px;
@@ -490,7 +519,7 @@
 
         .stat-label {
             font-size: 0.75rem;
-            color: var(--gray-500);
+            color: var(--gray-700);
             text-transform: uppercase;
             letter-spacing: 1px;
         }
@@ -535,7 +564,7 @@
         }
 
         .bar-text span {
-            color: var(--gray-500);
+            color: var(--gray-700);
             font-size: 0.8rem;
         }
 
@@ -554,8 +583,8 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: var(--black);
-            color: var(--white);
+            background: var(--gray-100);
+            color: var(--black);
             padding: 8px 16px;
             font-size: 0.75rem;
             font-weight: 600;
@@ -578,7 +607,7 @@
 
         .section-subtitle {
             font-size: 1.1rem;
-            color: var(--gray-600);
+            color: var(--gray-700);
             max-width: 600px;
             margin: 0 auto;
         }
@@ -586,6 +615,7 @@
         /* About Section */
         .about-section {
             background: var(--white);
+            /* Updated to gray theme */
         }
 
         .about-grid {
@@ -607,7 +637,7 @@
         }
 
         .about-left p {
-            color: var(--gray-600);
+            color: var(--gray-700);
             margin-bottom: 16px;
             font-size: 1.05rem;
         }
@@ -642,7 +672,7 @@
 
         .about-feature p {
             font-size: 0.85rem;
-            color: var(--gray-500);
+            color: var(--gray-700);
             margin: 0;
         }
 
@@ -653,6 +683,7 @@
 
         .philosophy-card {
             background: var(--white);
+            /* Updated to gray theme */
             border: var(--border);
             padding: 24px;
             margin-bottom: 16px;
@@ -679,13 +710,14 @@
 
         .philosophy-card p {
             font-size: 0.9rem;
-            color: var(--gray-600);
+            color: var(--gray-700);
             margin: 0;
         }
 
         /* Strategy Section */
         .strategy-section {
             background: var(--white);
+            /* Updated to gray theme */
         }
 
         .strategy-grid {
@@ -715,8 +747,8 @@
         .strategy-icon {
             width: 64px;
             height: 64px;
-            background: var(--black);
-            color: var(--accent);
+            background: var(--gray-100);
+            color: var(--black);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -731,7 +763,7 @@
         }
 
         .strategy-card>p {
-            color: var(--gray-600);
+            color: var(--gray-700);
             font-size: 0.95rem;
             margin-bottom: 20px;
         }
@@ -746,7 +778,7 @@
             gap: 10px;
             padding: 10px 0;
             font-size: 0.85rem;
-            color: var(--gray-600);
+            color: var(--gray-700);
             border-bottom: 1px solid var(--gray-200);
         }
 
@@ -775,6 +807,7 @@
             text-align: center;
             border-right: var(--border);
             background: var(--white);
+            /* Updated to gray theme */
         }
 
         .perf-stat:last-child {
@@ -794,7 +827,7 @@
 
         .perf-stat-label {
             font-size: 0.8rem;
-            color: var(--gray-500);
+            color: var(--gray-700);
             text-transform: uppercase;
             letter-spacing: 1px;
             margin-bottom: 12px;
@@ -802,7 +835,7 @@
 
         .perf-stat-detail {
             font-size: 0.8rem;
-            color: var(--gray-400);
+            color: var(--gray-700);
         }
 
         /* Performance Table */
@@ -823,8 +856,8 @@
         }
 
         .table-badge {
-            background: var(--black);
-            color: var(--accent);
+            background: var(--gray-100);
+            color: var(--black);
             padding: 8px 16px;
             font-size: 0.75rem;
             font-weight: 600;
@@ -835,6 +868,7 @@
         .performance-table {
             width: 100%;
             background: var(--white);
+            /* Updated to gray theme */
             border: var(--border);
             border-collapse: collapse;
         }
@@ -857,8 +891,8 @@
         }
 
         .performance-table th {
-            background: var(--black);
-            color: var(--white);
+            background: var(--gray-100);
+            color: var(--black);
             font-size: 0.75rem;
             font-weight: 600;
             text-transform: uppercase;
@@ -887,8 +921,8 @@
 
         /* Diversification Section */
         .diversification-section {
-            background: var(--black);
-            color: var(--white);
+            background: var(--gray-100);
+            color: var(--black);
             padding: 80px 60px;
             border-bottom: var(--border);
         }
@@ -896,13 +930,14 @@
         /* Thesis Section */
         .thesis-section {
             background: var(--white);
+            /* Updated to gray theme */
         }
 
         .thesis-intro {
             padding: 60px;
             border-bottom: var(--border);
-            background: var(--black);
-            color: var(--white);
+            background: var(--gray-100);
+            color: var(--black);
         }
 
         .thesis-intro h3 {
@@ -914,7 +949,7 @@
 
         .thesis-intro p {
             font-size: 1.1rem;
-            color: var(--gray-300);
+            color: var(--gray-700);
             max-width: 900px;
             margin-bottom: 12px;
         }
@@ -958,7 +993,7 @@
         }
 
         .thesis-pillar>p {
-            color: var(--gray-600);
+            color: var(--gray-700);
             margin-bottom: 24px;
             font-size: 0.95rem;
         }
@@ -974,7 +1009,7 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             margin-bottom: 12px;
-            color: var(--gray-500);
+            color: var(--gray-700);
         }
 
         .pillar-details ul {
@@ -987,7 +1022,7 @@
             gap: 10px;
             padding: 8px 0;
             font-size: 0.9rem;
-            color: var(--gray-600);
+            color: var(--gray-700);
         }
 
         .pillar-details li i {
@@ -1013,7 +1048,7 @@
         }
 
         .technical-header p {
-            color: var(--gray-500);
+            color: var(--gray-700);
             font-size: 0.95rem;
         }
 
@@ -1045,14 +1080,14 @@
         }
 
         .technical-text {
-            color: var(--gray-600);
+            color: var(--gray-700);
             margin-bottom: 20px;
             line-height: 1.7;
         }
 
         .code-block {
-            background: var(--black);
-            color: var(--white);
+            background: var(--gray-100);
+            color: var(--black);
             padding: 24px;
             font-family: 'Space Mono', monospace;
             font-size: 0.8rem;
@@ -1063,7 +1098,7 @@
         }
 
         .code-comment {
-            color: var(--gray-500);
+            color: var(--gray-700);
         }
 
         .code-keyword {
@@ -1093,7 +1128,7 @@
         }
 
         .technical-item p {
-            color: var(--gray-600);
+            color: var(--gray-700);
             font-size: 0.85rem;
             margin: 0;
         }
@@ -1111,6 +1146,7 @@
         .risk-card {
             padding: 48px;
             background: var(--white);
+            /* Updated to gray theme */
             border-right: var(--border);
             border-bottom: var(--border);
         }
@@ -1135,8 +1171,8 @@
         .risk-card h3 i {
             width: 40px;
             height: 40px;
-            background: var(--black);
-            color: var(--accent);
+            background: var(--gray-100);
+            color: var(--black);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1175,13 +1211,14 @@
 
         .risk-content p {
             font-size: 0.85rem;
-            color: var(--gray-600);
+            color: var(--gray-700);
             margin: 0;
         }
 
         /* Team Section */
         .team-section {
             background: var(--white);
+            /* Updated to gray theme */
         }
 
         .team-grid {
@@ -1207,8 +1244,8 @@
         .team-avatar {
             width: 100px;
             height: 100px;
-            background: var(--black);
-            color: var(--accent);
+            background: var(--gray-100);
+            color: var(--black);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1232,7 +1269,7 @@
 
         .team-card>p {
             font-size: 0.85rem;
-            color: var(--gray-600);
+            color: var(--gray-700);
         }
 
         /* Terms Section */
@@ -1248,6 +1285,7 @@
         .terms-card {
             padding: 32px 24px;
             background: var(--white);
+            /* Updated to gray theme */
             border-right: var(--border);
             text-align: center;
         }
@@ -1261,7 +1299,7 @@
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: var(--gray-500);
+            color: var(--gray-700);
             margin-bottom: 12px;
         }
 
@@ -1273,12 +1311,13 @@
 
         .terms-detail {
             font-size: 0.75rem;
-            color: var(--gray-500);
+            color: var(--gray-700);
         }
 
         /* Contact Section */
         .contact-section {
             background: var(--white);
+            /* Updated to gray theme */
         }
 
         .contact-grid {
@@ -1299,7 +1338,7 @@
         }
 
         .contact-info>p {
-            color: var(--gray-600);
+            color: var(--gray-700);
             font-size: 1.05rem;
             margin-bottom: 40px;
         }
@@ -1357,7 +1396,7 @@
         }
 
         .contact-text p {
-            color: var(--gray-600);
+            color: var(--gray-700);
             font-size: 0.9rem;
             margin: 0;
         }
@@ -1398,6 +1437,7 @@
         .form-group textarea {
             width: 100%;
             background: var(--white);
+            /* Updated to gray theme */
             border: var(--border);
             padding: 14px 16px;
             font-family: 'Space Grotesk', sans-serif;
@@ -1420,8 +1460,8 @@
 
         .form-submit {
             width: 100%;
-            background: var(--black);
-            color: var(--white);
+            background: var(--accent);
+            color: var(--black);
             border: var(--border);
             padding: 16px;
             font-family: 'Space Grotesk', sans-serif;
@@ -1443,8 +1483,8 @@
 
         /* Solution Section */
         .solution-section {
-            background: var(--black);
-            color: var(--white);
+            background: var(--gray-100);
+            color: var(--black);
             padding: 80px 60px;
             border-bottom: var(--border);
         }
@@ -1473,7 +1513,7 @@
 
         .solution-subtitle {
             font-size: 1.1rem;
-            color: var(--gray-400);
+            color: var(--gray-700);
             font-weight: 400;
         }
 
@@ -1496,7 +1536,7 @@
         .solution-metric-label {
             font-size: 0.9rem;
             font-weight: 600;
-            color: var(--white);
+            color: var(--black);
             text-transform: uppercase;
             letter-spacing: 1px;
         }
@@ -1504,7 +1544,7 @@
         .solution-intro {
             font-size: 1.2rem;
             line-height: 1.6;
-            color: var(--gray-300);
+            color: var(--gray-700);
             margin-bottom: 60px;
             max-width: 1200px;
             border-left: 4px solid var(--accent);
@@ -1531,19 +1571,19 @@
             align-items: flex-start;
             justify-content: center;
             font-size: 2rem;
-            color: var(--white);
+            color: var(--black);
         }
 
         .solution-content h4 {
             font-size: 1.2rem;
             font-weight: 700;
             margin-bottom: 12px;
-            color: var(--white);
+            color: var(--black);
         }
 
         .solution-content p {
             font-size: 0.95rem;
-            color: var(--gray-400);
+            color: var(--gray-700);
             line-height: 1.6;
         }
 
@@ -1603,7 +1643,7 @@
         }
 
         .footer-brand p {
-            color: var(--gray-400);
+            color: var(--gray-700);
             font-size: 0.9rem;
             margin: 20px 0;
         }
@@ -1620,7 +1660,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--white);
+            color: var(--black);
             text-decoration: none;
             transition: all 0.2s ease;
         }
@@ -1647,7 +1687,7 @@
         }
 
         .footer-links a {
-            color: var(--gray-400);
+            color: var(--gray-700);
             text-decoration: none;
             font-size: 0.9rem;
             transition: color 0.2s ease;
@@ -1665,7 +1705,7 @@
         }
 
         .footer-copyright {
-            color: var(--gray-500);
+            color: var(--gray-700);
             font-size: 0.8rem;
         }
 
@@ -1675,7 +1715,7 @@
         }
 
         .footer-legal a {
-            color: var(--gray-500);
+            color: var(--gray-700);
             text-decoration: none;
             font-size: 0.8rem;
             transition: color 0.2s ease;
@@ -1693,7 +1733,7 @@
         }
 
         .disclaimer p {
-            color: var(--gray-500);
+            color: var(--gray-700);
             font-size: 0.75rem;
             line-height: 1.6;
         }
@@ -1706,6 +1746,7 @@
             right: 0;
             bottom: 0;
             background: var(--white);
+            /* Updated to gray theme */
             z-index: 999;
             display: none;
             flex-direction: column;
@@ -1749,256 +1790,145 @@
                 grid-template-columns: repeat(2, 1fr);
             }
 
-            .hero-bar-item:nth-child(2) {
-                border-right: none;
-            }
+            /* Grid for simplified hero bar if needed, otherwise removed */
 
-            .hero-bar-item:nth-child(1),
-            .hero-bar-item:nth-child(2) {
-                border-bottom: var(--border);
-            }
+            @media (max-width: 768px) {
+                .hero-left {
+                    padding: 60px 24px;
+                }
 
-            .strategy-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+                .hero h1 {
+                    font-size: 2.5rem;
+                    letter-spacing: -1px;
+                }
 
-            .strategy-card:nth-child(2n) {
-                border-right: none;
-            }
+                .hero-right {
+                    padding: 40px 24px;
+                }
 
-            .strategy-card:nth-child(3) {
-                border-right: var(--border);
-            }
+                .main-stat-value {
+                    font-size: 4rem;
+                }
 
-            .team-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+                .section-title {
+                    font-size: 2.5rem;
+                }
 
-            .team-card:nth-child(2n) {
-                border-right: none;
-            }
+                .hero-bar {
+                    grid-template-columns: 1fr;
+                }
 
-            .team-card {
-                border-bottom: var(--border);
-            }
+                .hero-bar-item {
+                    border-right: none;
+                    border-bottom: var(--border);
+                }
 
-            .terms-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
+                .hero-bar-item:last-child {
+                    border-bottom: none;
+                }
 
-            .terms-card:nth-child(3n) {
-                border-right: none;
-            }
+                .performance-stats {
+                    grid-template-columns: repeat(2, 1fr);
+                }
 
-            .terms-card:nth-child(1),
-            .terms-card:nth-child(2),
-            .terms-card:nth-child(3) {
-                border-bottom: var(--border);
-            }
+                .perf-stat:nth-child(2n) {
+                    border-right: none;
+                }
 
-            .footer-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
+                .perf-stat:nth-child(1),
+                .perf-stat:nth-child(2) {
+                    border-bottom: var(--border);
+                }
 
-        @media (max-width: 992px) {
-            .nav-links {
-                display: none;
-            }
+                .perf-stat-value {
+                    font-size: 2.5rem;
+                }
 
-            .nav-cta {
-                display: none;
-            }
+                .strategy-grid {
+                    grid-template-columns: 1fr;
+                }
 
-            .mobile-toggle {
-                display: flex;
-            }
+                .strategy-card {
+                    border-right: none;
+                }
 
-            .about-grid {
-                grid-template-columns: 1fr;
-            }
+                .strategy-card:nth-child(n) {
+                    border-bottom: var(--border);
+                }
 
-            .about-left {
-                border-right: none;
-                border-bottom: var(--border);
-            }
+                .strategy-card:last-child {
+                    border-bottom: none;
+                }
 
-            .thesis-pillars {
-                grid-template-columns: 1fr;
-            }
+                .team-grid {
+                    grid-template-columns: 1fr;
+                }
 
-            .thesis-pillar {
-                border-right: none;
-            }
+                .team-card {
+                    border-right: none;
+                }
 
-            .thesis-pillar:nth-child(n) {
-                border-bottom: var(--border);
-            }
+                .terms-grid {
+                    grid-template-columns: repeat(2, 1fr);
+                }
 
-            .thesis-pillar:last-child {
-                border-bottom: none;
-            }
+                .terms-card {
+                    border-bottom: var(--border);
+                }
 
-            .risk-grid {
-                grid-template-columns: 1fr;
-            }
+                .terms-card:nth-child(2n) {
+                    border-right: none;
+                }
 
-            .risk-card {
-                border-right: none;
-            }
+                .technical-grid {
+                    grid-template-columns: 1fr;
+                }
 
-            .risk-card:nth-child(n) {
-                border-bottom: var(--border);
-            }
+                .form-row {
+                    grid-template-columns: 1fr;
+                }
 
-            .risk-card:last-child {
-                border-bottom: none;
-            }
+                .footer-grid {
+                    grid-template-columns: 1fr;
+                    padding: 40px 24px;
+                }
 
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
+                .footer-bottom {
+                    flex-direction: column;
+                    gap: 16px;
+                    padding: 24px;
+                    text-align: center;
+                }
 
-            .contact-info {
-                border-right: none;
-                border-bottom: var(--border);
+                .disclaimer {
+                    padding: 20px 24px;
+                }
             }
-
-            .technical-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero-left {
-                padding: 60px 24px;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-                letter-spacing: -1px;
-            }
-
-            .hero-right {
-                padding: 40px 24px;
-            }
-
-            .main-stat-value {
-                font-size: 4rem;
-            }
-
-            .section-title {
-                font-size: 2.5rem;
-            }
-
-            .hero-bar {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-bar-item {
-                border-right: none;
-                border-bottom: var(--border);
-            }
-
-            .hero-bar-item:last-child {
-                border-bottom: none;
-            }
-
-            .performance-stats {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .perf-stat:nth-child(2n) {
-                border-right: none;
-            }
-
-            .perf-stat:nth-child(1),
-            .perf-stat:nth-child(2) {
-                border-bottom: var(--border);
-            }
-
-            .perf-stat-value {
-                font-size: 2.5rem;
-            }
-
-            .strategy-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .strategy-card {
-                border-right: none;
-            }
-
-            .strategy-card:nth-child(n) {
-                border-bottom: var(--border);
-            }
-
-            .strategy-card:last-child {
-                border-bottom: none;
-            }
-
-            .team-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .team-card {
-                border-right: none;
-            }
-
-            .terms-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .terms-card {
-                border-bottom: var(--border);
-            }
-
-            .terms-card:nth-child(2n) {
-                border-right: none;
-            }
-
-            .technical-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr;
-                padding: 40px 24px;
-            }
-
-            .footer-bottom {
-                flex-direction: column;
-                gap: 16px;
-                padding: 24px;
-                text-align: center;
-            }
-
-            .disclaimer {
-                padding: 20px 24px;
-            }
-        }
     </style>
 </head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q4NXLEP1ZB"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-Q4NXLEP1ZB');
+</script>
 
 <body>
+
+
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container container">
             <a href="#" class="logo">
                 <div class="logo-icon">W</div>
-                <span class="logo-text">WEALTHNOMICS</span>
+                <span class="logo-text">WEALTHNOMIC</span>
             </a>
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
-                <li><a href="#solution">Solution</a></li>
                 <li><a href="#strategy">Strategy</a></li>
-                <li><a href="#performance">Performance</a></li>
-                <li><a href="#thesis">Thesis</a></li>
-                <li><a href="#risk">Risk</a></li>
                 <li><a href="#team">Team</a></li>
                 <li><a href="blog.html">Blog</a></li>
                 <li><a href="careers.html">Careers</a></li>
@@ -2016,11 +1946,7 @@
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
         <a href="#about" onclick="toggleMobileMenu()">About</a>
-        <a href="#solution" onclick="toggleMobileMenu()">Solution</a>
         <a href="#strategy" onclick="toggleMobileMenu()">Strategy</a>
-        <a href="#performance" onclick="toggleMobileMenu()">Performance</a>
-        <a href="#thesis" onclick="toggleMobileMenu()">Thesis</a>
-        <a href="#risk" onclick="toggleMobileMenu()">Risk</a>
         <a href="#team" onclick="toggleMobileMenu()">Team</a>
         <a href="blog.html" onclick="toggleMobileMenu()">Blog</a>
         <a href="careers.html" onclick="toggleMobileMenu()">Careers</a>
@@ -2033,108 +1959,25 @@
             <div class="hero-left">
                 <div class="hero-tag">
                     <span class="pulse"></span>
-                    Systematic Alpha Generation • SEBI Registered
+                    Systematic Alpha Generation • Not SEBI Registered
                 </div>
                 <h1>INTELLIGENT<br>CAPITAL.<br><span class="outline">SYSTEMATIC</span><br>RETURNS.</h1>
                 <p class="hero-subtitle">
-                    Wealthnomics deploys AlphaGod™, our proprietary systematic trading infrastructure,
+                    Wealthnomic deploys AlphaGod™, our proprietary systematic trading infrastructure,
                     to capture alpha across US and Indian equity and derivatives markets through
                     machine learning-driven, volatility-adaptive strategies.
                 </p>
                 <div class="hero-buttons">
                     <a href="#contact" class="btn btn-primary">
                         <i class="fas fa-file-alt"></i>
-                        Request Materials
-                    </a>
-                    <a href="#thesis" class="btn btn-secondary">
-                        <i class="fas fa-microscope"></i>
-                        View Thesis
+                        Request Access
                     </a>
                 </div>
                 <div class="hero-trust">
                     <div class="trust-item">
                         <i class="fas fa-check-circle"></i>
-                        Audited Track Record
-                    </div>
-                    <div class="trust-item">
-                        <i class="fas fa-check-circle"></i>
                         Institutional Infrastructure
                     </div>
-                    <div class="trust-item">
-                        <i class="fas fa-check-circle"></i>
-                        Independent Custody
-                    </div>
-                </div>
-            </div>
-            <div class="hero-right">
-                <div class="stats-card">
-                    <div class="stats-header">
-                        <h3>Fund Performance Snapshot</h3>
-                        <div class="live-badge">
-                            <span class="dot"></span>
-                            Live
-                        </div>
-                    </div>
-                    <div class="main-stat">
-                        <div class="main-stat-value">41<span class="percent">%</span></div>
-                        <div class="main-stat-label">Net CAGR (2019-2025)</div>
-                    </div>
-                    <div class="stats-grid">
-                        <div class="stat-item">
-                            <div class="stat-value">4.1</div>
-                            <div class="stat-label">Sharpe Ratio</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-value accent">15.7</div>
-                            <div class="stat-label">Sortino Ratio</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-value">0.023</div>
-                            <div class="stat-label">Beta to Nifty</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-value accent">22.8</div>
-                            <div class="stat-label">Calmar Ratio</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="hero-bar">
-            <div class="hero-bar-item">
-                <div class="bar-icon">
-                    <i class="fas fa-shield-alt"></i>
-                </div>
-                <div class="bar-text">
-                    <strong>-0.37% Max Drawdown</strong>
-                    <span>Capital Preservation First</span>
-                </div>
-            </div>
-            <div class="hero-bar-item">
-                <div class="bar-icon">
-                    <i class="fas fa-robot"></i>
-                </div>
-                <div class="bar-text">
-                    <strong>AlphaGod™ Active</strong>
-                    <span>Systematic Execution</span>
-                </div>
-            </div>
-            <div class="hero-bar-item">
-                <div class="bar-icon">
-                    <i class="fas fa-chart-line"></i>
-                </div>
-                <div class="bar-text">
-                    <strong>18.8% Annual Alpha</strong>
-                    <span>vs Nifty 50 Benchmark</span>
-                </div>
-            </div>
-            <div class="hero-bar-item">
-                <div class="bar-icon">
-                    <i class="fas fa-exchange-alt"></i>
-                </div>
-                <div class="bar-text">
-                    <strong>4,792 Trades Executed</strong>
-                    <span>56.6% Win Rate</span>
                 </div>
             </div>
         </div>
@@ -2145,7 +1988,7 @@
         <div class="section-header">
             <div class="section-tag">
                 <i class="fas fa-building"></i>
-                About Wealthnomics
+                About Wealthnomic
             </div>
             <h2 class="section-title">QUANTITATIVE <span class="outline">EXCELLENCE</span></h2>
             <p class="section-subtitle">
@@ -2157,7 +2000,7 @@
             <div class="about-left">
                 <h3>Systematic Alpha.<br>Institutional Rigor.</h3>
                 <p>
-                    Wealthnomics is a research-driven alternative asset manager specializing in systematic,
+                    Wealthnomic is a research-driven alternative asset manager specializing in systematic,
                     rules-based investment strategies across liquid US and Indian markets. Founded by practitioners
                     with deep expertise in quantitative finance, machine learning, and risk management.
                 </p>
@@ -2230,215 +2073,7 @@
         </div>
     </section>
 
-    <!-- Solution Section -->
-    <section class="solution-section" id="solution">
-        <div class="solution-header-row">
-            <div class="solution-title-block">
-                <h2 class="solution-title">OUR SOLUTION</h2>
-                <p class="solution-subtitle">Powered by a Sharpe Ratio of 3.93 and near-zero market correlation</p>
-            </div>
-            <div class="solution-metrics">
-                <div class="solution-metric">
-                    <div class="solution-metric-value">41%</div>
-                    <div class="solution-metric-label">CAGR</div>
-                </div>
-                <div class="solution-metric">
-                    <div class="solution-metric-value">8%</div>
-                    <div class="solution-metric-label">MAX DRAWDOWN</div>
-                </div>
-            </div>
-        </div>
 
-        <p class="solution-intro">
-            Wealthnomics offers India's first anti-fragile quantitative hedge fund powered by several strategies like
-            <span style="color: var(--accent); font-weight: 700;">AlphaGod™</span>, <span
-                style="color: var(--accent); font-weight: 700;">A1</span>, <span
-                style="color: var(--accent); font-weight: 700;">AUS1</span>, <span
-                style="color: var(--accent); font-weight: 700;">N1</span>, our proprietary state of the art that
-            leverages
-            ML, adaptive algorithms, and validated intelligence for exceptional returns across ALL market conditions
-        </p>
-
-        <div class="solution-grid">
-            <div class="solution-card">
-                <div class="solution-icon">
-                    <i class="fas fa-arrows-alt"></i>
-                </div>
-                <div class="solution-content">
-                    <h4>Diversified Multi-Market Strategy</h4>
-                    <p>
-                        Five independent portfolios targeting distinct opportunities: Indian Top 100, US Top 50,
-                        Growth/Small Cap, Hedging/Opportunities, and Global Emerging Markets ETFs. Each 20% allocation
-                        ensures risk distribution across geographies and asset classes
-                    </p>
-                </div>
-            </div>
-
-            <div class="solution-card">
-                <div class="solution-icon">
-                    <i class="fas fa-project-diagram"></i>
-                </div>
-                <div class="solution-content">
-                    <h4>Dynamic Capital Allocation</h4>
-                    <p>
-                        AI-powered Capital Allocation Optimizer continuously rebalances across portfolios based on
-                        performance, risk metrics, and market opportunities. Ensures capital flows to highest
-                        risk-adjusted return strategies while maintaining diversification discipline.
-                    </p>
-                </div>
-            </div>
-
-            <div class="solution-card">
-                <div class="solution-icon">
-                    <i class="fas fa-brain"></i>
-                </div>
-                <div class="solution-content">
-                    <h4>AI-Driven Decision Making</h4>
-                    <p>
-                        Centralized AI system processes market data, alternative data, economic indicators, and
-                        sentiment analysis to power all investment decisions. Each portfolio benefits from machine
-                        learning models tailored to its specific market characteristics.
-                    </p>
-                </div>
-            </div>
-
-            <div class="solution-card">
-                <div class="solution-icon">
-                    <i class="fas fa-chess-board"></i>
-                </div>
-                <div class="solution-content">
-                    <h4>Systematic Strategy Development</h4>
-                    <p>
-                        Proprietary Strategy Builder modules create and optimize trading algorithms for each portfolio
-                        segment. Strategies are continuously refined based on market conditions and performance
-                        feedback.
-                    </p>
-                </div>
-            </div>
-
-            <div class="solution-card">
-                <div class="solution-icon">
-                    <i class="fas fa-shield-alt"></i>
-                </div>
-                <div class="solution-content">
-                    <h4>Rigorous Testing & Risk Management</h4>
-                    <p>
-                        Multi-layered risk framework including backtesting, Monte Carlo simulations, stress testing, and
-                        real-time monitoring. Portfolio-specific risk controls (VaR, volatility limits, currency
-                        hedging) plus Master Risk Management for cross-portfolio oversight.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Diversification Section -->
-    <section class="diversification-section">
-        <div class="section-header">
-            <div class="section-tag">
-                <i class="fas fa-chart-pie"></i>
-                Asset Allocation
-            </div>
-            <h2 class="section-title">STRATEGIC ASSET <span class="outline">DIVERSIFICATION</span></h2>
-            <p class="section-subtitle">
-                An equal-weight, multi-asset framework designed to capture global growth while rigorously
-                mitigating downside risk
-            </p>
-        </div>
-
-        <div class="chart-container">
-            <div class="chart-wrapper-full">
-                <svg viewBox="0 0 500 500" class="pie-chart-svg">
-                    <!-- Shadow/Glow Effect -->
-                    <defs>
-                        <filter id="glow">
-                            <feGaussianBlur stdDeviation="4" result="coloredBlur" />
-                            <feMerge>
-                                <feMergeNode in="coloredBlur" />
-                                <feMergeNode in="SourceGraphic" />
-                            </feMerge>
-                        </filter>
-                    </defs>
-
-                    <!-- Donut Chart Segments -->
-                    <g transform="translate(250, 250)">
-                        <!-- Indian Markets - Blue (Top) -->
-                        <path d="M 0,-120 A 120,120 0 0,1 116.4,-37.1 L 58.2,-18.5 A 60,60 0 0,0 0,-60 Z" fill="#4d79ff"
-                            filter="url(#glow)" class="segment" />
-
-                        <!-- US Markets - Light Blue (Right) -->
-                        <path d="M 116.4,-37.1 A 120,120 0 0,1 71.6,97.4 L 35.8,48.7 A 60,60 0 0,0 58.2,-18.5 Z"
-                            fill="#66ccff" filter="url(#glow)" class="segment" />
-
-                        <!-- Growth - Green (Bottom Right) -->
-                        <path d="M 71.6,97.4 A 120,120 0 0,1 -71.6,97.4 L -35.8,48.7 A 60,60 0 0,0 35.8,48.7 Z"
-                            fill="#85e085" filter="url(#glow)" class="segment" />
-
-                        <!-- Hedging - Orange (Bottom Left) -->
-                        <path d="M -71.6,97.4 A 120,120 0 0,1 -116.4,-37.1 L -58.2,-18.5 A 60,60 0 0,0 -35.8,48.7 Z"
-                            fill="#ffad33" filter="url(#glow)" class="segment" />
-
-                        <!-- ETF/Metals - Red (Left) -->
-                        <path d="M -116.4,-37.1 A 120,120 0 0,1 0,-120 L 0,-60 A 60,60 0 0,0 -58.2,-18.5 Z"
-                            fill="#ff4d4d" filter="url(#glow)" class="segment" />
-
-                        <!-- Center Circle -->
-                        <circle cx="0" cy="0" r="60" fill="var(--black)" />
-
-                        <!-- Center Text -->
-                        <text x="0" y="-5" text-anchor="middle" fill="var(--white)" font-size="20"
-                            font-weight="700">100%</text>
-                        <text x="0" y="15" text-anchor="middle" fill="var(--gray-400)" font-size="12">Diversified</text>
-
-                        <!-- Labels with Lines -->
-                        <!-- Indian Markets -->
-                        <line x1="0" y1="-120" x2="0" y2="-170" stroke="var(--white)" stroke-width="2" />
-                        <text x="0" y="-180" text-anchor="middle" fill="var(--white)" font-size="16"
-                            font-weight="700">20%</text>
-                        <text x="0" y="-163" text-anchor="middle" fill="var(--white)" font-size="13">Indian
-                            Markets</text>
-                        <text x="0" y="-148" text-anchor="middle" fill="var(--gray-400)" font-size="11">NIFTY Top
-                            100</text>
-
-                        <!-- US Markets -->
-                        <line x1="105" y1="-60" x2="150" y2="-85" stroke="var(--white)" stroke-width="2" />
-                        <text x="155" y="-85" text-anchor="start" fill="var(--white)" font-size="16"
-                            font-weight="700">20%</text>
-                        <text x="155" y="-68" text-anchor="start" fill="var(--white)" font-size="13">US
-                            Markets</text>
-                        <text x="155" y="-53" text-anchor="start" fill="var(--gray-400)" font-size="11">US Top 50</text>
-
-                        <!-- Growth + Small Caps -->
-                        <line x1="95" y1="65" x2="145" y2="95" stroke="var(--white)" stroke-width="2" />
-                        <text x="150" y="100" text-anchor="start" fill="var(--white)" font-size="16"
-                            font-weight="700">20%</text>
-                        <text x="150" y="117" text-anchor="start" fill="var(--white)" font-size="13">Growth + Small
-                            Caps</text>
-                        <text x="150" y="132" text-anchor="start" fill="var(--gray-400)" font-size="11">High Growth
-                            Potential</text>
-
-                        <!-- Hedging + Debt -->
-                        <line x1="-95" y1="65" x2="-145" y2="95" stroke="var(--white)" stroke-width="2" />
-                        <text x="-150" y="100" text-anchor="end" fill="var(--white)" font-size="16"
-                            font-weight="700">20%</text>
-                        <text x="-150" y="117" text-anchor="end" fill="var(--white)" font-size="13">Hedging + Debt +
-                            Opportunities</text>
-                        <text x="-150" y="132" text-anchor="end" fill="var(--gray-400)" font-size="11">Risk
-                            Mitigation</text>
-
-                        <!-- ETF + Metals -->
-                        <line x1="-105" y1="-60" x2="-150" y2="-85" stroke="var(--white)" stroke-width="2" />
-                        <text x="-155" y="-85" text-anchor="end" fill="var(--white)" font-size="16"
-                            font-weight="700">20%</text>
-                        <text x="-155" y="-68" text-anchor="end" fill="var(--white)" font-size="13">ETF + Metals +
-                            Global Emerging</text>
-                        <text x="-155" y="-53" text-anchor="end" fill="var(--gray-400)" font-size="11">Diversified
-                            Markets</text>
-                    </g>
-                </svg>
-            </div>
-        </div>
-    </section>
 
     <!-- Strategy Section -->
     <section class="strategy-section" id="strategy">
@@ -2535,386 +2170,8 @@
         </div>
     </section>
 
-    <!-- Performance Section -->
-    <section class="performance-section" id="performance">
-        <div class="section-header">
-            <div class="section-tag">
-                <i class="fas fa-chart-bar"></i>
-                Track Record
-            </div>
-            <h2 class="section-title">VALIDATED <span class="outline">PERFORMANCE</span></h2>
-            <p class="section-subtitle">
-                Audited results across multiple market regimes. All returns net of fees.
-            </p>
-        </div>
-        <div class="performance-stats">
-            <div class="perf-stat">
-                <div class="perf-stat-value">41%</div>
-                <div class="perf-stat-label">Net CAGR</div>
-                <div class="perf-stat-detail">Full period 2019-2025</div>
-            </div>
-            <div class="perf-stat">
-                <div class="perf-stat-value highlight">4.1</div>
-                <div class="perf-stat-label">Sharpe Ratio</div>
-                <div class="perf-stat-detail">Risk-adjusted excellence</div>
-            </div>
-            <div class="perf-stat">
-                <div class="perf-stat-value">-0.37%</div>
-                <div class="perf-stat-label">Max Drawdown</div>
-                <div class="perf-stat-detail">Capital preservation</div>
-            </div>
-            <div class="perf-stat">
-                <div class="perf-stat-value highlight">18.8%</div>
-                <div class="perf-stat-label">Annual Alpha</div>
-                <div class="perf-stat-detail">vs Nifty 50</div>
-            </div>
-        </div>
-        <div class="performance-table-wrapper">
-            <div class="table-header">
-                <h3>Performance by Market Regime</h3>
-                <div class="table-badge">Stress-Tested</div>
-            </div>
-            <table class="performance-table">
-                <thead>
-                    <tr>
-                        <th>Period</th>
-                        <th>Market Condition</th>
-                        <th>CAGR</th>
-                        <th>Sharpe</th>
-                        <th>Max DD</th>
-                        <th>Win Rate</th>
-                        <th>Trades</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Full Period</strong></td>
-                        <td><span class="period-tag">All Regimes</span></td>
-                        <td class="positive">41.0%</td>
-                        <td>4.1</td>
-                        <td>-0.37%</td>
-                        <td>56.6%</td>
-                        <td>4,792</td>
-                    </tr>
-                    <tr>
-                        <td>Jan-Jun 2020</td>
-                        <td><span class="period-tag">COVID Crash</span></td>
-                        <td class="positive">61.7%</td>
-                        <td>3.9</td>
-                        <td>-0.37%</td>
-                        <td>54.6%</td>
-                        <td>337</td>
-                    </tr>
-                    <tr>
-                        <td>Jul 2020 - Dec 2021</td>
-                        <td><span class="period-tag">Post-COVID Bull</span></td>
-                        <td class="positive">89.0%</td>
-                        <td>4.7</td>
-                        <td>-0.19%</td>
-                        <td>62.6%</td>
-                        <td>984</td>
-                    </tr>
-                    <tr>
-                        <td>2022</td>
-                        <td><span class="period-tag">Bear Market</span></td>
-                        <td class="positive">58.5%</td>
-                        <td>4.2</td>
-                        <td>-0.16%</td>
-                        <td>54.5%</td>
-                        <td>708</td>
-                    </tr>
-                    <tr>
-                        <td>2023</td>
-                        <td><span class="period-tag">Recovery</span></td>
-                        <td class="positive">37.6%</td>
-                        <td>4.5</td>
-                        <td>-0.24%</td>
-                        <td>57.4%</td>
-                        <td>704</td>
-                    </tr>
-                    <tr>
-                        <td>2024</td>
-                        <td><span class="period-tag">Consolidation</span></td>
-                        <td class="positive">38.2%</td>
-                        <td>4.9</td>
-                        <td>-0.15%</td>
-                        <td>58.8%</td>
-                        <td>711</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </section>
-
-    <!-- Thesis Section -->
-    <section class="thesis-section" id="thesis">
-        <div class="section-header">
-            <div class="section-tag">
-                <i class="fas fa-flask"></i>
-                Technical Thesis
-            </div>
-            <h2 class="section-title">THE ALPHAGOD™ <span class="outline">RESEARCH FRAMEWORK</span></h2>
-            <p class="section-subtitle">
-                Comprehensive examination of our systematic approach and the structural inefficiencies we exploit.
-            </p>
-        </div>
-
-        <div class="thesis-intro">
-            <h3>Investment Thesis Overview</h3>
-            <p>
-                The US and Indian equity market presents a unique opportunity for systematic alpha generation due to
-                structural inefficiencies arising from retail investor dominance, information asymmetries,
-                and behavioral biases that create predictable patterns in price action.
-            </p>
-            <p>
-                AlphaGod™ is engineered to systematically exploit these inefficiencies through a multi-layered
-                approach combining volatility-adaptive execution, machine learning-driven factor weighting,
-                and rigorous risk management—validated across 6+ years of live market data including multiple
-                stress scenarios.
-            </p>
-        </div>
-
-        <div class="thesis-pillars">
-            <div class="thesis-pillar">
-                <span class="pillar-number">01</span>
-                <h4>Market Inefficiency Hypothesis</h4>
-                <p>
-                    The US and Indian market exhibits persistent inefficiencies that can be systematically captured
-                    by strategies optimized for local market microstructure.
-                </p>
-                <div class="pillar-details">
-                    <h5>Key Observations</h5>
-                    <ul>
-                        <li><i class="fas fa-angle-right"></i> Retail participation exceeds 45% of daily volume,
-                            creating predictable behavioral patterns</li>
-                        <li><i class="fas fa-angle-right"></i> Mean-reversion dominates in large-cap equities due to
-                            institutional rebalancing</li>
-                        <li><i class="fas fa-angle-right"></i> Momentum effects persist in mid-cap and derivative
-                            instruments</li>
-                        <li><i class="fas fa-angle-right"></i> Volatility clustering creates exploitable regime
-                            transitions</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="thesis-pillar">
-                <span class="pillar-number">02</span>
-                <h4>Volatility-Adaptive Edge</h4>
-                <p>
-                    Traditional fixed-parameter strategies underperform because they cannot adapt to
-                    the dynamic nature of market volatility.
-                </p>
-                <div class="pillar-details">
-                    <h5>Implementation</h5>
-                    <ul>
-                        <li><i class="fas fa-angle-right"></i> All position sizing normalized to rolling volatility
-                            measures</li>
-                        <li><i class="fas fa-angle-right"></i> Exit thresholds calibrated as multiples of current
-                            volatility</li>
-                        <li><i class="fas fa-angle-right"></i> Asset-class specific multipliers (equities vs.
-                            commodities)</li>
-                        <li><i class="fas fa-angle-right"></i> Dynamic recalibration without curve-fitting</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="thesis-pillar">
-                <span class="pillar-number">03</span>
-                <h4>Multi-Factor Signal Architecture</h4>
-                <p>
-                    Single-factor strategies are vulnerable to regime changes. Our composite scoring
-                    system combines orthogonal factors with ML-optimized weights.
-                </p>
-                <div class="pillar-details">
-                    <h5>Factor Composition</h5>
-                    <ul>
-                        <li><i class="fas fa-angle-right"></i> Momentum indicators (30% base weight) - Short-term price
-                            momentum</li>
-                        <li><i class="fas fa-angle-right"></i> Trend strength metrics (20% base weight) - Directional
-                            conviction</li>
-                        <li><i class="fas fa-angle-right"></i> Volume dynamics (20% base weight) - Participation
-                            confirmation</li>
-                        <li><i class="fas fa-angle-right"></i> Mean-reversion signals (15% base weight) - Price position
-                            analysis</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="thesis-pillar">
-                <span class="pillar-number">04</span>
-                <h4>Anti-Fragile Risk Framework</h4>
-                <p>
-                    The system benefits from volatility rather than suffering from it. Higher volatility
-                    increases trade frequency and profit potential.
-                </p>
-                <div class="pillar-details">
-                    <h5>Risk Controls</h5>
-                    <ul>
-                        <li><i class="fas fa-angle-right"></i> Maximum single-position risk capped at
-                            volatility-adjusted thresholds</li>
-                        <li><i class="fas fa-angle-right"></i> Portfolio-level volatility targeting (2-3% daily)</li>
-                        <li><i class="fas fa-angle-right"></i> Automatic position reduction during extreme drawdowns
-                        </li>
-                        <li><i class="fas fa-angle-right"></i> Zero overnight exposure option in high-risk regimes</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
 
 
-    </section>
-
-    <!-- Risk Section -->
-    <section class="risk-section" id="risk">
-        <div class="section-header">
-            <div class="section-tag">
-                <i class="fas fa-exclamation-triangle"></i>
-                Risk & Governance
-            </div>
-            <h2 class="section-title">RISK <span class="outline">MANAGEMENT</span></h2>
-            <p class="section-subtitle">
-                Comprehensive risk framework with independent oversight and institutional governance.
-            </p>
-        </div>
-        <div class="risk-grid">
-            <div class="risk-card">
-                <h3><i class="fas fa-layer-group"></i> Portfolio Risk Controls</h3>
-                <ul class="risk-list">
-                    <li>
-                        <div class="risk-icon"><i class="fas fa-tachometer-alt"></i></div>
-                        <div class="risk-content">
-                            <h4>Volatility Targeting</h4>
-                            <p>Portfolio volatility maintained within 2-3% daily range through dynamic position sizing.
-                            </p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="risk-icon"><i class="fas fa-chart-pie"></i></div>
-                        <div class="risk-content">
-                            <h4>Concentration Limits</h4>
-                            <p>Maximum 23 concurrent positions with strict single-name and sector exposure caps.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="risk-icon"><i class="fas fa-water"></i></div>
-                        <div class="risk-content">
-                            <h4>Liquidity Requirements</h4>
-                            <p>All instruments meet minimum volume thresholds. Full liquidation possible within 24
-                                hours.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="risk-icon"><i class="fas fa-bolt"></i></div>
-                        <div class="risk-content">
-                            <h4>Drawdown Circuit Breakers</h4>
-                            <p>Automatic position reduction at -0.5% daily, full deleverage at -1.0%.</p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <div class="risk-card">
-                <h3><i class="fas fa-building"></i> Operational Controls</h3>
-                <ul class="risk-list">
-                    <li>
-                        <div class="risk-icon"><i class="fas fa-users"></i></div>
-                        <div class="risk-content">
-                            <h4>Segregation of Duties</h4>
-                            <p>Portfolio management, risk oversight, and operations operate independently.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="risk-icon"><i class="fas fa-lock"></i></div>
-                        <div class="risk-content">
-                            <h4>Independent Custody</h4>
-                            <p>All assets held with registered custodian. Fund never takes possession of investor
-                                assets.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="risk-icon"><i class="fas fa-file-contract"></i></div>
-                        <div class="risk-content">
-                            <h4>Third-Party Audit</h4>
-                            <p>Annual audit by Big 4 firm. Monthly NAV verification by independent administrator.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="risk-icon"><i class="fas fa-shield-virus"></i></div>
-                        <div class="risk-content">
-                            <h4>Cybersecurity</h4>
-                            <p>SOC 2 Type II compliant infrastructure. Multi-factor authentication throughout.</p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <div class="risk-card">
-                <h3><i class="fas fa-exclamation-circle"></i> Key Risk Factors</h3>
-                <ul class="risk-list">
-                    <li>
-                        <div class="risk-icon"><i class="fas fa-chart-line"></i></div>
-                        <div class="risk-content">
-                            <h4>Market Risk</h4>
-                            <p>Systematic strategies can experience losses during regime changes or unprecedented
-                                conditions.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="risk-icon"><i class="fas fa-balance-scale-right"></i></div>
-                        <div class="risk-content">
-                            <h4>Leverage Risk</h4>
-                            <p>Use of up to 3x leverage amplifies both gains and losses.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="risk-icon"><i class="fas fa-code"></i></div>
-                        <div class="risk-content">
-                            <h4>Model Risk</h4>
-                            <p>Quantitative models may fail to capture unprecedented market dynamics.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="risk-icon"><i class="fas fa-server"></i></div>
-                        <div class="risk-content">
-                            <h4>Technology Risk</h4>
-                            <p>System failures or connectivity issues could result in losses.</p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <div class="risk-card">
-                <h3><i class="fas fa-clipboard-check"></i> Governance Framework</h3>
-                <ul class="risk-list">
-                    <li>
-                        <div class="risk-icon"><i class="fas fa-user-tie"></i></div>
-                        <div class="risk-content">
-                            <h4>Investment Committee</h4>
-                            <p>All strategy changes require IC approval. Committee meets weekly.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="risk-icon"><i class="fas fa-eye"></i></div>
-                        <div class="risk-content">
-                            <h4>Independent Risk Officer</h4>
-                            <p>CRO reports directly to board with authority to halt trading.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="risk-icon"><i class="fas fa-file-alt"></i></div>
-                        <div class="risk-content">
-                            <h4>Investor Reporting</h4>
-                            <p>Monthly performance reports, quarterly risk reviews, annual audited statements.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="risk-icon"><i class="fas fa-gavel"></i></div>
-                        <div class="risk-content">
-                            <h4>Regulatory Compliance</h4>
-                            <p>Full compliance with SEBI regulations. Regular compliance audits.</p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </section>
 
     <!-- Team Section -->
     <section class="team-section" id="team">
@@ -2931,7 +2188,7 @@
         <div class="team-grid">
             <div class="team-card">
                 <div class="team-avatar">AG</div>
-                <h4>Ayushman Gupta, PhD</h4>
+                <h4>Swapnil Gupta, PhD</h4>
                 <div class="team-role">Founder & Managing Partner</div>
                 <p>Architect of AlphaGod™. Doctorate in quantitative finance with research in statistical modeling and
                     applied computational methods.</p>
@@ -2956,52 +2213,6 @@
                 <h4>COO / CFO</h4>
                 <div class="team-role" style="color: var(--yellow);">Hiring</div>
                 <p>Managing administration, finance, trade operations, and valuation frameworks.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Terms Section -->
-    <section class="terms-section">
-        <div class="section-header">
-            <div class="section-tag">
-                <i class="fas fa-file-contract"></i>
-                Fund Terms
-            </div>
-            <h2 class="section-title">INVESTMENT <span class="outline">STRUCTURE</span></h2>
-            <p class="section-subtitle">
-                Indicative terms for qualified investors.
-            </p>
-        </div>
-        <div class="terms-grid">
-            <div class="terms-card">
-                <h4>Minimum Investment</h4>
-                <div class="terms-value">₹150k USD</div>
-                <div class="terms-detail">Qualified investors</div>
-            </div>
-            <div class="terms-card">
-                <h4>Management Fee</h4>
-                <div class="terms-value">1%</div>
-                <div class="terms-detail">Annual on NAV</div>
-            </div>
-            <div class="terms-card">
-                <h4>Performance Fee</h4>
-                <div class="terms-value">20%</div>
-                <div class="terms-detail">Above 11% hurdle</div>
-            </div>
-            <div class="terms-card">
-                <h4>Lock-up</h4>
-                <div class="terms-value">12 Mo</div>
-                <div class="terms-detail">Quarterly after</div>
-            </div>
-            <div class="terms-card">
-                <h4>Structure</h4>
-                <div class="terms-value">Cat II</div>
-                <div class="terms-detail">SEBI AIF</div>
-            </div>
-            <div class="terms-card">
-                <h4>Custodian</h4>
-                <div class="terms-value">HDFC</div>
-                <div class="terms-detail">Independent</div>
             </div>
         </div>
     </section>
@@ -3032,7 +2243,7 @@
                         </div>
                         <div class="contact-text">
                             <h4>Email</h4>
-                            <p>ayushman@wealthnomics.com</p>
+                            <p>investors@wealthnomic.com</p>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -3041,7 +2252,7 @@
                         </div>
                         <div class="contact-text">
                             <h4>Phone</h4>
-                            <p>+91 8887365246</p>
+                            <p>+91 8867940340</p>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -3107,13 +2318,13 @@
             <div class="footer-brand">
                 <div class="logo" style="display: inline-flex; background: transparent; border: none; padding: 0;">
                     <div class="logo-icon">W</div>
-                    <span class="logo-text" style="color: var(--white);">WEALTHNOMICS</span>
+                    <span class="logo-text" style="color: var(--black);">WEALTHNOMIC</span>
                 </div>
                 <p>
                     Systematic alpha generation through quantitative research,
                     machine learning, and disciplined risk management.
                 </p>
-                <p style="margin-top: 12px; font-size: 0.9rem; color: var(--gray-400);">
+                <p style="margin-top: 12px; font-size: 0.9rem; color: var(--gray-700);">
                     30 N Gould St, Ste R, Sheridan, Wyoming 82801, USA
                 </p>
                 <div class="footer-social">
@@ -3121,7 +2332,7 @@
                             class="fab fa-linkedin-in"></i></a>
                     <a href="https://x.com/wealthnomic" target="_blank" rel="noopener noreferrer"><i
                             class="fab fa-twitter"></i></a>
-                    <a href="mailto:ayushman@wealthnomics.com"><i class="fas fa-envelope"></i></a>
+                    <a href="mailto:investors@wealthnomic.com"><i class="fas fa-envelope"></i></a>
                 </div>
             </div>
             <div class="footer-column">
@@ -3129,32 +2340,26 @@
                 <ul class="footer-links">
                     <li><a href="#about">About Us</a></li>
                     <li><a href="#team">Leadership</a></li>
-                    <li><a href="#">Careers</a></li>
-                    <li><a href="#">Press</a></li>
+                    <li><a href="careers.html">Careers</a></li>
                 </ul>
             </div>
             <div class="footer-column">
                 <h4>Investment</h4>
                 <ul class="footer-links">
                     <li><a href="#strategy">Strategy</a></li>
-                    <li><a href="#performance">Performance</a></li>
-                    <li><a href="#thesis">Thesis</a></li>
-                    <li><a href="#risk">Risk</a></li>
                 </ul>
             </div>
             <div class="footer-column">
                 <h4>Resources</h4>
                 <ul class="footer-links">
-                    <li><a href="#">Investor Portal</a></li>
-                    <li><a href="#">Fund Documents</a></li>
-                    <li><a href="#">Research</a></li>
+                    <li><a href="investor-login.html">Investor Portal</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
             <div class="footer-copyright">
-                © 2025 Wealthnomics LLC. Filing ID: 2025-001750749. All rights reserved.
+                © 2025 Wealthnomic LLC. Filing ID: 2025-001750749. All rights reserved.
             </div>
             <div class="footer-legal">
                 <a href="#">Privacy Policy</a>
