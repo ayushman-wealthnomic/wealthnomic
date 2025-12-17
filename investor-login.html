@@ -2,468 +2,140 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <title>Investor Login — Wealthnomic</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description"
-        content="Secure investor portal for Wealthnomic fund investors and qualified participants." />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investor Login | Wealthnomic AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap"
         rel="stylesheet">
-
     <style>
         :root {
-            --bg: #f5f5f0;
-            --bg-alt: #e8e8df;
-            --fg: #111111;
-            --accent: #00ff7b;
-            --muted: #6d6d6d;
-            --border: #111111;
-            --danger: #ff3366;
-            --shadow: 4px 4px 0 #111111;
-            --transition-fast: 0.15s ease-out;
+            --bg: #ffffff;
+            --text-main: #111111;
+            --text-light: #444444;
+            --border-color: #e0e0e0;
         }
 
-        * {
-            box-sizing: border-box;
+        body {
+            font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
             margin: 0;
             padding: 0;
-        }
-
-        html,
-        body {
-            background: var(--bg);
-            color: var(--fg);
-            font-family: "Space Grotesk", system-ui, sans-serif;
-            text-rendering: geometricPrecision;
-        }
-
-        body {
-            border: 6px solid var(--border);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .shell {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 16px 16px 40px;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* Header */
-        header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-bottom: 3px solid var(--border);
-            padding: 8px 0 12px;
-            gap: 16px;
-        }
-
-        .logo-lockup {
-            display: flex;
-            align-items: baseline;
-            gap: 12px;
-            text-decoration: none;
-            color: var(--fg);
-        }
-
-        .logo-mark {
-            width: 32px;
-            height: 32px;
-            border: 3px solid var(--border);
-            background: var(--accent);
+            line-height: 1.6;
+            height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: 700;
-            font-size: 18px;
-            box-shadow: 2px 2px 0 #111111;
-        }
-
-        .logo-text {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-        }
-
-        .logo-text span:first-child {
-            font-weight: 700;
-            font-size: 20px;
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
-        }
-
-        .logo-text span:last-child {
-            font-size: 11px;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            color: var(--muted);
-        }
-
-        nav {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            font-size: 12px;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: var(--fg);
-            padding: 6px 10px;
-            position: relative;
-        }
-
-        nav a::after {
-            content: "";
-            position: absolute;
-            left: 6px;
-            right: 6px;
-            bottom: 4px;
-            height: 2px;
-            background: transparent;
-            transition: background var(--transition-fast);
-        }
-
-        nav a:hover::after {
-            background: var(--accent);
-        }
-
-        .nav-toggle {
-            display: none;
-            width: 32px;
-            height: 32px;
-            border: 2px solid var(--border);
-            background: var(--bg-alt);
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-size: 18px;
-        }
-
-        /* Main Content */
-        main {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 40px 0;
         }
 
         .login-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-            max-width: 900px;
             width: 100%;
+            max-width: 450px;
+            padding: 60px;
+            border: 1px solid var(--border-color);
+            text-align: center;
         }
 
-        .login-card {
-            border: 3px solid var(--border);
-            background: var(--bg-alt);
-            padding: 32px;
-            box-shadow: var(--shadow);
+        h1 {
+            font-weight: 300;
+            font-size: 2rem;
+            margin-bottom: 10px;
+            letter-spacing: -0.02em;
         }
 
-        .login-header {
-            margin-bottom: 24px;
-        }
-
-        .login-kicker {
-            font-size: 11px;
-            letter-spacing: 0.18em;
+        .subtitle {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8rem;
             text-transform: uppercase;
-            color: var(--muted);
-            margin-bottom: 8px;
-        }
-
-        .login-title {
-            font-size: 24px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
+            letter-spacing: 0.1em;
+            color: var(--text-light);
+            margin-bottom: 40px;
+            display: block;
         }
 
         .form-group {
-            margin-bottom: 16px;
+            margin-bottom: 25px;
+            text-align: left;
         }
 
         label {
             display: block;
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 0.16em;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: var(--text-light);
         }
 
         input {
             width: 100%;
             padding: 12px;
-            border: 2px solid var(--border);
-            background: var(--bg);
+            border: 1px solid var(--border-color);
             font-family: inherit;
-            font-size: 14px;
+            font-size: 1rem;
+            box-sizing: border-box;
+            /* Fixes padding issue */
             outline: none;
-            transition: all var(--transition-fast);
+            transition: border-color 0.3s;
         }
 
         input:focus {
-            border-color: var(--accent);
-            box-shadow: 3px 3px 0 var(--border);
+            border-color: var(--text-main);
         }
 
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
+        button {
             width: 100%;
-            padding: 14px 24px;
-            border: 3px solid var(--border);
-            background: var(--accent);
-            font-size: 13px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.16em;
-            text-decoration: none;
-            color: var(--fg);
-            box-shadow: var(--shadow);
-            cursor: pointer;
-            transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
-            margin-top: 8px;
-        }
-
-        .btn:hover {
-            transform: translate(-2px, -2px);
-            box-shadow: 6px 6px 0 #111111;
-            background: #baffd9;
-        }
-
-        .forgot-link {
-            display: block;
-            text-align: center;
-            margin-top: 16px;
-            font-size: 12px;
-            color: var(--muted);
-            text-decoration: none;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-        }
-
-        .forgot-link:hover {
-            color: var(--fg);
-        }
-
-        /* Info Card */
-        .info-card {
-            border: 3px solid var(--border);
-            background: var(--fg);
+            padding: 15px;
+            background: var(--text-main);
             color: var(--bg);
-            padding: 32px;
-            box-shadow: var(--shadow);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .info-title {
-            font-size: 20px;
-            font-weight: 700;
+            border: none;
+            font-family: inherit;
+            font-size: 1rem;
             text-transform: uppercase;
-            letter-spacing: 0.08em;
-            margin-bottom: 16px;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: opacity 0.3s;
         }
 
-        .info-text {
-            font-size: 13px;
-            line-height: 1.6;
-            color: var(--bg-alt);
-            margin-bottom: 24px;
+        button:hover {
+            opacity: 0.8;
         }
 
-        .info-list {
-            list-style: none;
-            font-size: 12px;
-            line-height: 1.8;
-        }
-
-        .info-list li {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 8px;
-        }
-
-        .info-list li::before {
-            content: "→";
-            color: var(--accent);
-            font-weight: 700;
-        }
-
-        .contact-link {
+        .back-link {
             display: inline-block;
-            margin-top: 24px;
-            font-size: 12px;
-            color: var(--accent);
+            margin-top: 30px;
+            font-size: 0.9rem;
+            color: var(--text-light);
             text-decoration: none;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            border-bottom: 1px solid var(--accent);
-            padding-bottom: 2px;
+            border-bottom: 1px solid transparent;
         }
 
-        .contact-link:hover {
-            color: #baffd9;
-            border-color: #baffd9;
-        }
-
-        /* Footer */
-        footer {
-            border-top: 3px solid var(--border);
-            padding: 8px 16px 10px;
-            font-size: 11px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            align-items: center;
-            justify-content: space-between;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-        }
-
-        .footer-links a {
-            text-decoration: none;
-            color: var(--fg);
-            border-bottom: 1px solid var(--border);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .login-container {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 720px) {
-            nav {
-                position: fixed;
-                inset-inline: 12px;
-                top: 60px;
-                background: var(--bg);
-                border: 3px solid var(--border);
-                padding: 10px;
-                flex-direction: column;
-                align-items: flex-start;
-                transform: translateY(-130%);
-                opacity: 0;
-                pointer-events: none;
-                gap: 6px;
-                box-shadow: 4px 4px 0 #111111;
-                z-index: 10;
-            }
-
-            nav.open {
-                transform: translateY(0);
-                opacity: 1;
-                pointer-events: auto;
-            }
-
-            .nav-toggle {
-                display: inline-flex;
-            }
-
-            .shell {
-                padding-inline: 12px;
-            }
-
-            body {
-                border-width: 4px;
-            }
+        .back-link:hover {
+            border-bottom-color: var(--text-light);
         }
     </style>
 </head>
 
 <body>
-    <div class="shell">
-        <header>
-            <a href="index.html" class="logo-lockup">
-                <div class="logo-mark">W</div>
-                <div class="logo-text">
-                    <span>Wealthnomic</span>
-                    <span>Systematic Hedge Fund</span>
-                </div>
-            </a>
-            <nav id="nav">
-                <a href="index.html">Home</a>
-                <a href="index.html#strategy">Strategy</a>
-                <a href="blog.html">Blog</a>
-                <a href="careers.html">Careers</a>
-            </nav>
-            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">≡</button>
-        </header>
+    <div class="login-container">
+        <h1>Investor Portal</h1>
+        <span class="subtitle">Secure Access</span>
 
-        <main>
-            <div class="login-container">
-                <div class="login-card">
-                    <div class="login-header">
-                        <div class="login-kicker">Secure Access</div>
-                        <h1 class="login-title">Investor Portal</h1>
-                    </div>
-                    <form onsubmit="event.preventDefault(); alert('Invalid Login.');">
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email" placeholder="investor@example.com" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="password" id="password" name="password" placeholder="••••••••••" required>
-                        </div>
-                        <button type="submit" class="btn">Sign In</button>
-                        <a href="#" class="forgot-link">Forgot Password?</a>
-                    </form>
-                </div>
-
-                <div class="info-card">
-                    <h2 class="info-title">Investor Access</h2>
-                    <p class="info-text">
-                        The investor portal provides secure access to fund documentation,
-                        performance reports, and account information for qualified investors.
-                    </p>
-                    <ul class="info-list">
-                        <li>Monthly performance statements</li>
-                        <li>Capital account summaries</li>
-                        <li>Fund documentation library</li>
-                        <li>Tax reporting materials</li>
-                        <li>Secure messaging with IR team</li>
-                    </ul>
-                    <a href="index.html#contact" class="contact-link">Request Access →</a>
-                </div>
+        <form onsubmit="event.preventDefault(); alert('Access Denied. Please contact IR.');">
+            <div class="form-group">
+                <label>Institutional ID</label>
+                <input type="text" placeholder="ID-XXXX-XXXX">
             </div>
-        </main>
 
-        <footer>
-            <span>© 2025 Wealthnomic LLC. All rights reserved.</span>
-            <div class="footer-links">
-                <a href="index.html">Back to Home</a>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" placeholder="••••••••">
             </div>
-        </footer>
+
+            <button type="submit">Authenticate</button>
+        </form>
+
+        <a href="index.html" class="back-link">← Return to Main Site</a>
     </div>
-
-    <script>
-        const navToggle = document.getElementById("navToggle");
-        const nav = document.getElementById("nav");
-        if (navToggle && nav) {
-            navToggle.addEventListener("click", () => nav.classList.toggle("open"));
-            nav.querySelectorAll("a").forEach(link => link.addEventListener("click", () => nav.classList.remove("open")));
-        }
-    </script>
 </body>
 
 </html>
