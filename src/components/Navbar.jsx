@@ -56,6 +56,9 @@ function Navbar() {
                     <li>
                         <Link to="/live" className="highlight">Live Demo</Link>
                     </li>
+                    <li>
+                        <Link to="/backtest-login" style={{ color: '#888' }}>Backtest</Link>
+                    </li>
 
                     {!loading && (
                         user ? (

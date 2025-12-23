@@ -13,6 +13,7 @@ import FingptStackPage from './pages/FingptStackPage'
 import LiveDashboardPage from './pages/LiveDashboardPage'
 import ModelingCorePage from './pages/ModelingCorePage'
 import RLGymnasiumPage from './pages/RLGymnasiumPage'
+import BacktestLoginPage from './pages/BacktestLoginPage'
 
 function App() {
     return (
@@ -35,6 +36,9 @@ function App() {
 
                 {/* Live dashboard - different layout */}
                 <Route path="/live" element={<LiveDashboardPage />} />
+
+                {/* Backtest Login */}
+                <Route path="/backtest-login" element={<BacktestLoginPage />} />
             </Routes>
         </div>
     )

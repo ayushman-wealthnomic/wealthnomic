@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALPHA1 Trading Simulation</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --panel-bg: #161b22;
+            --border-color: #30363d;
+            --text-primary: #c9d1d9;
+            --text-secondary: #8b949e;
+            --accent-green: #2ea043;
+            --accent-red: #da3633;
+            --accent-blue: #58a6ff;
+            --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            font-size: 14px;
+        }
+
+        /* Utility Classes */
+        .text-green {
+            color: var(--accent-green);
+        }
+
+        .text-red {
+            color: var(--accent-red);
+        }
+
+        .text-blue {
+            color: var(--accent-blue);
+        }
+
+        .mono {
+            font-family: var(--font-mono);
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .flex-col {
+            flex-direction: column;
+        }
+
+        .items-center {
+            align-items: center;
+        }
+
+        .justify-between {
+            justify-content: space-between;
+        }
+
+        .gap-4 {
+            gap: 1rem;
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            grid-template-rows: auto auto 1fr;
+            gap: 20px;
+            height: 95vh;
+        }
+
+        /* Header / Controls */
+        .header {
+            grid-column: 1 / -1;
+            background: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-radius: 6px;
+        }
+
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        input[type="date"] {
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 8px;
+            border-radius: 4px;
+            font-family: var(--font-mono);
+        }
+
+        button {
+            background: var(--accent-blue);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        button:disabled {
+            opacity: 0.5;
+            cursor: wait;
+        }
+
+        /* Sidebar / Stats */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .card {
+            background: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            padding: 15px;
+            border-radius: 6px;
+        }
+
+        .stat-value {
+            font-size: 24px;
+            font-weight: bold;
+            font-family: var(--font-mono);
+            margin-top: 5px;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Main Content */
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            overflow-y: auto;
+        }
+
+        .chart-container {
+            height: 300px;
+            position: relative;
+        }
+
+        /* Tables */
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 10px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            color: var(--text-secondary);
+            font-weight: normal;
+        }
+
+        tr:hover {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        /* Loading Overlay */
+        #loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(13, 17, 23, 0.8);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            display: none;
+        }
+
+        .spinner {
+            border: 4px solid var(--border-color);
+            border-top: 4px solid var(--accent-blue);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="loading">
+        <div class="spinner"></div>
+        <div style="margin-top: 15px;">Running Simulation...</div>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <div style="font-size: 18px; font-weight: bold; display: flex; align-items: center; gap: 10px;">
+                <div style="width: 12px; height: 12px; background: var(--accent-green); border-radius: 50%;"></div>
+                ALPHA1 SIMULATION
+            </div>
+            <div class="controls">
+                <!-- Static controls for visual purposes -->
+                <label style="color: var(--text-secondary);">Start Date:</label>
+                <input type="date" id="start-date" value="2025-11-01" disabled style="opacity: 0.5;">
+                <label style="color: var(--text-secondary); display: flex; align-items: center; gap: 5px;">
+                    <input type="checkbox" id="download-check" disabled> Update Data
+                </label>
+                <button onclick="runSimulation()">REFRESH DATA</button>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <div class="card">
+                <div class="stat-label">Total Capital</div>
+                <div class="stat-value text-green" id="total-capital">₹0</div>
+            </div>
+            <div class="card">
+                <div class="stat-label">Total Profit</div>
+                <div class="stat-value" id="total-profit">₹0</div>
+            </div>
+            <div class="card">
+                <div class="stat-label">Win Rate</div>
+                <div class="stat-value text-blue" id="win-rate">0%</div>
+            </div>
+            <div class="card">
+                <div class="stat-label">Active Positions</div>
+                <div class="stat-value" id="active-pos-count">0</div>
+            </div>
+            <div class="card">
+                <div class="stat-label">CAGR</div>
+                <div class="stat-value" id="cagr">0%</div>
+            </div>
+
+            <a href="/"
+                style="text-decoration: none; color: var(--text-secondary); font-size: 12px; text-align: center; margin-top: 10px;">
+                <i class="fas fa-arrow-left"></i> Exit Simulation
+            </a>
+        </div>
+
+        <div class="main-content">
+            <!-- Equity Chart -->
+            <div class="card chart-container">
+                <canvas id="equityChart"></canvas>
+            </div>
+
+            <!-- Current Positions -->
+            <div class="card">
+                <div class="header-sm flex justify-between items-center" style="margin-bottom: 10px;">
+                    <div class="stat-label" style="font-size: 14px; font-weight: bold;">Current Holdings</div>
+                </div>
+                <div class="table-container">
+                    <table id="holdings-table">
+                        <thead>
+                            <tr>
+                                <th>Symbol</th>
+                                <th>Entry Date</th>
+                                <th>Entry Price</th>
+                                <th>Current Price</th>
+                                <th>Shares</th>
+                                <th>PnL</th>
+                                <th>PnL %</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Recent Logs -->
+            <div class="card" style="flex: 1;">
+                <div class="header-sm flex justify-between items-center" style="margin-bottom: 10px;">
+                    <div class="stat-label" style="font-size: 14px; font-weight: bold;">Daily Trading Log</div>
+                </div>
+                <div class="table-container">
+                    <table id="logs-table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let chartInstance = null;
+
+        // Load initial data
+        window.onload = function () {
+            fetchData();
+        };
+
+        async function runSimulation() {
+            // In this static version, we just reload the data or show a message
+            document.getElementById('loading').style.display = 'flex';
+            setTimeout(async () => {
+                await fetchData();
+                document.getElementById('loading').style.display = 'none';
+            }, 1000);
+        }
+
+        async function fetchData() {
+            try {
+                // Fetch directly from the JSON file
+                const response = await fetch('simulation_data.json');
+                if (!response.ok) throw new Error('Failed to load simulation data');
+                const data = await response.json();
+                updateUI(data);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+                alert('Error loading simulation data. Ensure simulation_data.json exists.');
+            }
+        }
+
+        function updateUI(data) {
+            // Update Stats
+            const summary = data.summary;
+            const formatCurrency = (val) => '₹' + Math.floor(val).toLocaleString();
+
+            // Calculate current equity from last log
+            const lastLog = data.daily_logs[data.daily_logs.length - 1];
+            const currentEquity = lastLog ? lastLog.equity : 0;
+            const totalProfit = currentEquity - data.metadata.initial_capital;
+
+            document.getElementById('total-capital').innerText = formatCurrency(currentEquity);
+            document.getElementById('total-profit').innerText = formatCurrency(totalProfit);
+            document.getElementById('total-profit').className = 'stat-value ' + (totalProfit >= 0 ? 'text-green' : 'text-red');
+
+            document.getElementById('win-rate').innerText = (summary['Win Rate'] * 100).toFixed(1) + '%';
+            document.getElementById('cagr').innerText = (summary['CAGR'] * 100).toFixed(1) + '%';
+            document.getElementById('active-pos-count').innerText = lastLog ? lastLog.positions_count : 0;
+
+            // Update Chart
+            updateChart(data);
+
+            // Update Holdings Table
+            const holdingsTable = document.getElementById('holdings-table').getElementsByTagName('tbody')[0];
+            holdingsTable.innerHTML = '';
+
+            if (data.final_positions) {
+                data.final_positions.forEach(pos => {
+                    const row = holdingsTable.insertRow();
+                    const pnlClass = pos.pnl_amount >= 0 ? 'text-green' : 'text-red';
+
+                    row.innerHTML = `
+                    <td class="mono font-bold">${pos.symbol}</td>
+                    <td class="mono">${pos.entry_date}</td>
+                    <td class="mono">${pos.entry_price.toFixed(2)}</td>
+                    <td class="mono">${pos.current_price.toFixed(2)}</td>
+                    <td class="mono">${Math.floor(pos.shares)}</td>
+                    <td class="mono ${pnlClass}">${formatCurrency(pos.pnl_amount)}</td>
+                    <td class="mono ${pnlClass}">${pos.pnl_pct.toFixed(2)}%</td>
+                `;
+                });
+            }
+
+            // Update Logs Table (Reverse Order - Newest First)
+            const logsTable = document.getElementById('logs-table').getElementsByTagName('tbody')[0];
+            logsTable.innerHTML = '';
+
+            // Take last 30 logs or all
+            const recentLogs = [...data.daily_logs].reverse().slice(0, 100);
+
+            recentLogs.forEach(log => {
+                const row = logsTable.insertRow();
+
+                // Format activity
+                let activityHtml = '';
+                if (log.activity && log.activity.length > 0) {
+                    log.activity.forEach(act => {
+                        const color = act.profit >= 0 ? 'text-green' : 'text-red';
+                        if (act.type.includes('EXIT')) {
+                            activityHtml += `<div class="mb-1"><span class="text-secondary">SELL</span> <b>${act.symbol}</b> | Profit: <span class="${color}">${formatCurrency(act.profit)}</span> (${act.type})</div>`;
+                        } else if (act.type === 'BUY') {
+                            activityHtml += `<div class="mb-1"><span class="text-blue">BUY</span> <b>${act.symbol}</b> | Price: ${act.price.toFixed(2)}</div>`;
+                        }
+                    });
+                } else {
+                    activityHtml = '<span style="color: #444;">No trading activity</span>';
+                }
+
+                row.innerHTML = `
+                <td class="mono" style="vertical-align: top; width: 120px;">${log.date}</td>
+                <td>${activityHtml}</td>
+            `;
+            });
+        }
+
+        function updateChart(data) {
+            const ctx = document.getElementById('equityChart').getContext('2d');
+            const labels = data.daily_logs.map(l => l.date);
+            const values = data.daily_logs.map(l => l.equity);
+
+            if (chartInstance) {
+                chartInstance.destroy();
+            }
+
+            chartInstance = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Portfolio Equity',
+                        data: values,
+                        borderColor: '#2ea043',
+                        backgroundColor: 'rgba(46, 160, 67, 0.1)',
+                        borderWidth: 2,
+                        tension: 0.1,
+                        fill: true,
+                        pointRadius: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        x: {
+                            grid: { color: '#30363d' },
+                            ticks: { color: '#8b949e' }
+                        },
+                        y: {
+                            grid: { color: '#30363d' },
+                            ticks: { color: '#8b949e' }
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+
+</body>
+
+</html>
