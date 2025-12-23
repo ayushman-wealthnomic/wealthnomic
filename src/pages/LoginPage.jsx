@@ -1,44 +1,52 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { useAuth } from '../context/AuthContext'
 
 function LoginPage() {
     const navigate = useNavigate()
+    const { signIn } = useAuth()
+
     const [formData, setFormData] = useState({
         email: '',
         password: '',
         remember: false
     })
     const [message, setMessage] = useState({ text: '', type: '' })
+    const [loading, setLoading] = useState(false)
 
     const handleChange = (e) => {
         const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value
         setFormData({ ...formData, [e.target.name]: value })
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
+        setLoading(true)
+        setMessage({ text: '', type: '' })
 
-        // Check against stored user data
-        const storedUser = localStorage.getItem('wealthnomics_user')
+        const result = await signIn({
+            email: formData.email,
+            password: formData.password
+        })
 
-        if (storedUser) {
-            const user = JSON.parse(storedUser)
-            if (user.email === formData.email && user.password === btoa(formData.password)) {
-                setMessage({ text: '✅ Login successful! Redirecting...', type: 'success' })
+        setLoading(false)
 
-                // Store login session
-                localStorage.setItem('wealthnomics_session', JSON.stringify({
-                    email: user.email,
-                    name: user.name,
-                    loggedIn: true
-                }))
-
-                setTimeout(() => navigate('/'), 1500)
-                return
+        if (result.success) {
+            setMessage({ text: '✅ Login successful! Redirecting...', type: 'success' })
+            setTimeout(() => navigate('/'), 1500)
+        } else {
+            // Handle specific errors
+            let errorMessage = result.error
+            if (result.error.includes('Incorrect username or password')) {
+                errorMessage = 'Invalid email or password'
+            } else if (result.error.includes('User does not exist')) {
+                errorMessage = 'No account found with this email'
+            } else if (result.error.includes('User is not confirmed')) {
+                errorMessage = 'Please verify your email first'
+                // Could redirect to verification page here
             }
+            setMessage({ text: `❌ ${errorMessage}`, type: 'error' })
         }
-
-        setMessage({ text: '❌ Invalid email or password', type: 'error' })
     }
 
     return (
@@ -87,11 +95,16 @@ function LoginPage() {
                             />
                             Remember me
                         </label>
-                        <a href="#forgot">Forgot password?</a>
+                        <Link to="/forgot-password">Forgot password?</Link>
                     </div>
 
-                    <button type="submit" className="btn-submit" style={{ background: 'var(--text-main)' }}>
-                        Login
+                    <button
+                        type="submit"
+                        className="btn-submit"
+                        style={{ background: 'var(--text-main)' }}
+                        disabled={loading}
+                    >
+                        {loading ? 'Logging in...' : 'Login'}
                     </button>
 
                     {message.text && (

@@ -1,7 +1,15 @@
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { useAuth } from '../context/AuthContext'
 
 function Navbar() {
     const location = useLocation()
+    const navigate = useNavigate()
+    const { user, loading, signOut } = useAuth()
+
+    const handleLogout = async () => {
+        await signOut()
+        navigate('/')
+    }
 
     return (
         <nav>
@@ -48,16 +56,54 @@ function Navbar() {
                     <li>
                         <Link to="/live" className="highlight">Live Demo</Link>
                     </li>
-                    <li>
-                        <Link to="/signup" className="btn-nav" style={{ background: 'var(--accent-green)' }}>
-                            Sign Up
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/login" className="btn-nav" style={{ background: 'var(--text-main)' }}>
-                            Login
-                        </Link>
-                    </li>
+
+                    {!loading && (
+                        user ? (
+                            <>
+                                <li>
+                                    <span
+                                        style={{
+                                            fontFamily: 'var(--font-mono)',
+                                            fontSize: '0.9rem',
+                                            color: 'var(--accent-green)',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            gap: '8px'
+                                        }}
+                                    >
+                                        <i className="fas fa-user-circle"></i>
+                                        {user.name || user.email?.split('@')[0]}
+                                    </span>
+                                </li>
+                                <li>
+                                    <button
+                                        onClick={handleLogout}
+                                        className="btn-nav"
+                                        style={{
+                                            background: 'var(--text-main)',
+                                            cursor: 'pointer',
+                                            fontFamily: 'var(--font-mono)'
+                                        }}
+                                    >
+                                        Logout
+                                    </button>
+                                </li>
+                            </>
+                        ) : (
+                            <>
+                                <li>
+                                    <Link to="/signup" className="btn-nav" style={{ background: 'var(--accent-green)' }}>
+                                        Sign Up
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to="/login" className="btn-nav" style={{ background: 'var(--text-main)' }}>
+                                        Login
+                                    </Link>
+                                </li>
+                            </>
+                        )
+                    )}
                 </ul>
             </div>
         </nav>

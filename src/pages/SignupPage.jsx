@@ -1,14 +1,18 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { useAuth } from '../context/AuthContext'
 
 function SignupPage() {
     const navigate = useNavigate()
+    const { signUp, confirmSignUp } = useAuth()
+
+    const [step, setStep] = useState('signup') // 'signup' | 'confirm'
     const [formData, setFormData] = useState({
         name: '',
         email: '',
-        linkedin: '',
         password: '',
-        confirmPassword: ''
+        confirmPassword: '',
+        verificationCode: ''
     })
     const [message, setMessage] = useState({ text: '', type: '' })
     const [loading, setLoading] = useState(false)
@@ -17,7 +21,7 @@ function SignupPage() {
         setFormData({ ...formData, [e.target.name]: e.target.value })
     }
 
-    const handleSubmit = async (e) => {
+    const handleSignUp = async (e) => {
         e.preventDefault()
 
         // Validation
@@ -34,38 +38,47 @@ function SignupPage() {
         setLoading(true)
         setMessage({ text: '', type: '' })
 
-        try {
-            // Save to localStorage for demo login
-            const userData = {
-                name: formData.name,
-                email: formData.email,
-                linkedin: formData.linkedin,
-                password: btoa(formData.password)
+        const result = await signUp({
+            email: formData.email,
+            password: formData.password,
+            name: formData.name
+        })
+
+        setLoading(false)
+
+        if (result.success) {
+            if (result.nextStep?.signUpStep === 'CONFIRM_SIGN_UP') {
+                setMessage({
+                    text: '✅ Check your email for verification code!',
+                    type: 'success'
+                })
+                setStep('confirm')
+            } else if (result.isSignUpComplete) {
+                setMessage({ text: '✅ Account created! Redirecting...', type: 'success' })
+                setTimeout(() => navigate('/login'), 1500)
             }
-            localStorage.setItem('wealthnomics_user', JSON.stringify(userData))
+        } else {
+            setMessage({ text: `❌ ${result.error}`, type: 'error' })
+        }
+    }
 
-            // Submit to Formspree
-            const formBody = new FormData()
-            formBody.append('name', formData.name)
-            formBody.append('email', formData.email)
-            formBody.append('linkedin', formData.linkedin)
-            formBody.append('_subject', 'New Wealthnomics Signup!')
+    const handleConfirm = async (e) => {
+        e.preventDefault()
+        setLoading(true)
+        setMessage({ text: '', type: '' })
 
-            const response = await fetch('https://formspree.io/f/mrezgeez', {
-                method: 'POST',
-                body: formBody,
-                headers: { 'Accept': 'application/json' }
-            })
+        const result = await confirmSignUp({
+            email: formData.email,
+            code: formData.verificationCode
+        })
 
-            if (response.ok) {
-                setMessage({ text: '✅ Account created! Redirecting to login...', type: 'success' })
-                setTimeout(() => navigate('/login'), 2000)
-            } else {
-                throw new Error('Submission failed')
-            }
-        } catch (error) {
-            setMessage({ text: '❌ Submission error. Please try again.', type: 'error' })
-            setLoading(false)
+        setLoading(false)
+
+        if (result.success) {
+            setMessage({ text: '✅ Email verified! Redirecting to login...', type: 'success' })
+            setTimeout(() => navigate('/login'), 1500)
+        } else {
+            setMessage({ text: `❌ ${result.error}`, type: 'error' })
         }
     }
 
@@ -73,88 +86,128 @@ function SignupPage() {
         <div className="auth-body">
             <div className="auth-container">
                 <div className="auth-header">
-                    <h1>Sign Up</h1>
-                    <p>Join the Wealthnomics AI Foundation</p>
+                    <h1>{step === 'signup' ? 'Sign Up' : 'Verify Email'}</h1>
+                    <p>
+                        {step === 'signup'
+                            ? 'Join the Wealthnomics AI Foundation'
+                            : 'Enter the code sent to your email'}
+                    </p>
                 </div>
 
-                <form onSubmit={handleSubmit}>
-                    <div className="form-group">
-                        <label htmlFor="name">Full Name *</label>
-                        <input
-                            type="text"
-                            id="name"
-                            name="name"
-                            required
-                            placeholder="John Doe"
-                            value={formData.name}
-                            onChange={handleChange}
-                        />
-                    </div>
+                {step === 'signup' ? (
+                    <form onSubmit={handleSignUp}>
+                        <div className="form-group">
+                            <label htmlFor="name">Full Name *</label>
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                required
+                                placeholder="John Doe"
+                                value={formData.name}
+                                onChange={handleChange}
+                            />
+                        </div>
 
-                    <div className="form-group">
-                        <label htmlFor="email">Email Address *</label>
-                        <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            required
-                            placeholder="john@example.com"
-                            value={formData.email}
-                            onChange={handleChange}
-                        />
-                    </div>
+                        <div className="form-group">
+                            <label htmlFor="email">Email Address *</label>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                required
+                                placeholder="john@example.com"
+                                value={formData.email}
+                                onChange={handleChange}
+                            />
+                        </div>
 
-                    <div className="form-group">
-                        <label htmlFor="linkedin">LinkedIn Profile</label>
-                        <input
-                            type="url"
-                            id="linkedin"
-                            name="linkedin"
-                            placeholder="https://linkedin.com/in/yourprofile"
-                            value={formData.linkedin}
-                            onChange={handleChange}
-                        />
-                    </div>
+                        <div className="form-group">
+                            <label htmlFor="password">Password *</label>
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                required
+                                placeholder="Min. 8 characters, upper, lower, number"
+                                value={formData.password}
+                                onChange={handleChange}
+                            />
+                            <small style={{
+                                fontFamily: 'var(--font-mono)',
+                                fontSize: '0.75rem',
+                                color: '#888',
+                                marginTop: '5px',
+                                display: 'block'
+                            }}>
+                                Must include uppercase, lowercase, and numbers
+                            </small>
+                        </div>
 
-                    <div className="form-group">
-                        <label htmlFor="password">Password *</label>
-                        <input
-                            type="password"
-                            id="password"
-                            name="password"
-                            required
-                            placeholder="Min. 8 characters"
-                            value={formData.password}
-                            onChange={handleChange}
-                        />
-                    </div>
+                        <div className="form-group">
+                            <label htmlFor="confirmPassword">Confirm Password *</label>
+                            <input
+                                type="password"
+                                id="confirmPassword"
+                                name="confirmPassword"
+                                required
+                                placeholder="Re-enter password"
+                                value={formData.confirmPassword}
+                                onChange={handleChange}
+                            />
+                        </div>
 
-                    <div className="form-group">
-                        <label htmlFor="confirmPassword">Confirm Password *</label>
-                        <input
-                            type="password"
-                            id="confirmPassword"
-                            name="confirmPassword"
-                            required
-                            placeholder="Re-enter password"
-                            value={formData.confirmPassword}
-                            onChange={handleChange}
-                        />
-                    </div>
+                        <button type="submit" className="btn-submit" disabled={loading}>
+                            {loading ? 'Creating Account...' : 'Create Account'}
+                        </button>
+                    </form>
+                ) : (
+                    <form onSubmit={handleConfirm}>
+                        <div className="form-group">
+                            <label htmlFor="verificationCode">Verification Code *</label>
+                            <input
+                                type="text"
+                                id="verificationCode"
+                                name="verificationCode"
+                                required
+                                placeholder="Enter 6-digit code"
+                                value={formData.verificationCode}
+                                onChange={handleChange}
+                                style={{ letterSpacing: '0.5em', textAlign: 'center', fontSize: '1.5rem' }}
+                            />
+                        </div>
 
-                    <button type="submit" className="btn-submit" disabled={loading}>
-                        {loading ? 'Creating Account...' : 'Create Account'}
-                    </button>
+                        <button type="submit" className="btn-submit" disabled={loading}>
+                            {loading ? 'Verifying...' : 'Verify Email'}
+                        </button>
 
-                    {message.text && (
-                        <p
-                            id="formMessage"
-                            style={{ color: message.type === 'error' ? '#f00' : 'var(--accent-green)' }}
+                        <button
+                            type="button"
+                            onClick={() => setStep('signup')}
+                            style={{
+                                marginTop: '15px',
+                                background: 'transparent',
+                                border: 'none',
+                                color: 'var(--accent-green)',
+                                fontFamily: 'var(--font-mono)',
+                                cursor: 'pointer',
+                                width: '100%',
+                                textAlign: 'center'
+                            }}
                         >
-                            {message.text}
-                        </p>
-                    )}
-                </form>
+                            ← Back to Sign Up
+                        </button>
+                    </form>
+                )}
+
+                {message.text && (
+                    <p
+                        id="formMessage"
+                        style={{ color: message.type === 'error' ? '#f00' : 'var(--accent-green)' }}
+                    >
+                        {message.text}
+                    </p>
+                )}
 
                 <div className="auth-footer">
                     <p>Already have an account? <Link to="/login">Login here</Link></p>
