@@ -349,16 +349,20 @@
             }, 1000);
         }
 
+        // CONFIGURATION: Replace this URL with your S3 URL after setup
+        // Uses the Mumbai region (ap-south-1) as recommended in the guide.
+        const DATA_URL = 'https://wealthnomic-simulation-data.s3.ap-south-1.amazonaws.com/simulation_data.json';
+
         async function fetchData() {
             try {
-                // Fetch directly from the JSON file
-                const response = await fetch('simulation_data.json');
+                // Fetch from the configured URL
+                const response = await fetch(DATA_URL);
                 if (!response.ok) throw new Error('Failed to load simulation data');
                 const data = await response.json();
                 updateUI(data);
             } catch (error) {
                 console.error('Error fetching data:', error);
-                alert('Error loading simulation data. Ensure simulation_data.json exists.');
+                alert(`Error loading simulation data from ${DATA_URL}. Check console for details.`);
             }
         }
 
