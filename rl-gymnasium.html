@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RL Gymnasium | Wealthnomics AI Foundation</title>
+    <meta name="description"
+        content="The Reinforcement Learning environment for financial markets. Built on FinRL, OpenAI Gym, and PettingZoo for training autonomous trading agents.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Space+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg: #ffffff;
+            --text-main: #000000;
+            --text-light: #333333;
+            --accent-green: #3B82F6;
+            --border-color: #000000;
+            --border-width: 3px;
+            --box-shadow: 6px 6px 0px #000000;
+            --font-heading: 'Space Grotesk', sans-serif;
+            --font-mono: 'Space Mono', monospace;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-heading);
+            background-color: var(--bg);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            border: var(--border-width) solid var(--border-color);
+            min-height: 100vh;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            margin-top: 0;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+        }
+
+        p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        a {
+            color: var(--text-main);
+            text-decoration: none;
+        }
+
+        a:hover {
+            background: var(--accent-green);
+            color: #fff;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #fff;
+            border-bottom: var(--border-width) solid var(--border-color);
+            z-index: 1000;
+            height: 80px;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .brand {
+            font-weight: 900;
+            font-size: 1.8rem;
+            letter-spacing: -0.04em;
+            text-transform: uppercase;
+            display: flex;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li a {
+            font-family: var(--font-mono);
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .page-hero {
+            padding: 180px 0 80px;
+            border-bottom: var(--border-width) solid var(--border-color);
+            background-image: radial-gradient(#000 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .page-kicker {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            color: #fff;
+            background: var(--accent-green);
+            padding: 5px 10px;
+            display: inline-block;
+            margin-bottom: 20px;
+            font-weight: 700;
+            border: 2px solid #000;
+            box-shadow: 4px 4px 0 #000;
+        }
+
+        .page-title {
+            font-size: 4rem;
+            line-height: 0.95;
+            margin-bottom: 30px;
+        }
+
+        .page-subtitle {
+            font-size: 1.4rem;
+            max-width: 800px;
+            border-left: 5px solid var(--accent-green);
+            padding-left: 20px;
+        }
+
+        .content-section {
+            padding: 80px 0;
+            border-bottom: var(--border-width) solid var(--border-color);
+        }
+
+        .content-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
+        .tag-cloud {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+
+        .tech-tag {
+            background: #eee;
+            border: 1px solid #000;
+            padding: 5px 12px;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .specs-table {
+            width: 100%;
+            border: 2px solid #000;
+            margin: 30px 0;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+        }
+
+        .specs-table tr {
+            border-bottom: 1px solid #000;
+        }
+
+        .specs-table td {
+            padding: 12px 15px;
+            border-right: 1px solid #000;
+        }
+
+        .specs-table td:last-child {
+            border-right: none;
+            font-weight: 700;
+        }
+
+        .code-block {
+            background: #111;
+            color: #0f0;
+            padding: 25px;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            border: 2px solid #000;
+            overflow-x: auto;
+            margin: 30px 0;
+        }
+
+        .code-block .comment {
+            color: #666;
+        }
+
+        .code-block .keyword {
+            color: #f92672;
+        }
+
+        .code-block .string {
+            color: #a6e22e;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: var(--accent-green);
+            color: #fff !important;
+            font-family: var(--font-mono);
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            border: var(--border-width) solid #000;
+            box-shadow: var(--box-shadow);
+            transition: 0.2s;
+            margin-top: 20px;
+        }
+
+        .cta-button:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 10px 10px 0 #000;
+        }
+
+        footer {
+            padding: 60px 0;
+            background: #fff;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .page-title {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="container nav-inner">
+            <a href="index.html" class="brand" style="flex-direction: column; align-items: flex-start; gap: 0;">
+                <span style="font-size: 1.8rem;">Wealthnomics</span>
+                <span
+                    style="font-size: 0.7rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; color: #555;">AI
+                    Foundation</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html#initiatives">Initiatives</a></li>
+                <li><a href="blog.html">Articles</a></li>
+                <li><a href="live/live_dashboard.html">Live Demo</a></li>
+                <li><a href="https://github.com/wealthnomic">GitHub</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-hero">
+        <div class="container">
+            <span class="page-kicker"><i class="fas fa-network-wired"></i> INITIATIVE</span>
+            <h1 class="page-title">RL Gymnasium</h1>
+            <p class="page-subtitle">
+                The open-source Reinforcement Learning environment for financial markets. Training agents to trade,
+                provide liquidity, and manage risk in high-fidelity simulations.
+            </p>
+        </div>
+    </header>
+
+    <section class="content-section">
+        <div class="container">
+            <h2>The Thesis</h2>
+            <p>
+                <strong>Backtesting is not training.</strong> Static historical data only tells you what *would* have
+                happened if you were a passive observer. In real markets, your actions have impact—slippage, price
+                pressure, and order book dynamics all matter.
+            </p>
+            <p>
+                <strong>RL Gymnasium</strong> provides a dynamic playground for AI agents. By integrating
+                <strong>FinRL</strong> with <strong>OpenAI Gymnasium</strong> and <strong>PettingZoo</strong>, we enable
+                multi-agent reinforcement learning where bots compete and cooperate in simulated exchange environments.
+            </p>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <h2>Framework Integration</h2>
+            <div class="tag-cloud">
+                <span class="tech-tag">FinRL</span>
+                <span class="tech-tag">Gymnasium</span>
+                <span class="tech-tag">PettingZoo</span>
+                <span class="tech-tag">PyTorch</span>
+                <span class="tech-tag">Ray RLib</span>
+                <span class="tech-tag">SB3</span>
+            </div>
+
+            <p>Our gymnasium provides pre-built environments for:</p>
+            <ul style="margin-left: 20px; color: var(--text-light); font-size: 1.1rem;">
+                <li><strong>Portfolio Allocation:</strong> Optimizing weights across a basket of assets.</li>
+                <li><strong>Market Making:</strong> Managing bid-ask spreads and inventory risk.</li>
+                <li><strong>Execution Tracking:</strong> Slicing large orders to minimize market impact.</li>
+                <li><strong>Adversarial Markets:</strong> Training agents to survive against "shark" algorithms.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <h2>Technical Specifications</h2>
+            <table class="specs-table">
+                <tr>
+                    <td>Standards</td>
+                    <td>OpenAI Gym / PettingZoo (MARL)</td>
+                </tr>
+                <tr>
+                    <td>Optimizers</td>
+                    <td>PPO, DDPG, SAC, TD3</td>
+                </tr>
+                <tr>
+                    <td>Simulation</td>
+                    <td>Event-driven with Order Book matching</td>
+                </tr>
+                <tr>
+                    <td>Latency</td>
+                    <td>Sub-millisecond step updates</td>
+                </tr>
+                <tr>
+                    <td>Hardware</td>
+                    <td>Distributed GPU training via Ray</td>
+                </tr>
+                <tr>
+                    <td>License</td>
+                    <td>Apache 2.0</td>
+                </tr>
+            </table>
+
+            <h3>Sample Training Script (Python)</h3>
+            <div class="code-block">
+                <span class="comment"># Initialize a FinRL environment for Nifty 50</span>
+                <span class="keyword">from</span> rl_gym <span class="keyword">import</span> StockTradingEnv
+                <span class="keyword">from</span> stable_baselines3 <span class="keyword">import</span> PPO
+
+                env = StockTradingEnv(df=market_data, initial_amount=100000)
+                model = PPO(<span class="string">"MlpPolicy"</span>, env, verbose=1)
+
+                model.learn(total_timesteps=1000000)
+                model.save(<span class="string">"ppo_trading_agent_v1"</span>)
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section" style="background: #f8f8f8;">
+        <div class="container" style="text-align: center;">
+            <h2>Start Training</h2>
+            <p style="max-width: 600px; margin: 0 auto 30px;">
+                Ready to move beyond backtesting? Download the RL Gymnasium and train your first autonomous trader.
+            </p>
+            <a href="https://github.com/wealthnomic/rl-gymnasium" class="cta-button"><i class="fab fa-github"></i> View
+                on GitHub</a>
+            <a href="index.html" class="cta-button"
+                style="background: #fff; color: #000 !important; margin-left: 15px;">Back to Initiatives</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">&copy; 2025 Wealthnomics AI Foundation. All Rights Reserved.</div>
+    </footer>
+
+</body>
+
+</html>

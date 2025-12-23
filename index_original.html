@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wealthnomics AI Foundation | Open Source Financial AI</title>
+    <meta name="description"
+        content="The Wealthnomics AI Foundation is dedicated to building the open source standard for financial intelligence and AI-native market infrastructure.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Space+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            /* Light Industrial Neo-Brutalism */
+            --bg: #ffffff;
+            --card-bg: #ffffff;
+            --text-main: #000000;
+            --text-light: #333333;
+            --accent-green: #3B82F6;
+            /* Hyper Blue for "Trust/Tech" or stick to Acid Green? User asked for different style. Let's go Hyper Blue + Black */
+            --accent-brand: #000000;
+            --border-color: #000000;
+            --border-width: 3px;
+            --box-shadow: 6px 6px 0px #000000;
+            --font-heading: 'Space Grotesk', sans-serif;
+            /* More aggressive */
+            --font-mono: 'Space Mono', monospace;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-heading);
+            background-color: var(--bg);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            border: var(--border-width) solid var(--border-color);
+            /* Boarder around body */
+            min-height: 100vh;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            margin-top: 0;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            color: var(--text-main);
+        }
+
+        p {
+            color: var(--text-light);
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin-bottom: 2rem;
+            line-height: 1.4;
+            font-weight: 500;
+        }
+
+        a {
+            color: var(--text-main);
+            text-decoration: none;
+            transition: 0.1s;
+        }
+
+        a:hover {
+            background: var(--accent-green);
+            color: #fff;
+        }
+
+        /* Utility */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .mono {
+            font-family: var(--font-mono);
+        }
+
+        .highlight {
+            color: var(--accent-green);
+            font-weight: 700;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #fff;
+            border-bottom: var(--border-width) solid var(--border-color);
+            z-index: 1000;
+            height: 80px;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .brand {
+            font-weight: 900;
+            font-size: 1.8rem;
+            letter-spacing: -0.04em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-transform: uppercase;
+            color: #000;
+        }
+
+        .brand span {
+            color: var(--accent-green);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li a {
+            font-family: var(--font-mono);
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-bottom: 2px solid transparent;
+            color: #000;
+        }
+
+        .nav-links li a:hover {
+            border-bottom: 2px solid var(--text-main);
+            background: transparent;
+            color: var(--text-main);
+        }
+
+        .btn-nav {
+            border: var(--border-width) solid var(--border-color);
+            padding: 10px 25px;
+            background: var(--text-main);
+            color: #fff !important;
+            font-weight: 700;
+            transition: all 0.2s;
+            box-shadow: 4px 4px 0px #000;
+        }
+
+        .btn-nav:hover {
+            background: var(--accent-green);
+            color: #000 !important;
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px #000;
+        }
+
+        /* Hero Section */
+        header.hero {
+            padding: 140px 0 60px;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background-image: radial-gradient(#000 1px, transparent 1px);
+            background-size: 40px 40px;
+            border-bottom: var(--border-width) solid var(--border-color);
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            line-height: 0.95;
+            margin-bottom: 20px;
+            text-shadow: 4px 4px 0px #eee;
+            color: #000;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            border-left: 5px solid var(--accent-green);
+            padding-left: 20px;
+            background: #f8f8f8;
+            padding: 15px 20px;
+            border: var(--border-width) solid var(--border-color);
+            box-shadow: var(--box-shadow);
+            color: #000;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 20px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 20px 50px;
+            background: var(--accent-green);
+            color: #fff !important;
+            font-family: var(--font-mono);
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            border: var(--border-width) solid var(--border-color);
+            cursor: pointer;
+            box-shadow: var(--box-shadow);
+            transition: 0.2s;
+        }
+
+        .cta-button.outline {
+            background: #fff;
+            color: #000 !important;
+        }
+
+        .cta-button:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 10px 10px 0 var(--text-main);
+            color: #000 !important;
+        }
+
+        /* Initiatives Section */
+        section {
+            padding: 80px 0;
+            border-bottom: var(--border-width) solid var(--border-color);
+        }
+
+        .section-label {
+            font-family: var(--font-mono);
+            color: #000;
+            background: var(--accent-green);
+            display: inline-block;
+            padding: 5px 10px;
+            font-weight: 700;
+            border: 2px solid #000;
+            margin-bottom: 20px;
+            box-shadow: 4px 4px 0 #000;
+        }
+
+        .section-heading {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            max-width: 900px;
+            line-height: 1;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: var(--border-width) solid var(--border-color);
+            padding: 25px;
+            transition: 0.2s;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+        }
+
+        .card:hover {
+            transform: translate(-5px, -5px);
+            box-shadow: 10px 10px 0 #000;
+            background: #fff;
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+            color: #000;
+            border: 2px solid #000;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--accent-green);
+            box-shadow: 4px 4px 0 #000;
+        }
+
+        .card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: var(--text-light);
+            font-family: var(--font-mono);
+        }
+
+        .card-link {
+            font-family: var(--font-mono);
+            font-size: 1rem;
+            font-weight: 700;
+            display: inline-block;
+            padding: 10px 20px;
+            border: 2px solid #000;
+            background: #eee;
+            color: #000;
+            text-transform: uppercase;
+        }
+
+        .card-link:hover {
+            background: #000;
+            color: #fff;
+        }
+
+        /* Timeline / Journey */
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background: var(--border-color);
+        }
+
+        .timeline-item {
+            padding-left: 50px;
+            margin-bottom: 80px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            background: #fff;
+            border: 4px solid #000;
+            border-radius: 0%;
+            /* Sharp squares */
+        }
+
+        .timeline-year {
+            font-family: var(--font-mono);
+            color: #fff;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            display: inline-block;
+            background: #000;
+            padding: 5px 10px;
+            font-weight: 700;
+        }
+
+        /* Footer */
+        footer {
+            padding: 100px 0;
+            background: #fff;
+            border-top: var(--border-width) solid #000;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr repeat(3, 1fr);
+            gap: 50px;
+        }
+
+        .footer-col h4 {
+            margin-bottom: 25px;
+            font-family: var(--font-mono);
+            font-weight: 700;
+            border-bottom: 2px solid #000;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: var(--text-main);
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+        }
+
+        .footer-links a:hover {
+            background: var(--accent-green);
+            color: #fff;
+        }
+
+        /* High Contrast Icons */
+        .fab {
+            color: #000;
+            border: 2px solid #000;
+            padding: 10px;
+            transition: 0.2s;
+            box-shadow: 4px 4px 0 #000;
+        }
+
+        .fab:hover {
+            background: #000;
+            color: #fff;
+            box-shadow: 0 0 0 #000;
+            transform: translate(2px, 2px);
+        }
+
+        /* detailed feature sections */
+        .feature-section {
+            padding: 60px 0;
+            border-bottom: var(--border-width) solid var(--border-color);
+            position: relative;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        /* Alternate Layout */
+        .feature-section:nth-child(even) .feature-grid {
+            direction: rtl;
+        }
+
+        .feature-section:nth-child(even) .feature-grid>* {
+            direction: ltr;
+        }
+
+        .feature-content h3 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .feature-desc {
+            font-family: var(--font-mono);
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        /* Specs Table */
+        .specs-table {
+            width: 100%;
+            border: 2px solid #000;
+            margin-bottom: 30px;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+        }
+
+        .specs-table tr {
+            border-bottom: 1px solid #000;
+        }
+
+        .specs-table td {
+            padding: 10px;
+            border-right: 1px solid #000;
+        }
+
+        .specs-table td:last-child {
+            border-right: none;
+            font-weight: 700;
+        }
+
+        /* Tech Visual Container */
+        .tech-visual {
+            background: #fff;
+            border: var(--border-width) solid #000;
+            box-shadow: var(--box-shadow);
+            padding: 20px;
+            min-height: 400px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        /* Visual 1: Code Terminal */
+        .terminal-window {
+            width: 100%;
+            height: 100%;
+            background: #111;
+            color: #0f0;
+            font-family: 'Space Mono', monospace;
+            padding: 20px;
+            font-size: 0.8rem;
+            overflow: hidden;
+            border: 2px solid #000;
+        }
+
+        .terminal-line {
+            margin-bottom: 5px;
+        }
+
+        .terminal-line::before {
+            content: '> ';
+            color: #fff;
+        }
+
+        .blink-cursor::after {
+            content: '_';
+            animation: blink 1s infinite;
+        }
+
+        /* Visual 2: Network Graph (CSS only representation) */
+        .network-node {
+            width: 20px;
+            height: 20px;
+            background: #000;
+            position: absolute;
+            border-radius: 50%;
+        }
+
+        .network-line {
+            position: absolute;
+            height: 2px;
+            background: #000;
+            transform-origin: 0 0;
+        }
+
+        /* Visual tags */
+        .tag-cloud {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .tech-tag {
+            background: #eee;
+            border: 1px solid #000;
+            padding: 5px 10px;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        /* Visual 3: GenAI Matrix */
+        .genai-matrix {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 5px;
+            width: 100%;
+            height: 100%;
+            opacity: 0.8;
+        }
+
+        .matrix-cell {
+            background: #eee;
+            border: 1px solid #ddd;
+            font-size: 0.6rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-mono);
+            color: #aaa;
+        }
+
+        .matrix-cell.active {
+            background: #000;
+            color: #fff;
+            border-color: #000;
+            font-weight: 700;
+        }
+
+        /* Visual 4: Agent Loop */
+        .agent-loop-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .agent-node {
+            width: 60px;
+            height: 60px;
+            border: 2px solid #000;
+            background: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            font-weight: 900;
+            box-shadow: 4px 4px 0 #000;
+        }
+
+        .loop-ring {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border: 2px dashed #ccc;
+            border-radius: 50%;
+            animation: spin 10s linear infinite;
+        }
+
+        .loop-item {
+            position: absolute;
+            background: #000;
+            color: #fff;
+            padding: 5px 10px;
+            font-size: 0.7rem;
+            font-family: var(--font-mono);
+        }
+
+        @keyframes spin {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+                direction: ltr !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="container nav-inner">
+            <a href="#" class="brand"
+                style="flex-direction: column; align-items: flex-start; gap: 0; background: #2a2a2a; padding: 10px 15px; border-radius: 0;">
+                <span style="font-size: 1.8rem; color: #fff;">Wealthnomics</span>
+                <span
+                    style="font-size: 0.7rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; color: #999;">Intelligence
+                    for Alpha</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#initiatives">Initiatives</a></li>
+                <li><a href="#journey">Journey</a></li>
+                <li><a href="blog.html">Articles</a></li>
+                <li><a href="live/live_dashboard.html" class="highlight">Live Demo</a></li>
+                <li><a href="signup.html" class="btn-nav" style="background: var(--accent-green);">Sign Up</a></li>
+                <li><a href="login.html" class="btn-nav" style="background: var(--text-main);">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <div class="mono highlight" style="margin-bottom: 20px;">[ THE AI MODELING STACK FOR GLOBAL FINANCE ]</div>
+            <h1 class="hero-title">THE DEFINITIVE FOUNDATION<br>FOR FINANCIAL INTELLIGENCE.</h1>
+            <p class="hero-subtitle">
+                Wealthnomics AI Foundation is the open source home for LLMs, Agentic AI, Reinforcement Learning, and
+                Quantitative Methods. We are building the essential AI and modeling infrastructure that powers the next
+                generation
+                of global finance.
+            </p>
+            <div class="cta-group">
+                <a href="#initiatives" class="cta-button">Explore Our Stack</a>
+            </div>
+        </div>
+    </header>
+
+    <div id="initiatives" style="border-bottom: var(--border-width) solid var(--border-color);">
+        <div class="container" style="padding: 100px 40px 60px;">
+            <span class="section-label">THE OPEN SOURCE AI STACK</span>
+            <h2 class="section-heading">From Data to Decision:<br>The Complete AI Pipeline.</h2>
+        </div>
+    </div>
+
+    <!-- FinLLM Core -->
+    <section class="feature-section">
+        <div class="container feature-grid">
+            <div class="feature-content">
+                <div class="card-icon" style="margin-bottom:30px;"><i class="fas fa-brain"></i></div>
+                <h3>AlphaLLM Core</h3>
+                <p class="feature-desc">
+                    Our proprietary LLM stack for financial intelligence. Fine-tuned Llama-3 and Mistral
+                    models optimized for earnings call parsing, FOMC analysis, and sentiment benchmarks. Includes a
+                    128K+ context window and RAG-native architecture.
+                </p>
+                <div class="tag-cloud">
+                    <span class="tech-tag">AlphaLLM</span>
+                    <span class="tech-tag">Llama-3</span>
+                    <span class="tech-tag">RAG Pipeline</span>
+                    <span class="tech-tag">128K Context</span>
+                </div>
+                <table class="specs-table">
+                    <tr>
+                        <td>Base Models</td>
+                        <td>Llama-3 / Mistral</td>
+                    </tr>
+                    <tr>
+                        <td>Training Data</td>
+                        <td>500B+ Tokens</td>
+                    </tr>
+                    <tr>
+                        <td>Benchmark</td>
+                        <td>94.2% Sentiment Accuracy</td>
+                    </tr>
+                    <tr>
+                        <td>Integration</td>
+                        <td>HuggingFace / Custom</td>
+                    </tr>
+                </table>
+                <a href="alphallm-core.html" class="card-link">EXPLORE LLM MODELS &rarr;</a>
+            </div>
+            <div class="tech-visual">
+                <div class="genai-matrix">
+                    <div class="matrix-cell">THE</div>
+                    <div class="matrix-cell active">FED</div>
+                    <div class="matrix-cell">IS</div>
+                    <div class="matrix-cell">LIKELY</div>
+                    <div class="matrix-cell">TO</div>
+                    <div class="matrix-cell active">PAUSE</div>
+                    <div class="matrix-cell">RATES</div>
+                    <div class="matrix-cell">IN</div>
+                    <div class="matrix-cell">Q3</div>
+                    <div class="matrix-cell">DUE</div>
+                    <div class="matrix-cell">TO</div>
+                    <div class="matrix-cell active">CPI</div>
+                    <div class="matrix-cell">DATA</div>
+                    <div class="matrix-cell">AND</div>
+                    <div class="matrix-cell">JOB</div>
+                    <div class="matrix-cell">GROWTH</div>
+                    <div class="matrix-cell">...</div>
+                    <div class="matrix-cell">0.98</div>
+                    <div class="matrix-cell">0.02</div>
+                    <div class="matrix-cell">INF</div>
+                    <div class="matrix-cell">LAYER</div>
+                    <div class="matrix-cell active">ATTN</div>
+                    <div class="matrix-cell">HEAD</div>
+                    <div class="matrix-cell">7</div>
+                    <div class="matrix-cell">MASK</div>
+                    <div class="matrix-cell">EMBED</div>
+                    <div class="matrix-cell">VEC</div>
+                    <div class="matrix-cell">DIM</div>
+                    <div class="matrix-cell">512</div>
+                    <div class="matrix-cell">LOGIT</div>
+                    <div class="matrix-cell">SOFT</div>
+                    <div class="matrix-cell">MAX</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW: Agentic Finance Systems -->
+    <section class="feature-section">
+        <div class="container feature-grid">
+            <div class="feature-content">
+                <div class="card-icon" style="margin-bottom:30px;"><i class="fas fa-robot"></i></div>
+                <h3>SwarmOS</h3>
+                <p class="feature-desc">
+                    The operating system for financial agents. Autonomous multi-agent swarms powered by WealthAgents
+                    framework.
+                    Features debate-driven consensus (Bull vs. Bear) and Chain-of-Thought reasoning
+                    to conduct industrial-grade due diligence.
+                </p>
+                <div class="tag-cloud">
+                    <span class="tech-tag">LangGraph</span>
+                    <span class="tech-tag">WealthAgents</span>
+                    <span class="tech-tag">Multi-Agent Swarm</span>
+                    <span class="tech-tag">ReAct / CoT</span>
+                </div>
+                <table class="specs-table">
+                    <tr>
+                        <td>Framework</td>
+                        <td>LangGraph / LangChain</td>
+                    </tr>
+                    <tr>
+                        <td>Strategy</td>
+                        <td>Agentic Debate Consensus</td>
+                    </tr>
+                    <tr>
+                        <td>Autonomy</td>
+                        <td>Level 4 (Human-in-Loop)</td>
+                    </tr>
+                    <tr>
+                        <td>Tools</td>
+                        <td>FinData Ingest / Calc</td>
+                    </tr>
+                </table>
+                <a href="swarmos.html" class="card-link">VIEW AGENT SWARM &rarr;</a>
+            </div>
+            <div class="tech-visual">
+                <div class="agent-loop-container">
+                    <div class="loop-ring" style="border-right-color: #000; border-bottom-color: #000;"></div>
+                    <div class="agent-node"><i class="fas fa-eye"></i></div>
+                    <div class="loop-item" style="top: 10px; left: 50%; transform: translateX(-50%);">OBSERVE</div>
+                    <div class="loop-item"
+                        style="bottom: 10px; left: 50%; transform: translateX(-50%); background: #3B82F6;">ACT</div>
+                    <div class="loop-item"
+                        style="top: 50%; right: 10px; transform: translateY(-50%); background: #fff; color: #000; border: 1px solid #000;">
+                        THINK</div>
+                    <div class="loop-item"
+                        style="top: 50%; left: 10px; transform: translateY(-50%); background: #fff; color: #000; border: 1px solid #000;">
+                        PLAN</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Neural Trade Protocol -->
+    <section class="feature-section">
+        <div class="container feature-grid">
+            <div class="feature-content">
+                <div class="card-icon" style="margin-bottom:30px;"><i class="fas fa-network-wired"></i></div>
+                <h3>RL Gymnasium</h3>
+                <p class="feature-desc">
+                    <strong>AlphaRL</strong> - our deep reinforcement learning engine for finance. Support for OpenAI
+                    Gym and PettingZoo environments with realistic slippage, FIX engine support, and multi-agent
+                    RL for complex market-making scenarios.
+                </p>
+                <div class="tag-cloud">
+                    <span class="tech-tag">AlphaRL</span>
+                    <span class="tech-tag">Gymnasium</span>
+                    <span class="tech-tag">PyTorch</span>
+                    <span class="tech-tag">Multi-Agent RL</span>
+                </div>
+                <table class="specs-table">
+                    <tr>
+                        <td>Standard</td>
+                        <td>OpenAI Gym / PettingZoo</td>
+                    </tr>
+                    <tr>
+                        <td>Models</td>
+                        <td>PPO / DDPG / SAC</td>
+                    </tr>
+                    <tr>
+                        <td>Simulation</td>
+                        <td>Realistic Slippage / FIX</td>
+                    </tr>
+                    <tr>
+                        <td>Markets</td>
+                        <td>Market-Making / HFT</td>
+                    </tr>
+                </table>
+                <a href="rl-gymnasium.html" class="card-link">VIEW API SPECS &rarr;</a>
+            </div>
+            <div class="tech-visual" style="background: #f1f1f1;">
+                <!-- Abstract Neural Net / Flow -->
+                <div
+                    style="position:relative; width:100%; height:100%; display:flex; align-items:center; justify-content:center;">
+                    <div
+                        style="width:150px; height:150px; border:2px dashed #000; border-radius:50%; display:flex; align-items:center; justify-content:center; position:relative; background:#fff;">
+                        <span style="font-weight:900; font-family:var(--font-mono);">AGENT</span>
+                        <div style="position:absolute; top:-20px; left:50%; width:2px; height:20px; background:#000;">
+                        </div>
+                        <div
+                            style="position:absolute; bottom:-20px; left:50%; width:2px; height:20px; background:#000;">
+                        </div>
+                        <div style="position:absolute; left:-20px; top:50%; width:20px; height:2px; background:#000;">
+                        </div>
+                        <div style="position:absolute; right:-20px; top:50%; width:20px; height:2px; background:#000;">
+                        </div>
+                    </div>
+                    <div
+                        style="position:absolute; top:20px; right:20px; padding:5px; background:#000; color:#fff; font-family:var(--font-mono); font-size:0.7rem;">
+                        REWARD: +1.24</div>
+                    <div
+                        style="position:absolute; bottom:20px; left:20px; padding:5px; border:1px solid #000; font-family:var(--font-mono); font-size:0.7rem;">
+                        STATE: [0.1, -0.4, 0.9]</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Calculus of Finance -->
+    <section class="feature-section">
+        <div class="container feature-grid">
+            <div class="feature-content">
+                <div class="card-icon" style="margin-bottom:30px;"><i class="fas fa-square-root-alt"></i></div>
+                <h3>Modeling Core</h3>
+                <p class="feature-desc">
+                    The open-source gold standard for quantitative modeling and derivatives pricing. Built on
+                    <strong>QuantLib</strong> with a
+                    high-performance Rust/Python hybrid wrapper. Features CUDA-accelerated Heston, SABR, and Monte Carlo
+                    engines for institutional-grade speed and accuracy.
+                </p>
+                <div class="tag-cloud">
+                    <span class="tech-tag">Agentic Quant</span>
+                    <span class="tech-tag">CUDA</span>
+                    <span class="tech-tag">Rust-Python Hybrid</span>
+                    <span class="tech-tag">Automatic Diff</span>
+                </div>
+                <table class="specs-table">
+                    <tr>
+                        <td>Base Library</td>
+                        <td>Agentic Quant (C++ Core)</td>
+                    </tr>
+                    <tr>
+                        <td>Core Models</td>
+                        <td>Heston / SABR / local Vol</td>
+                    </tr>
+                    <tr>
+                        <td>Speed</td>
+                        <td>1000x vs NumPy (CUDA)</td>
+                    </tr>
+                    <tr>
+                        <td>Bindings</td>
+                        <td>Rust / Python / C++</td>
+                    </tr>
+                </table>
+                <a href="modeling-core.html" class="card-link">EXPLORE LIBRARY &rarr;</a>
+            </div>
+            <div class="tech-visual">
+                <div
+                    style="font-family: 'Times New Roman', serif; font-size: 1.5rem; font-style: italic; text-align: center;">
+                    dS<sub>t</sub> = &mu;S<sub>t</sub>dt + &sigma;S<sub>t</sub>dW<sub>t</sub>
+                    <br><br>
+                    <span style="font-size: 1rem; font-family: var(--font-mono); font-style: normal; color: #555;">//
+                        Geometric Brownian Motion</span>
+                    <br>
+                    <div
+                        style="margin-top:20px; height:2px; width:100%; background:linear-gradient(90deg, transparent, #000, transparent);">
+                    </div>
+                    <br>
+                    C(S,t) = N(d<sub>1</sub>)S<sub>t</sub> - N(d<sub>2</sub>)Ke<sup>-r(T-t)</sup>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. AI Governance Core -->
+    <section class="feature-section">
+        <div class="container feature-grid">
+            <div class="feature-content">
+                <div class="card-icon" style="margin-bottom:30px;"><i class="fas fa-shield-alt"></i></div>
+                <h3>Methods & Explainability</h3>
+                <p class="feature-desc">
+                    Research-grade methods for transparent AI. Integrated explainability tools for model interpretation
+                    with
+                    an immutable ledger audit system. Includes comprehensive regulatory reporting templates and bias
+                    detection
+                    frameworks.
+                </p>
+                <div class="tag-cloud">
+                    <span class="tech-tag">Explainability Tools</span>
+                    <span class="tech-tag">Immutable Ledger</span>
+                    <span class="tech-tag">SEC Compliance</span>
+                    <span class="tech-tag">Audit Trail</span>
+                </div>
+                <table class="specs-table">
+                    <tr>
+                        <td>Explainability</td>
+                        <td>Integrated Explainability</td>
+                    </tr>
+                    <tr>
+                        <td>Immutability</td>
+                        <td>Immutable Audit Ledger</td>
+                    </tr>
+                    <tr>
+                        <td>Templates</td>
+                        <td>SEC / MiFID II / GDPR</td>
+                    </tr>
+                    <tr>
+                        <td>Security</td>
+                        <td>Cryptographic Signatures</td>
+                    </tr>
+                </table>
+                <a href="methods-explainability.html" class="card-link">VIEW FRAMEWORK &rarr;</a>
+            </div>
+            <div class="tech-visual" style="background:#000;">
+                <div style="color:#0f0; font-family:var(--font-mono); font-size:0.8rem; width:100%;">
+                    <div>> CHECKING_COMPLIANCE...</div>
+                    <div style="color:#fff;">[ PASS ] Data Privacy (PII Removed)</div>
+                    <div style="color:#fff;">[ PASS ] Model Drift (&lt; 2%)</div>
+                    <div style="color:#fff;">[ PASS ] Bias Score (0.004)</div>
+                    <div style="color:#fff;">[ PASS ] Execution Limits</div>
+                    <br>
+                    <div style="border:1px solid #3B82F6; padding:10px; color:#3B82F6; text-align:center;">
+                        GOVERNANCE KERNEL<br>ACTIVE
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. EconMetrics Lib -->
+    <section class="feature-section">
+        <div class="container feature-grid">
+            <div class="feature-content">
+                <div class="card-icon" style="margin-bottom:30px;"><i class="fas fa-chart-line"></i></div>
+                <h3>EconMetrics Lib</h3>
+                <p class="feature-desc">
+                    Open-source econometrics for causal inference and macro reasoning. Built on statsmodels and PyMC for
+                    Bayesian structural time-series, difference-in-differences, and instrumental variable analysis.
+                    Essential
+                    for understanding market regime changes and policy impacts.
+                </p>
+                <div class="tag-cloud">
+                    <span class="tech-tag">Causal Inference</span>
+                    <span class="tech-tag">Bayesian Core</span>
+                    <span class="tech-tag">Nomos Inference</span>
+                    <span class="tech-tag">Macro Analysis</span>
+                </div>
+                <table class="specs-table">
+                    <tr>
+                        <td>Core Framework</td>
+                        <td>Bayesian Core / Nomos Inference</td>
+                    </tr>
+                    <tr>
+                        <td>Methods</td>
+                        <td>DiD / IV / RDD / BSTS</td>
+                    </tr>
+                    <tr>
+                        <td>Inference</td>
+                        <td>Bayesian & Frequentist</td>
+                    </tr>
+                    <tr>
+                        <td>Applications</td>
+                        <td>Policy Analysis / Regime Detection</td>
+                    </tr>
+                </table>
+                <a href="econmetrics-lib.html" class="card-link">EXPLORE LIBRARY &rarr;</a>
+            </div>
+            <div class="tech-visual" style="background:#f8f8f8;">
+                <div
+                    style="font-family: 'Times New Roman', serif; font-size: 1.2rem; text-align: center; padding: 20px;">
+                    <div style="margin-bottom: 20px;">
+                        <strong>Difference-in-Differences</strong>
+                    </div>
+                    Y<sub>it</sub> = β<sub>0</sub> + β<sub>1</sub>Treat<sub>i</sub> + β<sub>2</sub>Post<sub>t</sub> +
+                    β<sub>3</sub>(Treat × Post) + ε<sub>it</sub>
+                    <div style="margin-top: 20px; font-family: var(--font-mono); font-size: 0.8rem; color: #555;">
+                        // Causal Effect = β<sub>3</sub>
+                    </div>
+                    <div style="margin-top: 30px; padding: 10px; border: 1px solid #000; background: #fff;">
+                        <div style="font-family: var(--font-mono); font-size: 0.7rem; text-align: left;">
+                            > Policy Impact: +2.4% (p < 0.01)<br>
+                                > Confidence Interval: [1.8%, 3.1%]<br>
+                                > Parallel Trends: VALIDATED
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. QuantCore + Explainability -->
+    <section class="feature-section">
+        <div class="container feature-grid">
+            <div class="feature-content">
+                <div class="card-icon" style="margin-bottom:30px;"><i class="fas fa-project-diagram"></i></div>
+                <h3>QuantCore + Explainability</h3>
+                <p class="feature-desc">
+                    Merging derivatives modeling with explainable AI. Combines Agentic Quant pricing engines with
+                    attribution tools to
+                    decompose option values and Greeks attribution. Understand which market factors drive your model's
+                    predictions in real-time.
+                </p>
+                <div class="tag-cloud">
+                    <span class="tech-tag">Agentic Quant</span>
+                    <span class="tech-tag">Attribution Tools</span>
+                    <span class="tech-tag">Greeks Attribution</span>
+                    <span class="tech-tag">Model Decomposition</span>
+                </div>
+                <table class="specs-table">
+                    <tr>
+                        <td>Integration</td>
+                        <td>Agentic Quant + XAI Stack</td>
+                    </tr>
+                    <tr>
+                        <td>Attribution</td>
+                        <td>Factor Decomposition / SHAP</td>
+                    </tr>
+                    <tr>
+                        <td>Visualization</td>
+                        <td>Interactive Greeks Waterfall</td>
+                    </tr>
+                    <tr>
+                        <td>Use Case</td>
+                        <td>Explainable Derivatives Pricing</td>
+                    </tr>
+                </table>
+                <a href="quantcore-explainability.html" class="card-link">VIEW INTEGRATION &rarr;</a>
+            </div>
+            <div class="tech-visual">
+                <div style="padding: 20px;">
+                    <div style="font-family: var(--font-mono); font-size: 0.8rem; margin-bottom: 15px; color: #000;">
+                        <strong>SHAP Decomposition: Call Option Value</strong>
+                    </div>
+                    <div style="border: 2px solid #000; padding: 15px; background: #fff;">
+                        <div
+                            style="display: flex; justify-content: space-between; margin-bottom: 8px; font-family: var(--font-mono); font-size: 0.75rem;">
+                            <span>Base Value</span>
+                            <span style="background: #eee; padding: 2px 6px;">$8.50</span>
+                        </div>
+                        <div
+                            style="display: flex; justify-content: space-between; margin-bottom: 8px; font-family: var(--font-mono); font-size: 0.75rem;">
+                            <span>+ Volatility ↑</span>
+                            <span style="background: #3B82F6; color: #fff; padding: 2px 6px;">+$2.40</span>
+                        </div>
+                        <div
+                            style="display: flex; justify-content: space-between; margin-bottom: 8px; font-family: var(--font-mono); font-size: 0.75rem;">
+                            <span>+ Time Decay ↓</span>
+                            <span style="background: #f00; color: #fff; padding: 2px 6px;">-$0.80</span>
+                        </div>
+                        <div
+                            style="display: flex; justify-content: space-between; margin-bottom: 8px; font-family: var(--font-mono); font-size: 0.75rem;">
+                            <span>+ Spot Price ↑</span>
+                            <span style="background: #3B82F6; color: #fff; padding: 2px 6px;">+$1.20</span>
+                        </div>
+                        <div style="height: 2px; background: #000; margin: 10px 0;"></div>
+                        <div
+                            style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.9rem; font-weight: 900;">
+                            <span>Final Value</span>
+                            <span style="background: #000; color: #fff; padding: 4px 8px;">$11.30</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Market Reasoning -->
+    <section class="feature-section">
+        <div class="container feature-grid">
+            <div class="feature-content">
+                <div class="card-icon" style="margin-bottom:30px;"><i class="fas fa-brain"></i></div>
+                <h3>Market Reasoning</h3>
+                <p class="feature-desc">
+                    Structured reasoning for financial forecasting. Combines multi-agent debates (Bull vs. Bear) with
+                    causal graph inference and probabilistic forecasting. Integrates LangGraph for agent orchestration
+                    and
+                    DoWhy for causal analysis to generate transparent, defensible market calls.
+                </p>
+                <div class="tag-cloud">
+                    <span class="tech-tag">Agent Debates</span>
+                    <span class="tech-tag">Causal Engine</span>
+                    <span class="tech-tag">Probabilistic Forecasting</span>
+                    <span class="tech-tag">LangGraph</span>
+                </div>
+                <table class="specs-table">
+                    <tr>
+                        <td>Reasoning</td>
+                        <td>Multi-Agent Debate / CoT</td>
+                    </tr>
+                    <tr>
+                        <td>Causal Inference</td>
+                        <td>Causal Engine / WealthGraph</td>
+                    </tr>
+                    <tr>
+                        <td>Forecasting</td>
+                        <td>Probabilistic (Bayesian Core)</td>
+                    </tr>
+                    <tr>
+                        <td>Orchestration</td>
+                        <td>LangGraph Agent Swarms</td>
+                    </tr>
+                </table>
+                <a href="market-reasoning.html" class="card-link">EXPLORE REASONING &rarr;</a>
+            </div>
+            <div class="tech-visual" style="background: #f8f8f8;">
+                <div style="padding: 20px; font-family: var(--font-mono); font-size: 0.75rem;">
+                    <div style="background: #000; color: #0f0; padding: 10px; margin-bottom: 10px;">
+                        > REASONING PIPELINE ACTIVE
+                    </div>
+                    <div style="border: 2px solid #000; padding: 10px; background: #fff; margin-bottom: 8px;">
+                        <strong>Agent[BULL]:</strong> Fed pivot likely → rate cuts<br>
+                        Causal: ↓rates → ↑multiples (+15%)
+                    </div>
+                    <div style="border: 2px solid #000; padding: 10px; background: #fff; margin-bottom: 8px;">
+                        <strong>Agent[BEAR]:</strong> Recession risk high<br>
+                        Causal: ↓GDP → ↓earnings (-20%)
+                    </div>
+                    <div style="border: 2px solid #3B82F6; padding: 10px; background: #fff; color: #000;">
+                        <strong>CONSENSUS:</strong><br>
+                        Forecast: SPX 4800 ± 200 (70% CI)<br>
+                        Probability: 65% upside scenario
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <section id="journey">
+        <div class="container">
+            <span class="section-label">OUR STORY</span>
+            <h2 class="section-heading">From Private Lab<br>to Global Standard.</h2>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="timeline-year">2024 // GENESIS</span>
+                    <h3>Wealthnomics Research Labs</h3>
+                    <p>Founded as a private quantitative research collective, developing internal AI systems
+                        for alpha generation and risk modeling.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-year">2025 Q1 // THE REALIZATION</span>
+                    <h3>The Closed Source Problem</h3>
+                    <p>We realized that keeping our AI infrastructure closed was hindering the speed of evolution. The
+                        problems of mathematical finance are too complex for one silo.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-year">2025 Q3 // THE OPENING</span>
+                    <h3>Wealthnomics AI Foundation</h3>
+                    <p>We released our internal models to the world. Wealthnomics transitions to a non-profit Foundation
+                        to steward the
+                        "Linux of Financial AI".</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-year">2026 // VISION</span>
+                    <h3>The Global Standard</h3>
+                    <p>Our goal is to power 50% of the world's autonomous financial agents with Wealthnomics OSI
+                        standards.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-grid" style="grid-template-columns: repeat(3, 1fr);">
+            <div class="footer-col">
+                <h4>Foundation</h4>
+                <ul class="footer-links">
+                    <li><a href="#initiatives">Initiatives</a></li>
+                    <li><a href="#journey">About Us</a></li>
+                    <li><a href="careers.html">Careers</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Resources</h4>
+                <ul class="footer-links">
+                    <li><a href="blog.html">Research Blog</a></li>
+                    <li><a href="#">Documentation</a></li>
+                    <li><a href="live/live_dashboard.html">Live Demo</a></li>
+                    <li><a href="#">Whitepaper</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Use</a></li>
+                    <li><a href="#">Code of Conduct</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container"
+            style="margin-top: 60px; padding-top: 20px; border-top: 1px solid #222; font-size: 0.8rem; color: #555;">
+            &copy; 2025 Wealthnomics AI Foundation.
+        </div>
+    </footer>
+
+</body>
+
+</html>

@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>Blog — Wealthnomic</title>
+    <title>Wealthnomics AI Foundation | Articles</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description"
         content="Quantitative research, trading insights, and systematic investing perspectives from the Wealthnomic team." />
@@ -15,15 +15,23 @@
 
     <style>
         :root {
+            /* Light Industrial Neo-Brutalism */
             --bg: #ffffff;
-            --text-main: #111111;
-            --text-light: #555555;
-            --border-color: #e0e0e0;
-            --accent: #111111;
+            --card-bg: #ffffff;
+            --text-main: #000000;
+            --text-light: #333333;
+            --accent-green: #3B82F6;
+            /* Hyper Blue */
+            --accent-brand: #000000;
+            --border-color: #000000;
+            --border-width: 3px;
+            --box-shadow: 6px 6px 0px #000000;
+            --font-heading: 'Space Grotesk', sans-serif;
+            --font-mono: 'Space Mono', monospace;
         }
 
         body {
-            font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+            font-family: var(--font-heading);
             background-color: var(--bg);
             color: var(--text-main);
             margin: 0;
@@ -31,7 +39,8 @@
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
-            font-size: 18px;
+            border: var(--border-width) solid var(--border-color);
+            min-height: 100vh;
         }
 
         h1,
@@ -40,34 +49,38 @@
         h4,
         h5,
         h6 {
-            font-weight: 300;
+            font-weight: 800;
             margin-top: 0;
             letter-spacing: -0.02em;
             color: var(--text-main);
+            text-transform: uppercase;
         }
 
         a {
             color: var(--text-main);
             text-decoration: none;
-            transition: opacity 0.2s;
+            transition: 0.1s;
         }
 
         a:hover {
-            opacity: 0.7;
+            background: var(--accent-green);
+            color: #fff;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
+            /* Matched index.html */
             margin: 0 auto;
             padding: 0 40px;
         }
 
         .mono-text {
-            font-family: 'Space Mono', monospace;
-            font-size: 0.85rem;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
             text-transform: uppercase;
-            letter-spacing: 0.15em;
+            letter-spacing: 0.1em;
             color: var(--text-light);
+            font-weight: 700;
         }
 
         /* Navigation */
@@ -75,11 +88,10 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(5px);
-            border-bottom: 1px solid var(--border-color);
+            background: #fff;
+            border-bottom: var(--border-width) solid var(--border-color);
             z-index: 1000;
-            height: 90px;
+            height: 80px;
             display: flex;
             align-items: center;
         }
@@ -92,123 +104,170 @@
         }
 
         .brand {
+            font-weight: 900;
             font-size: 1.8rem;
-            font-weight: 400;
-            letter-spacing: -0.03em;
+            letter-spacing: -0.04em;
             text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .brand span {
+            color: var(--accent-green);
         }
 
         .nav-links {
             display: flex;
-            gap: 50px;
+            gap: 40px;
             list-style: none;
             margin: 0;
             padding: 0;
         }
 
         .nav-links li a {
-            font-size: 1.1rem;
-            font-weight: 400;
+            font-family: var(--font-mono);
+            font-size: 1rem;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--text-light);
+            color: var(--text-main);
+            border-bottom: 2px solid transparent;
         }
 
         .nav-links li a:hover {
+            border-bottom: 2px solid var(--text-main);
+            background: transparent;
             color: var(--text-main);
         }
 
         /* Blog Header */
         header.blog-hero {
-            padding: 160px 0 80px;
-            border-bottom: 1px solid var(--border-color);
+            padding: 180px 0 80px;
+            border-bottom: var(--border-width) solid var(--border-color);
+            background-image: radial-gradient(#000 1px, transparent 1px);
+            background-size: 40px 40px;
         }
 
         .page-title {
-            font-size: 4rem;
+            font-size: 5rem;
             margin-bottom: 20px;
-            line-height: 1.1;
+            line-height: 0.9;
+            text-shadow: 4px 4px 0 #eee;
         }
 
         .page-subtitle {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             color: var(--text-light);
             max-width: 800px;
+            border-left: 5px solid var(--accent-green);
+            padding-left: 20px;
+            font-family: var(--font-mono);
         }
 
         /* Blog Grid */
         .featured-article {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1.5fr 1fr;
             gap: 60px;
             margin-bottom: 100px;
             align-items: center;
             text-decoration: none;
             color: inherit;
+            border: var(--border-width) solid var(--border-color);
+            background: #fff;
+            box-shadow: var(--box-shadow);
+            transition: 0.2s;
+        }
+
+        .featured-article:hover {
+            transform: translate(-5px, -5px);
+            box-shadow: 10px 10px 0 #000;
+            background: #fff;
         }
 
         .featured-image {
-            background: #f5f5f5;
-            height: 400px;
+            background: #f0f0f0;
+            height: 500px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: 'Space Mono', monospace;
+            font-family: var(--font-mono);
             font-size: 1.2rem;
             color: #ccc;
+            border-right: var(--border-width) solid var(--border-color);
+        }
+
+        .featured-content {
+            padding: 40px;
         }
 
         .featured-content h2 {
-            font-size: 2.5rem;
+            font-size: 3rem;
             margin-bottom: 20px;
-            transition: opacity 0.3s;
-        }
-
-        .featured-article:hover h2 {
-            opacity: 0.7;
+            line-height: 1;
         }
 
         .article-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 60px;
+            gap: 40px;
             margin-top: 80px;
         }
 
         .article-card {
             text-decoration: none;
             color: inherit;
+            border: var(--border-width) solid var(--border-color);
+            background: #fff;
+            box-shadow: var(--box-shadow);
+            transition: 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .article-card:hover {
+            transform: translate(-5px, -5px);
+            box-shadow: 10px 10px 0 #000;
         }
 
         .card-image {
             background: #f5f5f5;
             height: 250px;
-            margin-bottom: 30px;
+            margin-bottom: 0px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #ccc;
-            font-family: 'Space Mono', monospace;
+            font-family: var(--font-mono);
+            border-bottom: var(--border-width) solid var(--border-color);
+        }
+
+        .card-body {
+            padding: 30px;
         }
 
         .article-card h3 {
             font-size: 1.8rem;
             margin-bottom: 15px;
-            line-height: 1.3;
+            line-height: 1.1;
         }
 
         .article-meta {
-            font-family: 'Space Mono', monospace;
+            font-family: var(--font-mono);
             font-size: 0.8rem;
-            color: #888;
-            margin-bottom: 10px;
-            display: block;
+            color: #fff;
+            background: #000;
+            display: inline-block;
+            padding: 5px 10px;
+            margin-bottom: 15px;
+            font-weight: 700;
         }
 
         .card-excerpt {
             color: var(--text-light);
-            font-size: 1.1rem;
-            line-height: 1.6;
+            font-size: 1rem;
+            line-height: 1.5;
+            font-family: var(--font-mono);
         }
 
         @media (max-width: 768px) {
@@ -218,7 +277,6 @@
 
             .featured-article {
                 grid-template-columns: 1fr;
-                gap: 40px;
             }
 
             .article-grid {
@@ -228,6 +286,11 @@
             .page-title {
                 font-size: 3rem;
             }
+
+            .featured-image {
+                border-right: none;
+                border-bottom: var(--border-width) solid #000;
+            }
         }
     </style>
 </head>
@@ -236,24 +299,26 @@
 
     <nav>
         <div class="container nav-inner">
-            <a href="index.html" class="brand"
-                style="font-family: 'Etna', 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.8rem; letter-spacing: -0.03em;">
-                Wealth<span style="color: #39e75f;">nomics</span>
+            <a href="index.html" class="brand" style="flex-direction: column; align-items: flex-start; gap: 0;">
+                <span style="font-size: 1.8rem;">Wealthnomics</span>
+                <span
+                    style="font-size: 0.7rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; color: #555;">AI
+                    Foundation</span>
             </a>
             <ul class="nav-links">
-                <li><a href="index.html#solution">Solution</a></li>
-                <li><a href="index.html#performance">Performance</a></li>
-                <li><a href="blog.html" style="color: var(--text-main);">Blog</a></li>
-                <li><a href="investor-login.html"
-                        style="border: 1px solid var(--text-main); padding: 8px 20px; border-radius: 0;">Investor
-                        Login</a></li>
+                <li><a href="index.html#initiatives">Initiatives</a></li>
+                <li><a href="index.html#journey">Journey</a></li>
+                <li><a href="blog.html" class="active-link"
+                        style="border-bottom: 2px solid var(--text-main);">Articles</a></li>
+                <li><a href="live/live_dashboard.html" class="highlight">Live Demo</a></li>
+                <li><a href="https://github.com/wealthnomic" class="btn-nav">GitHub</a></li>
             </ul>
         </div>
     </nav>
 
     <header class="blog-hero">
         <div class="container">
-            <span class="mono-text" style="display: block; margin-bottom: 20px;">// THE BLOG</span>
+            <span class="mono-text" style="display: block; margin-bottom: 20px;">// ARTICLES</span>
             <h1 class="page-title">Calculated Perspectives</h1>
             <p class="page-subtitle">Quantitative research, trading insights, and systematic investing perspectives from
                 the Wealthnomic team.</p>
@@ -263,74 +328,107 @@
     <main class="container" style="padding: 100px 40px;">
         <!-- Featured Article -->
         <a href="blog-post-monte-carlo-simulation.html" class="featured-article">
-            <div class="featured-image"
-                style="background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%); position: relative; overflow: hidden;">
-                <!-- Abstract Graph Visual -->
-                <div
-                    style="position: absolute; bottom: 0; left: 0; width: 100%; height: 60%; background: linear-gradient(to top, rgba(0,0,0,0.05), transparent);">
-                </div>
-                <div
-                    style="position: absolute; width: 150%; height: 2px; background: #999; transform: rotate(-15deg) translateY(50px); top: 60%; left: -20%;">
-                </div>
-                <div
-                    style="position: absolute; width: 150%; height: 1px; background: #ccc; transform: rotate(-15deg) translateY(70px); top: 60%; left: -20%;">
-                </div>
-                <span class="mono-text" style="position: relative; z-index: 1;">MONTE CARLO SIMULATION</span>
+            <div class="featured-image">
+                <span class="mono-text" style="color: #000;">FEATURED_IMG_01</span>
             </div>
             <div class="featured-content">
-                <span class="mono-text" style="margin-bottom: 15px; display: block;">QUANTITATIVE METHODS</span>
+                <span class="article-meta">QUANTITATIVE METHODS</span>
                 <h2>Monte Carlo Methods in Risk Adjusted Portfolios</h2>
-                <p style="font-size: 1.25rem; color: var(--text-light);">
+                <p style="font-size: 1.1rem; font-family:var(--font-mono); margin-bottom:30px;">
                     Why deterministic models fail in chaotic markets, and how probabilistic simulation provides a truer
                     edge.
                 </p>
-                <span class="mono-text" style="margin-top: 30px; display: block; color: var(--text-main);">READ ANALYSIS
+                <span class="mono-text" style="color: var(--text-main); border-bottom: 2px solid #000;">READ ANALYSIS
                     -></span>
             </div>
         </a>
 
-        <div style="border-top: 1px solid var(--border-color); padding-top: 80px;">
-            <span class="mono-text" style="display: block; margin-bottom: 40px;">LATEST RESEARCH</span>
+        <div style="border-top: var(--border-width) solid var(--border-color); padding-top: 80px;">
+            <span class="section-label"
+                style="background:var(--accent-green); color:#000; padding:5px 10px; font-weight:700; border:2px solid #000; display:inline-block; margin-bottom:40px; box-shadow:4px 4px 0 #000;">ALL
+                ARTICLES</span>
 
             <div class="article-grid">
+                <!-- 1. The Art of the Exit -->
                 <a href="blog-post-art-of-exit.html" class="article-card">
-                    <div class="card-image" style="background: #fafafa; position: relative; overflow: hidden;">
-                        <div
-                            style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60%; height: 60%; border: 1px solid #ddd; border-radius: 50%;">
-                        </div>
-                        <div
-                            style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 40%; height: 40%; border: 1px solid #ccc; border-radius: 50%;">
-                        </div>
+                    <div class="card-image">PSYCHOLOGY</div>
+                    <div class="card-body">
+                        <span class="article-meta">TRADING PSYCHOLOGY</span>
+                        <h3>The Art of the Exit</h3>
+                        <p class="card-excerpt">Most systems fail not on entry, but on position sizing and exit
+                            protocols.</p>
                     </div>
-                    <span class="article-meta">TRADING PSYCHOLOGY</span>
-                    <h3>The Art of the Exit</h3>
-                    <p class="card-excerpt">Most systems fail not on entry, but on position sizing and exit protocols.
-                    </p>
                 </a>
 
-                <a href="#" class="article-card">
-                    <div class="card-image" style="background: #fafafa; position: relative;">
-                        <div
-                            style="height: 100%; width: 100%; background-image: radial-gradient(#ccc 1px, transparent 1px); background-size: 20px 20px; opacity: 0.3;">
-                        </div>
+                <!-- 2. The $300k Trap -->
+                <a href="blog-post-300k-trap.html" class="article-card">
+                    <div class="card-image">CAREER</div>
+                    <div class="card-body">
+                        <span class="article-meta">CAREER INSIGHTS</span>
+                        <h3>The $300k Trap</h3>
+                        <p class="card-excerpt">Why mid-level quantitative finance salaries can become a golden cage.
+                        </p>
                     </div>
-                    <span class="article-meta">SYSTEM ARCHITECTURE</span>
-                    <h3>HFT Infrastructure</h3>
-                    <p class="card-excerpt">Latency arbitrage in a fragmented liquidity landscape.</p>
                 </a>
 
-                <a href="#" class="article-card">
-                    <div class="card-image" style="background: #fafafa; position: relative; overflow: hidden;">
-                        <div
-                            style="position: absolute; top: 20px; right: 20px; width: 100px; height: 100px; border: 1px solid #eee; transform: rotate(45deg);">
-                        </div>
-                        <div
-                            style="position: absolute; bottom: 20px; left: 20px; width: 100px; height: 100px; border: 1px solid #eee; transform: rotate(45deg);">
-                        </div>
+                <!-- 3. Advanced Risk Management -->
+                <a href="blog-post-advanced-risk-management.html" class="article-card">
+                    <div class="card-image">RISK</div>
+                    <div class="card-body">
+                        <span class="article-meta">RISK MANAGEMENT</span>
+                        <h3>Advanced Risk Models</h3>
+                        <p class="card-excerpt">Moving beyond VaR to Expected Shortfall and Tail Risk hedging.</p>
                     </div>
-                    <span class="article-meta">AI & ML</span>
-                    <h3>Neural Nets in FX</h3>
-                    <p class="card-excerpt">Applying deep learning to non-stationary currency pairs.</p>
+                </a>
+
+                <!-- 4. Machine Learning in Trading -->
+                <a href="blog-post-machine-learning-trading.html" class="article-card">
+                    <div class="card-image">ML / AI</div>
+                    <div class="card-body">
+                        <span class="article-meta">AI & ML</span>
+                        <h3>ML in Live Markets</h3>
+                        <p class="card-excerpt">Practical applications of supervised learning for alpha generation.</p>
+                    </div>
+                </a>
+
+                <!-- 5. Memento Financial AI -->
+                <a href="blog-post-memento-financial-ai.html" class="article-card">
+                    <div class="card-image">ARCHITECTURE</div>
+                    <div class="card-body">
+                        <span class="article-meta">AI ARCHITECTURE</span>
+                        <h3>Memento Financial AI</h3>
+                        <p class="card-excerpt">Designing memory systems for autonomous trading agents.</p>
+                    </div>
+                </a>
+
+                <!-- 6. Portfolios in Age of Algorithms -->
+                <a href="blog-post-portfolios-age-of-algorithms.html" class="article-card">
+                    <div class="card-image">PORTFOLIO</div>
+                    <div class="card-body">
+                        <span class="article-meta">SYSTEMATIC INVESTING</span>
+                        <h3>Algorithmic Portfolios</h3>
+                        <p class="card-excerpt">Modern portfolio theory in the age of high-frequency execution.</p>
+                    </div>
+                </a>
+
+                <!-- 7. Position Sizing -->
+                <a href="blog-post-position-sizing.html" class="article-card">
+                    <div class="card-image">MATH</div>
+                    <div class="card-body">
+                        <span class="article-meta">QUANTITATIVE MATH</span>
+                        <h3>Optimal Position Sizing</h3>
+                        <p class="card-excerpt">Kelly Criterion and fractional sizing for long-term survival.</p>
+                    </div>
+                </a>
+
+                <!-- 8. Strategy Lifecycle -->
+                <a href="blog-post-trading-strategy-lifecycle.html" class="article-card">
+                    <div class="card-image">LIFECYCLE</div>
+                    <div class="card-body">
+                        <span class="article-meta">SYSTEM DESIGN</span>
+                        <h3>Strategy Lifecycle</h3>
+                        <p class="card-excerpt">From backtest to production: managing alpha decay.</p>
+                    </div>
                 </a>
             </div>
         </div>
@@ -349,7 +447,7 @@
                 </p>
             </div>
             <div style="text-align: right; font-size: 0.8rem; color: #888;">
-                <p>&copy; 2025 Wealthnomic Capital LLC.<br>All Rights Reserved.</p>
+                <p>&copy; 2025 Wealthnomics AI Foundation.<br>All Rights Reserved.</p>
                 <p style="max-width: 300px; margin-left: auto;">
                     Disclaimer: Past performance is not indicative of future results. This website is for
                     informational

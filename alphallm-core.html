@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AlphaLLM Core | Wealthnomics AI Foundation</title>
+    <meta name="description"
+        content="Our proprietary LLM stack for financial intelligence - fine-tuned models for earnings analysis, FOMC parsing, and sentiment benchmarks.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Space+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg: #ffffff;
+            --text-main: #000000;
+            --text-light: #333333;
+            --accent-green: #3B82F6;
+            --border-color: #000000;
+            --border-width: 3px;
+            --box-shadow: 6px 6px 0px #000000;
+            --font-heading: 'Space Grotesk', sans-serif;
+            --font-mono: 'Space Mono', monospace;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-heading);
+            background-color: var(--bg);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            border: var(--border-width) solid var(--border-color);
+            min-height: 100vh;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            margin-top: 0;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+        }
+
+        p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #fff;
+            border-bottom: var(--border-width) solid var(--border-color);
+            z-index: 1000;
+            height: 80px;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .brand {
+            font-weight: 900;
+            font-size: 1.8rem;
+            letter-spacing: -0.04em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-transform: uppercase;
+            color: #000;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li a {
+            font-family: var(--font-mono);
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-bottom: 2px solid transparent;
+            color: #000;
+            text-decoration: none;
+        }
+
+        .nav-links li a:hover {
+            border-bottom: 2px solid var(--text-main);
+        }
+
+        .btn-nav {
+            border: var(--border-width) solid var(--border-color);
+            padding: 10px 25px;
+            background: var(--text-main);
+            color: #fff !important;
+            font-weight: 700;
+            transition: all 0.2s;
+            box-shadow: 4px 4px 0px #000;
+            white-space: nowrap;
+        }
+
+        .btn-nav:hover {
+            background: var(--accent-green);
+            color: #000 !important;
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px #000;
+        }
+
+        .page-hero {
+            padding: 180px 0 80px;
+            border-bottom: var(--border-width) solid var(--border-color);
+            background-image: radial-gradient(#000 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .page-kicker {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            color: #fff;
+            background: var(--accent-green);
+            padding: 5px 10px;
+            display: inline-block;
+            margin-bottom: 20px;
+            font-weight: 700;
+            border: 2px solid #000;
+            box-shadow: 4px 4px 0 #000;
+        }
+
+        .page-title {
+            font-size: 4rem;
+            line-height: 0.95;
+            margin-bottom: 30px;
+        }
+
+        .page-subtitle {
+            font-size: 1.4rem;
+            max-width: 800px;
+            border-left: 5px solid var(--accent-green);
+            padding-left: 20px;
+        }
+
+        .content-section {
+            padding: 80px 0;
+            border-bottom: var(--border-width) solid var(--border-color);
+        }
+
+        .content-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
+        .model-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .model-card {
+            background: #fff;
+            border: var(--border-width) solid #000;
+            padding: 30px;
+            box-shadow: var(--box-shadow);
+            transition: 0.2s;
+        }
+
+        .model-card:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 10px 10px 0 #000;
+        }
+
+        .model-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--accent-green);
+        }
+
+        .model-card .model-size {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            background: #f0f0f0;
+            padding: 5px 10px;
+            display: inline-block;
+            margin-bottom: 15px;
+            border: 1px solid #000;
+        }
+
+        .tag-cloud {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+
+        .tech-tag {
+            background: #eee;
+            border: 1px solid #000;
+            padding: 5px 12px;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .specs-table {
+            width: 100%;
+            border: 2px solid #000;
+            margin: 30px 0;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+        }
+
+        .specs-table tr {
+            border-bottom: 1px solid #000;
+        }
+
+        .specs-table td {
+            padding: 12px 15px;
+            border-right: 1px solid #000;
+        }
+
+        .specs-table td:last-child {
+            border-right: none;
+            font-weight: 700;
+        }
+
+        .use-case-box {
+            background: #f8f8f8;
+            border: 2px solid #000;
+            padding: 25px;
+            margin: 20px 0;
+        }
+
+        .use-case-box h4 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .code-block {
+            background: #111;
+            color: #0f0;
+            padding: 25px;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            border: 2px solid #000;
+            overflow-x: auto;
+            margin: 30px 0;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: var(--accent-green);
+            color: #fff !important;
+            font-family: var(--font-mono);
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            border: var(--border-width) solid #000;
+            box-shadow: var(--box-shadow);
+            transition: 0.2s;
+            margin-top: 20px;
+            text-decoration: none;
+        }
+
+        .cta-button:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 10px 10px 0 #000;
+        }
+
+        footer {
+            padding: 60px 0;
+            background: #fff;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2.5rem;
+            }
+
+            .model-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="container nav-inner">
+            <a href="index.html" class="brand"
+                style="flex-direction: column; align-items: flex-start; gap: 0; background: #2a2a2a; padding: 10px 15px; border-radius: 0;">
+                <span style="font-size: 1.8rem; color: #fff;">Wealthnomics</span>
+                <span
+                    style="font-size: 0.7rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; color: #999;">Intelligence
+                    for Alpha</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html#initiatives">Initiatives</a></li>
+                <li><a href="index.html#journey">Journey</a></li>
+                <li><a href="blog.html">Articles</a></li>
+                <li><a href="live/live_dashboard.html">Live Demo</a></li>
+                <li><a href="signup.html" class="btn-nav" style="background: var(--accent-green);">Sign Up</a></li>
+                <li><a href="login.html" class="btn-nav" style="background: var(--text-main);">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-hero">
+        <div class="container">
+            <span class="page-kicker"><i class="fas fa-brain"></i> INITIATIVE</span>
+            <h1 class="page-title">AlphaLLM Core</h1>
+            <p class="page-subtitle">
+                Our proprietary LLM stack for financial intelligence. Fine-tuned models for earnings call parsing, FOMC
+                analysis, and sentiment benchmarks with 128K+ context windows.
+            </p>
+        </div>
+    </header>
+
+    <section class="content-section">
+        <div class="container">
+            <h2>Our Model Lineup</h2>
+            <p>
+                <strong>AlphaLLM Core</strong> consists of specialized financial language models optimized for
+                institutional-grade analysis. Each model is fine-tuned on proprietary datasets of financial documents,
+                earnings transcripts, and market commentary.
+            </p>
+
+            <div class="model-grid">
+                <!-- Model 1 -->
+                <div class="model-card">
+                    <h3>AlphaLLM-70B</h3>
+                    <span class="model-size">70B Parameters</span>
+                    <p>Our flagship model for comprehensive financial analysis. Based on Llama-3-70B with extensive
+                        fine-tuning on 10+ years of earnings calls, SEC filings, and analyst reports.</p>
+                    <div class="tag-cloud">
+                        <span class="tech-tag">Earnings Analysis</span>
+                        <span class="tech-tag">128K Context</span>
+                        <span class="tech-tag">Multi-turn</span>
+                    </div>
+                </div>
+
+                <!-- Model 2 -->
+                <div class="model-card">
+                    <h3>AlphaLLM-13B</h3>
+                    <span class="model-size">13B Parameters</span>
+                    <p>Optimized for speed and efficiency. Perfect for real-time sentiment analysis and classification
+                        tasks across thousands of documents per minute.</p>
+                    <div class="tag-cloud">
+                        <span class="tech-tag">Sentiment</span>
+                        <span class="tech-tag">Fast Inference</span>
+                        <span class="tech-tag">Classification</span>
+                    </div>
+                </div>
+
+                <!-- Model 3 -->
+                <div class="model-card">
+                    <h3>AlphaLLM-Macro</h3>
+                    <span class="model-size">34B Parameters</span>
+                    <p>Specialized in macroeconomic analysis. Fine-tuned on FOMC minutes, central bank communications,
+                        and economic research papers for policy interpretation.</p>
+                    <div class="tag-cloud">
+                        <span class="tech-tag">FOMC Analysis</span>
+                        <span class="tech-tag">Policy</span>
+                        <span class="tech-tag">Macro</span>
+                    </div>
+                </div>
+
+                <!-- Model 4 -->
+                <div class="model-card">
+                    <h3>AlphaLLM-Embed</h3>
+                    <span class="model-size">1B Parameters</span>
+                    <p>High-performance embedding model for financial document retrieval. Powers our RAG pipeline with
+                        semantic search across millions of documents.</p>
+                    <div class="tag-cloud">
+                        <span class="tech-tag">Embeddings</span>
+                        <span class="tech-tag">RAG</span>
+                        <span class="tech-tag">Search</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <h2>Technical Specifications</h2>
+            <table class="specs-table">
+                <tr>
+                    <td>Base Architecture</td>
+                    <td>Llama-3, Mistral-7B</td>
+                </tr>
+                <tr>
+                    <td>Context Window</td>
+                    <td>128K tokens (extended)</td>
+                </tr>
+                <tr>
+                    <td>Fine-tuning Data</td>
+                    <td>50M+ financial documents</td>
+                </tr>
+                <tr>
+                    <td>Training Compute</td>
+                    <td>H100 GPU Cluster</td>
+                </tr>
+                <tr>
+                    <td>Inference</td>
+                    <td>vLLM with Flash Attention 2</td>
+                </tr>
+                <tr>
+                    <td>API Format</td>
+                    <td>OpenAI-compatible</td>
+                </tr>
+                <tr>
+                    <td>License</td>
+                    <td>Apache 2.0 (Research)</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <h2>Use Cases</h2>
+
+            <div class="use-case-box">
+                <h4><i class="fas fa-chart-line"></i> Earnings Call Analysis</h4>
+                <p>Automatically extract key metrics, sentiment, and forward guidance from quarterly earnings
+                    transcripts. Our models identify management tone shifts and competitive dynamics.</p>
+            </div>
+
+            <div class="use-case-box">
+                <h4><i class="fas fa-balance-scale"></i> FOMC Minutes Parsing</h4>
+                <p>Decode Federal Reserve communications to extract hawkish/dovish signals, policy trajectory, and
+                    economic outlook assessments with institutional-grade accuracy.</p>
+            </div>
+
+            <div class="use-case-box">
+                <h4><i class="fas fa-file-alt"></i> SEC Filing Extraction</h4>
+                <p>Parse 10-K and 10-Q filings to extract material changes, risk factors, and management discussion.
+                    Automatically flag unusual disclosures and accounting changes.</p>
+            </div>
+
+            <div class="use-case-box">
+                <h4><i class="fas fa-comments"></i> Multi-Document QA</h4>
+                <p>Answer complex questions spanning multiple financial documents using our RAG pipeline. "What were the
+                    top 3 concerns mentioned across Q3 earnings for tech companies?"</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <h2>Sample Code</h2>
+            <h3>Using AlphaLLM API (Python)</h3>
+            <div class="code-block">
+                <span style="color: #666;"># OpenAI-compatible API</span>
+                <span style="color: #f92672;">from</span> openai <span style="color: #f92672;">import</span> OpenAI
+
+                client = OpenAI(
+                base_url=<span style="color: #a6e22e;">"https://api.wealthnomics.ai/v1"</span>,
+                api_key=<span style="color: #a6e22e;">"your_api_key"</span>
+                )
+
+                <span style="color: #666;"># Analyze earnings call transcript</span>
+                response = client.chat.completions.create(
+                model=<span style="color: #a6e22e;">"alphallm-70b"</span>,
+                messages=[
+                {<span style="color: #a6e22e;">"role"</span>: <span style="color: #a6e22e;">"system"</span>, <span
+                    style="color: #a6e22e;">"content"</span>: <span style="color: #a6e22e;">"You are a financial
+                    analyst."</span>},
+                {<span style="color: #a6e22e;">"role"</span>: <span style="color: #a6e22e;">"user"</span>, <span
+                    style="color: #a6e22e;">"content"</span>: <span style="color: #a6e22e;">"Analyze this earnings call
+                    and extract key metrics..."</span>}
+                ],
+                temperature=0.3,
+                max_tokens=2000
+                )
+
+                print(response.choices[0].message.content)
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section" style="background: #f8f8f8;">
+        <div class="container" style="text-align: center;">
+            <h2>Access AlphaLLM Models</h2>
+            <p style="max-width: 600px; margin: 0 auto 30px;">
+                Our models are available for research and institutional use. Contact us for API access and custom
+                fine-tuning options.
+            </p>
+            <a href="signup.html" class="cta-button"><i class="fas fa-rocket"></i> Request Access</a>
+            <a href="index.html" class="cta-button"
+                style="background: #fff; color: #000 !important; margin-left: 15px;">Back to Initiatives</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">&copy; 2025 Wealthnomics AI Foundation. All Rights Reserved.</div>
+    </footer>
+
+</body>
+
+</html>
