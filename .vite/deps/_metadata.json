@@ -1,0 +1,52 @@
+{
+  "hash": "22140c12",
+  "configHash": "38a48167",
+  "lockfileHash": "6edc2008",
+  "browserHash": "e669543c",
+  "optimized": {
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "15f098b7",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "116ce355",
+      "needsInterop": true
+    },
+    "react-router-dom": {
+      "src": "../../node_modules/react-router-dom/dist/index.js",
+      "file": "react-router-dom.js",
+      "fileHash": "2dc160e7",
+      "needsInterop": false
+    },
+    "aws-amplify": {
+      "src": "../../node_modules/aws-amplify/dist/esm/index.mjs",
+      "file": "aws-amplify.js",
+      "fileHash": "ed6f36c8",
+      "needsInterop": false
+    },
+    "aws-amplify/auth": {
+      "src": "../../node_modules/aws-amplify/dist/esm/auth/index.mjs",
+      "file": "aws-amplify_auth.js",
+      "fileHash": "0392b0ea",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-HCGKX5ED": {
+      "file": "chunk-HCGKX5ED.js"
+    },
+    "chunk-WNPTCGAH": {
+      "file": "chunk-WNPTCGAH.js"
+    },
+    "chunk-VSAP25AG": {
+      "file": "chunk-VSAP25AG.js"
+    },
+    "chunk-5WRI5ZAA": {
+      "file": "chunk-5WRI5ZAA.js"
+    }
+  }
+}

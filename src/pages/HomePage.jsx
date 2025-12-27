@@ -87,10 +87,6 @@ function HomePage() {
                             <div className="stat-val">&gt;1.8</div>
                             <div className="stat-label">Information Ratio</div>
                         </div>
-                        <div>
-                            <div className="stat-val">$—M</div>
-                            <div className="stat-label">AUM</div>
-                        </div>
                     </div>
                     <p style={{
                         textAlign: 'center',
@@ -115,7 +111,8 @@ function HomePage() {
                         marginBottom: '50px'
                     }}>
                         <span style={{ color: '#00cc7a', fontSize: '3rem', lineHeight: 0, verticalAlign: 'sub' }}>"</span>
-                        Markets will always change. Models will always evolve.<br />
+                        Markets will always change.<br />
+                        Models will always evolve.<br />
                         But the need for <strong>disciplined capital allocation</strong> under uncertainty never goes away.
                         <span style={{ color: '#00cc7a', fontSize: '3rem', lineHeight: 0 }}>"</span>
                     </h2>
@@ -247,7 +244,7 @@ function HomePage() {
                         }}>
                             Global Footprint
                         </div>
-                        <h2 style={{ fontSize: '2.5rem', fontWeight: 400, marginBottom: '30px' }}>
+                        <h2 style={{ fontSize: '2.5rem', fontWeight: 400, marginBottom: '30px', color: '#fff' }}>
                             Trading across <strong style={{ color: '#00cc7a' }}>50+ global markets.</strong>
                         </h2>
                         <p style={{ color: '#aaa', lineHeight: 1.8, marginBottom: '20px' }}>
@@ -328,10 +325,91 @@ function HomePage() {
                 </div>
             </section>
 
+            {/* Founder Section */}
+            <section style={{ padding: '120px 5%', background: '#fafafa' }}>
+                <div style={{ maxWidth: '1100px', margin: '0 auto', display: 'flex', flexWrap: 'wrap', gap: '80px', alignItems: 'center' }}>
+                    <div style={{ flex: '1 1 300px', textAlign: 'center' }}>
+                        <img
+                            src="/ayushman.png"
+                            alt="Ayushman Gupta - Founder"
+                            style={{
+                                width: '280px',
+                                height: '280px',
+                                borderRadius: '50%',
+                                objectFit: 'cover',
+                                border: '4px solid #00cc7a',
+                                boxShadow: '0 20px 50px rgba(0,0,0,0.1)'
+                            }}
+                        />
+                    </div>
+                    <div style={{ flex: '1 1 500px' }}>
+                        <div style={{
+                            fontSize: '0.75rem',
+                            color: '#888',
+                            textTransform: 'uppercase',
+                            letterSpacing: '0.2em',
+                            marginBottom: '15px'
+                        }}>
+                            Founder &amp; Chief Investment Officer
+                        </div>
+                        <h2 style={{ fontSize: '2.5rem', fontWeight: 400, marginBottom: '25px', color: '#1a1a1a' }}>
+                            <strong>Ayushman Gupta</strong>
+                        </h2>
+                        <div style={{
+                            display: 'flex',
+                            gap: '15px',
+                            flexWrap: 'wrap',
+                            marginBottom: '30px'
+                        }}>
+                            <span style={{
+                                background: '#fff',
+                                border: '1px solid #ddd',
+                                padding: '8px 16px',
+                                fontSize: '0.8rem',
+                                fontWeight: 500,
+                                color: '#555'
+                            }}>
+                                Doctorate in AI
+                            </span>
+                            <span style={{
+                                background: '#fff',
+                                border: '1px solid #ddd',
+                                padding: '8px 16px',
+                                fontSize: '0.8rem',
+                                fontWeight: 500,
+                                color: '#555'
+                            }}>
+                                MTech Computational Mathematics
+                            </span>
+                            <span style={{
+                                background: '#00cc7a',
+                                border: '1px solid #00cc7a',
+                                padding: '8px 16px',
+                                fontSize: '0.8rem',
+                                fontWeight: 600,
+                                color: '#fff'
+                            }}>
+                                4 US Patents
+                            </span>
+                        </div>
+                        <p style={{ color: '#555', lineHeight: 1.8, marginBottom: '20px', fontSize: '1.05rem' }}>
+                            A lifelong markets enthusiast, Ayushman has spent over a decade at the intersection of
+                            quantitative finance and machine learning. His journey began with a simple question:
+                            <em> can we build systems that think about risk the way the best investors do?</em>
+                        </p>
+                        <p style={{ color: '#555', lineHeight: 1.8, fontSize: '1.05rem' }}>
+                            After years of research in AI and stochastic systems, he founded Wealthnomics to prove
+                            that disciplined, algorithmic capital allocation isn't just possible — it's the future.
+                            His work has resulted in multiple patents in predictive modeling and autonomous decision systems.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
             {/* CTA Section */}
             <section style={{ background: '#111', padding: '120px 5%', color: '#fff', textAlign: 'center' }}>
                 <div style={{ maxWidth: '700px', margin: '0 auto' }}>
-                    <h2 style={{ fontSize: '2.8rem', marginBottom: '25px', fontWeight: 300 }}>
+                    <h2 style={{ fontSize: '2.8rem', marginBottom: '25px', fontWeight: 300, color: '#fff' }}>
                         Ready to discuss an allocation?
                     </h2>
                     <p style={{ color: '#888', fontSize: '1.1rem', marginBottom: '40px', lineHeight: 1.7 }}>
