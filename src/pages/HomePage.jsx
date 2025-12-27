@@ -2,276 +2,480 @@ import { Link } from 'react-router-dom'
 
 function HomePage() {
     return (
-        <>
-            <header className="hero">
-                <div className="container">
-                    <div className="mono highlight" style={{ marginBottom: '20px' }}>
-                        [ THE AI MODELING STACK FOR GLOBAL FINANCE ]
+        <div style={{ background: '#fff', minHeight: '100vh', color: '#333', overflowX: 'hidden' }}>
+
+            {/* Hero Section */}
+            <header style={{
+                height: '100vh',
+                position: 'relative',
+                display: 'flex',
+                alignItems: 'center',
+                padding: '0 5%',
+                background: 'linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%)',
+                overflow: 'hidden'
+            }}>
+                <div className="network-lines"></div>
+                <div className="floating-orb orb-1"></div>
+                <div className="floating-orb orb-2"></div>
+
+                <div className="container" style={{ position: 'relative', zIndex: 10, maxWidth: '1200px' }}>
+                    <div style={{
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.3em',
+                        color: '#888',
+                        fontSize: '0.75rem',
+                        marginBottom: '30px',
+                        fontWeight: 600
+                    }}>
+                        Systematic Global Macro &bull; AI-Native Capital Management
                     </div>
-                    <h1 className="hero-title">
-                        THE DEFINITIVE FOUNDATION<br />FOR FINANCIAL INTELLIGENCE.
+                    <h1 style={{
+                        fontSize: 'clamp(2.5rem, 5vw, 4.5rem)',
+                        fontWeight: 300,
+                        lineHeight: 1.15,
+                        marginBottom: '35px',
+                        color: '#1a1a1a',
+                        maxWidth: '850px'
+                    }}>
+                        Where <span style={{ fontWeight: 700, color: '#000' }}>disciplined capital</span> meets
+                        <br /><span style={{ fontWeight: 700, color: '#000' }}>machine intelligence.</span>
                     </h1>
-                    <p className="hero-subtitle">
-                        Wealthnomics AI Foundation is the open source home for LLMs, Agentic AI, Reinforcement Learning, and
-                        Quantitative Methods. We are building the essential AI and modeling infrastructure that powers the next
-                        generation of global finance.
+                    <p style={{
+                        fontSize: '1.15rem',
+                        lineHeight: 1.7,
+                        maxWidth: '550px',
+                        marginBottom: '45px',
+                        color: '#555'
+                    }}>
+                        Wealthnomics is a new generation quantitative fund. We deploy AI-driven systematic
+                        strategies across global equities, building alpha through organizational asymmetry
+                        and risk-aware execution.
                     </p>
-                    <div className="cta-group">
-                        <a href="#initiatives" className="cta-button">Explore Our Stack</a>
+                    <div style={{ display: 'flex', gap: '15px', flexWrap: 'wrap' }}>
+                        <a href="#philosophy" className="btn-tower">
+                            INVESTMENT PHILOSOPHY
+                        </a>
+                        <a href="mailto:ir@wealthnomic.com" className="btn-tower light-outline">
+                            INVESTOR RELATIONS
+                        </a>
                     </div>
                 </div>
             </header>
 
-            <div id="initiatives" style={{ borderBottom: 'var(--border-width) solid var(--border-color)' }}>
-                <div className="container" style={{ padding: '100px 40px 60px' }}>
-                    <span className="section-label">THE OPEN SOURCE AI STACK</span>
-                    <h2 className="section-heading">
-                        From Data to Decision:<br />The Complete AI Pipeline.
+            {/* Performance Metrics Bar */}
+            <section style={{ background: '#0a0a0a', color: '#fff', padding: '70px 5%' }}>
+                <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+                    <div style={{
+                        display: 'grid',
+                        gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
+                        gap: '40px',
+                        textAlign: 'center'
+                    }}>
+                        <div>
+                            <div className="stat-val">+41%</div>
+                            <div className="stat-label">CAGR</div>
+                        </div>
+                        <div>
+                            <div className="stat-val">3.19</div>
+                            <div className="stat-label">Sharpe Ratio</div>
+                        </div>
+                        <div>
+                            <div className="stat-val">&lt;11%</div>
+                            <div className="stat-label">Max Drawdown</div>
+                        </div>
+                        <div>
+                            <div className="stat-val">&gt;1.8</div>
+                            <div className="stat-label">Information Ratio</div>
+                        </div>
+                        <div>
+                            <div className="stat-val">$—M</div>
+                            <div className="stat-label">AUM</div>
+                        </div>
+                    </div>
+                    <p style={{
+                        textAlign: 'center',
+                        color: '#666',
+                        fontSize: '0.75rem',
+                        marginTop: '30px',
+                        fontStyle: 'italic'
+                    }}>
+                        Past performance is not indicative of future results. Figures based on backtested and live track record.
+                    </p>
+                </div>
+            </section>
+
+            {/* The Quote / Philosophy Anchor */}
+            <section id="philosophy" style={{ padding: '120px 5%', textAlign: 'center', background: '#fff' }}>
+                <div style={{ maxWidth: '900px', margin: '0 auto' }}>
+                    <h2 style={{
+                        fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)',
+                        fontWeight: 300,
+                        lineHeight: 1.5,
+                        color: '#222',
+                        marginBottom: '50px'
+                    }}>
+                        <span style={{ color: '#00cc7a', fontSize: '3rem', lineHeight: 0, verticalAlign: 'sub' }}>"</span>
+                        Markets will always change. Models will always evolve.<br />
+                        But the need for <strong>disciplined capital allocation</strong> under uncertainty never goes away.
+                        <span style={{ color: '#00cc7a', fontSize: '3rem', lineHeight: 0 }}>"</span>
                     </h2>
+                    <div style={{ width: '80px', height: '3px', background: '#00cc7a', margin: '0 auto' }}></div>
                 </div>
-            </div>
+            </section>
 
-            {/* AlphaLLM Core Section */}
-            <section className="feature-section">
-                <div className="container feature-grid">
-                    <div className="feature-content">
-                        <div className="card-icon" style={{ marginBottom: '30px' }}>
-                            <i className="fas fa-brain"></i>
+            {/* The Origin Story */}
+            <section style={{ padding: '100px 5%', background: '#fafafa' }}>
+                <div style={{ maxWidth: '1100px', margin: '0 auto', display: 'flex', flexWrap: 'wrap', gap: '80px', alignItems: 'center' }}>
+                    <div style={{ flex: '1 1 450px' }}>
+                        <div style={{
+                            fontSize: '0.75rem',
+                            color: '#888',
+                            textTransform: 'uppercase',
+                            letterSpacing: '0.2em',
+                            marginBottom: '20px'
+                        }}>
+                            Our Genesis
                         </div>
-                        <h3>AlphaLLM Core</h3>
-                        <p className="feature-desc">
-                            Our proprietary LLM stack for financial intelligence. Fine-tuned Llama-3 and Mistral
-                            models optimized for earnings call parsing, FOMC analysis, and sentiment benchmarks. Includes a
-                            128K+ context window and RAG-native architecture.
+                        <h2 style={{ fontSize: '2.5rem', fontWeight: 400, marginBottom: '30px', color: '#1a1a1a' }}>
+                            Born from the belief that <strong>alpha is systematic.</strong>
+                        </h2>
+                        <p style={{ color: '#555', lineHeight: 1.8, marginBottom: '20px', fontSize: '1.05rem' }}>
+                            Wealthnomics was founded by a team of engineers, data scientists, and portfolio managers
+                            who saw a fundamental inefficiency in how capital is managed: <strong>human bias</strong>.
                         </p>
-                        <div className="tag-cloud">
-                            <span className="tech-tag">AlphaLLM</span>
-                            <span className="tech-tag">Llama-3</span>
-                            <span className="tech-tag">RAG Pipeline</span>
-                            <span className="tech-tag">128K Context</span>
-                        </div>
-                        <table className="specs-table">
-                            <tbody>
-                                <tr><td>Base Models</td><td>Llama-3 / Mistral</td></tr>
-                                <tr><td>Training Data</td><td>500B+ Tokens</td></tr>
-                                <tr><td>Benchmark</td><td>94.2% Sentiment Accuracy</td></tr>
-                                <tr><td>Integration</td><td>HuggingFace / Custom</td></tr>
-                            </tbody>
-                        </table>
-                        <Link to="/alphallm-core" className="card-link">EXPLORE LLM MODELS →</Link>
+                        <p style={{ color: '#555', lineHeight: 1.8, marginBottom: '20px', fontSize: '1.05rem' }}>
+                            Discretionary managers anchor to narratives. They get tired. They override their own
+                            rules under pressure. We asked: what if we could build an organization that never does?
+                        </p>
+                        <p style={{ color: '#555', lineHeight: 1.8, fontSize: '1.05rem' }}>
+                            The result is a <strong>fully autonomous investment engine</strong> — one that executes
+                            policy with perfect consistency, learns from live capital feedback, and operates under
+                            an immutable risk constitution.
+                        </p>
                     </div>
-                    <div className="tech-visual">
-                        <div className="genai-matrix">
-                            {['THE', 'FED', 'IS', 'LIKELY', 'TO', 'PAUSE', 'RATES', 'IN',
-                                'Q3', 'DUE', 'TO', 'CPI', 'DATA', 'AND', 'JOB', 'GROWTH',
-                                '...', '0.98', '0.02', 'INF', 'LAYER', 'ATTN', 'HEAD', '7',
-                                'MASK', 'EMBED', 'VEC', 'DIM', '512', 'LOGIT', 'SOFT', 'MAX'
-                            ].map((text, i) => (
-                                <div
-                                    key={i}
-                                    className={`matrix-cell ${['FED', 'PAUSE', 'CPI', 'ATTN'].includes(text) ? 'active' : ''}`}
-                                >
-                                    {text}
-                                </div>
-                            ))}
+                    <div style={{ flex: '1 1 350px' }}>
+                        <div style={{
+                            background: '#111',
+                            borderRadius: '8px',
+                            padding: '40px',
+                            color: '#00cc7a',
+                            fontFamily: 'monospace',
+                            fontSize: '13px',
+                            lineHeight: 1.6,
+                            boxShadow: '0 30px 60px rgba(0,0,0,0.15)'
+                        }}>
+                            <span style={{ color: '#888' }}># DECISION LOG — ENTRY 7,432</span><br /><br />
+                            &gt; market_regime: <span style={{ color: '#fff' }}>VOLATILE</span><br />
+                            &gt; human_recommendation: <span style={{ color: '#ff6b6b' }}>OVERRIDE_STOP</span><br />
+                            &gt; system_action: <span style={{ color: '#00cc7a' }}>HOLD_POLICY</span><br /><br />
+                            <span style={{ color: '#888' }}># Outcome: +2.3% vs benchmark</span><br />
+                            <span style={{ color: '#888' }}># Lesson: consistency &gt; conviction</span>
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* SwarmOS Section */}
-            <section className="feature-section">
-                <div className="container feature-grid">
-                    <div className="feature-content">
-                        <div className="card-icon" style={{ marginBottom: '30px' }}>
-                            <i className="fas fa-robot"></i>
+            {/* Investment Pillars */}
+            <section style={{ padding: '120px 5%', background: '#fff' }}>
+                <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+                    <div style={{ textAlign: 'center', marginBottom: '70px' }}>
+                        <div style={{
+                            fontSize: '0.75rem',
+                            color: '#888',
+                            textTransform: 'uppercase',
+                            letterSpacing: '0.2em',
+                            marginBottom: '15px'
+                        }}>
+                            Our Edge
                         </div>
-                        <h3>SwarmOS</h3>
-                        <p className="feature-desc">
-                            The operating system for financial agents. Autonomous multi-agent swarms powered by WealthAgents
-                            framework. Features debate-driven consensus (Bull vs. Bear) and Chain-of-Thought reasoning
-                            to conduct industrial-grade due diligence.
-                        </p>
-                        <div className="tag-cloud">
-                            <span className="tech-tag">Multi-Agent</span>
-                            <span className="tech-tag">Autonomous</span>
-                            <span className="tech-tag">Chain-of-Thought</span>
-                            <span className="tech-tag">Debate Protocol</span>
-                        </div>
-                        <table className="specs-table">
-                            <tbody>
-                                <tr><td>Agent Types</td><td>Bull / Bear / Analyst</td></tr>
-                                <tr><td>Protocol</td><td>Debate-Driven Consensus</td></tr>
-                                <tr><td>Memory</td><td>Long-term with RAG</td></tr>
-                                <tr><td>Tools</td><td>API / Browser / Code</td></tr>
-                            </tbody>
-                        </table>
-                        <Link to="/swarmos" className="card-link">EXPLORE AGENTS →</Link>
+                        <h2 style={{ fontSize: '2.5rem', fontWeight: 400, color: '#1a1a1a' }}>
+                            Four pillars of <strong>organizational asymmetry.</strong>
+                        </h2>
                     </div>
-                    <div className="tech-visual">
-                        <div className="agent-loop-container">
-                            <div className="loop-ring"></div>
-                            <div className="agent-node">AI</div>
-                            <div className="loop-item" style={{ top: '20%', left: '10%' }}>ANALYZE</div>
-                            <div className="loop-item" style={{ top: '70%', left: '15%' }}>DEBATE</div>
-                            <div className="loop-item" style={{ top: '20%', right: '10%' }}>DECIDE</div>
-                            <div className="loop-item" style={{ top: '70%', right: '15%' }}>EXECUTE</div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* FinGPT Stack Section */}
-            <section className="feature-section">
-                <div className="container feature-grid">
-                    <div className="feature-content">
-                        <div className="card-icon" style={{ marginBottom: '30px' }}>
-                            <i className="fas fa-database"></i>
-                        </div>
-                        <h3>FinGPT Stack</h3>
-                        <p className="feature-desc">
-                            Production-grade financial data infrastructure. Real-time market feeds, alternative data processing,
-                            and unified data lake architecture. Powers the entire Wealthnomics AI stack with clean, normalized data.
-                        </p>
-                        <div className="tag-cloud">
-                            <span className="tech-tag">Real-time</span>
-                            <span className="tech-tag">Alt Data</span>
-                            <span className="tech-tag">Data Lake</span>
-                            <span className="tech-tag">ETL Pipeline</span>
-                        </div>
-                        <Link to="/fingpt-stack" className="card-link">EXPLORE DATA STACK →</Link>
-                    </div>
-                    <div className="tech-visual">
-                        <div className="terminal-window">
-                            <div className="terminal-line">Loading market data...</div>
-                            <div className="terminal-line">SPY: $503.42 (+1.2%)</div>
-                            <div className="terminal-line">VIX: 14.23 (-0.8%)</div>
-                            <div className="terminal-line">Processing 1.2M events/sec</div>
-                            <div className="terminal-line blink-cursor">Ready for inference</div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Modeling Core Section */}
-            <section className="feature-section">
-                <div className="container feature-grid">
-                    <div className="feature-content">
-                        <div className="card-icon" style={{ marginBottom: '30px' }}>
-                            <i className="fas fa-chart-line"></i>
-                        </div>
-                        <h3>Modeling Core</h3>
-                        <p className="feature-desc">
-                            Advanced quantitative modeling library. Stochastic processes, Monte Carlo simulations,
-                            portfolio optimization, and risk analytics. Built for both research and production.
-                        </p>
-                        <div className="tag-cloud">
-                            <span className="tech-tag">Stochastic</span>
-                            <span className="tech-tag">Monte Carlo</span>
-                            <span className="tech-tag">Optimization</span>
-                            <span className="tech-tag">Risk Models</span>
-                        </div>
-                        <Link to="/modeling-core" className="card-link">EXPLORE MODELS →</Link>
-                    </div>
-                    <div className="tech-visual">
-                        <div style={{ textAlign: 'center', fontFamily: 'var(--font-mono)', fontSize: '0.9rem' }}>
-                            <div style={{ marginBottom: '20px', fontWeight: 700 }}>MONTE CARLO SIMULATION</div>
-                            <div style={{ display: 'flex', justifyContent: 'center', gap: '5px', height: '200px', alignItems: 'flex-end' }}>
-                                {[60, 75, 90, 95, 100, 95, 90, 80, 70, 55, 45, 35].map((h, i) => (
-                                    <div
-                                        key={i}
-                                        style={{
-                                            width: '20px',
-                                            height: `${h}%`,
-                                            background: h > 90 ? 'var(--accent-green)' : '#ddd',
-                                            border: '1px solid #000'
-                                        }}
-                                    />
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* RL Gymnasium Section */}
-            <section className="feature-section">
-                <div className="container feature-grid">
-                    <div className="feature-content">
-                        <div className="card-icon" style={{ marginBottom: '30px' }}>
-                            <i className="fas fa-gamepad"></i>
-                        </div>
-                        <h3>RL Gymnasium</h3>
-                        <p className="feature-desc">
-                            Reinforcement learning environments for trading agents. OpenAI Gym-compatible interfaces
-                            for backtesting RL strategies. Supports market making, execution, and portfolio management tasks.
-                        </p>
-                        <div className="tag-cloud">
-                            <span className="tech-tag">OpenAI Gym</span>
-                            <span className="tech-tag">PPO/SAC</span>
-                            <span className="tech-tag">Market Sim</span>
-                            <span className="tech-tag">Backtesting</span>
-                        </div>
-                        <Link to="/rl-gymnasium" className="card-link">EXPLORE RL ENV →</Link>
-                    </div>
-                    <div className="tech-visual">
-                        <div style={{ textAlign: 'center', fontFamily: 'var(--font-mono)' }}>
-                            <div style={{ fontSize: '3rem', fontWeight: 900, marginBottom: '10px' }}>🎮</div>
-                            <div style={{ fontSize: '0.9rem', color: 'var(--text-light)' }}>
-                                AGENT TRAINING IN PROGRESS<br />
-                                Episode: 1,247 | Reward: +2.3%
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Journey Section */}
-            <section id="journey">
-                <div className="container">
-                    <span className="section-label">OUR JOURNEY</span>
-                    <h2 className="section-heading">Building the Future of Finance</h2>
-
-                    <div className="timeline">
-                        <div className="timeline-item">
-                            <div className="timeline-year">2024 Q1</div>
-                            <h3>Foundation Launch</h3>
-                            <p style={{ fontFamily: 'var(--font-mono)', fontSize: '1rem' }}>
-                                Established the Wealthnomics AI Foundation. Released initial AlphaLLM models
-                                and core infrastructure.
+                    <div style={{
+                        display: 'grid',
+                        gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+                        gap: '30px'
+                    }}>
+                        <div className="pillar-card">
+                            <div className="pillar-number">01</div>
+                            <h3>Risk Constitution</h3>
+                            <p>
+                                Every model operates inside an immutable framework: drawdown limits, exposure ceilings,
+                                liquidity filters, correlation shock resistance. No exceptions. No overrides.
                             </p>
                         </div>
-
-                        <div className="timeline-item">
-                            <div className="timeline-year">2024 Q2</div>
-                            <h3>SwarmOS Alpha</h3>
-                            <p style={{ fontFamily: 'var(--font-mono)', fontSize: '1rem' }}>
-                                Launched multi-agent framework with debate-driven consensus protocols.
-                                First successful autonomous analysis runs.
+                        <div className="pillar-card">
+                            <div className="pillar-number">02</div>
+                            <h3>Portfolio-Level Learning</h3>
+                            <p>
+                                We don't just optimize trades — we optimize capital flows. The system learns when
+                                <em> not</em> to allocate, when diversification breaks, and how much conviction
+                                deserves real dollars.
                             </p>
                         </div>
-
-                        <div className="timeline-item">
-                            <div className="timeline-year">2024 Q3</div>
-                            <h3>Production Ready</h3>
-                            <p style={{ fontFamily: 'var(--font-mono)', fontSize: '1rem' }}>
-                                Deployed production infrastructure. Live trading signals and real-time
-                                market analysis capabilities enabled.
+                        <div className="pillar-card">
+                            <div className="pillar-number">03</div>
+                            <h3>Live Capital Feedback</h3>
+                            <p>
+                                Real money creates slippage, liquidity stress, and behavioral pressure. Our models
+                                learn from decisions made under live stress — data that cannot be bought or simulated.
                             </p>
                         </div>
-
-                        <div className="timeline-item">
-                            <div className="timeline-year">2025</div>
-                            <h3>Scale & Expand</h3>
-                            <p style={{ fontFamily: 'var(--font-mono)', fontSize: '1rem' }}>
-                                Expanding to global markets. Enhanced LLM capabilities and new RL environments.
-                                Growing the open source community.
+                        <div className="pillar-card">
+                            <div className="pillar-number">04</div>
+                            <h3>Execution Discipline</h3>
+                            <p>
+                                Humans get tired. They anchor to narratives. They override rules under pressure.
+                                Wealthnomics executes policy consistently, logs every decision, and never violates constraints.
                             </p>
                         </div>
                     </div>
                 </div>
             </section>
-        </>
+
+            {/* Global Presence */}
+            <section style={{ padding: '100px 5%', background: '#0a0a0a', color: '#fff' }}>
+                <div style={{ maxWidth: '1100px', margin: '0 auto', display: 'flex', flexWrap: 'wrap', gap: '60px', alignItems: 'center' }}>
+                    <div style={{ flex: '1 1 400px' }}>
+                        <div style={{
+                            fontSize: '0.75rem',
+                            color: '#666',
+                            textTransform: 'uppercase',
+                            letterSpacing: '0.2em',
+                            marginBottom: '20px'
+                        }}>
+                            Global Footprint
+                        </div>
+                        <h2 style={{ fontSize: '2.5rem', fontWeight: 400, marginBottom: '30px' }}>
+                            Trading across <strong style={{ color: '#00cc7a' }}>50+ global markets.</strong>
+                        </h2>
+                        <p style={{ color: '#aaa', lineHeight: 1.8, marginBottom: '20px' }}>
+                            Our systematic strategies span U.S. equities, European indices, Asian markets,
+                            and emerging economies. We seek alpha where others see noise.
+                        </p>
+                        <ul style={{ listStyle: 'none', padding: 0, color: '#888' }}>
+                            <li style={{ padding: '10px 0', borderBottom: '1px solid #222' }}>
+                                <strong style={{ color: '#fff' }}>Americas:</strong> NYSE, NASDAQ, TSX
+                            </li>
+                            <li style={{ padding: '10px 0', borderBottom: '1px solid #222' }}>
+                                <strong style={{ color: '#fff' }}>Europe:</strong> LSE, Euronext, XETRA
+                            </li>
+                            <li style={{ padding: '10px 0', borderBottom: '1px solid #222' }}>
+                                <strong style={{ color: '#fff' }}>Asia-Pacific:</strong> NSE, SGX, ASX, HKEX
+                            </li>
+                        </ul>
+                    </div>
+                    <div style={{ flex: '1 1 400px', textAlign: 'center' }}>
+                        <div style={{
+                            fontSize: '8rem',
+                            fontWeight: 800,
+                            color: '#1a1a1a',
+                            lineHeight: 1
+                        }}>
+                            24<span style={{ fontSize: '4rem' }}>/</span>5
+                        </div>
+                        <div style={{ color: '#666', textTransform: 'uppercase', letterSpacing: '0.15em', fontSize: '0.85rem' }}>
+                            Market Coverage
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Why Wealthnomics — For Investors */}
+            <section style={{ padding: '120px 5%', background: '#fff' }}>
+                <div style={{ maxWidth: '900px', margin: '0 auto', textAlign: 'center' }}>
+                    <div style={{
+                        fontSize: '0.75rem',
+                        color: '#888',
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.2em',
+                        marginBottom: '20px'
+                    }}>
+                        For Investors
+                    </div>
+                    <h2 style={{ fontSize: '2.5rem', fontWeight: 400, marginBottom: '50px', color: '#1a1a1a' }}>
+                        Why allocate to <strong>Wealthnomics?</strong>
+                    </h2>
+                    <div style={{
+                        display: 'grid',
+                        gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+                        gap: '40px',
+                        textAlign: 'left'
+                    }}>
+                        <div>
+                            <h4 style={{ color: '#00cc7a', marginBottom: '15px' }}>Uncorrelated Alpha</h4>
+                            <p style={{ color: '#555', lineHeight: 1.7 }}>
+                                Our systematic approach generates returns with low correlation to traditional
+                                long-only equity and fixed income portfolios.
+                            </p>
+                        </div>
+                        <div>
+                            <h4 style={{ color: '#00cc7a', marginBottom: '15px' }}>Risk-First Design</h4>
+                            <p style={{ color: '#555', lineHeight: 1.7 }}>
+                                Drawdown control is not an afterthought — it's encoded into every layer of our
+                                investment process, from signal generation to execution.
+                            </p>
+                        </div>
+                        <div>
+                            <h4 style={{ color: '#00cc7a', marginBottom: '15px' }}>Transparency</h4>
+                            <p style={{ color: '#555', lineHeight: 1.7 }}>
+                                We provide investors with detailed attribution reports, risk analytics, and
+                                real-time portfolio insights through our secure investor portal.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* CTA Section */}
+            <section style={{ background: '#111', padding: '120px 5%', color: '#fff', textAlign: 'center' }}>
+                <div style={{ maxWidth: '700px', margin: '0 auto' }}>
+                    <h2 style={{ fontSize: '2.8rem', marginBottom: '25px', fontWeight: 300 }}>
+                        Ready to discuss an allocation?
+                    </h2>
+                    <p style={{ color: '#888', fontSize: '1.1rem', marginBottom: '40px', lineHeight: 1.7 }}>
+                        We work with institutional investors, family offices, and qualified individuals
+                        who share our long-term, risk-aware perspective.
+                    </p>
+                    <div style={{ display: 'flex', gap: '15px', justifyContent: 'center', flexWrap: 'wrap' }}>
+                        <a href="mailto:ir@wealthnomic.com" className="btn-tower light">
+                            CONTACT INVESTOR RELATIONS
+                        </a>
+                        <Link to="/products" className="btn-tower light-border">
+                            VIEW TECHNOLOGY STACK
+                        </Link>
+                    </div>
+                </div>
+            </section>
+
+            <style>{`
+                .btn-tower {
+                    display: inline-block;
+                    padding: 16px 32px;
+                    border: 2px solid #1a1a1a;
+                    background: #1a1a1a;
+                    color: #fff;
+                    text-decoration: none;
+                    font-weight: 600;
+                    letter-spacing: 0.1em;
+                    font-size: 0.8rem;
+                    transition: all 0.3s ease;
+                }
+                .btn-tower:hover {
+                    transform: translateY(-2px);
+                    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+                }
+                .btn-tower.light {
+                    border-color: #fff;
+                    background: #fff;
+                    color: #000;
+                }
+                .btn-tower.light:hover {
+                    background: #00cc7a;
+                    border-color: #00cc7a;
+                    color: #fff;
+                }
+                .btn-tower.light-outline {
+                    background: transparent;
+                    color: #1a1a1a;
+                }
+                .btn-tower.light-outline:hover {
+                    background: #1a1a1a;
+                    color: #fff;
+                }
+                .btn-tower.light-border {
+                    background: transparent;
+                    border-color: #555;
+                    color: #fff;
+                }
+                .btn-tower.light-border:hover {
+                    border-color: #fff;
+                }
+
+                .stat-val {
+                    font-size: 3rem;
+                    font-weight: 700;
+                    color: #00cc7a;
+                    margin-bottom: 8px;
+                }
+                .stat-label {
+                    text-transform: uppercase;
+                    letter-spacing: 0.15em;
+                    font-size: 0.7rem;
+                    color: #666;
+                }
+
+                .pillar-card {
+                    padding: 40px;
+                    background: #fafafa;
+                    border: 1px solid #eee;
+                    transition: all 0.3s ease;
+                    position: relative;
+                }
+                .pillar-card:hover {
+                    transform: translateY(-5px);
+                    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+                    border-color: #00cc7a;
+                }
+                .pillar-card .pillar-number {
+                    font-size: 0.75rem;
+                    font-weight: 700;
+                    color: #00cc7a;
+                    margin-bottom: 15px;
+                    letter-spacing: 0.1em;
+                }
+                .pillar-card h3 {
+                    font-size: 1.3rem;
+                    margin-bottom: 15px;
+                    color: #1a1a1a;
+                    font-weight: 600;
+                }
+                .pillar-card p {
+                    color: #666;
+                    line-height: 1.7;
+                    font-size: 0.95rem;
+                }
+
+                .network-lines {
+                    position: absolute;
+                    top: 0; left: 0; right: 0; bottom: 0;
+                    background-image: 
+                        linear-gradient(rgba(0,0,0,0.02) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(0,0,0,0.02) 1px, transparent 1px);
+                    background-size: 50px 50px;
+                    z-index: 1;
+                }
+
+                .floating-orb {
+                    position: absolute;
+                    border-radius: 50%;
+                    filter: blur(80px);
+                    z-index: 0;
+                }
+                .orb-1 {
+                    width: 400px;
+                    height: 400px;
+                    background: rgba(0, 204, 122, 0.15);
+                    top: -100px;
+                    right: 10%;
+                    animation: float 15s ease-in-out infinite;
+                }
+                .orb-2 {
+                    width: 300px;
+                    height: 300px;
+                    background: rgba(100, 100, 255, 0.08);
+                    bottom: -50px;
+                    left: 5%;
+                    animation: float 20s ease-in-out infinite reverse;
+                }
+
+                @keyframes float {
+                    0%, 100% { transform: translateY(0) translateX(0); }
+                    50% { transform: translateY(-30px) translateX(20px); }
+                }
+            `}</style>
+        </div>
     )
 }
 

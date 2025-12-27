@@ -62,6 +62,9 @@ function Footer() {
                         <li>
                             <a href="mailto:investors@wealthnomic.com">investors@wealthnomic.com</a>
                         </li>
+                        <li>
+                            <a href="tel:+918887365246">+91 8887365246</a>
+                        </li>
                     </ul>
                     <p style={{ fontSize: '0.8rem', color: '#888', marginTop: '30px', maxWidth: '250px' }}>
                         © 2025 Wealthnomics AI Foundation.<br />All Rights Reserved.

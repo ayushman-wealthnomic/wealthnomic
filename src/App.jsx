@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import HomePage from './pages/HomePage'
+import ProductsPage from './pages/ProductsPage'
 import BlogPage from './pages/BlogPage'
 import BlogPostPage from './pages/BlogPostPage'
 import SignupPage from './pages/SignupPage'
@@ -14,13 +15,16 @@ import LiveDashboardPage from './pages/LiveDashboardPage'
 import ModelingCorePage from './pages/ModelingCorePage'
 import RLGymnasiumPage from './pages/RLGymnasiumPage'
 import BacktestLoginPage from './pages/BacktestLoginPage'
+import ScrollToTop from './components/ScrollToTop'
 
 function App() {
     return (
         <div className="app">
+            <ScrollToTop />
             <Routes>
                 {/* Pages with standard layout */}
                 <Route path="/" element={<><Navbar /><HomePage /><Footer /></>} />
+                <Route path="/products" element={<><Navbar /><ProductsPage /><Footer /></>} />
                 <Route path="/blog" element={<><Navbar /><BlogPage /><Footer /></>} />
                 <Route path="/blog/:slug" element={<><Navbar /><BlogPostPage /><Footer /></>} />
                 <Route path="/careers" element={<><Navbar /><CareersPage /><Footer /></>} />

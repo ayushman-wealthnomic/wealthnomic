@@ -40,6 +40,14 @@ function Navbar() {
 
                 <ul className="nav-links">
                     <li>
+                        <Link
+                            to="/products"
+                            style={location.pathname === '/products' ? { borderBottom: '2px solid var(--text-main)' } : {}}
+                        >
+                            Products
+                        </Link>
+                    </li>
+                    <li>
                         <Link to="/#initiatives">Initiatives</Link>
                     </li>
                     <li>
