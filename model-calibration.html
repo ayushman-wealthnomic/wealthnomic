@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Calibration | Stochastic Engine | Wealthnomics AI Foundation</title>
+    <meta name="description"
+        content="Fitting Heston, SABR, and Local Volatility Models to Market Data. Complete guide to volatility surface calibration with optimization techniques.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Space+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- MathJax for LaTeX rendering -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        :root {
+            --bg: #ffffff;
+            --text-main: #000000;
+            --text-light: #333333;
+            --accent-green: #3B82F6;
+            --border-color: #000000;
+            --border-width: 3px;
+            --box-shadow: 6px 6px 0px #000000;
+            --font-heading: 'Space Grotesk', sans-serif;
+            --font-mono: 'Space Mono', monospace;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-heading);
+            background-color: var(--bg);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            border: var(--border-width) solid var(--border-color);
+            min-height: 100vh;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            margin-top: 0;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        h1 {
+            text-transform: uppercase;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-top: 60px;
+            margin-bottom: 20px;
+            border-bottom: 3px solid var(--accent-green);
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            margin-top: 40px;
+            margin-bottom: 15px;
+            color: var(--accent-green);
+        }
+
+        p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        ul,
+        ol {
+            color: var(--text-light);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            padding-left: 25px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        a {
+            color: var(--accent-green);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #fff;
+            border-bottom: var(--border-width) solid var(--border-color);
+            z-index: 1000;
+            height: 80px;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .brand {
+            font-weight: 900;
+            font-size: 1.8rem;
+            letter-spacing: -0.04em;
+            text-transform: uppercase;
+            display: flex;
+            color: #000;
+        }
+
+        .brand:hover {
+            background: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li a {
+            font-family: var(--font-mono);
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #000;
+        }
+
+        .article-hero {
+            padding: 160px 0 60px;
+            border-bottom: var(--border-width) solid var(--border-color);
+            background: #f8f8f8;
+        }
+
+        .article-kicker {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            color: var(--accent-green);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .article-title {
+            font-size: 2.8rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .article-meta {
+            font-size: 0.95rem;
+            color: #666;
+        }
+
+        .article-content {
+            padding: 60px 0 80px;
+        }
+
+        .formula-box {
+            background: #f0f4f8;
+            border: 2px solid #000;
+            padding: 25px 30px;
+            margin: 30px 0;
+            font-size: 1.1rem;
+            text-align: center;
+            overflow-x: auto;
+        }
+
+        .formula-box .label {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: #555;
+            display: block;
+            margin-top: 15px;
+            text-align: right;
+        }
+
+        .info-box {
+            background: #e0f2fe;
+            border-left: 5px solid var(--accent-green);
+            padding: 20px 25px;
+            margin: 30px 0;
+        }
+
+        .info-box strong {
+            color: #000;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            font-size: 0.95rem;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            border: 2px solid #000;
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        .comparison-table th {
+            background: #000;
+            color: #fff;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: #f8f8f8;
+        }
+
+        .code-block {
+            background: #111;
+            color: #0f0;
+            padding: 25px;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            border: 2px solid #000;
+            overflow-x: auto;
+            margin: 30px 0;
+        }
+
+        .code-block .comment {
+            color: #666;
+        }
+
+        .code-block .keyword {
+            color: #f92672;
+        }
+
+        .code-block .string {
+            color: #a6e22e;
+        }
+
+        .tag-cloud {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+
+        .tech-tag {
+            background: #eee;
+            border: 1px solid #000;
+            padding: 5px 12px;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .cta-section {
+            background: #f8f8f8;
+            padding: 60px 0;
+            border-top: var(--border-width) solid #000;
+            text-align: center;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: var(--accent-green);
+            color: #fff !important;
+            font-family: var(--font-mono);
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            border: var(--border-width) solid #000;
+            box-shadow: var(--box-shadow);
+            transition: 0.2s;
+        }
+
+        .cta-button:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 10px 10px 0 #000;
+            text-decoration: none;
+        }
+
+        footer {
+            padding: 40px 0;
+            background: #fff;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #555;
+            border-top: 1px solid #eee;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .article-title {
+                font-size: 2rem;
+            }
+
+            .container {
+                padding: 0 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-inner">
+            <a href="index.html" class="brand" style="flex-direction: column; align-items: flex-start; gap: 0;">
+                <span style="font-size: 1.8rem;">Wealthnomics</span>
+                <span
+                    style="font-size: 0.7rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; color: #555;">AI
+                    Foundation</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html#initiatives">Initiatives</a></li>
+                <li><a href="stochastic-engine.html">Stochastic Engine</a></li>
+                <li><a href="blog.html">Articles</a></li>
+                <li><a href="https://github.com/wealthnomic">GitHub</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="article-hero">
+        <div class="container">
+            <div class="article-kicker"><i class="fas fa-square-root-alt"></i> Stochastic Engine // Documentation</div>
+            <h1 class="article-title">Model Calibration</h1>
+            <p style="font-size: 1.3rem; margin-bottom: 20px; max-width: 700px;">Fitting Heston, SABR, and Local
+                Volatility Models to Market Data</p>
+            <div class="article-meta">
+                <span><i class="fas fa-clock"></i> 15 min read</span> &nbsp;|&nbsp;
+                <span><i class="fas fa-tag"></i> Quantitative Finance, Derivatives Pricing</span>
+            </div>
+        </div>
+    </header>
+
+    <article class="article-content">
+        <div class="container">
+
+            <!-- Introduction -->
+            <h2>Introduction to Volatility Modeling</h2>
+            <p>
+                In options pricing, the Black-Scholes model assumes <strong>constant volatility</strong>, but real
+                markets exhibit <strong>volatility smiles</strong> or <strong>skews</strong>, where implied volatility
+                varies with strike price and maturity. This forms the <strong>implied volatility surface</strong> — a 3D
+                plot of implied volatility against strike and time to expiration.
+            </p>
+            <p>
+                Advanced models address this limitation:
+            </p>
+            <ul>
+                <li><strong>Local Volatility Models (e.g., Dupire):</strong> Volatility depends on asset price and time.
+                </li>
+                <li><strong>Stochastic Volatility Models (e.g., Heston, SABR):</strong> Volatility follows its own
+                    random process.</li>
+            </ul>
+            <p>
+                <strong>Model calibration</strong> fits these models to market option prices or implied volatilities,
+                often via optimization to minimize pricing errors. The Stochastic Engine includes an integrated
+                optimizer for automated parameter fitting.
+            </p>
+
+            <div class="info-box">
+                <strong>Why Calibration Matters:</strong> A well-calibrated model prices vanillas consistently with the
+                market and provides realistic dynamics for pricing exotic options (barriers, Asians, etc.) and hedging.
+            </div>
+
+            <!-- Implied Volatility Surface -->
+            <h2>Implied Volatility Surface Construction</h2>
+            <p>
+                Market data provides discrete option quotes. Constructing a smooth surface requires:
+            </p>
+            <ol>
+                <li><strong>Convert mid prices to implied volatilities</strong> using Black-Scholes inversion.</li>
+                <li><strong>Interpolate/extrapolate</strong> while ensuring no arbitrage (positive densities, calendar
+                    spread conditions).</li>
+                <li><strong>Common methods:</strong> SVI parameterization, spline interpolation, or kernel smoothing.
+                </li>
+            </ol>
+            <p>
+                The surface serves as the <strong>calibration target</strong>. All models are fitted to match this
+                surface as closely as possible.
+            </p>
+
+            <!-- Local Volatility -->
+            <h2>Local Volatility Models (Dupire)</h2>
+            <p>
+                The local volatility model assumes volatility σ(K, T) depends on strike K and maturity T. Bruno Dupire
+                (1994) derived a formula linking local volatility to call prices:
+            </p>
+
+            <div class="formula-box">
+                \[ \sigma_{loc}^2(K, T) = \frac{\frac{\partial C}{\partial T} + r K \frac{\partial C}{\partial
+                K}}{\frac{1}{2} K^2 \frac{\partial^2 C}{\partial K^2}} \]
+                <span class="label">// Dupire's Local Volatility Formula</span>
+            </div>
+
+            <p>where <em>C(K, T)</em> is the call price.</p>
+
+            <h3>Calibration Process</h3>
+            <ol>
+                <li>Start with market implied volatilities.</li>
+                <li>Interpolate to a dense grid of prices.</li>
+                <li>Apply finite differences to compute derivatives.</li>
+                <li>Extract local volatility surface.</li>
+            </ol>
+
+            <div class="tag-cloud">
+                <span class="tech-tag" style="background: #dcfce7;">Advantage: Perfectly fits vanilla surface</span>
+                <span class="tech-tag" style="background: #fee2e2;">Disadvantage: Poor forward dynamics</span>
+            </div>
+
+            <p>
+                <strong>Advantages:</strong> Perfectly fits the entire vanilla surface; provides a complete market for
+                hedging.<br>
+                <strong>Disadvantages:</strong> Unrealistic forward dynamics — the smile shifts incorrectly with
+                underlying moves.
+            </p>
+
+            <!-- Heston Model -->
+            <h2>Heston Stochastic Volatility Model</h2>
+            <p>
+                The Heston model (1993) models asset price <em>S</em> and variance <em>V</em> as coupled stochastic
+                processes:
+            </p>
+
+            <div class="formula-box">
+                \[ dS_t = r S_t \, dt + \sqrt{V_t} S_t \, dW_1 \]
+                \[ dV_t = \kappa (\theta - V_t) \, dt + \xi \sqrt{V_t} \, dW_2 \]
+                \[ \langle dW_1, dW_2 \rangle = \rho \, dt \]
+                <span class="label">// Heston Model Dynamics</span>
+            </div>
+
+            <p><strong>Parameters:</strong></p>
+            <ul>
+                <li><strong>κ (kappa):</strong> Mean reversion speed</li>
+                <li><strong>θ (theta):</strong> Long-term variance</li>
+                <li><strong>ξ (xi):</strong> Volatility of volatility</li>
+                <li><strong>ρ (rho):</strong> Correlation between asset and volatility</li>
+                <li><strong>V₀:</strong> Initial variance</li>
+            </ul>
+
+            <h3>Calibration</h3>
+            <ol>
+                <li>Use <strong>semi-closed-form pricing</strong> via characteristic function and Fourier inversion.
+                </li>
+                <li>Minimize error (e.g., RMSE in prices or volatilities) via optimization.</li>
+                <li><strong>Challenges:</strong> Multiple local minima; use global optimizers (Differential Evolution)
+                    followed by local refinement (Levenberg-Marquardt).</li>
+                <li>Often weighted toward ATM and near-money strikes.</li>
+            </ol>
+
+            <div class="tag-cloud">
+                <span class="tech-tag" style="background: #dcfce7;">Advantage: Realistic smile dynamics</span>
+                <span class="tech-tag" style="background: #dcfce7;">Advantage: Mean-reverting volatility</span>
+                <span class="tech-tag" style="background: #fee2e2;">Challenge: Slow calibration</span>
+            </div>
+
+            <!-- SABR Model -->
+            <h2>SABR Stochastic Volatility Model</h2>
+            <p>
+                The SABR model (Hagan et al., 2002) is the industry standard for interest rates and FX:
+            </p>
+
+            <div class="formula-box">
+                \[ dF_t = \alpha_t F_t^\beta \, dW_1 \]
+                \[ d\alpha_t = \nu \alpha_t \, dW_2 \]
+                \[ \langle dW_1, dW_2 \rangle = \rho \, dt \]
+                <span class="label">// SABR Model Dynamics</span>
+            </div>
+
+            <p><strong>Parameters:</strong></p>
+            <ul>
+                <li><strong>α (alpha):</strong> Initial volatility</li>
+                <li><strong>β (beta):</strong> CEV exponent (often fixed at 0.5 or 1)</li>
+                <li><strong>ρ (rho):</strong> Correlation</li>
+                <li><strong>ν (nu):</strong> Volatility of volatility</li>
+            </ul>
+
+            <h3>Calibration</h3>
+            <ol>
+                <li>Use the <strong>Hagan asymptotic approximation</strong> for implied volatility (fast closed-form).
+                </li>
+                <li>Fast calibration per maturity (often β fixed, calibrate α, ρ, ν).</li>
+                <li>Excellent for single smiles; extensions exist for full surfaces.</li>
+            </ol>
+
+            <div class="tag-cloud">
+                <span class="tech-tag" style="background: #dcfce7;">Advantage: Analytic approximation</span>
+                <span class="tech-tag" style="background: #dcfce7;">Advantage: Fast calibration</span>
+                <span class="tech-tag" style="background: #dcfce7;">Advantage: Captures backbone well</span>
+            </div>
+
+            <!-- Optimization Techniques -->
+            <h2>Optimization Techniques</h2>
+            <p>
+                Calibration is a <strong>non-linear least-squares problem</strong>:
+            </p>
+
+            <div class="formula-box">
+                \[ \min_\theta \sum_i w_i \left( \sigma_{model}(\theta; K_i, T_i) - \sigma_{market}(K_i, T_i) \right)^2
+                \]
+                <span class="label">// Weighted Least-Squares Objective</span>
+            </div>
+
+            <h3>Optimizer Types</h3>
+            <ul>
+                <li><strong>Global Optimizers:</strong> Differential Evolution, Particle Swarm — avoid local minima.
+                </li>
+                <li><strong>Local Optimizers:</strong> Nelder-Mead, BFGS, Levenberg-Marquardt — refine fit.</li>
+                <li><strong>Hybrid Approach:</strong> Global start + local polish (recommended).</li>
+            </ul>
+
+            <h3>Weighting Schemes</h3>
+            <ul>
+                <li><strong>Vega-weighted:</strong> Prioritize options with high sensitivity.</li>
+                <li><strong>Equal weights:</strong> Treat all options equally.</li>
+                <li><strong>Liquidity-weighted:</strong> Focus on actively traded options.</li>
+            </ul>
+
+            <p>
+                <strong>Regularization:</strong> Penalize unstable or unrealistic parameters. Modern approaches use
+                neural networks for faster surrogate pricing.
+            </p>
+
+            <!-- Comparison Table -->
+            <h2>Model Comparison</h2>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Model</th>
+                        <th>Type</th>
+                        <th>Fits Vanillas</th>
+                        <th>Dynamics Realism</th>
+                        <th>Calibration Speed</th>
+                        <th>Use Cases</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Local (Dupire)</strong></td>
+                        <td>Deterministic vol</td>
+                        <td>Perfect</td>
+                        <td>Poor</td>
+                        <td>Medium</td>
+                        <td>Exact vanilla replication</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Heston</strong></td>
+                        <td>Stochastic vol</td>
+                        <td>Good</td>
+                        <td>Excellent</td>
+                        <td>Slow</td>
+                        <td>Equity exotics</td>
+                    </tr>
+                    <tr>
+                        <td><strong>SABR</strong></td>
+                        <td>Stochastic vol</td>
+                        <td>Excellent (per maturity)</td>
+                        <td>Good</td>
+                        <td>Fast</td>
+                        <td>Rates, single smiles</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>
+                <strong>Hybrid models</strong> (e.g., Heston + Local Vol) combine the strengths of multiple approaches
+                for best-in-class fit and dynamics.
+            </p>
+
+            <!-- Best Practices -->
+            <h2>Best Practices</h2>
+            <ol>
+                <li><strong>Data Cleaning:</strong> Filter illiquid options, use mid quotes, remove stale prices.</li>
+                <li><strong>Arbitrage-Free Interpolation:</strong> Essential for stable local volatility extraction.
+                </li>
+                <li><strong>Parameter Stability:</strong> Monitor parameters across dates; sudden jumps indicate fitting
+                    issues.</li>
+                <li><strong>Pricing Exotics:</strong> A calibrated model prices barriers, Asians, and cliquets
+                    consistently with vanillas.</li>
+                <li><strong>Validation:</strong> Back-test model prices against out-of-sample vanilla quotes.</li>
+            </ol>
+
+            <!-- Code Example -->
+            <h2>Code Example</h2>
+            <div class="code-block">
+                <span class="comment"># Calibrate Heston model to market data</span>
+                <span class="keyword">import</span> stochastic_engine <span class="keyword">as</span> se
+
+                <span class="comment"># Load market implied volatility surface</span>
+                market_surface = se.load_vol_surface(<span class="string">"AAPL_2024_12_20.csv"</span>)
+
+                <span class="comment"># Define initial guess</span>
+                initial_params = se.HestonParams(
+                kappa=2.0, theta=0.04, xi=0.3, rho=-0.7, v0=0.04
+                )
+
+                <span class="comment"># Calibrate with hybrid optimizer</span>
+                result = se.calibrate_heston(
+                market_surface,
+                initial_params,
+                optimizer=<span class="string">"hybrid"</span>, <span class="comment"># Differential Evolution +
+                    L-BFGS</span>
+                weights=<span class="string">"vega"</span>
+                )
+
+                <span class="keyword">print</span>(f<span class="string">"Calibrated params: {result.params}"</span>)
+                <span class="keyword">print</span>(f<span class="string">"RMSE: {result.rmse:.4f}"</span>)
+
+                <span class="comment"># Price an exotic option with calibrated model</span>
+                barrier_price = se.price_barrier(
+                model=result.params,
+                S0=175, K=180, T=0.5, barrier=200, barrier_type=<span class="string">"up-and-out"</span>
+                )
+                <span class="keyword">print</span>(f<span class="string">"Barrier Option Price:
+                    ${barrier_price:.4f}"</span>)
+            </div>
+
+        </div>
+    </article>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 style="margin-bottom: 20px;">Start Calibrating</h2>
+            <p style="max-width: 600px; margin: 0 auto 30px;">
+                The Stochastic Engine calibration module is open source under Apache 2.0. Explore our API reference,
+                examples, and tutorials.
+            </p>
+            <a href="https://github.com/wealthnomic/stochastic-engine" class="cta-button"><i class="fab fa-github"></i>
+                View on GitHub</a>
+            <a href="stochastic-engine.html" class="cta-button"
+                style="background: #fff; color: #000 !important; margin-left: 15px;">Back to Stochastic Engine</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            &copy; 2025 Wealthnomics AI Foundation. All Rights Reserved.
+        </div>
+    </footer>
+
+</body>
+
+</html>

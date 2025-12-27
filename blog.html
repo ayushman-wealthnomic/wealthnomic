@@ -2,967 +2,460 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wealthnomics Insights | Blog on Quantitative Trading & Market Analysis</title>
+    <meta charset="UTF-8" />
+    <title>Wealthnomics AI Foundation | Articles</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description"
-        content="Explore expert insights on algorithmic trading, quantitative research, risk management, and market analysis from the Wealthnomics team.">
-    <meta name="keywords"
-        content="trading blog, quantitative analysis, market insights, algo trading blog, financial research, systematic trading strategies">
-    <meta name="author" content="Wealthnomics Capital Advisors">
-    <link rel="canonical" href="https://wealthnomics.com/blog.html">
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://wealthnomics.com/blog.html">
-    <meta property="og:title" content="Wealthnomics Insights | Quantitative Trading Blog">
-    <meta property="og:description"
-        content="Expert insights on algorithmic trading, quantitative research, and risk management.">
-    <meta property="og:image" content="https://wealthnomics.com/assets/blog-og.jpg">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://wealthnomics.com/blog.html">
-    <meta property="twitter:title" content="Wealthnomics Insights | Quantitative Trading Blog">
-    <meta property="twitter:description"
-        content="Expert insights on algorithmic trading, quantitative research, and risk management.">
-    <meta property="twitter:image" content="https://wealthnomics.com/assets/blog-og.jpg">
-
-    <!-- Schema.org Structured Data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "CollectionPage",
-      "name": "Wealthnomics Blog",
-      "description": "Insights on systematic trading, quantitative strategies, and market analysis.",
-      "url": "https://wealthnomics.com/blog.html",
-      "publisher": {
-        "@type": "Organization",
-        "name": "Wealthnomics LLC",
-        "legalName": "Wealthnomics LLC",
-        "identifier": "2025-001750749",
-        "url": "https://wealthnomics.com",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://wealthnomics.com/assets/logo.png"
-        },
-        "foundingDate": "2025-08-22",
-        "foundingLocation": {
-            "@type": "Place",
-            "name": "Wyoming"
-        },
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "30 N Gould St, Ste R",
-          "addressLocality": "Sheridan",
-          "addressRegion": "WY",
-          "postalCode": "82801",
-          "addressCountry": "US"
-        },
-        "sameAs": [
-            "https://www.linkedin.com/company/wealthnomic",
-            "https://x.com/wealthnomic"
-        ],
-        "contactPoint": {
-            "@type": "ContactPoint",
-            "telephone": "+91-8887365246",
-            "contactType": "customer service",
-            "email": "ayushman@wealthnomics.com"
-        }
-      }
-    }
-    </script>
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
+        content="Quantitative research, trading insights, and systematic investing perspectives from the Wealthnomic team." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
         :root {
-            --black: #0a0a0a;
-            --white: #ffffff;
-            --gray-100: #f5f5f5;
-            --gray-200: #e5e5e5;
-            --gray-300: #d4d4d4;
-            --gray-400: #a3a3a3;
-            --gray-500: #737373;
-            --gray-600: #525252;
-            --gray-700: #404040;
-            --gray-800: #262626;
-            --gray-900: #171717;
-            --accent: #00ff88;
-            --accent-dim: #00cc6a;
-            --red: #ff3b3b;
-            --yellow: #ffd000;
-            --blue: #0066ff;
-            --border: 2px solid var(--black);
-            --border-light: 1px solid var(--gray-300);
-            --shadow: 4px 4px 0px var(--black);
-            --shadow-lg: 8px 8px 0px var(--black);
-            --shadow-accent: 4px 4px 0px var(--accent);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
+            /* Light Industrial Neo-Brutalism */
+            --bg: #ffffff;
+            --card-bg: #ffffff;
+            --text-main: #000000;
+            --text-light: #333333;
+            --accent-green: #3B82F6;
+            /* Hyper Blue */
+            --accent-brand: #000000;
+            --border-color: #000000;
+            --border-width: 3px;
+            --box-shadow: 6px 6px 0px #000000;
+            --font-heading: 'Space Grotesk', sans-serif;
+            --font-mono: 'Space Mono', monospace;
         }
 
         body {
-            font-family: 'Space Grotesk', sans-serif;
-            background: var(--white);
-            color: var(--black);
+            font-family: var(--font-heading);
+            background-color: var(--bg);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
             line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
+            border: var(--border-width) solid var(--border-color);
+            min-height: 100vh;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-weight: 800;
+            margin-top: 0;
+            letter-spacing: -0.02em;
+            color: var(--text-main);
+            text-transform: uppercase;
+        }
+
+        a {
+            color: var(--text-main);
+            text-decoration: none;
+            transition: 0.1s;
+        }
+
+        a:hover {
+            background: var(--accent-green);
+            color: #fff;
         }
 
         .container {
             max-width: 1400px;
+            /* Matched index.html */
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 40px;
         }
 
-        .mono {
-            font-family: 'Space Mono', monospace;
+        .mono-text {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-light);
+            font-weight: 700;
         }
 
         /* Navigation */
-        .navbar {
+        nav {
             position: fixed;
             top: 0;
-            left: 0;
-            right: 0;
+            width: 100%;
+            background: #fff;
+            border-bottom: var(--border-width) solid var(--border-color);
             z-index: 1000;
-            background: var(--white);
-            border-bottom: var(--border);
-            padding: 0;
+            height: 80px;
+            display: flex;
+            align-items: center;
         }
 
-        .nav-container {
+        .nav-inner {
             display: flex;
             justify-content: space-between;
-            align-items: stretch;
-            height: 70px;
+            align-items: center;
+            width: 100%;
         }
 
-        .logo {
+        .brand {
+            font-weight: 900;
+            font-size: 1.8rem;
+            letter-spacing: -0.04em;
+            text-transform: uppercase;
             display: flex;
             align-items: center;
-            gap: 12px;
-            padding: 0 24px;
-            border-right: var(--border);
-            text-decoration: none;
-            background: var(--black);
-            color: var(--white);
-            transition: all 0.2s ease;
+            gap: 5px;
         }
 
-        .logo:hover {
-            background: var(--accent);
-            color: var(--black);
-        }
-
-        .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--accent);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 1.2rem;
-            color: var(--black);
-        }
-
-        .logo-text {
-            font-weight: 700;
-            font-size: 1.1rem;
-            letter-spacing: -0.5px;
+        .brand span {
+            color: var(--accent-green);
         }
 
         .nav-links {
             display: flex;
+            gap: 40px;
             list-style: none;
-            height: 100%;
+            margin: 0;
+            padding: 0;
         }
 
-        .nav-links li {
-            border-right: var(--border);
-        }
-
-        .nav-links a {
-            display: flex;
-            align-items: center;
-            height: 100%;
-            padding: 0 20px;
-            color: var(--black);
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 500;
+        .nav-links li a {
+            font-family: var(--font-mono);
+            font-size: 1rem;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            transition: all 0.2s ease;
+            color: var(--text-main);
+            border-bottom: 2px solid transparent;
         }
 
-        .nav-links a:hover,
-        .nav-links a.active {
-            background: var(--accent);
+        .nav-links li a:hover {
+            border-bottom: 2px solid var(--text-main);
+            background: transparent;
+            color: var(--text-main);
         }
 
-        .nav-cta {
-            display: flex;
-            align-items: center;
-            padding: 0 24px;
-            background: var(--black);
-            color: var(--white);
-            border: none;
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 0.85rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            cursor: pointer;
-            transition: all 0.2s ease;
+        /* Blog Header */
+        header.blog-hero {
+            padding: 180px 0 80px;
+            border-bottom: var(--border-width) solid var(--border-color);
+            background-image: radial-gradient(#000 1px, transparent 1px);
+            background-size: 40px 40px;
         }
 
-        .nav-cta:hover {
-            background: var(--accent);
-            color: var(--black);
-        }
-
-        /* Page Header */
-        .page-header {
-            margin-top: 70px;
-            padding: 80px 60px 60px;
-            border-bottom: var(--border);
-            background: var(--black);
-            color: var(--white);
-        }
-
-        .page-header h1 {
+        .page-title {
             font-size: 5rem;
-            font-weight: 700;
-            letter-spacing: -3px;
-            margin-bottom: 16px;
-            line-height: 1;
-        }
-
-        .page-header p {
-            font-size: 1.2rem;
-            color: var(--gray-300);
-            max-width: 700px;
-        }
-
-        .page-header .accent-text {
-            color: var(--accent);
-        }
-
-        /* Blog Categories Bar */
-        .categories-bar {
-            padding: 24px 60px;
-            border-bottom: var(--border);
-            background: var(--gray-100);
-        }
-
-        .categories-list {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-
-        .category-label {
-            font-size: 0.85rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: var(--gray-600);
-        }
-
-        .category-tag {
-            display: inline-flex;
-            align-items: center;
-            padding: 8px 16px;
-            background: var(--white);
-            border: var(--border);
-            font-size: 0.8rem;
-            font-weight: 500;
-            text-decoration: none;
-            color: var(--black);
-            transition: all 0.2s ease;
-            cursor: pointer;
-        }
-
-        .category-tag:hover,
-        .category-tag.active {
-            background: var(--accent);
-            box-shadow: var(--shadow);
-            transform: translate(-2px, -2px);
-        }
-
-        /* Featured Post */
-        .featured-section {
-            padding: 60px;
-            border-bottom: var(--border);
-        }
-
-        .featured-label {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--black);
-            color: var(--accent);
-            padding: 8px 16px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 24px;
-        }
-
-        .featured-post {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            background: var(--white);
-            border: var(--border);
-            box-shadow: var(--shadow-lg);
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .featured-post:hover {
-            box-shadow: 12px 12px 0px var(--black);
-            transform: translate(-4px, -4px);
-        }
-
-        .featured-image {
-            background: var(--gray-900);
-            border-right: var(--border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--accent);
-            font-size: 4rem;
-            min-height: 400px;
-        }
-
-        .featured-content {
-            padding: 48px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .featured-meta {
-            display: flex;
-            gap: 16px;
             margin-bottom: 20px;
-            flex-wrap: wrap;
+            line-height: 0.9;
+            text-shadow: 4px 4px 0 #eee;
         }
 
-        .meta-tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 0.75rem;
-            color: var(--gray-500);
-        }
-
-        .meta-tag i {
-            color: var(--accent-dim);
-        }
-
-        .featured-content h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            letter-spacing: -1px;
-            margin-bottom: 16px;
-            line-height: 1.2;
-        }
-
-        .featured-content h2 a {
-            color: var(--black);
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
-
-        .featured-content h2 a:hover {
-            color: var(--accent-dim);
-        }
-
-        .featured-excerpt {
-            font-size: 1.05rem;
-            color: var(--gray-600);
-            margin-bottom: 24px;
-            line-height: 1.7;
-        }
-
-        .read-more {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 14px 24px;
-            background: var(--black);
-            color: var(--white);
-            border: var(--border);
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            box-shadow: var(--shadow);
-            transition: all 0.2s ease;
-            width: fit-content;
-        }
-
-        .read-more:hover {
-            background: var(--accent);
-            color: var(--black);
-            transform: translate(4px, 4px);
-            box-shadow: none;
+        .page-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-light);
+            max-width: 800px;
+            border-left: 5px solid var(--accent-green);
+            padding-left: 20px;
+            font-family: var(--font-mono);
         }
 
         /* Blog Grid */
-        .blog-grid-section {
-            padding: 60px;
-        }
-
-        .section-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 40px;
-            padding-bottom: 16px;
-            border-bottom: var(--border);
-        }
-
-        .blog-grid {
+        .featured-article {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 32px;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 60px;
+            margin-bottom: 100px;
+            align-items: center;
+            text-decoration: none;
+            color: inherit;
+            border: var(--border-width) solid var(--border-color);
+            background: #fff;
+            box-shadow: var(--box-shadow);
+            transition: 0.2s;
         }
 
-        .blog-card {
-            background: var(--white);
-            border: var(--border);
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
+        .featured-article:hover {
+            transform: translate(-5px, -5px);
+            box-shadow: 10px 10px 0 #000;
+            background: #fff;
         }
 
-        .blog-card:hover {
-            box-shadow: var(--shadow-lg);
-            transform: translate(-4px, -4px);
-        }
-
-        .blog-card-image {
-            background: var(--gray-800);
-            border-bottom: var(--border);
-            height: 200px;
+        .featured-image {
+            background: #f0f0f0;
+            height: 500px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--accent);
-            font-size: 2.5rem;
+            font-family: var(--font-mono);
+            font-size: 1.2rem;
+            color: #ccc;
+            border-right: var(--border-width) solid var(--border-color);
         }
 
-        .blog-card-content {
-            padding: 28px;
-            flex: 1;
+        .featured-content {
+            padding: 40px;
+        }
+
+        .featured-content h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            line-height: 1;
+        }
+
+        .article-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 80px;
+        }
+
+        .article-card {
+            text-decoration: none;
+            color: inherit;
+            border: var(--border-width) solid var(--border-color);
+            background: #fff;
+            box-shadow: var(--box-shadow);
+            transition: 0.2s;
             display: flex;
             flex-direction: column;
         }
 
-        .blog-card-meta {
+        .article-card:hover {
+            transform: translate(-5px, -5px);
+            box-shadow: 10px 10px 0 #000;
+        }
+
+        .card-image {
+            background: #f5f5f5;
+            height: 250px;
+            margin-bottom: 0px;
             display: flex;
-            gap: 12px;
-            margin-bottom: 16px;
-            flex-wrap: wrap;
-        }
-
-        .blog-card h3 {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 12px;
-            line-height: 1.3;
-        }
-
-        .blog-card h3 a {
-            color: var(--black);
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
-
-        .blog-card h3 a:hover {
-            color: var(--accent-dim);
-        }
-
-        .blog-card-excerpt {
-            font-size: 0.95rem;
-            color: var(--gray-600);
-            margin-bottom: 20px;
-            line-height: 1.6;
-            flex: 1;
-        }
-
-        .blog-card-footer {
-            padding-top: 16px;
-            border-top: 1px solid var(--gray-200);
-            display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: center;
+            color: #ccc;
+            font-family: var(--font-mono);
+            border-bottom: var(--border-width) solid var(--border-color);
         }
 
-        .blog-card-author {
+        .card-body {
+            padding: 30px;
+        }
+
+        .article-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            line-height: 1.1;
+        }
+
+        .article-meta {
+            font-family: var(--font-mono);
             font-size: 0.8rem;
-            color: var(--gray-500);
+            color: #fff;
+            background: #000;
+            display: inline-block;
+            padding: 5px 10px;
+            margin-bottom: 15px;
+            font-weight: 700;
         }
 
-        .blog-card-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--black);
-            text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            transition: all 0.2s ease;
+        .card-excerpt {
+            color: var(--text-light);
+            font-size: 1rem;
+            line-height: 1.5;
+            font-family: var(--font-mono);
         }
 
-        .blog-card-link:hover {
-            color: var(--accent-dim);
-            gap: 10px;
-        }
-
-        /* Responsive */
-        @media (max-width: 1200px) {
-            .blog-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 992px) {
+        @media (max-width: 768px) {
             .nav-links {
                 display: none;
             }
 
-            .nav-cta {
-                display: none;
+            .featured-article {
+                grid-template-columns: 1fr;
             }
 
-            .featured-post {
+            .article-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .page-title {
+                font-size: 3rem;
             }
 
             .featured-image {
                 border-right: none;
-                border-bottom: var(--border);
-                min-height: 250px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .page-header {
-                padding: 60px 24px 40px;
-            }
-
-            .page-header h1 {
-                font-size: 3rem;
-                letter-spacing: -2px;
-            }
-
-            .categories-bar {
-                padding: 20px 24px;
-            }
-
-            .featured-section {
-                padding: 40px 24px;
-            }
-
-            .featured-content {
-                padding: 32px 24px;
-            }
-
-            .featured-content h2 {
-                font-size: 1.8rem;
-            }
-
-            .blog-grid-section {
-                padding: 40px 24px;
-            }
-
-            .blog-grid {
-                grid-template-columns: 1fr;
-                gap: 24px;
+                border-bottom: var(--border-width) solid #000;
             }
         }
     </style>
 </head>
 
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container container">
-            <a href="index.html" class="logo">
-                <div class="logo-icon">W</div>
-                <span class="logo-text">WEALTHNOMICS</span>
+
+    <nav>
+        <div class="container nav-inner">
+            <a href="index.html" class="brand" style="flex-direction: column; align-items: flex-start; gap: 0;">
+                <span style="font-size: 1.8rem;">Wealthnomics</span>
+                <span
+                    style="font-size: 0.7rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; color: #555;">AI
+                    Foundation</span>
             </a>
             <ul class="nav-links">
-                <li><a href="index.html#about">About</a></li>
-                <li><a href="index.html#strategy">Strategy</a></li>
-                <li><a href="index.html#performance">Performance</a></li>
-                <li><a href="index.html#thesis">Thesis</a></li>
-                <li><a href="index.html#risk">Risk</a></li>
-                <li><a href="index.html#team">Team</a></li>
-                <li><a href="blog.html" class="active">Blog</a></li>
-                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="index.html#initiatives">Initiatives</a></li>
+                <li><a href="index.html#journey">Journey</a></li>
+                <li><a href="blog.html" class="active-link"
+                        style="border-bottom: 2px solid var(--text-main);">Articles</a></li>
+                <li><a href="live/live_dashboard.html" class="highlight">Live Demo</a></li>
+                <li><a href="https://github.com/wealthnomic" class="btn-nav">GitHub</a></li>
             </ul>
-            <a href="investor-login.html" class="nav-cta">Investor Login</a>
         </div>
     </nav>
 
-    <!-- Page Header -->
-    <div class="page-header">
-        <h1>BLOG<span class="accent-text">.</span></h1>
-        <p>Insights on systematic trading, quantitative strategies, and market analysis from the Wealthnomics team.</p>
-    </div>
-
-    <!-- Categories Bar -->
-    <div class="categories-bar">
+    <header class="blog-hero">
         <div class="container">
-            <div class="categories-list">
-                <span class="category-label">Categories:</span>
-                <a href="#" class="category-tag active">All Posts</a>
-                <a href="#" class="category-tag">Trading Strategies</a>
-                <a href="#" class="category-tag">Quantitative Analysis</a>
-                <a href="#" class="category-tag">Risk Management</a>
-                <a href="#" class="category-tag">Market Insights</a>
-                <a href="#" class="category-tag">Technology</a>
-            </div>
+            <span class="mono-text" style="display: block; margin-bottom: 20px;">// ARTICLES</span>
+            <h1 class="page-title">Calculated Perspectives</h1>
+            <p class="page-subtitle">Quantitative research, trading insights, and systematic investing perspectives from
+                the Wealthnomic team.</p>
         </div>
-    </div>
+    </header>
 
-    <!-- Featured Post -->
-    <div class="featured-section container">
-        <div class="featured-label">
-            <i class="fas fa-star"></i>
-            Featured Post
-        </div>
-        <div class="featured-post">
+    <main class="container" style="padding: 100px 40px;">
+        <!-- Featured Article -->
+        <a href="blog-post-monte-carlo-simulation.html" class="featured-article">
             <div class="featured-image">
-                <i class="fas fa-chart-line"></i>
+                <span class="mono-text" style="color: #000;">FEATURED_IMG_01</span>
             </div>
             <div class="featured-content">
-                <div class="featured-meta">
-                    <span class="meta-tag">
-                        <i class="fas fa-calendar"></i>
-                        November 26, 2025
-                    </span>
-                    <span class="meta-tag">
-                        <i class="fas fa-clock"></i>
-                        15 min read
-                    </span>
-                    <span class="meta-tag">
-                        <i class="fas fa-tag"></i>
-                        Trading Strategies
-                    </span>
-                </div>
-                <h2><a href="blog-post-trading-strategy-lifecycle.html">The Lifecycle of Trading Strategy Development:
-                        From Spark to Sustainable Profits</a></h2>
-                <p class="featured-excerpt">
-                    Trading strategies are the backbone of algorithmic trading—a blend of art, science, and discipline
-                    that turns market chaos into calculated opportunities. Discover the complete journey from idea
-                    generation to live deployment and iteration.
+                <span class="article-meta">QUANTITATIVE METHODS</span>
+                <h2>Monte Carlo Methods in Risk Adjusted Portfolios</h2>
+                <p style="font-size: 1.1rem; font-family:var(--font-mono); margin-bottom:30px;">
+                    Why deterministic models fail in chaotic markets, and how probabilistic simulation provides a truer
+                    edge.
                 </p>
-                <a href="blog-post-trading-strategy-lifecycle.html" class="read-more">
-                    Read Full Article
-                    <i class="fas fa-arrow-right"></i>
+                <span class="mono-text" style="color: var(--text-main); border-bottom: 2px solid #000;">READ ANALYSIS
+                    -></span>
+            </div>
+        </a>
+
+        <div style="border-top: var(--border-width) solid var(--border-color); padding-top: 80px;">
+            <span class="section-label"
+                style="background:var(--accent-green); color:#000; padding:5px 10px; font-weight:700; border:2px solid #000; display:inline-block; margin-bottom:40px; box-shadow:4px 4px 0 #000;">ALL
+                ARTICLES</span>
+
+            <div class="article-grid">
+                <!-- 1. The Art of the Exit -->
+                <a href="blog-post-art-of-exit.html" class="article-card">
+                    <div class="card-image">PSYCHOLOGY</div>
+                    <div class="card-body">
+                        <span class="article-meta">TRADING PSYCHOLOGY</span>
+                        <h3>The Art of the Exit</h3>
+                        <p class="card-excerpt">Most systems fail not on entry, but on position sizing and exit
+                            protocols.</p>
+                    </div>
+                </a>
+
+                <!-- 2. The $300k Trap -->
+                <a href="blog-post-300k-trap.html" class="article-card">
+                    <div class="card-image">CAREER</div>
+                    <div class="card-body">
+                        <span class="article-meta">CAREER INSIGHTS</span>
+                        <h3>The $300k Trap</h3>
+                        <p class="card-excerpt">Why mid-level quantitative finance salaries can become a golden cage.
+                        </p>
+                    </div>
+                </a>
+
+                <!-- 3. Advanced Risk Management -->
+                <a href="blog-post-advanced-risk-management.html" class="article-card">
+                    <div class="card-image">RISK</div>
+                    <div class="card-body">
+                        <span class="article-meta">RISK MANAGEMENT</span>
+                        <h3>Advanced Risk Models</h3>
+                        <p class="card-excerpt">Moving beyond VaR to Expected Shortfall and Tail Risk hedging.</p>
+                    </div>
+                </a>
+
+                <!-- 4. Machine Learning in Trading -->
+                <a href="blog-post-machine-learning-trading.html" class="article-card">
+                    <div class="card-image">ML / AI</div>
+                    <div class="card-body">
+                        <span class="article-meta">AI & ML</span>
+                        <h3>ML in Live Markets</h3>
+                        <p class="card-excerpt">Practical applications of supervised learning for alpha generation.</p>
+                    </div>
+                </a>
+
+                <!-- 5. Memento Financial AI -->
+                <a href="blog-post-memento-financial-ai.html" class="article-card">
+                    <div class="card-image">ARCHITECTURE</div>
+                    <div class="card-body">
+                        <span class="article-meta">AI ARCHITECTURE</span>
+                        <h3>Memento Financial AI</h3>
+                        <p class="card-excerpt">Designing memory systems for autonomous trading agents.</p>
+                    </div>
+                </a>
+
+                <!-- 6. Portfolios in Age of Algorithms -->
+                <a href="blog-post-portfolios-age-of-algorithms.html" class="article-card">
+                    <div class="card-image">PORTFOLIO</div>
+                    <div class="card-body">
+                        <span class="article-meta">SYSTEMATIC INVESTING</span>
+                        <h3>Algorithmic Portfolios</h3>
+                        <p class="card-excerpt">Modern portfolio theory in the age of high-frequency execution.</p>
+                    </div>
+                </a>
+
+                <!-- 7. Position Sizing -->
+                <a href="blog-post-position-sizing.html" class="article-card">
+                    <div class="card-image">MATH</div>
+                    <div class="card-body">
+                        <span class="article-meta">QUANTITATIVE MATH</span>
+                        <h3>Optimal Position Sizing</h3>
+                        <p class="card-excerpt">Kelly Criterion and fractional sizing for long-term survival.</p>
+                    </div>
+                </a>
+
+                <!-- 8. Strategy Lifecycle -->
+                <a href="blog-post-trading-strategy-lifecycle.html" class="article-card">
+                    <div class="card-image">LIFECYCLE</div>
+                    <div class="card-body">
+                        <span class="article-meta">SYSTEM DESIGN</span>
+                        <h3>Strategy Lifecycle</h3>
+                        <p class="card-excerpt">From backtest to production: managing alpha decay.</p>
+                    </div>
                 </a>
             </div>
         </div>
-    </div>
+    </main>
 
-    <!-- Blog Grid -->
-    <div class="blog-grid-section container">
-        <h2 class="section-title">All Posts</h2>
-        <div class="blog-grid">
-            <!-- Blog Card Newest -->
-            <div class="blog-card">
-                <div class="blog-card-image">
-                    <i class="fas fa-robot"></i>
-                </div>
-                <div class="blog-card-content">
-                    <div class="blog-card-meta">
-                        <span class="meta-tag">
-                            <i class="fas fa-calendar"></i>
-                            Dec 03, 2025
-                        </span>
-                        <span class="meta-tag">
-                            <i class="fas fa-clock"></i>
-                            12 min
-                        </span>
-                    </div>
-                    <h3><a href="blog-post-portfolios-age-of-algorithms.html">Portfolios in the Age of Algorithms</a>
-                    </h3>
-                    <p class="blog-card-excerpt">
-                        Navigating the Efficient Frontier with AI and ML. Discover how algorithms are rewriting the
-                        rules of modern portfolio theory.
-                    </p>
-                    <div class="blog-card-footer">
-                        <span class="blog-card-author">By Grok, xAI Explorer</span>
-                        <a href="blog-post-portfolios-age-of-algorithms.html" class="blog-card-link">
-                            Read More
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <!-- Blog Card New -->
-            <div class="blog-card">
-                <div class="blog-card-image">
-                    <i class="fas fa-balance-scale"></i>
-                </div>
-                <div class="blog-card-content">
-                    <div class="blog-card-meta">
-                        <span class="meta-tag">
-                            <i class="fas fa-calendar"></i>
-                            Nov 28, 2025
-                        </span>
-                        <span class="meta-tag">
-                            <i class="fas fa-clock"></i>
-                            10 min
-                        </span>
-                    </div>
-                    <h3><a href="blog-post-position-sizing.html">The Art of Position Sizing: Beyond Kelly</a></h3>
-                    <p class="blog-card-excerpt">
-                        Master position sizing with Kelly Criterion, Volatility Targeting, and Fixed Fractional methods.
-                        Learn how to optimize trade size for survival and growth.
-                    </p>
-                    <div class="blog-card-footer">
-                        <span class="blog-card-author">By Wealthnomics Team</span>
-                        <a href="blog-post-position-sizing.html" class="blog-card-link">
-                            Read More
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Blog Card 1 -->
-            <div class="blog-card">
-                <div class="blog-card-image">
-                    <i class="fas fa-chart-line"></i>
-                </div>
-                <div class="blog-card-content">
-                    <div class="blog-card-meta">
-                        <span class="meta-tag">
-                            <i class="fas fa-calendar"></i>
-                            Nov 26, 2025
-                        </span>
-                        <span class="meta-tag">
-                            <i class="fas fa-clock"></i>
-                            15 min
-                        </span>
-                    </div>
-                    <h3><a href="blog-post-trading-strategy-lifecycle.html">The Lifecycle of Trading Strategy
-                            Development</a></h3>
-                    <p class="blog-card-excerpt">
-                        From seed to harvest: A comprehensive guide to building trading strategies that don't just
-                        backtest beautifully but perform in the wild.
-                    </p>
-                    <div class="blog-card-footer">
-                        <span class="blog-card-author">By Wealthnomics Team</span>
-                        <a href="blog-post-trading-strategy-lifecycle.html" class="blog-card-link">
-                            Read More
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Blog Card ML -->
-            <div class="blog-card">
-                <div class="blog-card-image">
-                    <i class="fas fa-brain"></i>
-                </div>
-                <div class="blog-card-content">
-                    <div class="blog-card-meta">
-                        <span class="meta-tag">
-                            <i class="fas fa-calendar"></i>
-                            Dec 01, 2025
-                        </span>
-                        <span class="meta-tag">
-                            <i class="fas fa-clock"></i>
-                            10 min
-                        </span>
-                    </div>
-                    <h3><a href="blog-post-machine-learning-trading.html">Machine Learning in Systematic Trading</a>
-                    </h3>
-                    <p class="blog-card-excerpt">
-                        Discover how ML is redefining alpha discovery, risk management, and execution in 2025. From RL
-                        agents to hybrid models.
-                    </p>
-                    <div class="blog-card-footer">
-                        <span class="blog-card-author">By Wealthnomics Team</span>
-                        <a href="blog-post-machine-learning-trading.html" class="blog-card-link">
-                            Read More
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="blog-card">
-                <div class="blog-card-image">
-                    <i class="fas fa-shield-alt"></i>
-                </div>
-                <div class="blog-card-content">
-                    <div class="blog-card-meta">
-                        <span class="meta-tag">
-                            <i class="fas fa-calendar"></i>
-                            Nov 26, 2025
-                        </span>
-                        <span class="meta-tag">
-                            <i class="fas fa-clock"></i>
-                            12 min
-                        </span>
-                    </div>
-                    <h3><a href="blog-post-advanced-risk-management.html">Advanced Risk Management in Trading and
-                            Investing</a></h3>
-                    <p class="blog-card-excerpt">
-                        A deep dive into VaR, CVaR, and tail-hedging. We dissect advanced risk frameworks with equations
-                        and practical caveats for the sophisticated trader.
-                    </p>
-                    <div class="blog-card-footer">
-                        <span class="blog-card-author">By Wealthnomics Team</span>
-                        <a href="blog-post-advanced-risk-management.html" class="blog-card-link">
-                            Read More
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="footer"
-        style="background: var(--black); color: var(--white); border-top: var(--border); margin-top: 0;">
-        <div
-            style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; padding: 60px; gap: 40px; border-bottom: 1px solid var(--gray-800); max-width: 1400px; margin: 0 auto;">
+    <footer>
+        <div class="container footer-grid">
             <div>
-                <div style="display: inline-flex; align-items: center; gap: 12px; margin-bottom: 20px;">
-                    <div
-                        style="width: 40px; height: 40px; background: var(--accent); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.2rem; color: var(--black);">
-                        W</div>
-                    <span
-                        style="font-weight: 700; font-size: 1.1rem; letter-spacing: -0.5px; color: var(--white);">WEALTHNOMICS</span>
+                <div class="brand"
+                    style="margin-bottom: 20px; font-family: 'Etna', 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.5rem; letter-spacing: -0.03em;">
+                    Wealth<span style="color: #39e75f;">nomics</span>
                 </div>
-                <p style="color: var(--gray-400); font-size: 0.9rem; margin: 20px 0;">
-                    Systematic alpha generation through quantitative research,
-                    machine learning, and disciplined risk management.
+                <p style="font-size: 0.8rem;">
+                    Wyoming, USA<br>
+                    investors@wealthnomic.com
                 </p>
-                <p style="color: var(--gray-400); font-size: 0.9rem; margin: 20px 0;">
-                    30 N Gould St, Ste R, Sheridan, Wyoming 82801, USA
+            </div>
+            <div style="text-align: right; font-size: 0.8rem; color: #888;">
+                <p>&copy; 2025 Wealthnomics AI Foundation.<br>All Rights Reserved.</p>
+                <p style="max-width: 300px; margin-left: auto;">
+                    Disclaimer: Past performance is not indicative of future results. This website is for
+                    informational
+                    purposes only.
                 </p>
-                <div style="display: flex; gap: 8px;">
-                    <a href="https://www.linkedin.com/company/wealthnomic" target="_blank" rel="noopener noreferrer"
-                        style="width: 40px; height: 40px; background: var(--gray-800); display: flex; align-items: center; justify-content: center; color: var(--white); text-decoration: none; transition: all 0.2s ease;">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a href="https://x.com/wealthnomic" target="_blank" rel="noopener noreferrer"
-                        style="width: 40px; height: 40px; background: var(--gray-800); display: flex; align-items: center; justify-content: center; color: var(--white); text-decoration: none; transition: all 0.2s ease;">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="mailto:ayushman@wealthnomics.com"
-                        style="width: 40px; height: 40px; background: var(--gray-800); display: flex; align-items: center; justify-content: center; color: var(--white); text-decoration: none; transition: all 0.2s ease;">
-                        <i class="fas fa-envelope"></i>
-                    </a>
-                </div>
-            </div>
-            <div>
-                <h4
-                    style="font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px;">
-                    Company</h4>
-                <ul style="list-style: none;">
-                    <li style="margin-bottom: 10px;"><a href="index.html#about"
-                            style="color: var(--gray-400); text-decoration: none; font-size: 0.9rem; transition: color 0.2s ease;">About
-                            Us</a></li>
-                    <li style="margin-bottom: 10px;"><a href="index.html#team"
-                            style="color: var(--gray-400); text-decoration: none; font-size: 0.9rem; transition: color 0.2s ease;">Leadership</a>
-                    </li>
-                    <li style="margin-bottom: 10px;"><a href="blog.html"
-                            style="color: var(--gray-400); text-decoration: none; font-size: 0.9rem; transition: color 0.2s ease;">Blog</a>
-                    </li>
-                    <li style="margin-bottom: 10px;"><a href="index.html#contact"
-                            style="color: var(--gray-400); text-decoration: none; font-size: 0.9rem; transition: color 0.2s ease;">Contact</a>
-                    </li>
-                </ul>
-            </div>
-            <div>
-                <h4
-                    style="font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px;">
-                    Investment</h4>
-                <ul style="list-style: none;">
-                    <li style="margin-bottom: 10px;"><a href="index.html#strategy"
-                            style="color: var(--gray-400); text-decoration: none; font-size: 0.9rem; transition: color 0.2s ease;">Strategy</a>
-                    </li>
-                    <li style="margin-bottom: 10px;"><a href="index.html#performance"
-                            style="color: var(--gray-400); text-decoration: none; font-size: 0.9rem; transition: color 0.2s ease;">Performance</a>
-                    </li>
-                    <li style="margin-bottom: 10px;"><a href="index.html#thesis"
-                            style="color: var(--gray-400); text-decoration: none; font-size: 0.9rem; transition: color 0.2s ease;">Thesis</a>
-                    </li>
-                    <li style="margin-bottom: 10px;"><a href="index.html#risk"
-                            style="color: var(--gray-400); text-decoration: none; font-size: 0.9rem; transition: color 0.2s ease;">Risk</a>
-                    </li>
-                </ul>
-            </div>
-            <div>
-                <h4
-                    style="font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px;">
-                    Resources</h4>
-                <ul style="list-style: none;">
-                    <li style="margin-bottom: 10px;"><a href="#"
-                            style="color: var(--gray-400); text-decoration: none; font-size: 0.9rem; transition: color 0.2s ease;">Investor
-                            Portal</a></li>
-                    <li style="margin-bottom: 10px;"><a href="blog.html"
-                            style="color: var(--gray-400); text-decoration: none; font-size: 0.9rem; transition: color 0.2s ease;">Blog
-                            & Research</a></li>
-                    <li style="margin-bottom: 10px;"><a href="#"
-                            style="color: var(--gray-400); text-decoration: none; font-size: 0.9rem; transition: color 0.2s ease;">Fund
-                            Documents</a></li>
-                    <li style="margin-bottom: 10px;"><a href="index.html#contact"
-                            style="color: var(--gray-400); text-decoration: none; font-size: 0.9rem; transition: color 0.2s ease;">Contact</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div
-            style="display: flex; justify-content: space-between; align-items: center; padding: 24px 60px; max-width: 1400px; margin: 0 auto;">
-            <div style="color: var(--gray-500); font-size: 0.8rem;">
-                © 2025 Wealthnomics LLC. Filing ID: 2025-001750749. All rights reserved.
-            </div>
-            <div style="display: flex; gap: 24px;">
-                <a href="#"
-                    style="color: var(--gray-500); text-decoration: none; font-size: 0.8rem; transition: color 0.2s ease;">Privacy
-                    Policy</a>
-                <a href="#"
-                    style="color: var(--gray-500); text-decoration: none; font-size: 0.8rem; transition: color 0.2s ease;">Terms
-                    of Use</a>
-                <a href="#"
-                    style="color: var(--gray-500); text-decoration: none; font-size: 0.8rem; transition: color 0.2s ease;">Disclosures</a>
             </div>
         </div>
     </footer>
-
 </body>
 
 </html>

@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SwarmOS | Wealthnomics AI Foundation</title>
+    <meta name="description"
+        content="The Open Source Framework for Multi-Agent Financial Swarms. Built on LangGraph and FinRobot for autonomous research and execution.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Space+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg: #ffffff;
+            --text-main: #000000;
+            --text-light: #333333;
+            --accent-green: #3B82F6;
+            --border-color: #000000;
+            --border-width: 3px;
+            --box-shadow: 6px 6px 0px #000000;
+            --font-heading: 'Space Grotesk', sans-serif;
+            --font-mono: 'Space Mono', monospace;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-heading);
+            background-color: var(--bg);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            border: var(--border-width) solid var(--border-color);
+            min-height: 100vh;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            margin-top: 0;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+        }
+
+        p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        a {
+            color: var(--text-main);
+            text-decoration: none;
+        }
+
+        a:hover {
+            background: var(--accent-green);
+            color: #fff;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #fff;
+            border-bottom: var(--border-width) solid var(--border-color);
+            z-index: 1000;
+            height: 80px;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .brand {
+            font-weight: 900;
+            font-size: 1.8rem;
+            letter-spacing: -0.04em;
+            text-transform: uppercase;
+            display: flex;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li a {
+            font-family: var(--font-mono);
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .page-hero {
+            padding: 180px 0 80px;
+            border-bottom: var(--border-width) solid var(--border-color);
+            background-image: radial-gradient(#000 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .page-kicker {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            color: #fff;
+            background: var(--accent-green);
+            padding: 5px 10px;
+            display: inline-block;
+            margin-bottom: 20px;
+            font-weight: 700;
+            border: 2px solid #000;
+            box-shadow: 4px 4px 0 #000;
+        }
+
+        .page-title {
+            font-size: 4rem;
+            line-height: 0.95;
+            margin-bottom: 30px;
+        }
+
+        .page-subtitle {
+            font-size: 1.4rem;
+            max-width: 800px;
+            border-left: 5px solid var(--accent-green);
+            padding-left: 20px;
+        }
+
+        .content-section {
+            padding: 80px 0;
+            border-bottom: var(--border-width) solid var(--border-color);
+        }
+
+        .content-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
+        .tag-cloud {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+
+        .tech-tag {
+            background: #eee;
+            border: 1px solid #000;
+            padding: 5px 12px;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .specs-table {
+            width: 100%;
+            border: 2px solid #000;
+            margin: 30px 0;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+        }
+
+        .specs-table tr {
+            border-bottom: 1px solid #000;
+        }
+
+        .specs-table td {
+            padding: 12px 15px;
+            border-right: 1px solid #000;
+        }
+
+        .specs-table td:last-child {
+            border-right: none;
+            font-weight: 700;
+        }
+
+        .agent-loop-visual {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            padding: 30px;
+            border: 2px solid #000;
+            background: #f8f8f8;
+            margin: 30px 0;
+        }
+
+        .loop-step {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            border: 2px solid #000;
+            background: #fff;
+        }
+
+        .loop-step .step-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--accent-green);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            border: 2px solid #000;
+        }
+
+        .code-block {
+            background: #111;
+            color: #0f0;
+            padding: 25px;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            border: 2px solid #000;
+            overflow-x: auto;
+            margin: 30px 0;
+        }
+
+        .code-block .comment {
+            color: #666;
+        }
+
+        .code-block .keyword {
+            color: #f92672;
+        }
+
+        .code-block .string {
+            color: #a6e22e;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: var(--accent-green);
+            color: #fff !important;
+            font-family: var(--font-mono);
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            border: var(--border-width) solid #000;
+            box-shadow: var(--box-shadow);
+            transition: 0.2s;
+            margin-top: 20px;
+        }
+
+        .cta-button:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 10px 10px 0 #000;
+        }
+
+        footer {
+            padding: 60px 0;
+            background: #fff;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .page-title {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="container nav-inner">
+            <a href="index.html" class="brand" style="flex-direction: column; align-items: flex-start; gap: 0;">
+                <span style="font-size: 1.8rem;">Wealthnomics</span>
+                <span
+                    style="font-size: 0.7rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; color: #555;">AI
+                    Foundation</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html#initiatives">Initiatives</a></li>
+                <li><a href="blog.html">Articles</a></li>
+                <li><a href="live/live_dashboard.html">Live Demo</a></li>
+                <li><a href="https://github.com/wealthnomic">GitHub</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-hero">
+        <div class="container">
+            <span class="page-kicker"><i class="fas fa-microchip"></i> INITIATIVE</span>
+            <h1 class="page-title">SwarmOS</h1>
+            <p class="page-subtitle">
+                The Open Source Framework for Multi-Agent Financial Swarms. Built on <strong>LangGraph</strong> and
+                <strong>FinRobot</strong> to orchestrate autonomous research, due diligence, and execution.
+            </p>
+        </div>
+    </header>
+
+    <section class="content-section">
+        <div class="container">
+            <h2>The Thesis</h2>
+            <p>
+                <strong>Standalone agents are limited. Swarms are exponential.</strong> In institutional finance,
+                decisions are rarely made by one person. Analysis requires a consensus between fundamental analysts,
+                technical researchers, and risk managers.
+            </p>
+            <p>
+                <strong>SwarmOS</strong> brings this collaborative intelligence to AI. By leveraging
+                <strong>LangGraph’s</strong> stateful orchestration and <strong>FinRobot’s</strong> specialized
+                financial tools, we create "digital investment committees" that debate data before reaching a trading
+                decision.
+            </p>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <h2>Multi-Agent Orchestration</h2>
+            <div class="tag-cloud">
+                <span class="tech-tag">LangGraph</span>
+                <span class="tech-tag">FinRobot</span>
+                <span class="tech-tag">ReAct Paradigm</span>
+                <span class="tech-tag">Stateful Memory</span>
+                <span class="tech-tag">Tool Use</span>
+                <span class="tech-tag">Consensus Voting</span>
+            </div>
+
+            <div class="agent-loop-visual">
+                <div class="loop-step">
+                    <div class="step-icon">1</div>
+                    <div class="step-content">
+                        <h5>Research Phase</h5>
+                        <p>Fundamental Agent parses SEC filings while Technical Agent analyzes price action.</p>
+                    </div>
+                </div>
+                <div class="loop-step">
+                    <div class="step-icon">2</div>
+                    <div class="step-content">
+                        <h5>Debate Phase</h5>
+                        <p>Agents exchange observations. The Risk Manager flags high volatility exposure.</p>
+                    </div>
+                </div>
+                <div class="loop-step">
+                    <div class="step-icon">3</div>
+                    <div class="step-content">
+                        <h5>Consensus</h5>
+                        <p>The Portfolio Manager synthesizes inputs and issues a final trade recommendation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <h2>Technical Specifications</h2>
+            <table class="specs-table">
+                <tr>
+                    <td>Orchestrator</td>
+                    <td>LangGraph (Stateful Charts)</td>
+                </tr>
+                <tr>
+                    <td>Financial Skillset</td>
+                    <td>FinRobot (Open Source)</td>
+                </tr>
+                <tr>
+                    <td>Agent Topology</td>
+                    <td>Hierarchical / Cyclic Swarms</td>
+                </tr>
+                <tr>
+                    <td>Memory System</td>
+                    <td>Redis-backed Stateful Persistence</td>
+                </tr>
+                <tr>
+                    <td>Safety Gate</td>
+                    <td>Human-in-the-Loop (HITL) Hooks</td>
+                </tr>
+                <tr>
+                    <td>License</td>
+                    <td>Apache 2.0</td>
+                </tr>
+            </table>
+
+            <h3>Sample Swarm Definition (Python)</h3>
+            <div class="code-block">
+                <span class="comment"># Define a stateful financial swarm</span>
+                <span class="keyword">from</span> swarmos <span class="keyword">import</span> SwarmGraph, FinancialAgent
+
+                market_researcher = FinancialAgent(role=<span class="string">"analyst"</span>, tools=[<span
+                    class="string">"yfinance"</span>, <span class="string">"fmp"</span>])
+                risk_manager = FinancialAgent(role=<span class="string">"risk"</span>, tools=[<span
+                    class="string">"portfolio_var"</span>])
+
+                workflow = SwarmGraph()
+                workflow.add_node(<span class="string">"research"</span>, market_researcher)
+                workflow.add_node(<span class="string">"risk_check"</span>, risk_manager)
+                workflow.add_edge(<span class="string">"research"</span>, <span class="string">"risk_check"</span>)
+
+                workflow.compile().invoke({<span class="string">"ticker"</span>: <span class="string">"NVDA"</span>})
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section" style="background: #f8f8f8;">
+        <div class="container" style="text-align: center;">
+            <h2>Build Your Swarm</h2>
+            <p style="max-width: 600px; margin: 0 auto 30px;">
+                Download the SwarmOS SDK and start building autonomous financial researchers today.
+            </p>
+            <a href="https://github.com/wealthnomic/swarmos" class="cta-button"><i class="fab fa-github"></i> View on
+                GitHub</a>
+            <a href="index.html" class="cta-button"
+                style="background: #fff; color: #000 !important; margin-left: 15px;">Back to Initiatives</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">&copy; 2025 Wealthnomics AI Foundation. All Rights Reserved.</div>
+    </footer>
+
+</body>
+
+</html>

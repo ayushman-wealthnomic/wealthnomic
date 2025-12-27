@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wealthnomic Foundation | TERMINAL</title>
+    <link rel="stylesheet" href="live_dashboard.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Space+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <a href="../index.html" class="icon" title="Back to Home"
+                style="text-decoration:none; color:inherit; display:flex; justify-content:center; align-items:center;">H</a>
+            <div class="icon active" title="Dashboard">D</div>
+            <div class="icon" title="Portfolio">P</div>
+            <div class="icon" title="Risk Analysis">R</div>
+            <div class="icon" title="Settings">S</div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <!-- Ticker Tape -->
+            <div class="top-bar">
+                <div class="ticker-wrap">
+                    <div class="ticker" id="ticker-content">
+                        <!-- Populated by JS -->
+                        <div class="ticker-item">LOADING MARKET DATA...</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Header -->
+            <header class="header-grid">
+                <div class="brand">
+                    <h1>Wealth<span style="color:var(--accent-green)">nomics</span></h1>
+                    <div class="subtitle">OPEN SOURCE INTELLIGENCE // LIVE_DEMO</div>
+                </div>
+                <div class="live-status">
+                    <span class="blink">●</span> SYSTEM ONLINE
+                </div>
+            </header>
+
+            <!-- Dashboard Grid -->
+            <div class="dashboard-grid">
+
+                <!-- KPI Row -->
+                <div class="kpi-row">
+                    <div class="brutal-card kpi-card" style="background:var(--accent-cyan)">
+                        <div class="card-title">TOTAL EQUITY</div>
+                        <div class="kpi-value" id="current-equity">--</div>
+                        <div class="kpi-label">USD VALUATION</div>
+                    </div>
+                    <div class="brutal-card kpi-card">
+                        <div class="card-title">TOTAL RETURN</div>
+                        <div class="kpi-value" id="total-return-val">--%</div>
+                        <div class="kpi-label">SINCE INCEPTION</div>
+                    </div>
+                    <div class="brutal-card kpi-card" style="background:var(--accent-green)">
+                        <div class="card-title">PROFIT/LOSS</div>
+                        <div class="kpi-value" id="total-pnl-val">--</div>
+                        <div class="kpi-label">NET REALIZED + UNREALIZED</div>
+                    </div>
+                </div>
+
+                <!-- Main Chart -->
+                <div class="brutal-card chart-container">
+                    <div class="card-title">EQUITY CURVE [LIVE]</div>
+                    <canvas id="equityChart"></canvas>
+                </div>
+
+                <!-- Live Feed / Trades -->
+                <div class="brutal-card feed-container">
+                    <div class="card-title">TRADE STREAM</div>
+                    <div class="table-wrapper">
+                        <table id="trades-table">
+                            <thead>
+                                <tr>
+                                    <th>TIME</th>
+                                    <th>SYM</th>
+                                    <th>SIDE</th>
+                                    <th>PNL</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Positions (Full Width or reuse grid) -->
+                <div class="brutal-card" style="grid-column: 1 / -1;">
+                    <div class="card-title">ACTIVE POSITIONS</div>
+                    <div class="table-wrapper" style="max-height: 200px;">
+                        <table id="positions-table">
+                            <thead>
+                                <tr>
+                                    <th>SYMBOL</th>
+                                    <th>SIZE</th>
+                                    <th>ENTRY</th>
+                                    <th>MARK</th>
+                                    <th>PNL ($)</th>
+                                    <th>PNL (%)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Disclaimer Modal -->
+    <div id="disclaimer-modal" class="modal-overlay">
+        <div class="modal-content brutal-card">
+            <div class="modal-header">
+                <span class="modal-title">DISCLAIMER</span>
+            </div>
+            <div class="modal-body">
+                <p><strong>DO NOT TRADE BASED ON THIS INFORMATION.</strong></p>
+                <p>This dashboard is a technological demonstration of the <strong>Wealthnomics AI System</strong>.</p>
+                <p>The data presented here serves solely as a <strong>track record</strong> to demonstrate system
+                    robustness, latency execution, and algorithmic performance.</p>
+                <p>Trading financial markets involves substantial risk of loss.</p>
+            </div>
+            <button id="btn-acknowledge" class="btn-acknowledge">I UNDERSTAND - ENTER TERMINAL</button>
+        </div>
+    </div>
+
+    <script src="live_dashboard_data.js"></script>
+    <script src="live_dashboard.js"></script>
+</body>
+
+</html>

@@ -4,337 +4,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Investor Login | Wealthnomics</title>
-    <meta name="description"
-        content="Secure login for Wealthnomics investors. Access your dashboard, performance reports, and account settings.">
-    <meta name="robots" content="noindex, nofollow">
-    <link rel="canonical" href="https://wealthnomics.com/investor-login.html">
-
-    <!-- Schema.org Structured Data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Wealthnomics LLC",
-      "legalName": "Wealthnomics LLC",
-      "identifier": "2025-001750749",
-      "url": "https://wealthnomics.com",
-      "logo": "https://wealthnomics.com/assets/logo.png",
-      "foundingDate": "2025-08-22",
-      "foundingLocation": {
-        "@type": "Place",
-        "name": "Wyoming"
-      },
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "30 N Gould St, Ste R",
-        "addressLocality": "Sheridan",
-        "addressRegion": "WY",
-        "postalCode": "82801",
-        "addressCountry": "US"
-      },
-      "sameAs": [
-        "https://www.linkedin.com/company/wealthnomic",
-        "https://x.com/wealthnomic"
-      ],
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+91-8887365246",
-        "contactType": "customer service",
-        "email": "ayushman@wealthnomics.com"
-      }
-    }
-    </script>
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
+    <title>Investor Login | Wealthnomic AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --black: #0a0a0a;
-            --white: #ffffff;
-            --gray-100: #f5f5f5;
-            --gray-200: #e5e5e5;
-            --gray-300: #d4d4d4;
-            --gray-400: #a3a3a3;
-            --gray-500: #737373;
-            --gray-600: #525252;
-            --gray-700: #404040;
-            --gray-800: #262626;
-            --gray-900: #171717;
-            --accent: #00ff88;
-            --accent-dim: #00cc6a;
-            --red: #ff3b3b;
-            --yellow: #ffd000;
-            --blue: #0066ff;
-            --border: 2px solid var(--black);
-            --shadow: 4px 4px 0px var(--black);
-            --shadow-lg: 8px 8px 0px var(--black);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+            --bg: #ffffff;
+            --text-main: #111111;
+            --text-light: #444444;
+            --border-color: #e0e0e0;
         }
 
         body {
-            font-family: 'Space Grotesk', sans-serif;
-            background: var(--gray-100);
-            color: var(--black);
+            font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
             line-height: 1.6;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .navbar {
-            background: var(--white);
-            border-bottom: var(--border);
-            padding: 0 24px;
-            height: 70px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-            color: var(--black);
-        }
-
-        .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--accent);
+            height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: 700;
-            font-size: 1.2rem;
-            border: var(--border);
-        }
-
-        .logo-text {
-            font-weight: 700;
-            font-size: 1.1rem;
-            letter-spacing: -0.5px;
-        }
-
-        .back-link {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            text-decoration: none;
-            color: var(--gray-600);
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: color 0.2s;
-        }
-
-        .back-link:hover {
-            color: var(--black);
         }
 
         .login-container {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 40px 24px;
-        }
-
-        .login-card {
-            background: var(--white);
-            border: var(--border);
-            box-shadow: var(--shadow-lg);
             width: 100%;
-            max-width: 480px;
-            padding: 48px;
-        }
-
-        .login-header {
+            max-width: 450px;
+            padding: 60px;
+            border: 1px solid var(--border-color);
             text-align: center;
-            margin-bottom: 32px;
         }
 
-        .login-header h1 {
+        h1 {
+            font-weight: 300;
             font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-            letter-spacing: -1px;
+            margin-bottom: 10px;
+            letter-spacing: -0.02em;
         }
 
-        .login-header p {
-            color: var(--gray-600);
-            font-size: 1rem;
+        .subtitle {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-light);
+            margin-bottom: 40px;
+            display: block;
         }
 
         .form-group {
-            margin-bottom: 24px;
+            margin-bottom: 25px;
+            text-align: left;
         }
 
-        .form-label {
+        label {
             display: block;
-            font-weight: 600;
             margin-bottom: 8px;
             font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            color: var(--text-light);
         }
 
-        .form-input {
+        input {
             width: 100%;
-            padding: 12px 16px;
-            font-family: 'Space Mono', monospace;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            font-family: inherit;
             font-size: 1rem;
-            border: var(--border);
-            background: var(--gray-100);
-            transition: all 0.2s;
-        }
-
-        .form-input:focus {
+            box-sizing: border-box;
+            /* Fixes padding issue */
             outline: none;
-            background: var(--white);
-            box-shadow: var(--shadow);
-            transform: translate(-2px, -2px);
+            transition: border-color 0.3s;
         }
 
-        .btn-login {
+        input:focus {
+            border-color: var(--text-main);
+        }
+
+        button {
             width: 100%;
-            padding: 16px;
-            background: var(--black);
-            color: var(--white);
-            border: var(--border);
-            font-family: 'Space Grotesk', sans-serif;
+            padding: 15px;
+            background: var(--text-main);
+            color: var(--bg);
+            border: none;
+            font-family: inherit;
             font-size: 1rem;
-            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.1em;
             cursor: pointer;
-            transition: all 0.2s;
-            margin-top: 8px;
+            margin-top: 20px;
+            transition: opacity 0.3s;
         }
 
-        .btn-login:hover {
-            background: var(--accent);
-            color: var(--black);
-            box-shadow: var(--shadow);
-            transform: translate(-2px, -2px);
+        button:hover {
+            opacity: 0.8;
         }
 
-        .login-footer {
-            margin-top: 24px;
-            text-align: center;
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
             font-size: 0.9rem;
-            color: var(--gray-600);
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .login-link {
-            color: var(--black);
+            color: var(--text-light);
             text-decoration: none;
-            font-weight: 600;
-            border-bottom: 2px solid var(--accent);
-            transition: all 0.2s;
+            border-bottom: 1px solid transparent;
         }
 
-        .login-link:hover {
-            background: var(--accent);
-        }
-
-        .secure-badge {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            margin-top: 32px;
-            padding-top: 24px;
-            border-top: 1px solid var(--gray-200);
-            color: var(--gray-500);
-            font-size: 0.8rem;
-        }
-
-        .secure-badge i {
-            color: var(--accent-dim);
-        }
-
-        /* Footer */
-        .site-footer {
-            text-align: center;
-            padding: 24px;
-            color: var(--gray-500);
-            font-size: 0.85rem;
-            border-top: var(--border);
-            background: var(--white);
-        }
-
-        @media (max-width: 480px) {
-            .login-card {
-                padding: 32px 24px;
-            }
+        .back-link:hover {
+            border-bottom-color: var(--text-light);
         }
     </style>
 </head>
 
 <body>
-    <nav class="navbar">
-        <a href="index.html" class="logo">
-            <div class="logo-icon">W</div>
-            <span class="logo-text">WEALTHNOMICS</span>
-        </a>
-        <a href="index.html" class="back-link">
-            <i class="fas fa-arrow-left"></i> Back to Home
-        </a>
-    </nav>
-
     <div class="login-container">
-        <div class="login-card">
-            <div class="login-header">
-                <h1>Investor Portal</h1>
-                <p>Secure access to your portfolio dashboard</p>
+        <h1>Investor Portal</h1>
+        <span class="subtitle">Secure Access</span>
+
+        <form onsubmit="event.preventDefault(); alert('Access Denied. Please contact IR.');">
+            <div class="form-group">
+                <label>Institutional ID</label>
+                <input type="text" placeholder="ID-XXXX-XXXX">
             </div>
 
-            <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Incorrect email or password.');">
-                <div class="form-group">
-                    <label for="email" class="form-label">Email Address</label>
-                    <input type="email" id="email" name="email" class="form-input" placeholder="investor@example.com"
-                        required>
-                </div>
-
-                <div class="form-group">
-                    <label for="password" class="form-label">Password</label>
-                    <input type="password" id="password" name="password" class="form-input" placeholder="••••••••"
-                        required>
-                </div>
-
-                <button type="submit" class="btn-login">
-                    Access Dashboard
-                    <i class="fas fa-arrow-right" style="margin-left: 8px;"></i>
-                </button>
-            </form>
-
-            <div class="login-footer">
-                <a href="#" class="login-link">Forgot Password?</a>
-                <a href="#" class="login-link">Request Access</a>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" placeholder="••••••••">
             </div>
 
-            <div class="secure-badge">
-                <i class="fas fa-lock"></i>
-                256-bit SSL Encrypted Connection
-            </div>
-        </div>
+            <button type="submit">Authenticate</button>
+        </form>
+
+        <a href="index.html" class="back-link">← Return to Main Site</a>
     </div>
-
-    <footer class="site-footer">
-        <p style="margin-bottom: 8px;">30 N Gould St, Ste R, Sheridan, Wyoming 82801, USA</p>
-        &copy; 2025 Wealthnomics LLC. Filing ID: 2025-001750749. All rights reserved.
-    </footer>
 </body>
 
 </html>

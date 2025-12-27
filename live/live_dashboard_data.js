@@ -1,0 +1,574 @@
+const LIVE_DASHBOARD_DATA = {
+    "generated_at": "2025-12-18 01:12:02",
+    "live_start_date": "2025-11-01",
+    "start_capital": 100000,
+    "current_equity": 120896.2581955957,
+    "total_pnl": 20896.2581955957,
+    "total_return_pct": 20.8962581955957,
+    "today_pnl": 2116.4536125943705,
+    "equity_curve": [
+        {
+            "date": "2025-11-03",
+            "equity": 100000.0
+        },
+        {
+            "date": "2025-11-04",
+            "equity": 99293.91009956558
+        },
+        {
+            "date": "2025-11-05",
+            "equity": 99401.76860143102
+        },
+        {
+            "date": "2025-11-06",
+            "equity": 99681.01739601961
+        },
+        {
+            "date": "2025-11-07",
+            "equity": 100405.80920028486
+        },
+        {
+            "date": "2025-11-10",
+            "equity": 101418.19848778422
+        },
+        {
+            "date": "2025-11-11",
+            "equity": 101512.86691857206
+        },
+        {
+            "date": "2025-11-12",
+            "equity": 101931.76069345672
+        },
+        {
+            "date": "2025-11-13",
+            "equity": 101880.66407321049
+        },
+        {
+            "date": "2025-11-14",
+            "equity": 101554.86830311548
+        },
+        {
+            "date": "2025-11-17",
+            "equity": 101107.86422082526
+        },
+        {
+            "date": "2025-11-18",
+            "equity": 101481.58434494355
+        },
+        {
+            "date": "2025-11-19",
+            "equity": 102179.46555888091
+        },
+        {
+            "date": "2025-11-20",
+            "equity": 102221.64554770224
+        },
+        {
+            "date": "2025-11-21",
+            "equity": 103026.9562671624
+        },
+        {
+            "date": "2025-11-24",
+            "equity": 104571.40589943224
+        },
+        {
+            "date": "2025-11-25",
+            "equity": 105693.76571064712
+        },
+        {
+            "date": "2025-11-26",
+            "equity": 107453.6050488306
+        },
+        {
+            "date": "2025-11-28",
+            "equity": 109661.07400447062
+        },
+        {
+            "date": "2025-12-01",
+            "equity": 111490.26852578542
+        },
+        {
+            "date": "2025-12-02",
+            "equity": 112059.54460700834
+        },
+        {
+            "date": "2025-12-03",
+            "equity": 112463.34683302257
+        },
+        {
+            "date": "2025-12-04",
+            "equity": 111956.1391077673
+        },
+        {
+            "date": "2025-12-05",
+            "equity": 113072.45697844066
+        },
+        {
+            "date": "2025-12-08",
+            "equity": 112613.21708841297
+        },
+        {
+            "date": "2025-12-09",
+            "equity": 114232.41702369961
+        },
+        {
+            "date": "2025-12-10",
+            "equity": 116574.37380539837
+        },
+        {
+            "date": "2025-12-11",
+            "equity": 119054.99406739284
+        },
+        {
+            "date": "2025-12-12",
+            "equity": 118066.4934971857
+        },
+        {
+            "date": "2025-12-15",
+            "equity": 120375.7433694479
+        },
+        {
+            "date": "2025-12-16",
+            "equity": 118779.80458300133
+        },
+        {
+            "date": "2025-12-17",
+            "equity": 120896.2581955957
+        }
+    ],
+    "recent_trades": [
+        {
+            "date": "2025-12-17",
+            "symbol": "GLD",
+            "type": "EXIT_TRAIL_STOP",
+            "profit": 133.24,
+            "return_pct": "225.92%"
+        },
+        {
+            "date": "2025-12-17",
+            "symbol": "LVS",
+            "type": "EXIT_TRAIL_STOP",
+            "profit": 842.4,
+            "return_pct": "235.65%"
+        },
+        {
+            "date": "2025-12-16",
+            "symbol": "EWZ",
+            "type": "EXIT_HARD_STOP_GRACE",
+            "profit": -841.36,
+            "return_pct": "-120.19%"
+        },
+        {
+            "date": "2025-12-16",
+            "symbol": "IAU",
+            "type": "EXIT_TRAIL_STOP",
+            "profit": 283.01,
+            "return_pct": "98.49%"
+        },
+        {
+            "date": "2025-12-16",
+            "symbol": "REMX",
+            "type": "EXIT_TRAIL_STOP",
+            "profit": -32.19,
+            "return_pct": "-10.43%"
+        },
+        {
+            "date": "2025-12-16",
+            "symbol": "ISRG",
+            "type": "EXIT_TRAIL_STOP",
+            "profit": 460.83,
+            "return_pct": "1089.92%"
+        },
+        {
+            "date": "2025-12-15",
+            "symbol": "VHT",
+            "type": "EXIT_TRAIL_STOP",
+            "profit": 447.39,
+            "return_pct": "558.58%"
+        },
+        {
+            "date": "2025-12-15",
+            "symbol": "IBB",
+            "type": "EXIT_TRAIL_STOP",
+            "profit": 370.91,
+            "return_pct": "272.74%"
+        },
+        {
+            "date": "2025-12-15",
+            "symbol": "SO",
+            "type": "EXIT_TRAIL_STOP",
+            "profit": 455.84,
+            "return_pct": "168.05%"
+        },
+        {
+            "date": "2025-12-15",
+            "symbol": "SLV",
+            "type": "EXIT_TRAIL_STOP",
+            "profit": 813.23,
+            "return_pct": "199.93%"
+        },
+        {
+            "date": "2025-12-12",
+            "symbol": "GLDM",
+            "type": "EXIT_TRAIL_STOP",
+            "profit": 632.68,
+            "return_pct": "232.35%"
+        },
+        {
+            "date": "2025-12-12",
+            "symbol": "MRK",
+            "type": "EXIT_TRAIL_STOP",
+            "profit": 734.53,
+            "return_pct": "310.85%"
+        },
+        {
+            "date": "2025-12-11",
+            "symbol": "SGOL",
+            "type": "EXIT_TRAIL_STOP",
+            "profit": 372.36,
+            "return_pct": "65.83%"
+        },
+        {
+            "date": "2025-12-11",
+            "symbol": "IYH",
+            "type": "EXIT_TRAIL_STOP",
+            "profit": 267.74,
+            "return_pct": "75.54%"
+        },
+        {
+            "date": "2025-12-11",
+            "symbol": "CAH",
+            "type": "EXIT_TRAIL_STOP",
+            "profit": 253.03,
+            "return_pct": "222.69%"
+        },
+        {
+            "date": "2025-12-10",
+            "symbol": "SLV",
+            "type": "EXIT_TRAIL_STOP",
+            "profit": 1179.55,
+            "return_pct": "279.32%"
+        },
+        {
+            "date": "2025-12-10",
+            "symbol": "EWZ",
+            "type": "EXIT_TRAIL_STOP",
+            "profit": 365.43,
+            "return_pct": "53.16%"
+        },
+        {
+            "date": "2025-12-10",
+            "symbol": "REGN",
+            "type": "EXIT_TRAIL_STOP",
+            "profit": 139.8,
+            "return_pct": "449.13%"
+        },
+        {
+            "date": "2025-12-09",
+            "symbol": "EPU",
+            "type": "EXIT_TRAIL_STOP",
+            "profit": 261.02,
+            "return_pct": "78.36%"
+        },
+        {
+            "date": "2025-12-09",
+            "symbol": "LLY",
+            "type": "EXIT_TRAIL_STOP",
+            "profit": 134.65,
+            "return_pct": "612.09%"
+        },
+        {
+            "date": "2025-12-09",
+            "symbol": "GLD",
+            "type": "EXIT_TRAIL_STOP",
+            "profit": 133.16,
+            "return_pct": "231.00%"
+        },
+        {
+            "date": "2025-12-08",
+            "symbol": "SGOL",
+            "type": "EXIT_TRAIL_STOP",
+            "profit": 151.32,
+            "return_pct": "27.15%"
+        },
+        {
+            "date": "2025-12-08",
+            "symbol": "COPX",
+            "type": "EXIT_TRAIL_STOP",
+            "profit": 389.84,
+            "return_pct": "117.72%"
+        },
+        {
+            "date": "2025-12-08",
+            "symbol": "CAH",
+            "type": "EXIT_TRAIL_STOP",
+            "profit": -21.26,
+            "return_pct": "-19.00%"
+        },
+        {
+            "date": "2025-12-05",
+            "symbol": "SLV",
+            "type": "EXIT_TRAIL_STOP",
+            "profit": 91.63,
+            "return_pct": "22.27%"
+        },
+        {
+            "date": "2025-12-05",
+            "symbol": "XBI",
+            "type": "EXIT_TRAIL_STOP",
+            "profit": 935.07,
+            "return_pct": "506.76%"
+        },
+        {
+            "date": "2025-12-05",
+            "symbol": "TMO",
+            "type": "EXIT_TRAIL_STOP",
+            "profit": 160.66,
+            "return_pct": "426.27%"
+        },
+        {
+            "date": "2025-12-04",
+            "symbol": "IAU",
+            "type": "EXIT_TRAIL_STOP",
+            "profit": -106.73,
+            "return_pct": "-39.64%"
+        },
+        {
+            "date": "2025-12-04",
+            "symbol": "EWO",
+            "type": "EXIT_TRAIL_STOP",
+            "profit": 322.3,
+            "return_pct": "49.58%"
+        },
+        {
+            "date": "2025-12-03",
+            "symbol": "TUR",
+            "type": "EXIT_TRAIL_STOP",
+            "profit": 332.48,
+            "return_pct": "52.09%"
+        },
+        {
+            "date": "2025-12-03",
+            "symbol": "LRCX",
+            "type": "EXIT_TRAIL_STOP",
+            "profit": 392.42,
+            "return_pct": "288.76%"
+        },
+        {
+            "date": "2025-12-03",
+            "symbol": "GLDM",
+            "type": "EXIT_TRAIL_STOP",
+            "profit": 28.73,
+            "return_pct": "11.33%"
+        },
+        {
+            "date": "2025-12-03",
+            "symbol": "COR",
+            "type": "EXIT_HARD_STOP_GRACE",
+            "profit": -883.74,
+            "return_pct": "-1480.83%"
+        },
+        {
+            "date": "2025-12-02",
+            "symbol": "SLV",
+            "type": "EXIT_TRAIL_STOP",
+            "profit": 1945.53,
+            "return_pct": "452.83%"
+        },
+        {
+            "date": "2025-12-02",
+            "symbol": "EWY",
+            "type": "EXIT_TRAIL_STOP",
+            "profit": 129.56,
+            "return_pct": "55.79%"
+        },
+        {
+            "date": "2025-12-02",
+            "symbol": "MSI",
+            "type": "EXIT_TRAIL_STOP",
+            "profit": 354.08,
+            "return_pct": "627.09%"
+        },
+        {
+            "date": "2025-12-01",
+            "symbol": "AAAU",
+            "type": "EXIT_TRAIL_STOP",
+            "profit": 458.38,
+            "return_pct": "90.53%"
+        },
+        {
+            "date": "2025-12-01",
+            "symbol": "OIH",
+            "type": "EXIT_TRAIL_STOP",
+            "profit": 627.1,
+            "return_pct": "866.00%"
+        },
+        {
+            "date": "2025-12-01",
+            "symbol": "FI",
+            "type": "EXIT_TRAIL_STOP",
+            "profit": 760.1,
+            "return_pct": "223.73%"
+        },
+        {
+            "date": "2025-11-28",
+            "symbol": "SGOL",
+            "type": "EXIT_TRAIL_STOP",
+            "profit": 288.18,
+            "return_pct": "55.20%"
+        },
+        {
+            "date": "2025-11-28",
+            "symbol": "USRT",
+            "type": "EXIT_TRAIL_STOP",
+            "profit": 255.26,
+            "return_pct": "71.38%"
+        },
+        {
+            "date": "2025-11-28",
+            "symbol": "BA",
+            "type": "EXIT_TRAIL_STOP",
+            "profit": 1076.39,
+            "return_pct": "937.63%"
+        },
+        {
+            "date": "2025-11-26",
+            "symbol": "SLV",
+            "type": "EXIT_TRAIL_STOP",
+            "profit": 1229.57,
+            "return_pct": "272.51%"
+        },
+        {
+            "date": "2025-11-26",
+            "symbol": "IGV",
+            "type": "EXIT_TRAIL_STOP",
+            "profit": 494.98,
+            "return_pct": "244.40%"
+        },
+        {
+            "date": "2025-11-26",
+            "symbol": "MSI",
+            "type": "EXIT_TRAIL_STOP",
+            "profit": 136.25,
+            "return_pct": "245.15%"
+        },
+        {
+            "date": "2025-11-25",
+            "symbol": "OUNZ",
+            "type": "EXIT_TRAIL_STOP",
+            "profit": 282.56,
+            "return_pct": "54.31%"
+        },
+        {
+            "date": "2025-11-25",
+            "symbol": "BUG",
+            "type": "EXIT_TRAIL_STOP",
+            "profit": 444.62,
+            "return_pct": "67.01%"
+        },
+        {
+            "date": "2025-11-25",
+            "symbol": "PANW",
+            "type": "EXIT_TRAIL_STOP",
+            "profit": 32.36,
+            "return_pct": "29.35%"
+        },
+        {
+            "date": "2025-11-24",
+            "symbol": "AAAU",
+            "type": "EXIT_TRAIL_STOP",
+            "profit": 62.68,
+            "return_pct": "31.05%"
+        },
+        {
+            "date": "2025-11-24",
+            "symbol": "XLU",
+            "type": "EXIT_TRAIL_STOP",
+            "profit": 82.7,
+            "return_pct": "45.03%"
+        }
+    ],
+    "active_positions": [
+        {
+            "symbol": "COP",
+            "entry_date": "2025-12-15",
+            "size": 23627.0,
+            "entry_price": 94.36,
+            "current_price": 94.08,
+            "pnl": -70.11,
+            "pnl_pct": -0.3
+        },
+        {
+            "symbol": "OIH",
+            "entry_date": "2025-12-15",
+            "size": 23627.0,
+            "entry_price": 296.71,
+            "current_price": 284.5,
+            "pnl": -972.29,
+            "pnl_pct": -4.12
+        },
+        {
+            "symbol": "SLV",
+            "entry_date": "2025-12-15",
+            "size": 23627.0,
+            "entry_price": 58.11,
+            "current_price": 60.28,
+            "pnl": 880.27,
+            "pnl_pct": 3.73
+        },
+        {
+            "symbol": "PFE",
+            "entry_date": "2025-12-16",
+            "size": 24045.0,
+            "entry_price": 25.53,
+            "current_price": 25.24,
+            "pnl": -277.84,
+            "pnl_pct": -1.16
+        },
+        {
+            "symbol": "AMLP",
+            "entry_date": "2025-12-16",
+            "size": 24045.0,
+            "entry_price": 46.8,
+            "current_price": 46.94,
+            "pnl": 71.93,
+            "pnl_pct": 0.3
+        },
+        {
+            "symbol": "OUNZ",
+            "entry_date": "2025-12-16",
+            "size": 24045.0,
+            "entry_price": 41.44,
+            "current_price": 41.78,
+            "pnl": 195.36,
+            "pnl_pct": 0.81
+        },
+        {
+            "symbol": "PDD",
+            "entry_date": "2025-12-17",
+            "size": 24019.0,
+            "entry_price": 104.89,
+            "current_price": 104.89,
+            "pnl": 0.0,
+            "pnl_pct": 0.0
+        },
+        {
+            "symbol": "ECH",
+            "entry_date": "2025-12-17",
+            "size": 24019.0,
+            "entry_price": 38.32,
+            "current_price": 38.32,
+            "pnl": 0.0,
+            "pnl_pct": 0.0
+        },
+        {
+            "symbol": "IAU",
+            "entry_date": "2025-12-17",
+            "size": 24019.0,
+            "entry_price": 81.69,
+            "current_price": 81.69,
+            "pnl": 0.0,
+            "pnl_pct": 0.0
+        }
+    ]
+};

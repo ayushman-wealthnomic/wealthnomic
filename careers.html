@@ -2,551 +2,523 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Careers | Wealthnomics</title>
+    <meta charset="UTF-8" />
+    <title>Careers — Wealthnomic</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description"
-        content="Join the Wealthnomics team. We are hiring Quants, Risk Officers, and Fund Managers to build the future of systematic trading.">
-    <link rel="canonical" href="https://wealthnomics.com/careers.html">
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://wealthnomics.com/careers.html">
-    <meta property="og:title" content="Careers at Wealthnomics">
-    <meta property="og:description"
-        content="Join the Wealthnomics team. We are hiring Quants, Risk Officers, and Fund Managers.">
-    <meta property="og:image" content="https://wealthnomics.com/assets/og-image.jpg">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://wealthnomics.com/careers.html">
-    <meta property="twitter:title" content="Careers at Wealthnomics">
-    <meta property="twitter:description"
-        content="Join the Wealthnomics team. We are hiring Quants, Risk Officers, and Fund Managers.">
-    <meta property="twitter:image" content="https://wealthnomics.com/assets/og-image.jpg">
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
+        content="Join the Wealthnomic team. We are hiring Quants, Risk Officers, and Fund Managers to build the future of systematic trading." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
         :root {
-            --black: #0a0a0a;
-            --white: #ffffff;
-            --gray-100: #f5f5f5;
-            --gray-200: #e5e5e5;
-            --gray-300: #d4d4d4;
-            --gray-400: #a3a3a3;
-            --gray-500: #737373;
-            --gray-600: #525252;
-            --gray-700: #404040;
-            --gray-800: #262626;
-            --gray-900: #171717;
-            --accent: #00ff88;
-            --accent-dim: #00cc6a;
-            --red: #ff3b3b;
-            --yellow: #ffd000;
-            --blue: #0066ff;
-            --border: 2px solid var(--black);
-            --border-light: 1px solid var(--gray-300);
-            --shadow: 4px 4px 0px var(--black);
-            --shadow-lg: 8px 8px 0px var(--black);
-            --shadow-accent: 4px 4px 0px var(--accent);
+            /* Light Industrial Neo-Brutalism */
+            --bg: #ffffff;
+            --bg-alt: #f1f1f1;
+            --fg: #000000;
+            --accent: #3B82F6;
+            /* Hyper Blue */
+            --muted: #555555;
+            --border: #000000;
+            --shadow: 6px 6px 0 #000000;
+            --transition-fast: 0.15s ease-out;
         }
 
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
         }
 
-        html {
-            scroll-behavior: smooth;
+        html,
+        body {
+            background: var(--bg);
+            color: var(--fg);
+            font-family: "Space Grotesk", system-ui, sans-serif;
+            text-rendering: geometricPrecision;
+            line-height: 1.5;
         }
 
         body {
-            font-family: 'Space Grotesk', sans-serif;
-            background: var(--white);
-            color: var(--black);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Utility Classes */
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        .mono {
-            font-family: 'Space Mono', monospace;
-        }
-
-        /* Navigation */
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            background: var(--white);
-            border-bottom: var(--border);
-            padding: 0;
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: stretch;
-            height: 70px;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 0 24px;
-            border-right: var(--border);
-            text-decoration: none;
-            background: var(--black);
-            color: var(--white);
-            transition: all 0.2s ease;
-        }
-
-        .logo:hover {
-            background: var(--accent);
-            color: var(--black);
-        }
-
-        .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--accent);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 1.2rem;
-            color: var(--black);
-        }
-
-        .logo-text {
-            font-weight: 700;
-            font-size: 1.1rem;
-            letter-spacing: -0.5px;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            height: 100%;
-        }
-
-        .nav-links li {
-            border-right: var(--border);
-        }
-
-        .nav-links a {
-            display: flex;
-            align-items: center;
-            height: 100%;
-            padding: 0 20px;
-            color: var(--black);
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            transition: all 0.2s ease;
-        }
-
-        .nav-links a:hover {
-            background: var(--accent);
-        }
-
-        .nav-cta {
-            display: flex;
-            align-items: center;
-            padding: 0 24px;
-            background: var(--black);
-            color: var(--white);
-            border: none;
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 0.85rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            text-decoration: none;
-        }
-
-        .nav-cta:hover {
-            background: var(--accent);
-            color: var(--black);
-        }
-
-        /* Hero Section */
-        .page-header {
-            margin-top: 70px;
-            padding: 80px 24px;
-            background: var(--gray-100);
-            border-bottom: var(--border);
-            text-align: center;
-        }
-
-        .page-title {
-            font-size: 3.5rem;
-            font-weight: 700;
-            letter-spacing: -2px;
-            margin-bottom: 16px;
-        }
-
-        .page-subtitle {
-            font-size: 1.2rem;
-            color: var(--gray-600);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* Jobs Section */
-        .jobs-section {
-            padding: 80px 0;
-        }
-
-        .job-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 32px;
-            padding: 0 24px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .job-card {
-            background: var(--white);
-            border: var(--border);
-            padding: 32px;
-            transition: all 0.2s ease;
+            border: 4px solid var(--border);
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
         }
 
+        .shell {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 40px;
+            width: 100%;
+        }
+
+        /* Header / Nav */
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 3px solid var(--border);
+            padding: 20px 0;
+            margin-bottom: 40px;
+        }
+
+        .logo-lockup {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--fg);
+            font-weight: 900;
+            text-transform: uppercase;
+            font-size: 1.5rem;
+        }
+
+        .logo-lockup span:last-child {
+            color: var(--accent);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            font-family: "Space Mono", monospace;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--fg);
+            position: relative;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-thickness: 3px;
+        }
+
+        .nav-cta {
+            border: 2px solid var(--border);
+            padding: 8px 16px;
+            background: var(--fg);
+            color: #fff !important;
+            box-shadow: 4px 4px 0 #000;
+            transition: all 0.2s;
+        }
+
+        .nav-cta:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0 #000;
+            background: var(--accent);
+            text-decoration: none;
+            color: #fff !important;
+        }
+
+        .nav-toggle {
+            display: none;
+        }
+
+        /* Page Hero */
+        .page-hero {
+            padding: 40px 0 60px;
+            border-bottom: 3px solid var(--border);
+            margin-bottom: 60px;
+        }
+
+        .page-kicker {
+            font-family: "Space Mono", monospace;
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .page-kicker .dot {
+            width: 10px;
+            height: 10px;
+            background: var(--accent);
+            border: 2px solid var(--border);
+        }
+
+        .page-title {
+            font-size: clamp(3rem, 6vw, 5rem);
+            line-height: 0.9;
+            text-transform: uppercase;
+            font-weight: 800;
+            margin-bottom: 30px;
+            text-shadow: 4px 4px 0 #eee;
+        }
+
+        .page-subtitle {
+            max-width: 700px;
+            font-size: 1.2rem;
+            line-height: 1.5;
+            color: var(--fg);
+            border-left: 4px solid var(--accent);
+            padding-left: 20px;
+            background: var(--bg-alt);
+            padding: 20px;
+            border: 2px solid var(--border);
+            box-shadow: var(--shadow);
+        }
+
+        /* Jobs Grid */
+        .jobs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .job-card {
+            border: 3px solid var(--border);
+            background: #fff;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            transition: all 0.2s;
+        }
+
         .job-card:hover {
-            box-shadow: var(--shadow-lg);
-            transform: translate(-4px, -4px);
+            transform: translate(-5px, -5px);
+            box-shadow: 10px 10px 0 #000;
         }
 
         .job-header {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: 24px;
         }
 
         .job-title {
             font-size: 1.5rem;
             font-weight: 700;
-            margin-bottom: 8px;
+            text-transform: uppercase;
+            line-height: 1;
+            margin-bottom: 5px;
         }
 
         .job-type {
-            display: inline-block;
-            background: var(--gray-100);
-            padding: 4px 12px;
-            font-size: 0.75rem;
-            font-weight: 600;
+            font-family: "Space Mono", monospace;
+            font-size: 0.8rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            border: 1px solid var(--gray-300);
+            background: #000;
+            color: #fff;
+            display: inline-block;
+            padding: 2px 6px;
+            font-weight: 700;
         }
 
         .job-icon {
-            width: 48px;
-            height: 48px;
-            background: var(--black);
-            color: var(--accent);
+            width: 50px;
+            height: 50px;
+            border: 2px solid var(--border);
+            background: var(--accent);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
+            font-weight: 800;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            box-shadow: 3px 3px 0 #000;
         }
 
         .job-description {
-            color: var(--gray-600);
-            margin-bottom: 24px;
-            flex-grow: 1;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: var(--muted);
         }
 
         .job-requirements {
             list-style: none;
-            margin-bottom: 32px;
+            font-family: "Space Mono", monospace;
+            font-size: 0.85rem;
         }
 
         .job-requirements li {
+            margin-bottom: 8px;
             display: flex;
             align-items: center;
             gap: 10px;
-            margin-bottom: 8px;
-            font-size: 0.9rem;
-            color: var(--gray-700);
         }
 
-        .job-requirements li i {
-            color: var(--accent-dim);
-            font-size: 0.8rem;
+        .job-requirements li::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border: 1px solid #000;
         }
 
-        .apply-btn {
-            width: 100%;
-            padding: 16px;
-            background: var(--black);
-            color: var(--white);
-            border: var(--border);
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 0.9rem;
+        .btn {
+            display: inline-block;
+            text-align: center;
+            padding: 15px;
+            border: 3px solid var(--border);
+            background: var(--accent);
+            font-size: 1rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: all 0.2s;
-            text-align: center;
             text-decoration: none;
-        }
-
-        .apply-btn:hover {
-            background: var(--accent);
-            color: var(--black);
+            color: #fff;
             box-shadow: var(--shadow);
-        }
-
-        /* Upload Section */
-        .upload-section {
-            background: var(--black);
-            color: var(--white);
-            padding: 80px 24px;
-            margin-top: 80px;
-            text-align: center;
-        }
-
-        .upload-container {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .upload-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 16px;
-        }
-
-        .upload-text {
-            color: var(--gray-400);
-            margin-bottom: 40px;
-        }
-
-        .file-upload-wrapper {
-            position: relative;
-            margin-bottom: 24px;
-        }
-
-        .file-upload-input {
-            display: none;
-        }
-
-        .file-upload-label {
-            display: block;
-            padding: 40px;
-            border: 2px dashed var(--gray-600);
-            background: var(--gray-900);
             cursor: pointer;
             transition: all 0.2s;
+            position: relative;
+            overflow: hidden;
         }
 
-        .file-upload-label:hover {
+        .btn:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 8px 8px 0 #000;
+            color: #fff;
+        }
+
+        /* General Section */
+        .general-section {
+            border: 3px solid var(--border);
+            background: #000;
+            color: #fff;
+            padding: 60px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .general-section h2 {
+            font-size: 3rem;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .general-section p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            color: #ccc;
+            font-family: "Space Mono", monospace;
+        }
+
+        .upload-area {
+            border: 3px dashed #555;
+            padding: 40px;
+            background: #111;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-bottom: 20px;
+            display: inline-block;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .upload-area:hover {
             border-color: var(--accent);
-            background: var(--gray-800);
-        }
-
-        .file-upload-icon {
-            font-size: 2rem;
-            color: var(--accent);
-            margin-bottom: 16px;
+            background: #222;
         }
 
         /* Footer */
-        .site-footer {
-            text-align: center;
-            padding: 24px;
-            color: var(--gray-500);
-            font-size: 0.85rem;
-            border-top: var(--border);
-            background: var(--white);
+        footer {
+            margin-top: 80px;
+            border-top: 3px solid var(--border);
+            padding: 20px 0;
+            font-family: "Space Mono", monospace;
+            font-size: 0.8rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+
+            /* Assume existing toggle logic */
+            .page-title {
+                font-size: 3rem;
+            }
         }
     </style>
 </head>
 
 <body>
-    <nav class="navbar">
-        <div class="nav-container container">
-            <a href="index.html" class="logo">
-                <div class="logo-icon">W</div>
-                <span class="logo-text">WEALTHNOMICS</span>
+    <div class="shell">
+        <header>
+            <a href="index.html" class="logo-lockup" style="flex-direction: column; align-items: flex-start; gap: 0;">
+                <span style="font-size: 1.5rem;">Wealthnomics</span>
+                <span
+                    style="font-size: 0.65rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; color: #555;">AI
+                    Foundation</span>
             </a>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="index.html#strategy">Strategy</a></li>
-                <li><a href="index.html#performance">Performance</a></li>
-                <li><a href="blog.html">Insights</a></li>
-                <li><a href="careers.html" style="background: var(--accent);">Careers</a></li>
-            </ul>
-            <a href="investor-login.html" class="nav-cta">Investor Login</a>
-        </div>
-    </nav>
+            <nav id="nav">
+                <a href="index.html">Home</a>
+                <a href="index.html#initiatives">Initiatives</a>
+                <a href="index.html#journey">Journey</a>
+                <a href="blog.html">Articles</a>
+                <a href="live/live_dashboard.html" class="active">Live Demo</a>
+                <a href="https://github.com/wealthnomic" class="nav-cta">GitHub</a>
+            </nav>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">≡</button>
+        </header>
 
-    <header class="page-header">
-        <h1 class="page-title">Join Our Team</h1>
-        <p class="page-subtitle">Build the future of systematic trading with us. We are looking for exceptional talent
-            to solve complex financial problems.</p>
-    </header>
+        <section class="page-hero">
+            <div class="page-kicker">
+                <span class="dot"></span>
+                <span>Join Our Team</span>
+            </div>
+            <h1 class="page-title">Build the Future of<br />Systematic Trading.</h1>
+            <p class="page-subtitle">
+                We are looking for exceptional talent to solve complex financial problems.
+                Join a team that combines rigorous research with cutting-edge technology.
+            </p>
+        </section>
 
-    <section class="jobs-section">
-        <div class="job-grid">
-            <!-- Job 1: Quant -->
-            <div class="job-card">
-                <div class="job-header">
-                    <div>
-                        <h3 class="job-title">Quantitative Researcher</h3>
-                        <span class="job-type">Full Time • Remote/Hybrid</span>
+        <main>
+            <div class="jobs-grid">
+                <!-- Quant Researcher -->
+                <article class="job-card">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">Quantitative Researcher</div>
+                            <div class="job-type">Full Time • Remote/Hybrid</div>
+                        </div>
+                        <div class="job-icon">Q</div>
                     </div>
-                    <div class="job-icon">
-                        <i class="fas fa-chart-line"></i>
+                    <p class="job-description">
+                        Develop, backtest, and deploy systematic trading strategies. Work with large datasets
+                        and advanced statistical models to identify alpha.
+                    </p>
+                    <ul class="job-requirements">
+                        <li>PhD/Masters in Math, Physics, or CS</li>
+                        <li>Strong Python/C++ skills</li>
+                        <li>Experience with time-series analysis</li>
+                    </ul>
+                    <label class="btn">
+                        Apply Now
+                        <input type="file" class="file-input" onchange="alert('Resume: ' + this.files[0].name)">
+                    </label>
+                </article>
+
+                <!-- CRO -->
+                <article class="job-card">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">Chief Risk Officer</div>
+                            <div class="job-type">Full Time • New York</div>
+                        </div>
+                        <div class="job-icon">R</div>
                     </div>
-                </div>
-                <p class="job-description">
-                    Develop, backtest, and deploy systematic trading strategies. You will work with large datasets and
-                    advanced statistical models to identify alpha.
-                </p>
-                <ul class="job-requirements">
-                    <li><i class="fas fa-check"></i> PhD/Masters in Math, Physics, or CS</li>
-                    <li><i class="fas fa-check"></i> Strong Python/C++ skills</li>
-                    <li><i class="fas fa-check"></i> Experience with time-series analysis</li>
-                </ul>
-                <label for="resume-upload-1" class="apply-btn">
-                    Upload Resume
-                    <input type="file" id="resume-upload-1" class="file-upload-input"
-                        onchange="alert('Resume selected: ' + this.files[0].name)">
-                </label>
+                    <p class="job-description">
+                        Oversee risk management frameworks. Ensure compliance with regulatory standards
+                        and monitor portfolio risk in real-time.
+                    </p>
+                    <ul class="job-requirements">
+                        <li>10+ years in Risk Management</li>
+                        <li>Deep understanding of VaR, stress testing</li>
+                        <li>FRM/CFA designation preferred</li>
+                    </ul>
+                    <label class="btn">
+                        Apply Now
+                        <input type="file" class="file-input" onchange="alert('Resume: ' + this.files[0].name)">
+                    </label>
+                </article>
+
+                <!-- Fund Manager -->
+                <article class="job-card">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">AIF Fund Manager</div>
+                            <div class="job-type">Full Time • London</div>
+                        </div>
+                        <div class="job-icon">F</div>
+                    </div>
+                    <p class="job-description">
+                        Manage portfolio allocation and execution for our Alternative Investment Fund.
+                        Drive strategy selection and capital allocation.
+                    </p>
+                    <ul class="job-requirements">
+                        <li>Proven track record in AIF management</li>
+                        <li>Strong network in institutional capital</li>
+                        <li>Strategic vision for fund growth</li>
+                    </ul>
+                    <label class="btn">
+                        Apply Now
+                        <input type="file" class="file-input" onchange="alert('Resume: ' + this.files[0].name)">
+                    </label>
+                </article>
+
+                <!-- Software Engineer -->
+                <article class="job-card">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">Senior Software Engineer</div>
+                            <div class="job-type">Full Time • Remote</div>
+                        </div>
+                        <div class="job-icon">E</div>
+                    </div>
+                    <p class="job-description">
+                        Build low-latency trading infrastructure and data pipelines. Optimize execution
+                        algorithms and ensure system reliability.
+                    </p>
+                    <ul class="job-requirements">
+                        <li>Expert in C++ and Python</li>
+                        <li>Experience with low-latency systems</li>
+                        <li>Knowledge of market data protocols</li>
+                    </ul>
+                    <label class="btn">
+                        Apply Now
+                        <input type="file" class="file-input" onchange="alert('Resume: ' + this.files[0].name)">
+                    </label>
+                </article>
             </div>
 
-            <!-- Job 2: CRO -->
-            <div class="job-card">
-                <div class="job-header">
-                    <div>
-                        <h3 class="job-title">Chief Risk Officer</h3>
-                        <span class="job-type">Full Time • New York</span>
-                    </div>
-                    <div class="job-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                </div>
-                <p class="job-description">
-                    Oversee our risk management frameworks. Ensure compliance with regulatory standards and monitor
-                    portfolio risk in real-time.
-                </p>
-                <ul class="job-requirements">
-                    <li><i class="fas fa-check"></i> 10+ years in Risk Management</li>
-                    <li><i class="fas fa-check"></i> Deep understanding of VaR, stress testing</li>
-                    <li><i class="fas fa-check"></i> FRM/CFA designation preferred</li>
-                </ul>
-                <label for="resume-upload-2" class="apply-btn">
-                    Upload Resume
-                    <input type="file" id="resume-upload-2" class="file-upload-input"
-                        onchange="alert('Resume selected: ' + this.files[0].name)">
+            <!-- General Application -->
+            <section class="general-section">
+                <h2>Don't See a Fit?</h2>
+                <p>We are always looking for talented individuals. Drop your resume here and we'll keep you in mind for
+                    future openings.</p>
+                <label class="upload-area">
+                    <div class="upload-icon">↑</div>
+                    <div style="font-weight: 600;">Click to Upload Resume</div>
+                    <div style="font-size: 11px; color: var(--muted); margin-top: 4px;">PDF, DOCX up to 5MB</div>
+                    <input type="file" class="file-input" onchange="alert('Resume: ' + this.files[0].name)">
                 </label>
+            </section>
+        </main>
+
+        <footer>
+            <span>30 N Gould St, Ste R, Sheridan, Wyoming 82801, USA</span>
+            <div class="footer-links">
+                <span>© 2025 Wealthnomic LLC.</span>
+                <a href="index.html">Back to Home</a>
             </div>
+        </footer>
+    </div>
 
-            <!-- Job 3: AIF Fund Manager -->
-            <div class="job-card">
-                <div class="job-header">
-                    <div>
-                        <h3 class="job-title">AIF Fund Manager</h3>
-                        <span class="job-type">Full Time • London</span>
-                    </div>
-                    <div class="job-icon">
-                        <i class="fas fa-briefcase"></i>
-                    </div>
-                </div>
-                <p class="job-description">
-                    Manage portfolio allocation and execution for our Alternative Investment Fund. Drive strategy
-                    selection and capital allocation.
-                </p>
-                <ul class="job-requirements">
-                    <li><i class="fas fa-check"></i> Proven track record in AIF management</li>
-                    <li><i class="fas fa-check"></i> Strong network in institutional capital</li>
-                    <li><i class="fas fa-check"></i> Strategic vision for fund growth</li>
-                </ul>
-                <label for="resume-upload-3" class="apply-btn">
-                    Upload Resume
-                    <input type="file" id="resume-upload-3" class="file-upload-input"
-                        onchange="alert('Resume selected: ' + this.files[0].name)">
-                </label>
-            </div>
-
-            <!-- Job 4: Software Engineer -->
-            <div class="job-card">
-                <div class="job-header">
-                    <div>
-                        <h3 class="job-title">Senior Software Engineer</h3>
-                        <span class="job-type">Full Time • Remote</span>
-                    </div>
-                    <div class="job-icon">
-                        <i class="fas fa-code"></i>
-                    </div>
-                </div>
-                <p class="job-description">
-                    Build low-latency trading infrastructure and data pipelines. Optimize execution algorithms and
-                    ensure system reliability.
-                </p>
-                <ul class="job-requirements">
-                    <li><i class="fas fa-check"></i> Expert in C++ and Python</li>
-                    <li><i class="fas fa-check"></i> Experience with low-latency systems</li>
-                    <li><i class="fas fa-check"></i> Knowledge of market data protocols</li>
-                </ul>
-                <label for="resume-upload-4" class="apply-btn">
-                    Upload Resume
-                    <input type="file" id="resume-upload-4" class="file-upload-input"
-                        onchange="alert('Resume selected: ' + this.files[0].name)">
-                </label>
-            </div>
-        </div>
-    </section>
-
-    <section class="upload-section">
-        <div class="upload-container">
-            <h2 class="upload-title">Don't see a fit?</h2>
-            <p class="upload-text">We are always looking for talented individuals. Drop your resume here and we'll keep
-                you in mind for future openings.</p>
-
-            <div class="file-upload-wrapper">
-                <label for="general-upload" class="file-upload-label">
-                    <div class="file-upload-icon">
-                        <i class="fas fa-cloud-upload-alt"></i>
-                    </div>
-                    <span style="font-weight: 600; font-size: 1.1rem;">Click to Upload Resume</span>
-                    <p style="margin-top: 8px; color: var(--gray-400); font-size: 0.9rem;">PDF, DOCX up to 5MB</p>
-                    <input type="file" id="general-upload" class="file-upload-input"
-                        onchange="alert('Resume selected: ' + this.files[0].name)">
-                </label>
-            </div>
-        </div>
-    </section>
-
-    <footer class="site-footer">
-        <p style="margin-bottom: 8px;">30 N Gould St, Ste R, Sheridan, Wyoming 82801, USA</p>
-        &copy; 2025 Wealthnomics LLC. Filing ID: 2025-001750749. All rights reserved.
-    </footer>
+    <script>
+        const navToggle = document.getElementById("navToggle");
+        const nav = document.getElementById("nav");
+        if (navToggle && nav) {
+            navToggle.addEventListener("click", () => nav.classList.toggle("open"));
+            nav.querySelectorAll("a").forEach(link => link.addEventListener("click", () => nav.classList.remove("open")));
+        }
+    </script>
 </body>
 
 </html>
