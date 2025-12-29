@@ -231,6 +231,101 @@ function HomePage() {
                 </div>
             </section>
 
+            {/* Strategic Architectures */}
+            <section style={{ padding: '120px 5%', background: '#fafafa' }}>
+                <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+                    <div style={{ textAlign: 'center', marginBottom: '70px' }}>
+                        <div style={{
+                            fontSize: '0.75rem',
+                            color: '#888',
+                            textTransform: 'uppercase',
+                            letterSpacing: '0.2em',
+                            marginBottom: '15px'
+                        }}>
+                            Deployment Vectors
+                        </div>
+                        <h2 style={{ fontSize: '2.5rem', fontWeight: 400, color: '#1a1a1a' }}>
+                            Patient, strategic <strong>architectures.</strong>
+                        </h2>
+                    </div>
+                    <div style={{
+                        display: 'grid',
+                        gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+                        gap: '30px'
+                    }}>
+                        <div className="strategy-card">
+                            <h3>Strategic Alpha</h3>
+                            <div className="tech-tag">Long-Term Value</div>
+                            <p>
+                                We don't chase ticks. Our models identify structural inefficiencies in asset pricing
+                                that unfold over weeks and months, allowing for patient capital deployment.
+                            </p>
+                        </div>
+                        <div className="strategy-card">
+                            <h3>Systematic Macro</h3>
+                            <div className="tech-tag">Trend Following</div>
+                            <p>
+                                Capturing multi-asset trends across global rates and equities.
+                                We seek clarity in direction, holding positions through noise to capture the full rigorous movement of the market.
+                            </p>
+                        </div>
+                        <div className="strategy-card">
+                            <h3>Adaptive Risk</h3>
+                            <div className="tech-tag">Regime Detection</div>
+                            <p>
+                                Markets breathe. Our systems sense volatility regimes and adjust exposure dynamically—scaling
+                                in during calm accumulation and preserving capital when turbulence hits.
+                            </p>
+                        </div>
+                        <div className="strategy-card">
+                            <h3>Calm Execution</h3>
+                            <div className="tech-tag">Liquidity Aware</div>
+                            <p>
+                                Execution is an art of patience. We use intelligent order routing to minimize
+                                impact, entering and exiting positions silently without disturbing the ecosystem.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <style>{`
+                .strategy-card {
+                    padding: 35px;
+                    background: #fff;
+                    border: 1px solid #e0e0e0;
+                    border-left: 3px solid #00cc7a;
+                    transition: all 0.3s ease;
+                }
+                .strategy-card:hover {
+                    transform: translateY(-5px);
+                    box-shadow: 0 15px 40px rgba(0,0,0,0.06);
+                }
+                .strategy-card h3 {
+                    font-size: 1.2rem;
+                    margin-bottom: 10px;
+                    color: #1a1a1a;
+                    font-weight: 700;
+                }
+                .strategy-card .tech-tag {
+                    display: inline-block;
+                    font-size: 0.7rem;
+                    color: #00cc7a;
+                    background: rgba(0, 204, 122, 0.1);
+                    padding: 4px 10px;
+                    margin-bottom: 15px;
+                    font-weight: 600;
+                    text-transform: uppercase;
+                    letter-spacing: 0.05em;
+                }
+                .strategy-card p {
+                    color: #666;
+                    font-size: 0.95rem;
+                    line-height: 1.6;
+                    margin: 0;
+                }
+            `}</style>
+
             {/* Global Presence */}
             <section style={{ padding: '100px 5%', background: '#0a0a0a', color: '#fff' }}>
                 <div style={{ maxWidth: '1100px', margin: '0 auto', display: 'flex', flexWrap: 'wrap', gap: '60px', alignItems: 'center' }}>
@@ -325,8 +420,85 @@ function HomePage() {
                 </div>
             </section>
 
+            {/* Trust & Security */}
+            <section style={{ padding: '100px 5%', background: '#fff' }}>
+                <div style={{ maxWidth: '1000px', margin: '0 auto', textAlign: 'center' }}>
+                    <div style={{
+                        fontSize: '0.75rem',
+                        color: '#888',
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.2em',
+                        marginBottom: '20px'
+                    }}>
+                        Infrastructure
+                    </div>
+                    <h2 style={{ fontSize: '2.5rem', fontWeight: 400, marginBottom: '60px', color: '#1a1a1a' }}>
+                        Built on <strong>uncompromised trust.</strong>
+                    </h2>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '40px', padding: '0 20px' }}>
+                        <div style={{ textAlign: 'center' }}>
+                            <div style={{ fontSize: '2rem', color: '#00cc7a', marginBottom: '20px' }}>
+                                <i className="fas fa-shield-alt"></i>
+                            </div>
+                            <h4 style={{ fontWeight: 600, marginBottom: '10px' }}>Independent Custody</h4>
+                            <p style={{ fontSize: '0.9rem', color: '#666' }}>
+                                Client assets are held with tier-1 qualified custodians, fully segregated from firm capital.
+                            </p>
+                        </div>
+                        <div style={{ textAlign: 'center' }}>
+                            <div style={{ fontSize: '2rem', color: '#00cc7a', marginBottom: '20px' }}>
+                                <i className="fas fa-search-dollar"></i>
+                            </div>
+                            <h4 style={{ fontWeight: 600, marginBottom: '10px' }}>Real-Time Audit</h4>
+                            <p style={{ fontSize: '0.9rem', color: '#666' }}>
+                                Continuous reconciliation of positions and NAV, providing investors with daily transparency.
+                            </p>
+                        </div>
+                        <div style={{ textAlign: 'center' }}>
+                            <div style={{ fontSize: '2rem', color: '#00cc7a', marginBottom: '20px' }}>
+                                <i className="fas fa-server"></i>
+                            </div>
+                            <h4 style={{ fontWeight: 600, marginBottom: '10px' }}>Bank-Grade Security</h4>
+                            <p style={{ fontSize: '0.9rem', color: '#666' }}>
+                                ISO 27001 certified infrastructure with end-to-end encryption and biometric access controls.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Open Source / Engineering DNA */}
+            <section style={{ padding: '100px 5%', background: '#f4f4f4', borderTop: '1px solid #e5e5e5', borderBottom: '1px solid #e5e5e5', textAlign: 'center' }}>
+                <div style={{ maxWidth: '900px', margin: '0 auto' }}>
+                    <div style={{
+                        fontSize: '0.85rem',
+                        color: '#888',
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.2em',
+                        marginBottom: '20px'
+                    }}>
+                        Collaborative Intelligence
+                    </div>
+                    <h2 style={{ fontSize: '2.8rem', fontWeight: 400, marginBottom: '30px', color: '#1a1a1a', lineHeight: 1.3 }}>
+                        Statistics. Modelling. <br />
+                        <strong style={{ borderBottom: '4px solid #00cc7a' }}>Open Community.</strong>
+                    </h2>
+                    <p style={{ color: '#555', lineHeight: 1.8, marginBottom: '40px', fontSize: '1.2rem' }}>
+                        We don't rely on proprietary black boxes. We build on the collective intelligence of the scientific community.
+                        Wealthnomics fuses rigorous <strong>statistical modelling</strong> with modern <strong>AI</strong> and
+                        <strong>open-source</strong> transparency.
+                    </p>
+                    <ul style={{ display: 'flex', gap: '20px', listStyle: 'none', padding: 0, justifyContent: 'center', flexWrap: 'wrap' }}>
+                        <li style={{ background: '#fff', padding: '10px 20px', borderRadius: '4px', border: '1px solid #ddd', fontSize: '0.9rem', fontWeight: 600, color: '#444' }}>Rigorous Statistics</li>
+                        <li style={{ background: '#fff', padding: '10px 20px', borderRadius: '4px', border: '1px solid #ddd', fontSize: '0.9rem', fontWeight: 600, color: '#444' }}>Predictive Modelling</li>
+                        <li style={{ background: '#fff', padding: '10px 20px', borderRadius: '4px', border: '1px solid #ddd', fontSize: '0.9rem', fontWeight: 600, color: '#444' }}>Deep Learning</li>
+                        <li style={{ background: '#fff', padding: '10px 20px', borderRadius: '4px', border: '1px solid #ddd', fontSize: '0.9rem', fontWeight: 600, color: '#444' }}>Open Source</li>
+                    </ul>
+                </div>
+            </section>
+
             {/* Founder Section */}
-            <section style={{ padding: '120px 5%', background: '#fafafa' }}>
+            <section style={{ padding: '120px 5%', background: '#fff' }}>
                 <div style={{ maxWidth: '1100px', margin: '0 auto', display: 'flex', flexWrap: 'wrap', gap: '80px', alignItems: 'center' }}>
                     <div style={{ flex: '1 1 300px', textAlign: 'center' }}>
                         <img
@@ -352,45 +524,18 @@ function HomePage() {
                         }}>
                             Founder &amp; Chief Investment Officer
                         </div>
-                        <h2 style={{ fontSize: '2.5rem', fontWeight: 400, marginBottom: '25px', color: '#1a1a1a' }}>
+                        <h2 style={{ fontSize: '2.5rem', fontWeight: 400, marginBottom: '20px', color: '#1a1a1a' }}>
                             <strong>Ayushman Gupta</strong>
                         </h2>
                         <div style={{
-                            display: 'flex',
-                            gap: '15px',
-                            flexWrap: 'wrap',
-                            marginBottom: '30px'
+                            marginBottom: '30px',
+                            color: '#555',
+                            fontSize: '1rem',
+                            lineHeight: '1.6'
                         }}>
-                            <span style={{
-                                background: '#fff',
-                                border: '1px solid #ddd',
-                                padding: '8px 16px',
-                                fontSize: '0.8rem',
-                                fontWeight: 500,
-                                color: '#555'
-                            }}>
-                                Doctorate in AI
-                            </span>
-                            <span style={{
-                                background: '#fff',
-                                border: '1px solid #ddd',
-                                padding: '8px 16px',
-                                fontSize: '0.8rem',
-                                fontWeight: 500,
-                                color: '#555'
-                            }}>
-                                MTech Computational Mathematics
-                            </span>
-                            <span style={{
-                                background: '#00cc7a',
-                                border: '1px solid #00cc7a',
-                                padding: '8px 16px',
-                                fontSize: '0.8rem',
-                                fontWeight: 600,
-                                color: '#fff'
-                            }}>
-                                4 US Patents
-                            </span>
+                            Doctorate in AI <br />
+                            MTech Computational Mathematics <br />
+                            4 US Patents
                         </div>
                         <p style={{ color: '#555', lineHeight: 1.8, marginBottom: '20px', fontSize: '1.05rem' }}>
                             A lifelong markets enthusiast, Ayushman has spent over a decade at the intersection of
