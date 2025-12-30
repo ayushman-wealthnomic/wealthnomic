@@ -361,17 +361,17 @@ function LiveDashboardPage() {
                             <div style={{ background: '#111', border: '2px solid #333', padding: '30px', textAlign: 'center' }}>
                                 <div style={{ color: '#888', fontSize: '0.8rem', marginBottom: '10px' }}>START CAPITAL</div>
                                 <div style={{
-                                    fontSize: '2rem', fontWeight: 700' }}>
+                                    fontSize: '2rem', fontWeight: 700
+                                }}>
                                     ${data.start_capital.toLocaleString()}
                                 </div>
+                            </div>
                         </div>
                     </div>
-                    </div>
-    )
-}
+                )}
             </main >
 
-    <style>{`
+            <style>{`
         @keyframes pulse {
           0%, 100% { opacity: 1; }
           50% { opacity: 0.5; }
