@@ -1,38 +1,19 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import dashboardData from '../data/live_dashboard_data.json'
 
 function LiveDashboardPage() {
-    const [data, setData] = useState(null)
+    // Initialize directly with imported data
+    const [data] = useState(dashboardData)
     const [showDisclaimer, setShowDisclaimer] = useState(true)
     const [currentTime, setCurrentTime] = useState(new Date())
     const [activeTab, setActiveTab] = useState('overview')
 
     useEffect(() => {
-        // Fetch the live dashboard data
-        fetch('/live_dashboard_data.json')
-            .then(res => res.json())
-            .then(data => setData(data))
-            .catch(err => console.error('Error loading data:', err))
-
         const timer = setInterval(() => setCurrentTime(new Date()), 1000)
         return () => clearInterval(timer)
     }, [])
 
-    if (!data) {
-        return (
-            <div style={{
-                fontFamily: "'Space Mono', monospace",
-                background: '#0a0a0a',
-                color: '#fff',
-                minHeight: '100vh',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center'
-            }}>
-                <div>Loading...</div>
-            </div>
-        )
-    }
 
     // Calculate additional metrics
     const calculateMetrics = (trades) => {
