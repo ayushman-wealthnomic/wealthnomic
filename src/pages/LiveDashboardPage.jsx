@@ -1,38 +1,56 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
-// Sample dashboard data
-const dashboardData = {
-    portfolioValue: 1250000,
-    dailyPnL: 12500,
-    dailyReturn: 1.01,
-    monthlyReturn: 4.23,
-    yearlyReturn: 18.7,
-    sharpeRatio: 2.1,
-    maxDrawdown: -8.3,
-    winRate: 62.5,
-    positions: [
-        { symbol: 'AAPL', qty: 500, avgPrice: 175.50, currentPrice: 182.30, pnl: 3400, pnlPct: 3.87 },
-        { symbol: 'NVDA', qty: 200, avgPrice: 485.00, currentPrice: 510.25, pnl: 5050, pnlPct: 5.21 },
-        { symbol: 'MSFT', qty: 300, avgPrice: 378.00, currentPrice: 385.60, pnl: 2280, pnlPct: 2.01 },
-        { symbol: 'GOOGL', qty: 150, avgPrice: 142.50, currentPrice: 145.80, pnl: 495, pnlPct: 2.32 },
-        { symbol: 'SPY', qty: 400, avgPrice: 495.00, currentPrice: 503.40, pnl: 3360, pnlPct: 1.70 }
-    ],
-    equityCurve: [
-        100, 102, 101, 105, 108, 106, 110, 112, 115, 113, 118, 120,
-        119, 123, 125, 128, 126, 130, 133, 135, 138, 140, 142, 145
-    ]
-}
-
 function LiveDashboardPage() {
-    const [data] = useState(dashboardData)
+    const [data, setData] = useState(null)
     const [showDisclaimer, setShowDisclaimer] = useState(true)
     const [currentTime, setCurrentTime] = useState(new Date())
+    const [activeTab, setActiveTab] = useState('overview')
 
     useEffect(() => {
+        // Fetch the live dashboard data
+        fetch('/live_dashboard_data.json')
+            .then(res => res.json())
+            .then(data => setData(data))
+            .catch(err => console.error('Error loading data:', err))
+
         const timer = setInterval(() => setCurrentTime(new Date()), 1000)
         return () => clearInterval(timer)
     }, [])
+
+    if (!data) {
+        return (
+            <div style={{
+                fontFamily: "'Space Mono', monospace",
+                background: '#0a0a0a',
+                color: '#fff',
+                minHeight: '100vh',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+            }}>
+                <div>Loading...</div>
+            </div>
+        )
+    }
+
+    // Calculate additional metrics
+    const calculateMetrics = (trades) => {
+        const wins = trades.filter(t => t.profit > 0)
+        const losses = trades.filter(t => t.profit < 0)
+
+        const winRate = trades.length > 0 ? ((wins.length / trades.length) * 100).toFixed(1) : 0
+        const avgWin = wins.length > 0 ? wins.reduce((sum, t) => sum + t.profit, 0) / wins.length : 0
+        const avgLoss = losses.length > 0 ? losses.reduce((sum, t) => sum + t.profit, 0) / losses.length : 0
+
+        const totalWins = wins.reduce((sum, t) => sum + t.profit, 0)
+        const totalLosses = Math.abs(losses.reduce((sum, t) => sum + t.profit, 0))
+        const profitFactor = totalLosses > 0 ? (totalWins / totalLosses).toFixed(2) : '--'
+
+        return { winRate, avgWin, avgLoss, profitFactor, totalTrades: trades.length }
+    }
+
+    const metrics = calculateMetrics(data.recent_trades)
 
     return (
         <div style={{
@@ -40,7 +58,7 @@ function LiveDashboardPage() {
             background: '#0a0a0a',
             color: '#fff',
             minHeight: '100vh',
-            border: '3px solid #39ff14'
+            border: '3px solid #3B82F6'
         }}>
             {/* Disclaimer Popup */}
             {showDisclaimer && (
@@ -82,7 +100,7 @@ function LiveDashboardPage() {
                                 boxShadow: '4px 4px 0 #000'
                             }}
                         >
-                            I UNDERSTAND
+                            I UNDERSTAND - ENTER TERMINAL
                         </button>
                     </div>
                 </div>
@@ -97,21 +115,21 @@ function LiveDashboardPage() {
                 borderBottom: '2px solid #333'
             }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-                    <Link to="/" style={{ color: '#888', fontSize: '0.9rem' }}>
+                    <Link to="/" style={{ color: '#888', fontSize: '0.9rem', textDecoration: 'none' }}>
                         ← BACK TO HOME
                     </Link>
                     <h1 style={{ fontSize: '1.5rem', margin: 0 }}>
-                        WEALTH<span style={{ color: '#39ff14' }}>NOMICS</span> LIVE
+                        WEALTH<span style={{ color: '#3B82F6' }}>NOMICS</span> LIVE
                     </h1>
                     <span style={{
-                        background: '#39ff14',
-                        color: '#000',
+                        background: '#3B82F6',
+                        color: '#fff',
                         padding: '3px 8px',
                         fontSize: '0.7rem',
                         fontWeight: 700,
                         animation: 'pulse 2s infinite'
                     }}>
-                        LIVE
+                        {data.strategy_version}
                     </span>
                 </div>
                 <div style={{ color: '#888', fontSize: '0.9rem' }}>
@@ -119,136 +137,247 @@ function LiveDashboardPage() {
                 </div>
             </header>
 
-            {/* Main Grid */}
-            <main style={{ display: 'grid', gridTemplateColumns: '250px 1fr', minHeight: 'calc(100vh - 80px)' }}>
-                {/* Sidebar */}
-                <aside style={{ borderRight: '2px solid #333', padding: '30px 20px' }}>
-                    <div style={{ marginBottom: '40px' }}>
-                        <div style={{ color: '#888', fontSize: '0.8rem', marginBottom: '10px' }}>PORTFOLIO VALUE</div>
-                        <div style={{ fontSize: '1.8rem', fontWeight: 700 }}>
-                            ${data.portfolioValue.toLocaleString()}
-                        </div>
-                    </div>
+            {/* Tab Navigation */}
+            <div style={{
+                display: 'flex',
+                borderBottom: '2px solid #333',
+                padding: '0 40px',
+                background: '#111'
+            }}>
+                {['overview', 'positions', 'trades', 'performance'].map(tab => (
+                    <button
+                        key={tab}
+                        onClick={() => setActiveTab(tab)}
+                        style={{
+                            padding: '15px 30px',
+                            background: activeTab === tab ? '#3B82F6' : 'transparent',
+                            color: activeTab === tab ? '#fff' : '#888',
+                            border: 'none',
+                            borderRight: '1px solid #333',
+                            cursor: 'pointer',
+                            fontFamily: 'inherit',
+                            fontWeight: activeTab === tab ? 700 : 400,
+                            textTransform: 'uppercase',
+                            fontSize: '0.8rem'
+                        }}
+                    >
+                        {tab}
+                    </button>
+                ))}
+            </div>
 
-                    <div style={{ marginBottom: '40px' }}>
-                        <div style={{ color: '#888', fontSize: '0.8rem', marginBottom: '10px' }}>TODAY'S P&L</div>
-                        <div style={{ fontSize: '1.5rem', fontWeight: 700, color: data.dailyPnL >= 0 ? '#39ff14' : '#ff3939' }}>
-                            {data.dailyPnL >= 0 ? '+' : ''}{data.dailyPnL.toLocaleString()} ({data.dailyReturn.toFixed(2)}%)
-                        </div>
-                    </div>
-
-                    <div style={{ borderTop: '1px solid #333', paddingTop: '30px' }}>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '15px' }}>
-                            <span style={{ color: '#888' }}>MTD</span>
-                            <span style={{ color: data.monthlyReturn >= 0 ? '#39ff14' : '#ff3939' }}>
-                                {data.monthlyReturn >= 0 ? '+' : ''}{data.monthlyReturn}%
-                            </span>
-                        </div>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '15px' }}>
-                            <span style={{ color: '#888' }}>YTD</span>
-                            <span style={{ color: data.yearlyReturn >= 0 ? '#39ff14' : '#ff3939' }}>
-                                {data.yearlyReturn >= 0 ? '+' : ''}{data.yearlyReturn}%
-                            </span>
-                        </div>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '15px' }}>
-                            <span style={{ color: '#888' }}>Sharpe</span>
-                            <span>{data.sharpeRatio}</span>
-                        </div>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '15px' }}>
-                            <span style={{ color: '#888' }}>Max DD</span>
-                            <span style={{ color: '#ff3939' }}>{data.maxDrawdown}%</span>
-                        </div>
-                        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                            <span style={{ color: '#888' }}>Win Rate</span>
-                            <span>{data.winRate}%</span>
-                        </div>
-                    </div>
-                </aside>
-
-                {/* Main Content */}
-                <div style={{ padding: '30px' }}>
-                    {/* Equity Curve */}
-                    <section style={{ marginBottom: '40px' }}>
-                        <h2 style={{ fontSize: '1rem', color: '#888', marginBottom: '20px' }}>EQUITY CURVE</h2>
+            {/* Main Content */}
+            <main style={{ padding: '40px' }}>
+                {/* Overview Tab */}
+                {activeTab === 'overview' && (
+                    <div>
+                        {/* KPI Cards */}
                         <div style={{
-                            background: '#111',
-                            border: '2px solid #333',
-                            padding: '30px',
-                            height: '200px',
-                            display: 'flex',
-                            alignItems: 'flex-end',
-                            gap: '3px'
+                            display: 'grid',
+                            gridTemplateColumns: 'repeat(3, 1fr)',
+                            gap: '30px',
+                            marginBottom: '40px'
                         }}>
-                            {data.equityCurve.map((val, i) => (
-                                <div
-                                    key={i}
-                                    style={{
-                                        flex: 1,
-                                        height: `${(val - 95) * 5}%`,
-                                        background: val > data.equityCurve[0] ? '#39ff14' : '#ff3939',
-                                        transition: 'height 0.3s'
-                                    }}
-                                />
-                            ))}
+                            <div style={{
+                                background: '#111',
+                                border: '2px solid #00ccff',
+                                padding: '30px',
+                                textAlign: 'center'
+                            }}>
+                                <div style={{ color: '#888', fontSize: '0.8rem', marginBottom: '10px' }}>TOTAL EQUITY</div>
+                                <div style={{ fontSize: '2.5rem', fontWeight: 700 }}>
+                                    ${data.current_equity.toLocaleString(undefined, { maximumFractionDigits: 0 })}
+                                </div>
+                            </div>
+                            <div style={{
+                                background: '#111',
+                                border: '2px solid #333',
+                                padding: '30px',
+                                textAlign: 'center'
+                            }}>
+                                <div style={{ color: '#888', fontSize: '0.8rem', marginBottom: '10px' }}>TOTAL RETURN</div>
+                                <div style={{ fontSize: '2.5rem', fontWeight: 700, color: data.total_return_pct >= 0 ? '#3B82F6' : '#ff3939' }}>
+                                    {data.total_return_pct >= 0 ? '+' : ''}{data.total_return_pct.toFixed(2)}%
+                                </div>
+                            </div>
+                            <div style={{
+                                background: '#111',
+                                border: '2px solid #3B82F6',
+                                padding: '30px',
+                                textAlign: 'center'
+                            }}>
+                                <div style={{ color: '#888', fontSize: '0.8rem', marginBottom: '10px' }}>PROFIT/LOSS</div>
+                                <div style={{ fontSize: '2.5rem', fontWeight: 700, color: data.total_pnl >= 0 ? '#3B82F6' : '#ff3939' }}>
+                                    ${data.total_pnl.toLocaleString(undefined, { maximumFractionDigits: 0 })}
+                                </div>
+                            </div>
                         </div>
-                    </section>
 
-                    {/* Positions */}
-                    <section>
-                        <h2 style={{ fontSize: '1rem', color: '#888', marginBottom: '20px' }}>OPEN POSITIONS</h2>
+                        {/* Quick Stats */}
                         <div style={{
-                            background: '#111',
-                            border: '2px solid #333',
-                            overflow: 'hidden'
+                            display: 'grid',
+                            gridTemplateColumns: 'repeat(4, 1fr)',
+                            gap: '20px',
+                            marginBottom: '40px'
                         }}>
-                            <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem' }}>
-                                <thead>
-                                    <tr style={{ borderBottom: '2px solid #333' }}>
-                                        <th style={{ padding: '15px', textAlign: 'left', color: '#888' }}>SYMBOL</th>
-                                        <th style={{ padding: '15px', textAlign: 'right', color: '#888' }}>QTY</th>
-                                        <th style={{ padding: '15px', textAlign: 'right', color: '#888' }}>AVG PRICE</th>
-                                        <th style={{ padding: '15px', textAlign: 'right', color: '#888' }}>CURRENT</th>
-                                        <th style={{ padding: '15px', textAlign: 'right', color: '#888' }}>P&L</th>
-                                        <th style={{ padding: '15px', textAlign: 'right', color: '#888' }}>%</th>
+                            <div style={{ background: '#111', border: '1px solid #333', padding: '20px', textAlign: 'center' }}>
+                                <div style={{ color: '#888', fontSize: '0.7rem', marginBottom: '8px' }}>STRATEGY</div>
+                                <div style={{ fontSize: '1.2rem', fontWeight: 700 }}>{data.strategy_version}</div>
+                            </div>
+                            <div style={{ background: '#111', border: '1px solid #333', padding: '20px', textAlign: 'center' }}>
+                                <div style={{ color: '#888', fontSize: '0.7rem', marginBottom: '8px' }}>ACTIVE POSITIONS</div>
+                                <div style={{ fontSize: '1.2rem', fontWeight: 700 }}>{data.active_positions.length}</div>
+                            </div>
+                            <div style={{ background: '#111', border: '1px solid #333', padding: '20px', textAlign: 'center' }}>
+                                <div style={{ color: '#888', fontSize: '0.7rem', marginBottom: '8px' }}>TODAY'S P&L</div>
+                                <div style={{ fontSize: '1.2rem', fontWeight: 700, color: data.today_pnl >= 0 ? '#3B82F6' : '#ff3939' }}>
+                                    ${data.today_pnl.toLocaleString(undefined, { maximumFractionDigits: 0 })}
+                                </div>
+                            </div>
+                            <div style={{ background: '#111', border: '1px solid #333', padding: '20px', textAlign: 'center' }}>
+                                <div style={{ color: '#888', fontSize: '0.7rem', marginBottom: '8px' }}>LIVE SINCE</div>
+                                <div style={{ fontSize: '1.2rem', fontWeight: 700 }}>{data.live_start_date}</div>
+                            </div>
+                        </div>
+                    </div>
+                )}
+
+                {/* Positions Tab */}
+                {activeTab === 'positions' && (
+                    <div style={{ background: '#111', border: '2px solid #333', overflow: 'hidden' }}>
+                        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem' }}>
+                            <thead>
+                                <tr style={{ borderBottom: '2px solid #333' }}>
+                                    <th style={{ padding: '15px', textAlign: 'left', color: '#888' }}>SYMBOL</th>
+                                    <th style={{ padding: '15px', textAlign: 'left', color: '#888' }}>ENTRY DATE</th>
+                                    <th style={{ padding: '15px', textAlign: 'right', color: '#888' }}>SIZE</th>
+                                    <th style={{ padding: '15px', textAlign: 'right', color: '#888' }}>ENTRY</th>
+                                    <th style={{ padding: '15px', textAlign: 'right', color: '#888' }}>CURRENT</th>
+                                    <th style={{ padding: '15px', textAlign: 'right', color: '#888' }}>P&L ($)</th>
+                                    <th style={{ padding: '15px', textAlign: 'right', color: '#888' }}>P&L (%)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {data.active_positions.map((pos, i) => (
+                                    <tr key={i} style={{ borderBottom: '1px solid #222' }}>
+                                        <td style={{ padding: '15px', fontWeight: 700 }}>{pos.symbol}</td>
+                                        <td style={{ padding: '15px' }}>{pos.entry_date}</td>
+                                        <td style={{ padding: '15px', textAlign: 'right' }}>${pos.size.toLocaleString()}</td>
+                                        <td style={{ padding: '15px', textAlign: 'right' }}>${pos.entry_price.toFixed(2)}</td>
+                                        <td style={{ padding: '15px', textAlign: 'right' }}>${pos.current_price.toFixed(2)}</td>
+                                        <td style={{
+                                            padding: '15px',
+                                            textAlign: 'right',
+                                            color: pos.pnl >= 0 ? '#3B82F6' : '#ff3939'
+                                        }}>
+                                            {pos.pnl >= 0 ? '+' : ''}${pos.pnl.toFixed(2)}
+                                        </td>
+                                        <td style={{
+                                            padding: '15px',
+                                            textAlign: 'right',
+                                            color: pos.pnl_pct >= 0 ? '#3B82F6' : '#ff3939'
+                                        }}>
+                                            {pos.pnl_pct >= 0 ? '+' : ''}{pos.pnl_pct.toFixed(2)}%
+                                        </td>
                                     </tr>
-                                </thead>
-                                <tbody>
-                                    {data.positions.map((pos, i) => (
-                                        <tr key={i} style={{ borderBottom: '1px solid #222' }}>
-                                            <td style={{ padding: '15px', fontWeight: 700 }}>{pos.symbol}</td>
-                                            <td style={{ padding: '15px', textAlign: 'right' }}>{pos.qty}</td>
-                                            <td style={{ padding: '15px', textAlign: 'right' }}>${pos.avgPrice.toFixed(2)}</td>
-                                            <td style={{ padding: '15px', textAlign: 'right' }}>${pos.currentPrice.toFixed(2)}</td>
-                                            <td style={{
-                                                padding: '15px',
-                                                textAlign: 'right',
-                                                color: pos.pnl >= 0 ? '#39ff14' : '#ff3939'
-                                            }}>
-                                                {pos.pnl >= 0 ? '+' : ''}${pos.pnl.toLocaleString()}
-                                            </td>
-                                            <td style={{
-                                                padding: '15px',
-                                                textAlign: 'right',
-                                                color: pos.pnlPct >= 0 ? '#39ff14' : '#ff3939'
-                                            }}>
-                                                {pos.pnlPct >= 0 ? '+' : ''}{pos.pnlPct}%
-                                            </td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
-                        </div>
-                    </section>
-                </div>
-            </main>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                )}
 
-            <style>{`
+                {/* Trades Tab */}
+                {activeTab === 'trades' && (
+                    <div style={{ background: '#111', border: '2px solid #333', overflow: 'hidden' }}>
+                        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem' }}>
+                            <thead>
+                                <tr style={{ borderBottom: '2px solid #333' }}>
+                                    <th style={{ padding: '15px', textAlign: 'left', color: '#888' }}>DATE</th>
+                                    <th style={{ padding: '15px', textAlign: 'left', color: '#888' }}>SYMBOL</th>
+                                    <th style={{ padding: '15px', textAlign: 'left', color: '#888' }}>EXIT TYPE</th>
+                                    <th style={{ padding: '15px', textAlign: 'right', color: '#888' }}>PROFIT ($)</th>
+                                    <th style={{ padding: '15px', textAlign: 'right', color: '#888' }}>RETURN (%)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {data.recent_trades.map((trade, i) => (
+                                    <tr key={i} style={{ borderBottom: '1px solid #222' }}>
+                                        <td style={{ padding: '15px' }}>{trade.date}</td>
+                                        <td style={{ padding: '15px', fontWeight: 700 }}>{trade.symbol}</td>
+                                        <td style={{ padding: '15px', fontSize: '0.75rem' }}>{trade.type}</td>
+                                        <td style={{
+                                            padding: '15px',
+                                            textAlign: 'right',
+                                            color: trade.profit >= 0 ? '#3B82F6' : '#ff3939'
+                                        }}>
+                                            {trade.profit >= 0 ? '+' : ''}${trade.profit.toFixed(2)}
+                                        </td>
+                                        <td style={{
+                                            padding: '15px',
+                                            textAlign: 'right',
+                                            color: trade.profit >= 0 ? '#3B82F6' : '#ff3939'
+                                        }}>
+                                            {trade.return_pct}
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                )}
+
+                {/* Performance Tab */}
+                {activeTab === 'performance' && (
+                    <div>
+                        <div style={{
+                            display: 'grid',
+                            gridTemplateColumns: 'repeat(3, 1fr)',
+                            gap: '30px'
+                        }}>
+                            <div style={{ background: '#111', border: '2px solid #333', padding: '30px', textAlign: 'center' }}>
+                                <div style={{ color: '#888', fontSize: '0.8rem', marginBottom: '10px' }}>WIN RATE</div>
+                                <div style={{ fontSize: '2rem', fontWeight: 700, color: '#3B82F6' }}>{metrics.winRate}%</div>
+                            </div>
+                            <div style={{ background: '#111', border: '2px solid #333', padding: '30px', textAlign: 'center' }}>
+                                <div style={{ color: '#888', fontSize: '0.8rem', marginBottom: '10px' }}>AVG WIN</div>
+                                <div style={{ fontSize: '2rem', fontWeight: 700, color: '#3B82F6' }}>
+                                    ${metrics.avgWin.toFixed(2)}
+                                </div>
+                            </div>
+                            <div style={{ background: '#111', border: '2px solid #333', padding: '30px', textAlign: 'center' }}>
+                                <div style={{ color: '#888', fontSize: '0.8rem', marginBottom: '10px' }}>AVG LOSS</div>
+                                <div style={{ fontSize: '2rem', fontWeight: 700, color: '#ff3939' }}>
+                                    ${metrics.avgLoss.toFixed(2)}
+                                </div>
+                            </div>
+                            <div style={{ background: '#111', border: '2px solid #333', padding: '30px', textAlign: 'center' }}>
+                                <div style={{ color: '#888', fontSize: '0.8rem', marginBottom: '10px' }}>TOTAL TRADES</div>
+                                <div style={{ fontSize: '2rem', fontWeight: 700 }}>{metrics.totalTrades}</div>
+                            </div>
+                            <div style={{ background: '#111', border: '2px solid #333', padding: '30px', textAlign: 'center' }}>
+                                <div style={{ color: '#888', fontSize: '0.8rem', marginBottom: '10px' }}>PROFIT FACTOR</div>
+                                <div style={{ fontSize: '2rem', fontWeight: 700, color: '#3B82F6' }}>{metrics.profitFactor}</div>
+                            </div>
+                            <div style={{ background: '#111', border: '2px solid #333', padding: '30px', textAlign: 'center' }}>
+                                <div style={{ color: '#888', fontSize: '0.8rem', marginBottom: '10px' }}>START CAPITAL</div>
+                                <div style={{
+                                    fontSize: '2rem', fontWeight: 700' }}>
+                                    ${data.start_capital.toLocaleString()}
+                                </div>
+                        </div>
+                    </div>
+                    </div>
+    )
+}
+            </main >
+
+    <style>{`
         @keyframes pulse {
           0%, 100% { opacity: 1; }
           50% { opacity: 0.5; }
         }
       `}</style>
-        </div>
+        </div >
     )
 }
 
