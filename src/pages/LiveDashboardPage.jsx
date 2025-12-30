@@ -220,6 +220,48 @@ function LiveDashboardPage() {
                                 <div style={{ fontSize: '1.2rem', fontWeight: 700 }}>{data.live_start_date}</div>
                             </div>
                         </div>
+
+                        {/* Equity Curve Chart */}
+                        <div style={{ marginBottom: '40px' }}>
+                            <h2 style={{ fontSize: '1rem', color: '#888', marginBottom: '20px' }}>EQUITY CURVE</h2>
+                            <div style={{
+                                background: '#111',
+                                border: '2px solid #333',
+                                padding: '30px',
+                                height: '250px',
+                                display: 'flex',
+                                alignItems: 'flex-end',
+                                gap: '2px',
+                                overflowX: 'hidden'
+                            }}>
+                                {(() => {
+                                    const equities = data.equity_curve.map(p => p.equity)
+                                    const min = Math.min(...equities) * 0.99
+                                    const max = Math.max(...equities)
+                                    const range = max - min
+                                    const startEquity = equities[0]
+
+                                    return data.equity_curve.map((point, i) => {
+                                        const height = ((point.equity - min) / range) * 100
+                                        const isProfit = point.equity >= startEquity
+                                        return (
+                                            <div
+                                                key={i}
+                                                title={`${point.date}: $${point.equity.toLocaleString()}`}
+                                                style={{
+                                                    flex: 1,
+                                                    height: `${Math.max(height, 1)}%`,
+                                                    background: isProfit ? '#3B82F6' : '#ff3939',
+                                                    opacity: 0.8,
+                                                    minWidth: '3px',
+                                                    transition: 'height 0.3s ease'
+                                                }}
+                                            />
+                                        )
+                                    })
+                                })()}
+                            </div>
+                        </div>
                     </div>
                 )}
 
