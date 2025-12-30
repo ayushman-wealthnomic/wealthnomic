@@ -51,73 +51,165 @@
                 </div>
             </header>
 
-            <!-- Dashboard Grid -->
-            <div class="dashboard-grid">
+            <!-- Tab Navigation -->
+            <div class="tab-nav">
+                <button class="tab-btn active" data-tab="overview">OVERVIEW</button>
+                <button class="tab-btn" data-tab="positions">POSITIONS</button>
+                <button class="tab-btn" data-tab="trades">TRADE HISTORY</button>
+                <button class="tab-btn" data-tab="performance">PERFORMANCE</button>
+            </div>
 
-                <!-- KPI Row -->
-                <div class="kpi-row">
-                    <div class="brutal-card kpi-card" style="background:var(--accent-cyan)">
-                        <div class="card-title">TOTAL EQUITY</div>
-                        <div class="kpi-value" id="current-equity">--</div>
-                        <div class="kpi-label">USD VALUATION</div>
-                    </div>
-                    <div class="brutal-card kpi-card">
-                        <div class="card-title">TOTAL RETURN</div>
-                        <div class="kpi-value" id="total-return-val">--%</div>
-                        <div class="kpi-label">SINCE INCEPTION</div>
-                    </div>
-                    <div class="brutal-card kpi-card" style="background:var(--accent-green)">
-                        <div class="card-title">PROFIT/LOSS</div>
-                        <div class="kpi-value" id="total-pnl-val">--</div>
-                        <div class="kpi-label">NET REALIZED + UNREALIZED</div>
+            <!-- Tab Content Container -->
+            <div class="tab-content-wrapper">
+
+                <!-- OVERVIEW TAB -->
+                <div id="tab-overview" class="tab-content active">
+                    <div class="dashboard-grid">
+                        <!-- KPI Row -->
+                        <div class="kpi-row">
+                            <div class="brutal-card kpi-card" style="background:var(--accent-cyan)">
+                                <div class="card-title">TOTAL EQUITY</div>
+                                <div class="kpi-value" id="current-equity">--</div>
+                                <div class="kpi-label">USD VALUATION</div>
+                            </div>
+                            <div class="brutal-card kpi-card">
+                                <div class="card-title">TOTAL RETURN</div>
+                                <div class="kpi-value" id="total-return-val">--%</div>
+                                <div class="kpi-label">SINCE INCEPTION</div>
+                            </div>
+                            <div class="brutal-card kpi-card" style="background:var(--accent-green)">
+                                <div class="card-title">PROFIT/LOSS</div>
+                                <div class="kpi-value" id="total-pnl-val">--</div>
+                                <div class="kpi-label">NET REALIZED + UNREALIZED</div>
+                            </div>
+                        </div>
+
+                        <!-- Main Chart -->
+                        <div class="brutal-card chart-container">
+                            <div class="card-title">EQUITY CURVE [LIVE]</div>
+                            <canvas id="equityChart"></canvas>
+                        </div>
+
+                        <!-- Quick Stats -->
+                        <div class="brutal-card stats-container">
+                            <div class="card-title">QUICK STATS</div>
+                            <div class="stats-grid">
+                                <div class="stat-item">
+                                    <div class="stat-label">Strategy</div>
+                                    <div class="stat-value" id="strategy-version">--</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-label">Active Positions</div>
+                                    <div class="stat-value" id="active-count">--</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-label">Today's P&L</div>
+                                    <div class="stat-value" id="today-pnl">--</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-label">Live Since</div>
+                                    <div class="stat-value" id="live-since">--</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Main Chart -->
-                <div class="brutal-card chart-container">
-                    <div class="card-title">EQUITY CURVE [LIVE]</div>
-                    <canvas id="equityChart"></canvas>
-                </div>
-
-                <!-- Live Feed / Trades -->
-                <div class="brutal-card feed-container">
-                    <div class="card-title">TRADE STREAM</div>
-                    <div class="table-wrapper">
-                        <table id="trades-table">
-                            <thead>
-                                <tr>
-                                    <th>TIME</th>
-                                    <th>SYM</th>
-                                    <th>SIDE</th>
-                                    <th>PNL</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <!-- JS -->
-                            </tbody>
-                        </table>
+                <!-- POSITIONS TAB -->
+                <div id="tab-positions" class="tab-content">
+                    <div class="positions-view">
+                        <div class="brutal-card full-width-card">
+                            <div class="card-title">ACTIVE POSITIONS</div>
+                            <div class="table-wrapper">
+                                <table id="positions-table-full">
+                                    <thead>
+                                        <tr>
+                                            <th>SYMBOL</th>
+                                            <th>ENTRY DATE</th>
+                                            <th>SIZE</th>
+                                            <th>ENTRY PRICE</th>
+                                            <th>CURRENT PRICE</th>
+                                            <th>PNL ($)</th>
+                                            <th>PNL (%)</th>
+                                            <th>DAYS HELD</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- JS -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Positions (Full Width or reuse grid) -->
-                <div class="brutal-card" style="grid-column: 1 / -1;">
-                    <div class="card-title">ACTIVE POSITIONS</div>
-                    <div class="table-wrapper" style="max-height: 200px;">
-                        <table id="positions-table">
-                            <thead>
-                                <tr>
-                                    <th>SYMBOL</th>
-                                    <th>SIZE</th>
-                                    <th>ENTRY</th>
-                                    <th>MARK</th>
-                                    <th>PNL ($)</th>
-                                    <th>PNL (%)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <!-- JS -->
-                            </tbody>
-                        </table>
+                <!-- TRADE HISTORY TAB -->
+                <div id="tab-trades" class="tab-content">
+                    <div class="trades-view">
+                        <div class="brutal-card full-width-card">
+                            <div class="card-title">RECENT TRADES</div>
+                            <div class="table-wrapper">
+                                <table id="trades-table-full">
+                                    <thead>
+                                        <tr>
+                                            <th>DATE</th>
+                                            <th>SYMBOL</th>
+                                            <th>EXIT TYPE</th>
+                                            <th>PROFIT ($)</th>
+                                            <th>RETURN (%)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- JS -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PERFORMANCE TAB -->
+                <div id="tab-performance" class="tab-content">
+                    <div class="performance-view">
+                        <div class="perf-grid">
+                            <div class="brutal-card perf-card">
+                                <div class="card-title">MONTHLY BREAKDOWN</div>
+                                <canvas id="monthlyChart"></canvas>
+                            </div>
+                            <div class="brutal-card perf-card">
+                                <div class="card-title">EXIT TYPE DISTRIBUTION</div>
+                                <canvas id="exitTypeChart"></canvas>
+                            </div>
+                            <div class="brutal-card perf-stats">
+                                <div class="card-title">DETAILED METRICS</div>
+                                <div class="perf-stats-grid">
+                                    <div class="perf-stat-item">
+                                        <div class="perf-stat-label">Win Rate</div>
+                                        <div class="perf-stat-value" id="win-rate">--</div>
+                                    </div>
+                                    <div class="perf-stat-item">
+                                        <div class="perf-stat-label">Avg Win</div>
+                                        <div class="perf-stat-value" id="avg-win">--</div>
+                                    </div>
+                                    <div class="perf-stat-item">
+                                        <div class="perf-stat-label">Avg Loss</div>
+                                        <div class="perf-stat-value" id="avg-loss">--</div>
+                                    </div>
+                                    <div class="perf-stat-item">
+                                        <div class="perf-stat-label">Total Trades</div>
+                                        <div class="perf-stat-value" id="total-trades">--</div>
+                                    </div>
+                                    <div class="perf-stat-item">
+                                        <div class="perf-stat-label">Profit Factor</div>
+                                        <div class="perf-stat-value" id="profit-factor">--</div>
+                                    </div>
+                                    <div class="perf-stat-item">
+                                        <div class="perf-stat-label">Best Trade</div>
+                                        <div class="perf-stat-value" id="best-trade">--</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 

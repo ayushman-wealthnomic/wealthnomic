@@ -1,0 +1,594 @@
+{
+    "generated_at": "2025-12-30 16:54:29",
+    "live_start_date": "2025-11-01",
+    "start_capital": 100000,
+    "current_equity": 111457.02863511465,
+    "total_pnl": 11457.02863511465,
+    "total_return_pct": 11.45702863511465,
+    "today_pnl": -1347.7101321281516,
+    "equity_curve": [
+        {
+            "date": "2025-11-03",
+            "equity": 100000.0
+        },
+        {
+            "date": "2025-11-04",
+            "equity": 100092.17677965705
+        },
+        {
+            "date": "2025-11-05",
+            "equity": 100640.93167691716
+        },
+        {
+            "date": "2025-11-06",
+            "equity": 100971.15303585227
+        },
+        {
+            "date": "2025-11-07",
+            "equity": 100951.77836104845
+        },
+        {
+            "date": "2025-11-10",
+            "equity": 101616.60455238736
+        },
+        {
+            "date": "2025-11-11",
+            "equity": 102006.84842208821
+        },
+        {
+            "date": "2025-11-12",
+            "equity": 102555.17059651169
+        },
+        {
+            "date": "2025-11-13",
+            "equity": 102308.87850732676
+        },
+        {
+            "date": "2025-11-14",
+            "equity": 102338.50150157909
+        },
+        {
+            "date": "2025-11-17",
+            "equity": 102561.97631793802
+        },
+        {
+            "date": "2025-11-18",
+            "equity": 102353.31329113187
+        },
+        {
+            "date": "2025-11-19",
+            "equity": 102229.94929257924
+        },
+        {
+            "date": "2025-11-20",
+            "equity": 102130.299233572
+        },
+        {
+            "date": "2025-11-21",
+            "equity": 102520.3734012193
+        },
+        {
+            "date": "2025-11-24",
+            "equity": 102682.8497848146
+        },
+        {
+            "date": "2025-11-25",
+            "equity": 103754.75099871897
+        },
+        {
+            "date": "2025-11-26",
+            "equity": 103694.84684621019
+        },
+        {
+            "date": "2025-11-28",
+            "equity": 104067.00144471593
+        },
+        {
+            "date": "2025-12-01",
+            "equity": 103633.94814286119
+        },
+        {
+            "date": "2025-12-02",
+            "equity": 104252.66545925822
+        },
+        {
+            "date": "2025-12-03",
+            "equity": 103669.27909885258
+        },
+        {
+            "date": "2025-12-04",
+            "equity": 104600.1918266934
+        },
+        {
+            "date": "2025-12-05",
+            "equity": 104936.82548040994
+        },
+        {
+            "date": "2025-12-08",
+            "equity": 105111.63290256419
+        },
+        {
+            "date": "2025-12-09",
+            "equity": 105332.84031918203
+        },
+        {
+            "date": "2025-12-10",
+            "equity": 106594.57467877021
+        },
+        {
+            "date": "2025-12-11",
+            "equity": 108343.42419639361
+        },
+        {
+            "date": "2025-12-12",
+            "equity": 108991.27475977421
+        },
+        {
+            "date": "2025-12-15",
+            "equity": 109709.50850712191
+        },
+        {
+            "date": "2025-12-16",
+            "equity": 110093.33555713607
+        },
+        {
+            "date": "2025-12-17",
+            "equity": 111092.02675276664
+        },
+        {
+            "date": "2025-12-18",
+            "equity": 111468.86069141
+        },
+        {
+            "date": "2025-12-19",
+            "equity": 112080.98749190551
+        },
+        {
+            "date": "2025-12-22",
+            "equity": 112059.82918819998
+        },
+        {
+            "date": "2025-12-23",
+            "equity": 112411.36993569705
+        },
+        {
+            "date": "2025-12-24",
+            "equity": 112461.19652946835
+        },
+        {
+            "date": "2025-12-26",
+            "equity": 112804.7387672428
+        },
+        {
+            "date": "2025-12-29",
+            "equity": 111457.02863511465
+        }
+    ],
+    "recent_trades": [
+        {
+            "date": "2025-12-29",
+            "symbol": "FXI",
+            "type": "EXIT_GRACE_STOP",
+            "profit": -696.8,
+            "return_pct": "-663.64%"
+        },
+        {
+            "date": "2025-12-29",
+            "symbol": "TMO",
+            "type": "EXIT_GRACE_STOP",
+            "profit": -696.8,
+            "return_pct": "-663.64%"
+        },
+        {
+            "date": "2025-12-29",
+            "symbol": "EIDO",
+            "type": "EXIT_TRAIL",
+            "profit": 231.38,
+            "return_pct": "850.67%"
+        },
+        {
+            "date": "2025-12-29",
+            "symbol": "COST",
+            "type": "EXIT_TRAIL",
+            "profit": 234.96,
+            "return_pct": "863.80%"
+        },
+        {
+            "date": "2025-12-26",
+            "symbol": "BUG",
+            "type": "EXIT_TRAIL",
+            "profit": -8.08,
+            "return_pct": "-1.39%"
+        },
+        {
+            "date": "2025-12-26",
+            "symbol": "BRK-B",
+            "type": "EXIT_TRAIL",
+            "profit": -3.7,
+            "return_pct": "-0.64%"
+        },
+        {
+            "date": "2025-12-23",
+            "symbol": "IBB",
+            "type": "EXIT_TRAIL",
+            "profit": 10.42,
+            "return_pct": "2.78%"
+        },
+        {
+            "date": "2025-12-23",
+            "symbol": "KMB",
+            "type": "EXIT_TRAIL",
+            "profit": 16.95,
+            "return_pct": "4.51%"
+        },
+        {
+            "date": "2025-12-18",
+            "symbol": "KMB",
+            "type": "EXIT_TRAIL_PROTECTED",
+            "profit": 249.38,
+            "return_pct": "67.86%"
+        },
+        {
+            "date": "2025-12-18",
+            "symbol": "IBB",
+            "type": "EXIT_TRAIL_PROTECTED",
+            "profit": 243.14,
+            "return_pct": "66.16%"
+        },
+        {
+            "date": "2025-12-17",
+            "symbol": "OUNZ",
+            "type": "EXIT_TRAIL",
+            "profit": -50.2,
+            "return_pct": "-225.46%"
+        },
+        {
+            "date": "2025-12-17",
+            "symbol": "XBI",
+            "type": "EXIT_TRAIL",
+            "profit": 392.52,
+            "return_pct": "150.05%"
+        },
+        {
+            "date": "2025-12-17",
+            "symbol": "JPM",
+            "type": "EXIT_TRAIL",
+            "profit": 399.63,
+            "return_pct": "152.77%"
+        },
+        {
+            "date": "2025-12-16",
+            "symbol": "FXI",
+            "type": "EXIT_TRAIL_PROTECTED",
+            "profit": 268.27,
+            "return_pct": "245.79%"
+        },
+        {
+            "date": "2025-12-16",
+            "symbol": "TMO",
+            "type": "EXIT_TRAIL_PROTECTED",
+            "profit": 276.89,
+            "return_pct": "253.69%"
+        },
+        {
+            "date": "2025-12-15",
+            "symbol": "XBI",
+            "type": "EXIT_TRAIL_PROTECTED",
+            "profit": 297.78,
+            "return_pct": "114.42%"
+        },
+        {
+            "date": "2025-12-15",
+            "symbol": "JPM",
+            "type": "EXIT_TRAIL_PROTECTED",
+            "profit": 304.83,
+            "return_pct": "117.13%"
+        },
+        {
+            "date": "2025-12-12",
+            "symbol": "FXI",
+            "type": "EXIT_TRAIL_PROTECTED",
+            "profit": 768.76,
+            "return_pct": "689.16%"
+        },
+        {
+            "date": "2025-12-12",
+            "symbol": "TMO",
+            "type": "EXIT_TRAIL_PROTECTED",
+            "profit": 777.11,
+            "return_pct": "696.65%"
+        },
+        {
+            "date": "2025-12-11",
+            "symbol": "JPM",
+            "type": "EXIT_TRAIL_PROTECTED",
+            "profit": 776.73,
+            "return_pct": "282.10%"
+        },
+        {
+            "date": "2025-12-11",
+            "symbol": "XBI",
+            "type": "EXIT_TRAIL_PROTECTED",
+            "profit": 773.09,
+            "return_pct": "280.77%"
+        },
+        {
+            "date": "2025-12-10",
+            "symbol": "FI",
+            "type": "EXIT_TRAIL",
+            "profit": 167.56,
+            "return_pct": "365.26%"
+        },
+        {
+            "date": "2025-12-10",
+            "symbol": "IAU",
+            "type": "EXIT_TRAIL",
+            "profit": 95.96,
+            "return_pct": "309.50%"
+        },
+        {
+            "date": "2025-12-09",
+            "symbol": "ARKG",
+            "type": "EXIT_TRAIL",
+            "profit": 147.21,
+            "return_pct": "320.03%"
+        },
+        {
+            "date": "2025-12-09",
+            "symbol": "ACN",
+            "type": "EXIT_TRAIL",
+            "profit": 221.73,
+            "return_pct": "478.30%"
+        },
+        {
+            "date": "2025-12-09",
+            "symbol": "AMZN",
+            "type": "EXIT_TRAIL",
+            "profit": 154.85,
+            "return_pct": "336.64%"
+        },
+        {
+            "date": "2025-12-09",
+            "symbol": "IAI",
+            "type": "EXIT_TRAIL",
+            "profit": 214.14,
+            "return_pct": "461.93%"
+        },
+        {
+            "date": "2025-12-09",
+            "symbol": "DUK",
+            "type": "EXIT_TRAIL",
+            "profit": 138.97,
+            "return_pct": "301.54%"
+        },
+        {
+            "date": "2025-12-09",
+            "symbol": "THD",
+            "type": "EXIT_TRAIL",
+            "profit": 131.51,
+            "return_pct": "285.35%"
+        },
+        {
+            "date": "2025-12-09",
+            "symbol": "SLV",
+            "type": "EXIT_ALPHA_SELL",
+            "profit": -291.01,
+            "return_pct": "-109.80%"
+        },
+        {
+            "date": "2025-12-04",
+            "symbol": "SGOL",
+            "type": "EXIT_TRAIL",
+            "profit": -18.48,
+            "return_pct": "-17.56%"
+        },
+        {
+            "date": "2025-12-04",
+            "symbol": "EWI",
+            "type": "EXIT_TRAIL",
+            "profit": 112.7,
+            "return_pct": "51.69%"
+        },
+        {
+            "date": "2025-12-04",
+            "symbol": "ABBV",
+            "type": "EXIT_TRAIL",
+            "profit": 116.77,
+            "return_pct": "53.55%"
+        },
+        {
+            "date": "2025-12-03",
+            "symbol": "XOP",
+            "type": "EXIT_TRAIL",
+            "profit": 81.57,
+            "return_pct": "37.62%"
+        },
+        {
+            "date": "2025-12-03",
+            "symbol": "LLY",
+            "type": "EXIT_TRAIL",
+            "profit": 85.62,
+            "return_pct": "39.50%"
+        },
+        {
+            "date": "2025-12-02",
+            "symbol": "HON",
+            "type": "EXIT_TRAIL",
+            "profit": -10.39,
+            "return_pct": "-75.36%"
+        },
+        {
+            "date": "2025-12-02",
+            "symbol": "SGOL",
+            "type": "EXIT_TRAIL",
+            "profit": 45.34,
+            "return_pct": "44.39%"
+        },
+        {
+            "date": "2025-12-02",
+            "symbol": "EEM",
+            "type": "EXIT_TRAIL",
+            "profit": -10.39,
+            "return_pct": "-75.36%"
+        },
+        {
+            "date": "2025-12-01",
+            "symbol": "KRE",
+            "type": "EXIT_TRAIL",
+            "profit": 146.76,
+            "return_pct": "455.09%"
+        },
+        {
+            "date": "2025-12-01",
+            "symbol": "ELV",
+            "type": "EXIT_TRAIL",
+            "profit": 153.33,
+            "return_pct": "475.48%"
+        },
+        {
+            "date": "2025-11-28",
+            "symbol": "CB",
+            "type": "EXIT_TRAIL",
+            "profit": 39.72,
+            "return_pct": "125.52%"
+        },
+        {
+            "date": "2025-11-28",
+            "symbol": "XLI",
+            "type": "EXIT_TRAIL",
+            "profit": 33.24,
+            "return_pct": "105.05%"
+        },
+        {
+            "date": "2025-11-26",
+            "symbol": "OUNZ",
+            "type": "EXIT_TRAIL",
+            "profit": 187.76,
+            "return_pct": "894.32%"
+        },
+        {
+            "date": "2025-11-26",
+            "symbol": "KRE",
+            "type": "EXIT_TRAIL_PROTECTED",
+            "profit": 254.13,
+            "return_pct": "790.96%"
+        },
+        {
+            "date": "2025-11-26",
+            "symbol": "ELV",
+            "type": "EXIT_TRAIL_PROTECTED",
+            "profit": 260.65,
+            "return_pct": "811.25%"
+        },
+        {
+            "date": "2025-11-25",
+            "symbol": "ORCL",
+            "type": "EXIT_TRAIL_PROTECTED",
+            "profit": 240.02,
+            "return_pct": "6139.07%"
+        },
+        {
+            "date": "2025-11-25",
+            "symbol": "SPY",
+            "type": "EXIT_TRAIL_PROTECTED",
+            "profit": 170.68,
+            "return_pct": "4434.17%"
+        },
+        {
+            "date": "2025-11-25",
+            "symbol": "GOOG",
+            "type": "EXIT_TRAIL_PROTECTED",
+            "profit": 173.0,
+            "return_pct": "4494.65%"
+        },
+        {
+            "date": "2025-11-25",
+            "symbol": "MCHI",
+            "type": "EXIT_TRAIL_PROTECTED",
+            "profit": 237.66,
+            "return_pct": "6078.78%"
+        },
+        {
+            "date": "2025-11-21",
+            "symbol": "SPY",
+            "type": "EXIT_TRAIL_PROTECTED",
+            "profit": 117.59,
+            "return_pct": "2954.47%"
+        }
+    ],
+    "active_positions": [
+        {
+            "symbol": "GOOG",
+            "entry_date": "2025-12-17",
+            "size": 10992.0,
+            "entry_price": 1041.79,
+            "current_price": 1078.73,
+            "pnl": 389.74,
+            "pnl_pct": 3.55
+        },
+        {
+            "symbol": "SPY",
+            "entry_date": "2025-12-17",
+            "size": 10992.0,
+            "entry_price": 1041.79,
+            "current_price": 1078.73,
+            "pnl": 389.74,
+            "pnl_pct": 3.55
+        },
+        {
+            "symbol": "BAC",
+            "entry_date": "2025-12-18",
+            "size": 11066.0,
+            "entry_price": 1056.88,
+            "current_price": 1078.73,
+            "pnl": 228.77,
+            "pnl_pct": 2.07
+        },
+        {
+            "symbol": "IEMG",
+            "entry_date": "2025-12-18",
+            "size": 11066.0,
+            "entry_price": 1056.88,
+            "current_price": 1078.73,
+            "pnl": 228.77,
+            "pnl_pct": 2.07
+        },
+        {
+            "symbol": "ELV",
+            "entry_date": "2025-12-24",
+            "size": 11118.0,
+            "entry_price": 314.09,
+            "current_price": 313.56,
+            "pnl": -18.76,
+            "pnl_pct": -0.17
+        },
+        {
+            "symbol": "INTU",
+            "entry_date": "2025-12-29",
+            "size": 11117.0,
+            "entry_price": 161.94,
+            "current_price": 161.94,
+            "pnl": 0.0,
+            "pnl_pct": 0.0
+        },
+        {
+            "symbol": "XLP",
+            "entry_date": "2025-12-29",
+            "size": 11117.0,
+            "entry_price": 161.94,
+            "current_price": 161.94,
+            "pnl": 0.0,
+            "pnl_pct": 0.0
+        },
+        {
+            "symbol": "SLV",
+            "entry_date": "2025-12-29",
+            "size": 11117.0,
+            "entry_price": 38.47,
+            "current_price": 38.47,
+            "pnl": 0.0,
+            "pnl_pct": 0.0
+        }
+    ],
+    "strategy_version": "V3 (AlphaTrend)"
+}
