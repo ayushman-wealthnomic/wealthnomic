@@ -1,3 +1,4 @@
+import React, { useState } from 'react'
 import { SESClient, SendEmailCommand } from "@aws-sdk/client-ses"
 
 function NewsletterModal({ isOpen, onClose }) {
