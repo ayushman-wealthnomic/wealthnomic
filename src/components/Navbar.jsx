@@ -123,6 +123,22 @@ function Navbar() {
                     </li>
                     <li>
                         <Link
+                            to="/newsletter"
+                            style={{
+                                fontSize: '0.85rem',
+                                fontWeight: 500,
+                                color: isActive('/newsletter') ? '#000' : '#555',
+                                textDecoration: 'none',
+                                letterSpacing: '0.02em',
+                                borderBottom: isActive('/newsletter') ? '2px solid #00cc7a' : 'none',
+                                paddingBottom: '3px'
+                            }}
+                        >
+                            Newsletter
+                        </Link>
+                    </li>
+                    <li>
+                        <Link
                             to="/careers"
                             style={{
                                 fontSize: '0.85rem',
