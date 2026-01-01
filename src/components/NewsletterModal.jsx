@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { SESClient, SendEmailCommand } from "@aws-sdk/client-ses"
 
 function NewsletterModal({ isOpen, onClose }) {
     const [email, setEmail] = useState('')
@@ -10,42 +10,65 @@ function NewsletterModal({ isOpen, onClose }) {
         e.preventDefault()
         setStatus('submitting')
 
-        // Using Web3Forms as per the guide
-        // In a real app, this key would be in an environment variable
-        // For now, using a placeholder or the public demo key if available, 
-        // but based on the guide, the user needs to provide their own.
-        // I will simulate a success for the demo if no key is present, or try to submit.
+        // AWS SES Configuration from environment variables
+        const accessKeyId = import.meta.env.VITE_AWS_ACCESS_KEY_ID
+        const secretAccessKey = import.meta.env.VITE_AWS_SECRET_ACCESS_KEY
+        const region = import.meta.env.VITE_AWS_REGION || 'us-east-1'
+        const verifiedSourceEmail = 'ayushman@wealthnomic.com' // Verified in AWS SES
+
+        // Check if we should use SES or fallback to Web3Forms (if keys are missing)
+        const useSES = accessKeyId && secretAccessKey
 
         try {
-            const response = await fetch('https://api.web3forms.com/submit', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({
-                    access_key: 'YOUR_ACCESS_KEY_HERE', // User acts to replace this
-                    email: email,
-                    subject: 'New Newsletter Subscriber',
-                    from_name: 'Wealthnomics Newsletter'
+            if (useSES) {
+                const sesClient = new SESClient({
+                    region,
+                    credentials: { accessKeyId, secretAccessKey }
                 })
-            })
 
-            const result = await response.json()
+                const command = new SendEmailCommand({
+                    Destination: { ToAddresses: [verifiedSourceEmail] },
+                    Message: {
+                        Body: {
+                            Text: { Data: `New Newsletter Subscription Request from: ${email}` }
+                        },
+                        Subject: { Data: "New Newsletter Subscriber" }
+                    },
+                    Source: verifiedSourceEmail, // SES requires the 'From' to be verified
+                    ReplyToAddresses: [email]
+                })
 
-            if (response.status === 200) {
+                await sesClient.send(command)
                 setStatus('success')
+            } else {
+                // Fallback to Web3Forms for demo/local testing if SES keys aren't provided
+                const response = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: JSON.stringify({
+                        access_key: 'YOUR_ACCESS_KEY_HERE',
+                        email: email,
+                        subject: 'New Newsletter Subscriber (Fallback)',
+                        from_name: 'Wealthnomics Newsletter'
+                    })
+                })
+
+                if (response.status === 200) {
+                    setStatus('success')
+                } else {
+                    setStatus('error')
+                }
+            }
+
+            if (status !== 'error') {
                 setTimeout(() => {
                     onClose()
                     setStatus('idle')
                     setEmail('')
                 }, 3000)
-            } else {
-                console.error(result)
-                setStatus('error')
             }
         } catch (error) {
-            console.error(error)
+            console.error('Newsletter Error:', error)
             setStatus('error')
         }
     }
